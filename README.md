@@ -26,6 +26,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [openclaw-control-center](skills/openclaw-control-center/) | Turn OpenClaw into a local control center | [TianyiDataScience/openclaw-control-center](https://github.com/TianyiDataScience/openclaw-control-center) | 2026-03-15 |
 | [pi-autoresearch-loop](skills/pi-autoresearch-loop/) | Autonomous experiment loop extension | [davebcn87/pi-autoresearch](https://github.com/davebcn87/pi-autoresearch) | 2026-03-15 |
 | [chrome-cdp-skill](skills/chrome-cdp-skill/) | Give your AI agent access to your live Chrome session — works out of the box, connects to tabs you already have open | [pasky/chrome-cdp-skill](https://github.com/pasky/chrome-cdp-skill) | 2026-03-15 |
+| [gsd-2](skills/gsd-2/) | A powerful meta-prompting, context engineering and spec-driven development system that enables agents to work for long periods of time autonomously without losing track of the big picture | [gsd-build/gsd-2](https://github.com/gsd-build/gsd-2) | 2026-03-15 |
 <!-- SKILL_INDEX -->
 
 ## How it works
