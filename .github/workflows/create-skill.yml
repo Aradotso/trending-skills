@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Find trending repo
+      - name: Find fastest-growing repo
         id: trending
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -31,17 +31,13 @@ jobs:
           # Collect existing skill slugs and referenced repos for dedup
           EXISTING_SLUGS=$(ls -1 skills/ 2>/dev/null | tr '\n' '|')
           EXISTING_REPOS=$(grep -rh 'github\.com/' skills/*/SKILL.md 2>/dev/null | grep -oP 'github\.com/\K[^/)"\s]+/[^/)"\s]+' | sort -u || true)
-
           echo "Existing skills: $(ls -1 skills/ 2>/dev/null | wc -l)"
-
-          # --- Multiple discovery strategies ---
-          # Pick one randomly each run for variety
-          STRATEGY=$((RANDOM % 6))
-          echo "Strategy: ${STRATEGY}"
 
           SINCE_7D=$(date -d '7 days ago' +%Y-%m-%d)
           SINCE_30D=$(date -d '30 days ago' +%Y-%m-%d)
           SINCE_90D=$(date -d '90 days ago' +%Y-%m-%d)
+          SINCE_180D=$(date -d '180 days ago' +%Y-%m-%d)
+          TODAY=$(date +%Y-%m-%d)
 
           fetch_repos() {
             local QUERY="$1"
@@ -64,51 +60,58 @@ jobs:
             fi
           }
 
-          case $STRATEGY in
-            0)
-              # New repos exploding in the last 7 days (original strategy)
-              RESULTS=$(fetch_repos "created:>${SINCE_7D}&stars:>50" "New repos (7d, 50+ stars)")
-              ;;
-            1)
-              # Repos with big star spikes recently (pushed recently, high stars)
-              RESULTS=$(fetch_repos "pushed:>${SINCE_7D}&stars:>1000&created:<${SINCE_30D}" "Established repos with recent activity (1k+ stars)")
-              ;;
-            2)
-              # AI/ML/agent topics — the skills.sh audience
-              TOPIC=$(echo "ai-agent llm mcp-server rag vector-database ai-coding developer-tools cli automation devops" | tr ' ' '\n' | shuf -n1)
-              RESULTS=$(fetch_repos "topic:${TOPIC}&stars:>100&pushed:>${SINCE_30D}" "Topic: ${TOPIC}")
-              ;;
-            3)
-              # Trending by language — catch language-specific gems
-              PICK_LANG=$(echo "rust go typescript python zig swift kotlin" | tr ' ' '\n' | shuf -n1)
-              RESULTS=$(fetch_repos "language:${PICK_LANG}&created:>${SINCE_30D}&stars:>200" "Language: ${PICK_LANG} (30d)")
-              ;;
-            4)
-              # Fast-growing repos (created 30-90 days ago, already 500+ stars)
-              RESULTS=$(fetch_repos "created:${SINCE_90D}..${SINCE_30D}&stars:>500" "Fast growers (30-90d old, 500+ stars)")
-              ;;
-            5)
-              # Agent ecosystem — skills, MCP, AI tools
-              RESULTS=$(fetch_repos "topic:agent-skills+OR+topic:mcp+OR+topic:ai-tools&stars:>50&pushed:>${SINCE_7D}" "Agent ecosystem repos")
-              ;;
-          esac
+          # Fetch multiple pools and merge — always ranked by growth velocity
+          # Pool 1: Repos born in the last 7 days (explosive new projects)
+          P1=$(fetch_repos "created:>${SINCE_7D}&stars:>20" "New repos (7d, 20+ stars)")
+          # Pool 2: Repos born in the last 30 days (fast risers)
+          P2=$(fetch_repos "created:>${SINCE_30D}&stars:>200" "Fast risers (30d, 200+ stars)")
+          # Pool 3: Repos born in the last 90 days (sustained growth)
+          P3=$(fetch_repos "created:>${SINCE_90D}&stars:>500" "Sustained growth (90d, 500+ stars)")
+          # Pool 4: Repos born in last 180 days that are already massive
+          P4=$(fetch_repos "created:>${SINCE_180D}&stars:>2000" "Breakouts (180d, 2k+ stars)")
 
-          ITEM_COUNT=$(echo "${RESULTS}" | jq '.items | length')
-          echo "Found ${ITEM_COUNT} candidates"
+          # Merge all pools, dedupe by full_name, compute stars/day, sort descending
+          RANKED=$(echo "${P1}" "${P2}" "${P3}" "${P4}" | jq -s --arg today "${TODAY}" '
+            [.[].items[]] |
+            unique_by(.full_name) |
+            map(
+              . + {
+                age_days: (
+                  (($today | strptime("%Y-%m-%d") | mktime) -
+                   (.created_at[:10] | strptime("%Y-%m-%d") | mktime)) / 86400 | floor | if . < 1 then 1 else . end
+                ),
+                stars_per_day: (
+                  .stargazers_count / (
+                    (($today | strptime("%Y-%m-%d") | mktime) -
+                     (.created_at[:10] | strptime("%Y-%m-%d") | mktime)) / 86400 | if . < 1 then 1 else . end
+                  ) | floor
+                )
+              }
+            ) |
+            sort_by(-.stars_per_day)
+          ')
+
+          ITEM_COUNT=$(echo "${RANKED}" | jq 'length')
+          echo "Merged and ranked ${ITEM_COUNT} candidates by stars/day"
+
+          # Show top 10 for debugging
+          echo "${RANKED}" | jq -r '.[:10][] | "\(.stars_per_day) stars/day  \(.stargazers_count) total  \(.age_days)d old  \(.full_name)"'
 
           # Find first repo we haven't covered yet
           for i in $(seq 0 $((ITEM_COUNT - 1))); do
-            REPO_FULL=$(echo "${RESULTS}" | jq -r ".items[$i].full_name // empty")
-            REPO_NAME=$(echo "${RESULTS}" | jq -r ".items[$i].name // empty")
-            REPO_DESC=$(echo "${RESULTS}" | jq -r ".items[$i].description // empty")
-            REPO_LANG=$(echo "${RESULTS}" | jq -r ".items[$i].language // \"Unknown\"")
-            REPO_STARS=$(echo "${RESULTS}" | jq -r ".items[$i].stargazers_count // 0")
-            REPO_TOPICS=$(echo "${RESULTS}" | jq -r ".items[$i].topics // [] | join(\", \")")
+            REPO_FULL=$(echo "${RANKED}" | jq -r ".[$i].full_name // empty")
+            REPO_NAME=$(echo "${RANKED}" | jq -r ".[$i].name // empty")
+            REPO_DESC=$(echo "${RANKED}" | jq -r ".[$i].description // empty")
+            REPO_LANG=$(echo "${RANKED}" | jq -r ".[$i].language // \"Unknown\"")
+            REPO_STARS=$(echo "${RANKED}" | jq -r ".[$i].stargazers_count // 0")
+            REPO_TOPICS=$(echo "${RANKED}" | jq -r ".[$i].topics // [] | join(\", \")")
+            STARS_PER_DAY=$(echo "${RANKED}" | jq -r ".[$i].stars_per_day // 0")
+            AGE_DAYS=$(echo "${RANKED}" | jq -r ".[$i].age_days // 0")
 
             [ -z "${REPO_FULL}" ] && continue
 
             # Skip forks
-            IS_FORK=$(echo "${RESULTS}" | jq -r ".items[$i].fork // false")
+            IS_FORK=$(echo "${RANKED}" | jq -r ".[$i].fork // false")
             [ "${IS_FORK}" = "true" ] && { echo "SKIP fork: ${REPO_FULL}"; continue; }
 
             # Skip repos with no description
@@ -135,7 +138,7 @@ jobs:
               continue
             fi
 
-            echo "SELECTED: ${REPO_FULL} (${REPO_STARS} stars, strategy=${STRATEGY})"
+            echo "SELECTED: ${REPO_FULL} (${REPO_STARS} stars, ${STARS_PER_DAY} stars/day, ${AGE_DAYS}d old)"
             {
               echo "repo_full=${REPO_FULL}"
               echo "repo_name=${REPO_NAME}"
@@ -143,8 +146,8 @@ jobs:
               echo "repo_lang=${REPO_LANG}"
               echo "repo_stars=${REPO_STARS}"
               echo "repo_topics=${REPO_TOPICS}"
+              echo "stars_per_day=${STARS_PER_DAY}"
               echo "skill_slug=${SKILL_SLUG}"
-              echo "strategy=${STRATEGY}"
             } >> "${GITHUB_OUTPUT}"
             break
           done
@@ -157,7 +160,6 @@ jobs:
           set +e
           REPO_FULL="${{ steps.trending.outputs.repo_full }}"
 
-          # Fetch README
           curl -s "https://api.github.com/repos/${REPO_FULL}/readme" \
             -H "Authorization: Bearer ${GH_TOKEN}" \
             -H "Accept: application/vnd.github.v3+json" \
@@ -167,7 +169,6 @@ jobs:
             base64 -d /tmp/readme_b64.txt 2>/dev/null | head -c 12000 > /tmp/repo_readme.md
           fi
 
-          # Also fetch repo metadata for richer context
           curl -s "https://api.github.com/repos/${REPO_FULL}" \
             -H "Authorization: Bearer ${GH_TOKEN}" \
             -H "Accept: application/vnd.github.v3+json" \
@@ -192,6 +193,7 @@ jobs:
           REPO_LANG="${{ steps.trending.outputs.repo_lang }}"
           REPO_STARS="${{ steps.trending.outputs.repo_stars }}"
           REPO_TOPICS="${{ steps.trending.outputs.repo_topics }}"
+          STARS_PER_DAY="${{ steps.trending.outputs.stars_per_day }}"
           SKILL_SLUG="${{ steps.trending.outputs.skill_slug }}"
 
           REPO_META=$(cat /tmp/repo_meta.json 2>/dev/null || echo "{}")
@@ -203,7 +205,7 @@ jobs:
           FULL_PROMPT="Project: ${REPO_FULL}
           Description: ${REPO_DESC}
           Language: ${REPO_LANG}
-          Stars: ${REPO_STARS}
+          Stars: ${REPO_STARS} (${STARS_PER_DAY} stars/day)
           Topics: ${REPO_TOPICS}
           Metadata: ${REPO_META}
           Suggested slug: ${SKILL_SLUG}
@@ -247,7 +249,6 @@ jobs:
             exit 1
           fi
 
-          # Extract skill name from generated frontmatter (Claude may improve the slug)
           GENERATED_NAME=$(echo "${SKILL_CONTENT}" | grep -m1 '^name:' | sed 's/name: *//' | tr -d "\"'" | xargs)
           if [ -n "${GENERATED_NAME}" ]; then
             SKILL_SLUG="${GENERATED_NAME}"
@@ -291,13 +292,13 @@ jobs:
         run: |
           SKILL_SLUG="${{ steps.trending.outputs.skill_slug }}"
           REPO_FULL="${{ steps.trending.outputs.repo_full }}"
-          STRATEGY="${{ steps.trending.outputs.strategy }}"
+          STARS_PER_DAY="${{ steps.trending.outputs.stars_per_day }}"
 
           git config user.name "ara-bot"
           git config user.email "bot@ara.so"
           git add -A
           git diff --staged --quiet && echo "No changes" && exit 0
-          git commit -m "feat: add ${SKILL_SLUG} skill from ${REPO_FULL} (strategy ${STRATEGY})"
+          git commit -m "feat: add ${SKILL_SLUG} skill from ${REPO_FULL} (${STARS_PER_DAY} stars/day)"
           git pull --rebase origin main || true
           git push
 
