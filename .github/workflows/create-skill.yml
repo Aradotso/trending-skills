@@ -46,11 +46,22 @@ jobs:
           fetch_repos() {
             local QUERY="$1"
             local LABEL="$2"
-            echo "--- ${LABEL} ---"
-            curl -sf \
+            echo "--- ${LABEL} ---" >&2
+            local RESP
+            RESP=$(curl -s -w "\n%{http_code}" \
               "https://api.github.com/search/repositories?q=${QUERY}&sort=stars&order=desc&per_page=30" \
               -H "Authorization: Bearer ${GH_TOKEN}" \
-              -H "Accept: application/vnd.github.v3+json" 2>/dev/null || echo '{"items":[]}'
+              -H "Accept: application/vnd.github.v3+json" 2>/dev/null)
+            local HTTP_CODE
+            HTTP_CODE=$(echo "${RESP}" | tail -1)
+            local BODY
+            BODY=$(echo "${RESP}" | sed '$d')
+            if [ "${HTTP_CODE}" != "200" ] || ! echo "${BODY}" | jq -e '.items' >/dev/null 2>&1; then
+              echo "API returned HTTP ${HTTP_CODE}, using empty fallback" >&2
+              echo '{"items":[]}'
+            else
+              echo "${BODY}"
+            fi
           }
 
           case $STRATEGY in
@@ -64,29 +75,21 @@ jobs:
               ;;
             2)
               # AI/ML/agent topics — the skills.sh audience
-              TOPICS=("ai-agent" "llm" "mcp-server" "rag" "vector-database" "ai-coding" "developer-tools" "cli" "automation" "devops")
-              TOPIC=${TOPICS[$((RANDOM % ${#TOPICS[@]}))]}
+              TOPIC=$(echo "ai-agent llm mcp-server rag vector-database ai-coding developer-tools cli automation devops" | tr ' ' '\n' | shuf -n1)
               RESULTS=$(fetch_repos "topic:${TOPIC}&stars:>100&pushed:>${SINCE_30D}" "Topic: ${TOPIC}")
               ;;
             3)
               # Trending by language — catch language-specific gems
-              LANGS=("rust" "go" "typescript" "python" "zig" "swift" "kotlin")
-              LANG=${LANGS[$((RANDOM % ${#LANGS[@]}))]}
-              RESULTS=$(fetch_repos "language:${LANG}&created:>${SINCE_30D}&stars:>200" "Language: ${LANG} (30d)")
+              PICK_LANG=$(echo "rust go typescript python zig swift kotlin" | tr ' ' '\n' | shuf -n1)
+              RESULTS=$(fetch_repos "language:${PICK_LANG}&created:>${SINCE_30D}&stars:>200" "Language: ${PICK_LANG} (30d)")
               ;;
             4)
               # Fast-growing repos (created 30-90 days ago, already 500+ stars)
               RESULTS=$(fetch_repos "created:${SINCE_90D}..${SINCE_30D}&stars:>500" "Fast growers (30-90d old, 500+ stars)")
               ;;
             5)
-              # GitHub trending page scrape via the unofficial API
-              RESULTS=$(curl -sf "https://api.github.com/search/repositories?q=created:>${SINCE_7D}&sort=stars&order=desc&per_page=30" \
-                -H "Authorization: Bearer ${GH_TOKEN}" \
-                -H "Accept: application/vnd.github.v3+json" 2>/dev/null || echo '{"items":[]}')
-              # Also fetch from topics that are hot right now
-              RESULTS2=$(fetch_repos "topic:agent-skills OR topic:mcp OR topic:ai-tools&stars:>50&pushed:>${SINCE_7D}" "Agent ecosystem repos")
-              # Merge: prefer RESULTS2 items first (more targeted), then RESULTS
-              RESULTS=$(echo "${RESULTS2}" "${RESULTS}" | jq -s '{ items: (.[0].items + .[1].items) | unique_by(.full_name) }')
+              # Agent ecosystem — skills, MCP, AI tools
+              RESULTS=$(fetch_repos "topic:agent-skills+OR+topic:mcp+OR+topic:ai-tools&stars:>50&pushed:>${SINCE_7D}" "Agent ecosystem repos")
               ;;
           esac
 
