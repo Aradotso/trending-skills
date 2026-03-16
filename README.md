@@ -28,6 +28,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [chrome-cdp-skill](skills/chrome-cdp-skill/) | Give your AI agent access to your live Chrome session — works out of the box, connects to tabs you already have open | [pasky/chrome-cdp-skill](https://github.com/pasky/chrome-cdp-skill) | 2026-03-15 |
 | [gsd-2](skills/gsd-2/) | A powerful meta-prompting, context engineering and spec-driven development system that enables agents to work for long periods of time autonomously without losing track of the big picture | [gsd-build/gsd-2](https://github.com/gsd-build/gsd-2) | 2026-03-15 |
 | [metaclaw](skills/metaclaw/) | Just talk to your agent — it learns and EVOLVES. | [aiming-lab/MetaClaw](https://github.com/aiming-lab/MetaClaw) | 2026-03-15 |
+| [auto-claude-code-research-in-sleep](skills/auto-claude-code-research-in-sleep/) | ARIS ⚔️ (Auto-Research-In-Sleep) — Claude Code skills for autonomous ML research: cross-model review loops, idea discovery, and experiment automation via Codex MCP | [wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep) | 2026-03-16 |
 <!-- SKILL_INDEX -->
 
 ## How it works
