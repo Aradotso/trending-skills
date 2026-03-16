@@ -2,6 +2,7 @@ name: Create Trending Skill
 
 on:
   workflow_dispatch:
+    inputs: {}
   schedule:
     - cron: '*/30 * * * *'
 
