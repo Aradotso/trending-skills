@@ -28,6 +28,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [metaclaw-evolving-agent](skills/metaclaw-evolving-agent/) | [install](https://skills.sh/aradotso/trending-skills/metaclaw-evolving-agent) | [aiming-lab/MetaClaw](https://github.com/aiming-lab/MetaClaw) | 2026-03-15 |
 | [aris-autonomous-ml-research](skills/aris-autonomous-ml-research/) | [install](https://skills.sh/aradotso/trending-skills/aris-autonomous-ml-research) | [wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep) | 2026-03-16 |
 | [manpads-system-launcher-and-rocket](skills/manpads-system-launcher-and-rocket/) | [install](https://skills.sh/aradotso/trending-skills/manpads-system-launcher-and-rocket) | [novatic14/MANPADS-System-Launcher-and-Rocket](https://github.com/novatic14/MANPADS-System-Launcher-and-Rocket) | 2026-03-16 |
+| [tavily-key-generator](skills/tavily-key-generator/) | [install](https://skills.sh/aradotso/trending-skills/tavily-key-generator) | [skernelx/tavily-key-generator](https://github.com/skernelx/tavily-key-generator) | 2026-03-16 |
 <!-- SKILL_INDEX -->
 
 ## How it works
