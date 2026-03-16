@@ -34,6 +34,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [freecodecamp](skills/freecodecamp/) | [install](https://skills.sh/aradotso/trending-skills/freecodecamp) | [freeCodeCamp/freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp) | 2026-03-16 |
 | [cli-anything](skills/cli-anything/) | [install](https://skills.sh/aradotso/trending-skills/cli-anything) | [HKUDS/CLI-Anything](https://github.com/HKUDS/CLI-Anything) | 2026-03-16 |
 | [paperclip-ai-orchestration](skills/paperclip-ai-orchestration/) | [install](https://skills.sh/aradotso/trending-skills/paperclip-ai-orchestration) | [paperclipai/paperclip](https://github.com/paperclipai/paperclip) | 2026-03-16 |
+| [everything-claude-code-harness](skills/everything-claude-code-harness/) | [install](https://skills.sh/aradotso/trending-skills/everything-claude-code-harness) | [affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code) | 2026-03-16 |
 <!-- SKILL_INDEX -->
 
 ## How it works
