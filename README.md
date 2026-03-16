@@ -38,6 +38,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [pua-agent-performance-skill](skills/pua-agent-performance-skill/) | [install](https://skills.sh/aradotso/trending-skills/pua-agent-performance-skill) | [tanweai/pua](https://github.com/tanweai/pua) | 2026-03-16 |
 | [zeroclaw-ai-agent-runtime](skills/zeroclaw-ai-agent-runtime/) | [install](https://skills.sh/aradotso/trending-skills/zeroclaw-ai-agent-runtime) | [zeroclaw-labs/zeroclaw](https://github.com/zeroclaw-labs/zeroclaw) | 2026-03-16 |
 | [autoresearchclaw-autonomous-research](skills/autoresearchclaw-autonomous-research/) | [install](https://skills.sh/aradotso/trending-skills/autoresearchclaw-autonomous-research) | [aiming-lab/AutoResearchClaw](https://github.com/aiming-lab/AutoResearchClaw) | 2026-03-16 |
+| [crucix-intelligence-dashboard](skills/crucix-intelligence-dashboard/) | [install](https://skills.sh/aradotso/trending-skills/crucix-intelligence-dashboard) | [calesthio/Crucix](https://github.com/calesthio/Crucix) | 2026-03-16 |
 <!-- SKILL_INDEX -->
 
 ## How it works
