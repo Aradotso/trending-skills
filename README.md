@@ -2,8 +2,6 @@
 
 Auto-generated agent skills from GitHub's trending open source projects, by [ara.so](https://ara.so).
 
-Every 15 minutes, a GitHub Actions workflow checks what's trending on GitHub and creates a comprehensive agent skill for the top project. Skills are published to [skills.sh](https://skills.sh/Aradotso/trending-skills) and installable by any AI coding agent.
-
 ## Install all skills
 
 ```bash
@@ -18,17 +16,17 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 
 ## Skills Index
 
-| Skill | Description | Source | Date |
-|-------|-------------|--------|------|
-| [lightpanda-browser](skills/lightpanda-browser/) | Headless browser built in Zig for AI and automation | [lightpanda-io/browser](https://github.com/lightpanda-io/browser) | 2026-03-15 |
-| [gstack-workflow-assistant](skills/gstack-workflow-assistant/) | Claude Code workflow tools by Garry Tan | [garrytan/gstack](https://github.com/garrytan/gstack) | 2026-03-15 |
-| [openclaw-config](skills/openclaw-config/) | Manage OpenClaw bot configuration — channels, agents, security, autopilot | — | — |
-| [openclaw-control-center](skills/openclaw-control-center/) | Turn OpenClaw into a local control center | [TianyiDataScience/openclaw-control-center](https://github.com/TianyiDataScience/openclaw-control-center) | 2026-03-15 |
-| [pi-autoresearch-loop](skills/pi-autoresearch-loop/) | Autonomous experiment loop extension | [davebcn87/pi-autoresearch](https://github.com/davebcn87/pi-autoresearch) | 2026-03-15 |
-| [chrome-cdp-skill](skills/chrome-cdp-skill/) | Give your AI agent access to your live Chrome session — works out of the box, connects to tabs you already have open | [pasky/chrome-cdp-skill](https://github.com/pasky/chrome-cdp-skill) | 2026-03-15 |
-| [gsd-2](skills/gsd-2/) | A powerful meta-prompting, context engineering and spec-driven development system that enables agents to work for long periods of time autonomously without losing track of the big picture | [gsd-build/gsd-2](https://github.com/gsd-build/gsd-2) | 2026-03-15 |
-| [metaclaw](skills/metaclaw/) | Just talk to your agent — it learns and EVOLVES. | [aiming-lab/MetaClaw](https://github.com/aiming-lab/MetaClaw) | 2026-03-15 |
-| [auto-claude-code-research-in-sleep](skills/auto-claude-code-research-in-sleep/) | ARIS ⚔️ (Auto-Research-In-Sleep) — Claude Code skills for autonomous ML research: cross-model review loops, idea discovery, and experiment automation via Codex MCP | [wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep) | 2026-03-16 |
+| Skill | skills.sh | Source | Date |
+|-------|-----------|--------|------|
+| [lightpanda-browser](skills/lightpanda-browser/) | [install](https://skills.sh/Aradotso/trending-skills/lightpanda-browser) | [lightpanda-io/browser](https://github.com/lightpanda-io/browser) | 2026-03-15 |
+| [gstack-workflow-assistant](skills/gstack-workflow-assistant/) | [install](https://skills.sh/Aradotso/trending-skills/gstack-workflow-assistant) | [garrytan/gstack](https://github.com/garrytan/gstack) | 2026-03-15 |
+| [openclaw-config](skills/openclaw-config/) | [install](https://skills.sh/Aradotso/trending-skills/openclaw-config) | — | — |
+| [openclaw-control-center](skills/openclaw-control-center/) | [install](https://skills.sh/Aradotso/trending-skills/openclaw-control-center) | [TianyiDataScience/openclaw-control-center](https://github.com/TianyiDataScience/openclaw-control-center) | 2026-03-15 |
+| [pi-autoresearch-loop](skills/pi-autoresearch-loop/) | [install](https://skills.sh/Aradotso/trending-skills/pi-autoresearch-loop) | [davebcn87/pi-autoresearch](https://github.com/davebcn87/pi-autoresearch) | 2026-03-15 |
+| [chrome-cdp-live-browser](skills/chrome-cdp-live-browser/) | [install](https://skills.sh/Aradotso/trending-skills/chrome-cdp-live-browser) | [pasky/chrome-cdp-skill](https://github.com/pasky/chrome-cdp-skill) | 2026-03-15 |
+| [gsd-2-agent-framework](skills/gsd-2-agent-framework/) | [install](https://skills.sh/Aradotso/trending-skills/gsd-2-agent-framework) | [gsd-build/gsd-2](https://github.com/gsd-build/gsd-2) | 2026-03-15 |
+| [metaclaw-evolving-agent](skills/metaclaw-evolving-agent/) | [install](https://skills.sh/Aradotso/trending-skills/metaclaw-evolving-agent) | [aiming-lab/MetaClaw](https://github.com/aiming-lab/MetaClaw) | 2026-03-15 |
+| [aris-autonomous-ml-research](skills/aris-autonomous-ml-research/) | [install](https://skills.sh/Aradotso/trending-skills/aris-autonomous-ml-research) | [wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep) | 2026-03-16 |
 <!-- SKILL_INDEX -->
 
 ## How it works

@@ -209,7 +209,7 @@ jobs:
           DATE=$(date +%Y-%m-%d)
 
           if ! grep -q "${SKILL_SLUG}" README.md 2>/dev/null; then
-            sed -i "/<!-- SKILL_INDEX -->/i | [${SKILL_SLUG}](skills/${SKILL_SLUG}/) | ${REPO_DESC} | [${REPO_FULL}](https:\/\/github.com\/${REPO_FULL}) | ${DATE} |" README.md
+            sed -i "/<!-- SKILL_INDEX -->/i | [${SKILL_SLUG}](skills/${SKILL_SLUG}/) | [install](https:\/\/skills.sh\/Aradotso\/trending-skills\/${SKILL_SLUG}) | [${REPO_FULL}](https:\/\/github.com\/${REPO_FULL}) | ${DATE} |" README.md
           fi
 
       - name: Commit and push
