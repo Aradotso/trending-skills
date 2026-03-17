@@ -65,6 +65,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [oh-my-openagent-omo](skills/oh-my-openagent-omo/) | [install](https://skills.sh/aradotso/trending-skills/oh-my-openagent-omo) | [code-yeongyu/oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent) | 2026-03-17 |
 | [agent-browser-automation](skills/agent-browser-automation/) | [install](https://skills.sh/aradotso/trending-skills/agent-browser-automation) | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) | 2026-03-17 |
 | [aeris10-plfm-radar](skills/aeris10-plfm-radar/) | [install](https://skills.sh/aradotso/trending-skills/aeris10-plfm-radar) | [NawfalMotii79/PLFM_RADAR](https://github.com/NawfalMotii79/PLFM_RADAR) | 2026-03-17 |
+| [minecraftconsoles-lce](skills/minecraftconsoles-lce/) | [install](https://skills.sh/aradotso/trending-skills/minecraftconsoles-lce) | [smartcmd/MinecraftConsoles](https://github.com/smartcmd/MinecraftConsoles) | 2026-03-17 |
 <!-- SKILL_INDEX -->
 
 ## How it works
