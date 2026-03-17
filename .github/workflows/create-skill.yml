@@ -142,10 +142,11 @@ jobs:
             {
               echo "repo_full=${REPO_FULL}"
               echo "repo_name=${REPO_NAME}"
-              echo "repo_desc=${REPO_DESC}"
+              # Use heredoc format for values that may contain quotes, colons, or newlines
+              printf 'repo_desc<<_EOF_\n%s\n_EOF_\n' "${REPO_DESC}"
               echo "repo_lang=${REPO_LANG}"
               echo "repo_stars=${REPO_STARS}"
-              echo "repo_topics=${REPO_TOPICS}"
+              printf 'repo_topics<<_EOF_\n%s\n_EOF_\n' "${REPO_TOPICS}"
               echo "stars_per_day=${STARS_PER_DAY}"
               echo "skill_slug=${SKILL_SLUG}"
             } >> "${GITHUB_OUTPUT}"
@@ -156,9 +157,9 @@ jobs:
         if: steps.trending.outputs.repo_full
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_FULL: ${{ steps.trending.outputs.repo_full }}
         run: |
           set +e
-          REPO_FULL="${{ steps.trending.outputs.repo_full }}"
 
           curl -s "https://api.github.com/repos/${REPO_FULL}/readme" \
             -H "Authorization: Bearer ${GH_TOKEN}" \
@@ -185,17 +186,16 @@ jobs:
         if: steps.trending.outputs.repo_full
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          REPO_FULL: ${{ steps.trending.outputs.repo_full }}
+          REPO_NAME: ${{ steps.trending.outputs.repo_name }}
+          REPO_DESC: ${{ steps.trending.outputs.repo_desc }}
+          REPO_LANG: ${{ steps.trending.outputs.repo_lang }}
+          REPO_STARS: ${{ steps.trending.outputs.repo_stars }}
+          REPO_TOPICS: ${{ steps.trending.outputs.repo_topics }}
+          STARS_PER_DAY: ${{ steps.trending.outputs.stars_per_day }}
+          SKILL_SLUG: ${{ steps.trending.outputs.skill_slug }}
         run: |
           set -e
-
-          REPO_FULL="${{ steps.trending.outputs.repo_full }}"
-          REPO_NAME="${{ steps.trending.outputs.repo_name }}"
-          REPO_DESC="${{ steps.trending.outputs.repo_desc }}"
-          REPO_LANG="${{ steps.trending.outputs.repo_lang }}"
-          REPO_STARS="${{ steps.trending.outputs.repo_stars }}"
-          REPO_TOPICS="${{ steps.trending.outputs.repo_topics }}"
-          STARS_PER_DAY="${{ steps.trending.outputs.stars_per_day }}"
-          SKILL_SLUG="${{ steps.generate.outputs.skill_slug }}"
 
           REPO_META=$(cat /tmp/repo_meta.json 2>/dev/null || echo "{}")
 
@@ -262,9 +262,10 @@ jobs:
 
       - name: Update README
         if: steps.trending.outputs.repo_full
+        env:
+          SKILL_SLUG: ${{ steps.generate.outputs.skill_slug }}
+          REPO_FULL: ${{ steps.trending.outputs.repo_full }}
         run: |
-          SKILL_SLUG="${{ steps.generate.outputs.skill_slug }}"
-          REPO_FULL="${{ steps.trending.outputs.repo_full }}"
           DATE=$(date +%Y-%m-%d)
 
           if ! grep -q "${SKILL_SLUG}" README.md 2>/dev/null; then
@@ -276,8 +277,8 @@ jobs:
         continue-on-error: true
         env:
           CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
+          SKILL_SLUG: ${{ steps.generate.outputs.skill_slug }}
         run: |
-          SKILL_SLUG="${{ steps.generate.outputs.skill_slug }}"
           if [ -z "${CLAWHUB_TOKEN}" ]; then
             echo "CLAWHUB_TOKEN not set, skipping"
             exit 0
@@ -291,11 +292,11 @@ jobs:
 
       - name: Commit and push
         if: steps.trending.outputs.repo_full
+        env:
+          SKILL_SLUG: ${{ steps.generate.outputs.skill_slug }}
+          REPO_FULL: ${{ steps.trending.outputs.repo_full }}
+          STARS_PER_DAY: ${{ steps.trending.outputs.stars_per_day }}
         run: |
-          SKILL_SLUG="${{ steps.generate.outputs.skill_slug }}"
-          REPO_FULL="${{ steps.trending.outputs.repo_full }}"
-          STARS_PER_DAY="${{ steps.trending.outputs.stars_per_day }}"
-
           git config user.name "ara-bot"
           git config user.email "bot@ara.so"
           git add -A
