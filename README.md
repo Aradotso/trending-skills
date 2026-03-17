@@ -66,6 +66,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [agent-browser-automation](skills/agent-browser-automation/) | [install](https://skills.sh/aradotso/trending-skills/agent-browser-automation) | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) | 2026-03-17 |
 | [aeris10-plfm-radar](skills/aeris10-plfm-radar/) | [install](https://skills.sh/aradotso/trending-skills/aeris10-plfm-radar) | [NawfalMotii79/PLFM_RADAR](https://github.com/NawfalMotii79/PLFM_RADAR) | 2026-03-17 |
 | [minecraftconsoles-lce](skills/minecraftconsoles-lce/) | [install](https://skills.sh/aradotso/trending-skills/minecraftconsoles-lce) | [smartcmd/MinecraftConsoles](https://github.com/smartcmd/MinecraftConsoles) | 2026-03-17 |
+| [understand-anything-knowledge-graph](skills/understand-anything-knowledge-graph/) | [install](https://skills.sh/aradotso/trending-skills/understand-anything-knowledge-graph) | [Lum1104/Understand-Anything](https://github.com/Lum1104/Understand-Anything) | 2026-03-17 |
 <!-- SKILL_INDEX -->
 
 ## How it works
