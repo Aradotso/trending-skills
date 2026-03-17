@@ -74,6 +74,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [nanochat-llm-training](skills/nanochat-llm-training/) | [install](https://skills.sh/aradotso/trending-skills/nanochat-llm-training) | [karpathy/nanochat](https://github.com/karpathy/nanochat) | 2026-03-17 |
 | [awesome-claude-skills](skills/awesome-claude-skills/) | [install](https://skills.sh/aradotso/trending-skills/awesome-claude-skills) | [ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) | 2026-03-17 |
 | [mirofish-swarm-intelligence](skills/mirofish-swarm-intelligence/) | [install](https://skills.sh/aradotso/trending-skills/mirofish-swarm-intelligence) | [666ghj/MiroFish](https://github.com/666ghj/MiroFish) | 2026-03-17 |
+| [shadowbroker-osint-platform](skills/shadowbroker-osint-platform/) | [install](https://skills.sh/aradotso/trending-skills/shadowbroker-osint-platform) | [BigBodyCobain/Shadowbroker](https://github.com/BigBodyCobain/Shadowbroker) | 2026-03-17 |
 <!-- SKILL_INDEX -->
 
 ## How it works
