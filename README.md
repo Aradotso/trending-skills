@@ -42,6 +42,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [opensquirrel-agent-control-plane](skills/opensquirrel-agent-control-plane/) | [install](https://skills.sh/aradotso/trending-skills/opensquirrel-agent-control-plane) | [Infatoshi/OpenSquirrel](https://github.com/Infatoshi/OpenSquirrel) | 2026-03-16 |
 | [cmux-terminal-multiplexer](skills/cmux-terminal-multiplexer/) | [install](https://skills.sh/aradotso/trending-skills/cmux-terminal-multiplexer) | — | 2026-03-16 |
 | [nanobot-ai-assistant](skills/nanobot-ai-assistant/) | [install](https://skills.sh/aradotso/trending-skills/nanobot-ai-assistant) | [HKUDS/nanobot](https://github.com/HKUDS/nanobot) | 2026-03-17 |
+| [awesome-openclaw-skills](skills/awesome-openclaw-skills/) | [install](https://skills.sh/aradotso/trending-skills/awesome-openclaw-skills) | [VoltAgent/awesome-openclaw-skills](https://github.com/VoltAgent/awesome-openclaw-skills) | 2026-03-17 |
 <!-- SKILL_INDEX -->
 
 ## How it works
