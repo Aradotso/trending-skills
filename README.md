@@ -59,6 +59,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [agent-reach-internet-access](skills/agent-reach-internet-access/) | [install](https://skills.sh/aradotso/trending-skills/agent-reach-internet-access) | [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) | 2026-03-17 |
 | [recordly-screen-recorder](skills/recordly-screen-recorder/) | [install](https://skills.sh/aradotso/trending-skills/recordly-screen-recorder) | [webadderall/Recordly](https://github.com/webadderall/Recordly) | 2026-03-17 |
 | [opencli-web-automation](skills/opencli-web-automation/) | [install](https://skills.sh/aradotso/trending-skills/opencli-web-automation) | [jackwener/opencli](https://github.com/jackwener/opencli) | 2026-03-17 |
+| [ui-ux-pro-max-skill](skills/ui-ux-pro-max-skill/) | [install](https://skills.sh/aradotso/trending-skills/ui-ux-pro-max-skill) | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | 2026-03-17 |
 <!-- SKILL_INDEX -->
 
 ## How it works
