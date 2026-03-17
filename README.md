@@ -60,6 +60,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [recordly-screen-recorder](skills/recordly-screen-recorder/) | [install](https://skills.sh/aradotso/trending-skills/recordly-screen-recorder) | [webadderall/Recordly](https://github.com/webadderall/Recordly) | 2026-03-17 |
 | [opencli-web-automation](skills/opencli-web-automation/) | [install](https://skills.sh/aradotso/trending-skills/opencli-web-automation) | [jackwener/opencli](https://github.com/jackwener/opencli) | 2026-03-17 |
 | [ui-ux-pro-max-skill](skills/ui-ux-pro-max-skill/) | [install](https://skills.sh/aradotso/trending-skills/ui-ux-pro-max-skill) | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | 2026-03-17 |
+| [antigravity-awesome-skills](skills/antigravity-awesome-skills/) | [install](https://skills.sh/aradotso/trending-skills/antigravity-awesome-skills) | [sickn33/antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) | 2026-03-17 |
 <!-- SKILL_INDEX -->
 
 ## How it works
