@@ -48,6 +48,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [awesome-openclaw-usecases](skills/awesome-openclaw-usecases/) | [install](https://skills.sh/aradotso/trending-skills/awesome-openclaw-usecases) | [hesamsheikh/awesome-openclaw-usecases](https://github.com/hesamsheikh/awesome-openclaw-usecases) | 2026-03-17 |
 | [openai-symphony-autonomous-agents](skills/openai-symphony-autonomous-agents/) | [install](https://skills.sh/aradotso/trending-skills/openai-symphony-autonomous-agents) | [openai/symphony](https://github.com/openai/symphony) | 2026-03-17 |
 | [picoclaw-ai-assistant](skills/picoclaw-ai-assistant/) | [install](https://skills.sh/aradotso/trending-skills/picoclaw-ai-assistant) | [sipeed/picoclaw](https://github.com/sipeed/picoclaw) | 2026-03-17 |
+| [copaw-ai-assistant](skills/copaw-ai-assistant/) | [install](https://skills.sh/aradotso/trending-skills/copaw-ai-assistant) | [agentscope-ai/CoPaw](https://github.com/agentscope-ai/CoPaw) | 2026-03-17 |
 <!-- SKILL_INDEX -->
 
 ## How it works
