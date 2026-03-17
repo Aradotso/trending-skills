@@ -51,6 +51,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [copaw-ai-assistant](skills/copaw-ai-assistant/) | [install](https://skills.sh/aradotso/trending-skills/copaw-ai-assistant) | [agentscope-ai/CoPaw](https://github.com/agentscope-ai/CoPaw) | 2026-03-17 |
 | [worldmonitor-intelligence-dashboard](skills/worldmonitor-intelligence-dashboard/) | [install](https://skills.sh/aradotso/trending-skills/worldmonitor-intelligence-dashboard) | [koala73/worldmonitor](https://github.com/koala73/worldmonitor) | 2026-03-17 |
 | [llmfit-hardware-model-matcher](skills/llmfit-hardware-model-matcher/) | [install](https://skills.sh/aradotso/trending-skills/llmfit-hardware-model-matcher) | [AlexsJones/llmfit](https://github.com/AlexsJones/llmfit) | 2026-03-17 |
+| [obra-superpowers-agentic-workflow](skills/obra-superpowers-agentic-workflow/) | [install](https://skills.sh/aradotso/trending-skills/obra-superpowers-agentic-workflow) | [obra/superpowers](https://github.com/obra/superpowers) | 2026-03-17 |
 <!-- SKILL_INDEX -->
 
 ## How it works
