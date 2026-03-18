@@ -92,6 +92,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [openviking-context-database](skills/openviking-context-database/) | [install](https://skills.sh/aradotso/trending-skills/openviking-context-database) | [volcengine/OpenViking](https://github.com/volcengine/OpenViking) | 2026-03-18 |
 | [json-render-generative-ui](skills/json-render-generative-ui/) | [install](https://skills.sh/aradotso/trending-skills/json-render-generative-ui) | [vercel-labs/json-render](https://github.com/vercel-labs/json-render) | 2026-03-18 |
 | [shannon-ai-pentester](skills/shannon-ai-pentester/) | [install](https://skills.sh/aradotso/trending-skills/shannon-ai-pentester) | [KeygraphHQ/shannon](https://github.com/KeygraphHQ/shannon) | 2026-03-18 |
+| [karpathy-jobs-bls-visualizer](skills/karpathy-jobs-bls-visualizer/) | [install](https://skills.sh/aradotso/trending-skills/karpathy-jobs-bls-visualizer) | [karpathy/jobs](https://github.com/karpathy/jobs) | 2026-03-18 |
 <!-- SKILL_INDEX -->
 
 ## How it works
