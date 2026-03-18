@@ -5,41 +5,39 @@ description: Comprehensive collection of Agent Skills for context engineering, m
 triggers:
   - "context engineering for agents"
   - "build multi-agent system"
-  - "manage agent context window"
   - "implement agent memory"
-  - "install agent skills claude code"
-  - "optimize agent context tokens"
   - "design agent architecture"
+  - "optimize context window"
+  - "install agent skills Claude Code"
   - "debug agent context problems"
+  - "evaluate agent performance"
 ---
 
 # Agent Skills for Context Engineering
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-A comprehensive, open collection of Agent Skills focused on context engineering principles — the discipline of curating all information entering a model's context window (system prompts, tool definitions, retrieved documents, message history, tool outputs) to maximize agent effectiveness in production systems.
+A comprehensive, open collection of Agent Skills teaching context engineering principles for production-grade AI agent systems. Context engineering is the discipline of curating the language model's context window holistically — system prompts, tool definitions, retrieved documents, message history, and tool outputs — to maximize agent effectiveness within attention constraints.
 
-## What This Project Does
+## What This Project Provides
 
-This repository provides installable **Agent Skills** for AI coding agents (Claude Code, Cursor, Codex, etc.) covering:
+- **Skills**: Modular, loadable knowledge units for agent platforms (Claude Code, Cursor, Codex, Open Plugins)
+- **Architectural patterns**: Orchestrator, peer-to-peer, hierarchical multi-agent designs
+- **Memory systems**: Short-term, long-term, and graph-based memory architectures
+- **Evaluation frameworks**: LLM-as-Judge, pairwise comparison, rubric generation
+- **Complete examples**: Digital brain, X-to-book pipeline, book SFT pipeline, LLM-as-Judge tools
 
-- **Context Engineering**: Managing attention budgets, compression, and degradation prevention
-- **Multi-Agent Patterns**: Orchestrator, peer-to-peer, and hierarchical architectures
-- **Memory Systems**: Short-term, long-term, and graph-based memory
-- **Tool Design**: Building agent-friendly tools with MCP support
-- **Evaluation Frameworks**: LLM-as-Judge, pairwise comparison, rubric generation
-- **Cognitive Architecture**: BDI (Beliefs, Desires, Intentions) mental state modeling
-- **Hosted Agents**: Sandboxed VMs, pre-built images, multiplayer agent support
+---
 
 ## Installation
 
-### Claude Code (Recommended)
+### Claude Code (Plugin Marketplace)
 
 ```bash
-# Step 1: Register the marketplace
+# Register the marketplace
 /plugin marketplace add muratcankoylan/Agent-Skills-for-Context-Engineering
 
-# Step 2: Install individual plugin bundles
+# Install individual plugin bundles
 /plugin install context-engineering-fundamentals@context-engineering-marketplace
 /plugin install agent-architecture@context-engineering-marketplace
 /plugin install agent-evaluation@context-engineering-marketplace
@@ -49,18 +47,21 @@ This repository provides installable **Agent Skills** for AI coding agents (Clau
 
 ### Cursor
 
-Listed on [Cursor Plugin Directory](https://cursor.directory/plugins/context-engineering). Add via Cursor's plugin panel or reference `.plugin/plugin.json` directly.
+Listed on [cursor.directory/plugins/context-engineering](https://cursor.directory/plugins/context-engineering). Install via Cursor's plugin UI or reference the `.plugin/plugin.json` manifest directly.
 
-### Manual / Custom Agent Platforms
+### Manual / Custom Agent Frameworks
 
-Clone the repository and reference individual skill files:
+Clone the repo and reference skill files directly:
 
 ```bash
 git clone https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering.git
-# Reference any skill at: skills/<skill-name>/SKILL.md
 ```
 
-## Plugin Bundles & Included Skills
+Skills live under `skills/<skill-name>/SKILL.md`. Load them into your agent's system prompt or context as needed.
+
+---
+
+## Plugin Bundles and Included Skills
 
 | Plugin | Skills Included |
 |--------|----------------|
@@ -70,747 +71,829 @@ git clone https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering
 | `agent-development` | project-development |
 | `cognitive-architecture` | bdi-mental-states |
 
-## Skill Triggers Reference
+---
 
-Skills activate automatically when your prompt matches these patterns:
+## Core Concepts
 
-| Skill | Activates When You Say |
-|-------|----------------------|
-| `context-fundamentals` | "understand context", "explain context windows", "design agent architecture" |
-| `context-degradation` | "diagnose context problems", "fix lost-in-middle", "debug agent failures" |
-| `context-compression` | "compress context", "summarize conversation", "reduce token usage" |
-| `context-optimization` | "optimize context", "reduce token costs", "implement KV-cache" |
-| `multi-agent-patterns` | "design multi-agent system", "implement supervisor pattern" |
-| `memory-systems` | "implement agent memory", "build knowledge graph", "track entities" |
-| `tool-design` | "design agent tools", "reduce tool complexity", "implement MCP tools" |
-| `filesystem-context` | "offload context to files", "dynamic context discovery", "agent scratch pad" |
-| `hosted-agents` | "build background agent", "sandboxed execution", "multiplayer agent" |
-| `evaluation` | "evaluate agent performance", "build test framework", "measure quality" |
-| `advanced-evaluation` | "implement LLM-as-judge", "compare model outputs", "mitigate bias" |
-| `project-development` | "start LLM project", "design batch pipeline", "evaluate task-model fit" |
-| `bdi-mental-states` | "model agent mental states", "implement BDI architecture", "transform RDF to beliefs" |
+### Context Degradation Patterns
 
-## Core Concepts & Code Examples
-
-### Context Window Budget Management
-
-The fundamental principle: find the smallest set of high-signal tokens that maximize desired outcomes.
+Agents fail in predictable ways when context is mismanaged:
 
 ```python
-# context_budget.py — Track and enforce context budgets
-from dataclasses import dataclass, field
-from typing import List, Dict
+# Lost-in-middle: critical info buried in long context
+# Models attend strongly to beginning and end, weakly to middle
+# Mitigation: place high-signal tokens at start or end of context
 
-@dataclass
-class ContextSlot:
-    name: str
-    max_tokens: int
-    priority: int  # 1=critical, 2=important, 3=optional
-    current_tokens: int = 0
+# Context poisoning: stale/contradictory information accumulates
+# Mitigation: explicit versioning, append-only logs with timestamps
 
-class ContextBudgetManager:
-    """
-    Manages token allocation across context slots.
-    Enforces budget limits and prioritizes high-signal content.
-    """
-    TOTAL_BUDGET = 100_000  # Adjust to your model's context window
-
-    def __init__(self):
-        self.slots: Dict[str, ContextSlot] = {
-            "system_prompt":   ContextSlot("system_prompt",   2_000, priority=1),
-            "tool_definitions":ContextSlot("tool_definitions",3_000, priority=1),
-            "retrieved_docs":  ContextSlot("retrieved_docs", 20_000, priority=2),
-            "message_history": ContextSlot("message_history",60_000, priority=2),
-            "tool_outputs":    ContextSlot("tool_outputs",   10_000, priority=3),
-            "working_memory":  ContextSlot("working_memory",  5_000, priority=3),
-        }
-
-    def allocate(self, slot_name: str, content: str, tokenizer) -> str:
-        """Allocate content to a slot, truncating if over budget."""
-        slot = self.slots[slot_name]
-        tokens = tokenizer.encode(content)
-        if len(tokens) > slot.max_tokens:
-            # Truncate and append summary marker
-            tokens = tokens[:slot.max_tokens - 50]
-            content = tokenizer.decode(tokens) + "\n[...truncated for context budget]"
-            slot.current_tokens = slot.max_tokens
-        else:
-            slot.current_tokens = len(tokens)
-        return content
-
-    def get_utilization(self) -> dict:
-        used = sum(s.current_tokens for s in self.slots.values())
-        return {
-            "used": used,
-            "total": self.TOTAL_BUDGET,
-            "pct": round(used / self.TOTAL_BUDGET * 100, 1),
-            "by_slot": {k: v.current_tokens for k, v in self.slots.items()}
-        }
+# Attention scarcity: too many tools/docs dilute attention
+# Mitigation: progressive disclosure — load only what's needed now
 ```
 
-### Context Compression Pipeline
+### Progressive Disclosure Pattern
+
+Load context incrementally; never frontload everything:
 
 ```python
-# context_compression.py — Hierarchical compression strategy
-import anthropic
+# Level 1: skill index (names + one-line descriptions) — always loaded
+# Level 2: skill overview (key concepts, triggers) — loaded on activation
+# Level 3: full skill content (examples, edge cases) — loaded on demand
 
-client = anthropic.Anthropic()  # Uses ANTHROPIC_API_KEY env var
+class ProgressiveContextLoader:
+    def __init__(self, skills_dir: str):
+        self.skills_dir = skills_dir
+        self._index = None
 
-def compress_message_history(
-    messages: list[dict],
-    target_tokens: int = 8_000,
-    preserve_last_n: int = 6
-) -> list[dict]:
+    def get_index(self) -> list[dict]:
+        """Level 1: minimal — always in context."""
+        if self._index is None:
+            self._index = self._load_index()
+        return self._index
+
+    def activate_skill(self, skill_name: str) -> str:
+        """Level 2: load skill overview on trigger match."""
+        path = f"{self.skills_dir}/{skill_name}/SKILL.md"
+        with open(path) as f:
+            content = f.read()
+        # Return only frontmatter + first section for overview
+        return self._extract_overview(content)
+
+    def deep_load_skill(self, skill_name: str) -> str:
+        """Level 3: full content for active task."""
+        path = f"{self.skills_dir}/{skill_name}/SKILL.md"
+        with open(path) as f:
+            return f.read()
+
+    def _load_index(self) -> list[dict]:
+        import os, yaml
+        index = []
+        for skill_dir in os.listdir(self.skills_dir):
+            skill_path = f"{self.skills_dir}/{skill_dir}/SKILL.md"
+            if os.path.exists(skill_path):
+                with open(skill_path) as f:
+                    raw = f.read()
+                # Parse YAML frontmatter
+                if raw.startswith("---"):
+                    fm_end = raw.index("---", 3)
+                    fm = yaml.safe_load(raw[3:fm_end])
+                    index.append({
+                        "name": fm.get("name"),
+                        "description": fm.get("description"),
+                        "triggers": fm.get("triggers", []),
+                    })
+        return index
+
+    def _extract_overview(self, content: str) -> str:
+        lines = content.split("\n")
+        # Return frontmatter + first 40 lines
+        return "\n".join(lines[:40])
+```
+
+---
+
+## Multi-Agent Patterns
+
+### Orchestrator Pattern
+
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+ORCHESTRATOR_SYSTEM = """
+You are an orchestrator agent. Break tasks into subtasks and delegate to
+specialist agents. Maintain a task plan in your context. Never perform
+specialist work yourself — delegate, collect results, synthesize.
+
+Current plan format:
+TASK: <overall goal>
+SUBTASKS:
+  [ ] subtask_id: description -> assigned_agent
+  [x] subtask_id: description -> completed
+RESULTS: {subtask_id: result_summary}
+"""
+
+def orchestrate(task: str, specialist_agents: dict) -> str:
     """
-    Compress message history using a 3-tier strategy:
-    1. Preserve the last N messages verbatim (recency bias)
-    2. Summarize middle messages into a rolling summary
-    3. Drop oldest messages beyond summary scope
+    specialist_agents: {agent_name: callable(task_description) -> str}
     """
-    if len(messages) <= preserve_last_n:
-        return messages
+    messages = [{"role": "user", "content": task}]
 
-    recent = messages[-preserve_last_n:]
-    to_compress = messages[:-preserve_last_n]
+    while True:
+        response = client.messages.create(
+            model="claude-opus-4-5",
+            max_tokens=2048,
+            system=ORCHESTRATOR_SYSTEM,
+            messages=messages,
+        )
+        reply = response.content[0].text
 
-    # Build summary of older messages
-    history_text = "\n".join(
-        f"{m['role'].upper()}: {m['content']}" for m in to_compress
-    )
+        # Check if orchestrator is delegating
+        if "DELEGATE:" in reply:
+            agent_name, subtask = parse_delegation(reply)
+            if agent_name in specialist_agents:
+                result = specialist_agents[agent_name](subtask)
+                messages.append({"role": "assistant", "content": reply})
+                messages.append({
+                    "role": "user",
+                    "content": f"AGENT_RESULT from {agent_name}:\n{result}"
+                })
+                continue
+
+        # Orchestrator produced final synthesis
+        return reply
+
+
+def parse_delegation(text: str) -> tuple[str, str]:
+    """Extract DELEGATE: agent_name | subtask from orchestrator output."""
+    for line in text.split("\n"):
+        if line.startswith("DELEGATE:"):
+            parts = line.replace("DELEGATE:", "").split("|", 1)
+            return parts[0].strip(), parts[1].strip()
+    return "", ""
+```
+
+### Peer-to-Peer Pattern
+
+```python
+class AgentMessage:
+    def __init__(self, sender: str, recipient: str, content: str, msg_type: str = "task"):
+        self.sender = sender
+        self.recipient = recipient
+        self.content = content
+        self.msg_type = msg_type  # task | result | clarification
+
+class PeerAgentNetwork:
+    def __init__(self):
+        self.agents: dict[str, callable] = {}
+        self.message_queue: list[AgentMessage] = []
+
+    def register(self, name: str, handler: callable):
+        self.agents[name] = handler
+
+    def send(self, msg: AgentMessage):
+        self.message_queue.append(msg)
+
+    def process(self, max_rounds: int = 10) -> list[AgentMessage]:
+        results = []
+        for _ in range(max_rounds):
+            if not self.message_queue:
+                break
+            msg = self.message_queue.pop(0)
+            if msg.recipient in self.agents:
+                response = self.agents[msg.recipient](msg)
+                if response:
+                    results.append(response)
+                    self.message_queue.append(response)
+        return results
+```
+
+---
+
+## Memory Systems
+
+### Append-Only JSONL Memory (Agent-Friendly)
+
+```python
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+class AgentMemory:
+    """
+    Append-only JSONL memory. Schema-first line enables fast parsing.
+    Compatible with filesystem-context skill pattern.
+    """
+
+    SCHEMA = {
+        "_schema": "1.0",
+        "fields": ["timestamp", "type", "content", "tags", "importance"]
+    }
+
+    def __init__(self, path: str):
+        self.path = Path(path)
+        if not self.path.exists():
+            self._write_line(self.SCHEMA)  # Schema as first line
+
+    def remember(self, content: str, mem_type: str = "observation",
+                 tags: list[str] = None, importance: float = 0.5):
+        entry = {
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "type": mem_type,
+            "content": content,
+            "tags": tags or [],
+            "importance": importance,
+        }
+        self._write_line(entry)
+
+    def recall(self, query_tags: list[str] = None,
+               min_importance: float = 0.0,
+               limit: int = 20) -> list[dict]:
+        entries = []
+        with open(self.path) as f:
+            for line in f:
+                entry = json.loads(line.strip())
+                if "_schema" in entry:
+                    continue
+                if entry["importance"] < min_importance:
+                    continue
+                if query_tags:
+                    if not any(t in entry["tags"] for t in query_tags):
+                        continue
+                entries.append(entry)
+
+        # Return most recent, highest importance first
+        entries.sort(key=lambda e: (e["importance"], e["timestamp"]), reverse=True)
+        return entries[:limit]
+
+    def compress(self, summarizer: callable, keep_last: int = 10):
+        """
+        Summarize old entries to reduce context load.
+        summarizer: callable(list[dict]) -> str
+        """
+        entries = self.recall(limit=10000)
+        if len(entries) <= keep_last:
+            return
+
+        old = entries[keep_last:]
+        summary_text = summarizer(old)
+
+        # Rewrite file: schema + summary + recent
+        recent = entries[:keep_last]
+        new_path = Path(str(self.path) + ".tmp")
+        with open(new_path, "w") as f:
+            f.write(json.dumps(self.SCHEMA) + "\n")
+            f.write(json.dumps({
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "type": "compressed_summary",
+                "content": summary_text,
+                "tags": ["summary"],
+                "importance": 0.9,
+            }) + "\n")
+            for entry in reversed(recent):
+                f.write(json.dumps(entry) + "\n")
+        new_path.replace(self.path)
+
+    def _write_line(self, obj: dict):
+        with open(self.path, "a") as f:
+            f.write(json.dumps(obj) + "\n")
+
+
+# Usage
+memory = AgentMemory("agent_memory.jsonl")
+memory.remember("User prefers concise responses", mem_type="preference",
+                tags=["user", "style"], importance=0.8)
+memory.remember("Completed refactor of auth module", mem_type="action",
+                tags=["code", "auth"], importance=0.6)
+
+recent = memory.recall(query_tags=["user"], min_importance=0.5)
+```
+
+---
+
+## Context Compression
+
+### Sliding Window with Summarization
+
+```python
+from anthropic import Anthropic
+
+client = Anthropic()
+
+class CompressedConversation:
+    """
+    Maintains a conversation within token budget using
+    summary + sliding window pattern.
+    """
+
+    def __init__(self, max_messages: int = 20, summary_threshold: int = 15):
+        self.messages: list[dict] = []
+        self.summary: str = ""
+        self.max_messages = max_messages
+        self.summary_threshold = summary_threshold
+
+    def add(self, role: str, content: str):
+        self.messages.append({"role": role, "content": content})
+        if len(self.messages) >= self.summary_threshold:
+            self._compress()
+
+    def get_context(self) -> tuple[str, list[dict]]:
+        """Returns (summary_for_system_prompt, recent_messages)."""
+        return self.summary, self.messages
+
+    def _compress(self):
+        """Summarize oldest half, keep recent half."""
+        mid = len(self.messages) // 2
+        to_summarize = self.messages[:mid]
+        self.messages = self.messages[mid:]
+
+        conversation_text = "\n".join(
+            f"{m['role'].upper()}: {m['content']}" for m in to_summarize
+        )
+
+        if self.summary:
+            prompt = (
+                f"Previous summary:\n{self.summary}\n\n"
+                f"New conversation to incorporate:\n{conversation_text}\n\n"
+                "Produce a concise updated summary preserving all decisions, "
+                "facts, and context needed for future turns."
+            )
+        else:
+            prompt = (
+                f"Summarize this conversation, preserving all decisions, "
+                f"facts, and context:\n{conversation_text}"
+            )
+
+        response = client.messages.create(
+            model="claude-haiku-4-5",
+            max_tokens=512,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        self.summary = response.content[0].text
+
+
+# Usage
+conv = CompressedConversation(max_messages=20, summary_threshold=15)
+
+def chat(user_input: str) -> str:
+    conv.add("user", user_input)
+    summary, messages = conv.get_context()
+
+    system = "You are a helpful assistant."
+    if summary:
+        system += f"\n\nConversation history summary:\n{summary}"
 
     response = client.messages.create(
         model="claude-opus-4-5",
         max_tokens=1024,
-        messages=[{
-            "role": "user",
-            "content": (
-                f"Summarize this conversation history, preserving:\n"
-                f"- Key decisions made\n- Important facts established\n"
-                f"- Current task state\n- Unresolved questions\n\n"
-                f"History:\n{history_text}"
-            )
-        }]
+        system=system,
+        messages=messages,
     )
-    summary = response.content[0].text
-
-    compressed = [
-        {"role": "system", "content": f"[CONVERSATION SUMMARY]\n{summary}"},
-        *recent
-    ]
-    return compressed
-
-
-def rolling_summary_agent(session_messages: list[dict]) -> list[dict]:
-    """Automatically compress when history exceeds threshold."""
-    COMPRESSION_THRESHOLD = 40  # messages
-    if len(session_messages) > COMPRESSION_THRESHOLD:
-        return compress_message_history(session_messages)
-    return session_messages
+    reply = response.content[0].text
+    conv.add("assistant", reply)
+    return reply
 ```
 
-### Multi-Agent Orchestrator Pattern
+---
+
+## Tool Design
+
+### Minimal, Composable Tools
 
 ```python
-# orchestrator.py — Supervisor pattern for multi-agent systems
 import anthropic
 import json
-from typing import Callable
 
 client = anthropic.Anthropic()
 
-# Define specialized sub-agents as tools
-AGENT_TOOLS = [
+# Good tool design: single responsibility, minimal parameters,
+# returns structured output agents can parse
+
+tools = [
     {
-        "name": "research_agent",
-        "description": "Searches and synthesizes information from external sources. Use for fact-finding, web search, document retrieval.",
+        "name": "search_codebase",
+        "description": (
+            "Search for files or symbols in the codebase. "
+            "Returns file paths and relevant line numbers. "
+            "Use before read_file to locate what you need."
+        ),
         "input_schema": {
             "type": "object",
             "properties": {
-                "query": {"type": "string", "description": "Research query"},
-                "depth": {"type": "string", "enum": ["shallow", "deep"], "default": "shallow"}
+                "query": {
+                    "type": "string",
+                    "description": "Symbol name, function name, or keyword to search for"
+                },
+                "file_type": {
+                    "type": "string",
+                    "description": "Filter by extension, e.g. 'py', 'ts'. Omit for all types.",
+                }
             },
-            "required": ["query"]
-        }
+            "required": ["query"],
+        },
     },
     {
-        "name": "code_agent",
-        "description": "Writes, tests, and debugs code. Use for implementation tasks.",
+        "name": "read_file",
+        "description": (
+            "Read a specific file. Returns content with line numbers. "
+            "Prefer reading only the section you need using start_line/end_line."
+        ),
         "input_schema": {
             "type": "object",
             "properties": {
-                "task": {"type": "string", "description": "Coding task description"},
-                "language": {"type": "string", "description": "Programming language"}
+                "path": {"type": "string", "description": "Relative file path"},
+                "start_line": {"type": "integer", "description": "First line to read (1-indexed)"},
+                "end_line": {"type": "integer", "description": "Last line to read (inclusive)"},
             },
-            "required": ["task"]
-        }
+            "required": ["path"],
+        },
     },
-    {
-        "name": "critic_agent",
-        "description": "Reviews and evaluates work quality. Use for validation and quality checks.",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "content": {"type": "string", "description": "Content to review"},
-                "criteria": {"type": "array", "items": {"type": "string"}}
-            },
-            "required": ["content"]
-        }
-    }
 ]
 
 
-def orchestrator(
-    task: str,
-    agent_registry: dict[str, Callable],
-    max_iterations: int = 10
-) -> str:
-    """
-    Supervisor orchestrator that delegates to specialized sub-agents.
-    Maintains minimal context — passes only task-relevant information.
-    """
-    messages = [{"role": "user", "content": task}]
-    system = (
-        "You are an orchestrator. Decompose complex tasks and delegate to specialized agents. "
-        "Always use the most specific agent available. Return FINAL ANSWER: <result> when done."
-    )
+def search_codebase(query: str, file_type: str = None) -> dict:
+    """Stub — replace with actual grep/ripgrep implementation."""
+    return {"matches": [], "query": query}
 
-    for iteration in range(max_iterations):
+
+def read_file(path: str, start_line: int = None, end_line: int = None) -> dict:
+    """Read file with optional line range."""
+    try:
+        with open(path) as f:
+            lines = f.readlines()
+        if start_line and end_line:
+            lines = lines[start_line - 1:end_line]
+        content = "".join(f"{i+1}: {l}" for i, l in enumerate(lines))
+        return {"path": path, "content": content}
+    except FileNotFoundError:
+        return {"error": f"File not found: {path}"}
+
+
+def run_agent_loop(task: str) -> str:
+    messages = [{"role": "user", "content": task}]
+
+    while True:
         response = client.messages.create(
             model="claude-opus-4-5",
-            max_tokens=4096,
-            system=system,
-            tools=AGENT_TOOLS,
-            messages=messages
+            max_tokens=2048,
+            tools=tools,
+            messages=messages,
         )
 
         if response.stop_reason == "end_turn":
-            # Extract final answer
-            for block in response.content:
-                if hasattr(block, "text") and "FINAL ANSWER:" in block.text:
-                    return block.text.split("FINAL ANSWER:")[-1].strip()
-            break
+            return next(
+                b.text for b in response.content if hasattr(b, "text")
+            )
 
-        if response.stop_reason == "tool_use":
-            messages.append({"role": "assistant", "content": response.content})
-            tool_results = []
+        # Process tool calls
+        tool_results = []
+        for block in response.content:
+            if block.type == "tool_use":
+                if block.name == "search_codebase":
+                    result = search_codebase(**block.input)
+                elif block.name == "read_file":
+                    result = read_file(**block.input)
+                else:
+                    result = {"error": f"Unknown tool: {block.name}"}
 
-            for block in response.content:
-                if block.type == "tool_use":
-                    agent_fn = agent_registry.get(block.name)
-                    if agent_fn:
-                        result = agent_fn(**block.input)
-                        tool_results.append({
-                            "type": "tool_result",
-                            "tool_use_id": block.id,
-                            "content": str(result)
-                        })
+                tool_results.append({
+                    "type": "tool_result",
+                    "tool_use_id": block.id,
+                    "content": json.dumps(result),
+                })
 
-            messages.append({"role": "user", "content": tool_results})
-
-    return "Orchestration complete — max iterations reached."
+        messages.append({"role": "assistant", "content": response.content})
+        messages.append({"role": "user", "content": tool_results})
 ```
 
-### Memory System Architecture
+---
+
+## Evaluation: LLM-as-Judge
 
 ```python
-# memory_system.py — Three-tier memory for persistent agents
-import json
-import time
-from pathlib import Path
-from collections import deque
-
-class AgentMemorySystem:
-    """
-    Three-tier memory following the skills architecture:
-    - Working Memory: In-context, current task state (fast, volatile)
-    - Episodic Memory: Recent interactions, append-only JSONL (medium persistence)
-    - Semantic Memory: Distilled facts and knowledge (long-term, indexed)
-    """
-
-    def __init__(self, agent_id: str, base_dir: str = ".agent_memory"):
-        self.agent_id = agent_id
-        self.base = Path(base_dir) / agent_id
-        self.base.mkdir(parents=True, exist_ok=True)
-
-        # Working memory — stays in context window
-        self.working: deque = deque(maxlen=20)
-
-        # Episodic memory — append-only JSONL file
-        self.episodic_path = self.base / "episodes.jsonl"
-
-        # Semantic memory — distilled facts as JSON
-        self.semantic_path = self.base / "semantic.json"
-        self.semantic: dict = self._load_semantic()
-
-    def remember(self, content: str, memory_type: str = "episodic", metadata: dict = None):
-        """Store a memory with automatic routing by type."""
-        entry = {
-            "timestamp": time.time(),
-            "agent_id": self.agent_id,
-            "content": content,
-            "type": memory_type,
-            "metadata": metadata or {}
-        }
-
-        if memory_type == "working":
-            self.working.append(entry)
-
-        elif memory_type == "episodic":
-            # Schema-first line for agent-friendly parsing
-            with open(self.episodic_path, "a") as f:
-                f.write(json.dumps(entry) + "\n")
-
-        elif memory_type == "semantic":
-            key = metadata.get("key", f"fact_{int(time.time())}")
-            self.semantic[key] = {"content": content, "updated": time.time()}
-            self._save_semantic()
-
-    def recall(self, memory_type: str = "working", last_n: int = 10) -> list[dict]:
-        """Retrieve memories with recency bias."""
-        if memory_type == "working":
-            return list(self.working)[-last_n:]
-
-        elif memory_type == "episodic":
-            if not self.episodic_path.exists():
-                return []
-            lines = self.episodic_path.read_text().strip().split("\n")
-            entries = [json.loads(l) for l in lines if l.strip()]
-            return entries[-last_n:]
-
-        elif memory_type == "semantic":
-            return list(self.semantic.values())
-
-        return []
-
-    def get_context_snapshot(self) -> str:
-        """
-        Build a minimal context injection from memory.
-        Returns the most relevant memories as a formatted string.
-        """
-        working = self.recall("working", last_n=5)
-        semantic_facts = self.recall("semantic")
-
-        parts = []
-        if semantic_facts:
-            facts = "\n".join(f"- {f['content']}" for f in semantic_facts[:10])
-            parts.append(f"[Known Facts]\n{facts}")
-        if working:
-            recent = "\n".join(f"- {m['content']}" for m in working)
-            parts.append(f"[Working Context]\n{recent}")
-
-        return "\n\n".join(parts)
-
-    def _load_semantic(self) -> dict:
-        if self.semantic_path.exists():
-            return json.loads(self.semantic_path.read_text())
-        return {}
-
-    def _save_semantic(self):
-        self.semantic_path.write_text(json.dumps(self.semantic, indent=2))
-
-
-# Usage
-memory = AgentMemorySystem("my-agent")
-memory.remember("User prefers Python over TypeScript", "semantic", {"key": "lang_preference"})
-memory.remember("Currently working on auth module", "working")
-context = memory.get_context_snapshot()
-```
-
-### LLM-as-Judge Evaluation
-
-```python
-# evaluator.py — Production LLM-as-Judge implementation
-import anthropic
+from anthropic import Anthropic
 from dataclasses import dataclass
 
-client = anthropic.Anthropic()
+client = Anthropic()
 
 @dataclass
-class EvaluationResult:
+class EvalResult:
     score: float          # 0.0 - 1.0
     reasoning: str
     criteria_scores: dict[str, float]
-    passed: bool          # score >= threshold
+
+JUDGE_SYSTEM = """
+You are an expert evaluator. Score responses against criteria.
+Always respond with valid JSON matching the schema provided.
+Be calibrated: reserve 0.9+ for genuinely exceptional responses.
+"""
 
 def direct_score(
     response: str,
-    criteria: list[dict],   # [{"name": str, "weight": float, "description": str}]
-    threshold: float = 0.7,
-    rubric: str = ""
-) -> EvaluationResult:
+    criteria: dict[str, float],  # {criterion: weight}
+    context: str = "",
+) -> EvalResult:
     """
-    Score a response against weighted criteria using LLM-as-Judge.
-    Mitigates positional bias by using structured scoring.
+    Score a single response against weighted criteria.
+    criteria: {"accuracy": 0.4, "clarity": 0.3, "completeness": 0.3}
     """
-    criteria_text = "\n".join(
-        f"{i+1}. {c['name']} (weight: {c['weight']}): {c['description']}"
-        for i, c in enumerate(criteria)
+    criteria_list = "\n".join(
+        f"- {name} (weight: {w:.0%})" for name, w in criteria.items()
     )
+    schema = {
+        "overall_score": "float 0-1",
+        "reasoning": "string",
+        "criteria_scores": {name: "float 0-1" for name in criteria},
+    }
 
-    prompt = f"""Evaluate this response against the criteria below.
-For each criterion, provide a score from 0.0 to 1.0 and brief reasoning.
-{f'Rubric: {rubric}' if rubric else ''}
+    prompt = f"""Evaluate this response:
 
-CRITERIA:
-{criteria_text}
+CONTEXT: {context or 'None provided'}
 
 RESPONSE TO EVALUATE:
 {response}
 
-Respond in JSON:
-{{
-  "criteria_scores": {{"criterion_name": {{"score": 0.0-1.0, "reasoning": "..."}}}},
-  "overall_reasoning": "..."
-}}"""
+CRITERIA:
+{criteria_list}
 
-    eval_response = client.messages.create(
-        model="claude-opus-4-5",
-        max_tokens=1024,
-        messages=[{"role": "user", "content": prompt}]
+Respond with JSON matching this schema:
+{schema}"""
+
+    result = client.messages.create(
+        model="claude-haiku-4-5",
+        max_tokens=512,
+        system=JUDGE_SYSTEM,
+        messages=[{"role": "user", "content": prompt}],
     )
 
-    import json, re
-    text = eval_response.content[0].text
-    json_match = re.search(r'\{.*\}', text, re.DOTALL)
-    result_data = json.loads(json_match.group()) if json_match else {}
-
-    criteria_scores = {}
-    weighted_total = 0.0
-    total_weight = sum(c["weight"] for c in criteria)
-
-    for c in criteria:
-        name = c["name"]
-        score_data = result_data.get("criteria_scores", {}).get(name, {"score": 0.5})
-        score = score_data.get("score", 0.5) if isinstance(score_data, dict) else 0.5
-        criteria_scores[name] = score
-        weighted_total += score * (c["weight"] / total_weight)
-
-    return EvaluationResult(
-        score=round(weighted_total, 3),
-        reasoning=result_data.get("overall_reasoning", ""),
-        criteria_scores=criteria_scores,
-        passed=weighted_total >= threshold
+    import json
+    data = json.loads(result.content[0].text)
+    return EvalResult(
+        score=data["overall_score"],
+        reasoning=data["reasoning"],
+        criteria_scores=data["criteria_scores"],
     )
 
 
 def pairwise_compare(
     response_a: str,
     response_b: str,
-    task: str,
-    swap_and_average: bool = True  # Mitigate position bias
+    criteria: list[str],
+    context: str = "",
+    swap_and_average: bool = True,  # Mitigate position bias
 ) -> dict:
-    """Compare two responses, optionally swapping positions to reduce bias."""
+    """
+    Compare two responses. swap_and_average=True runs both orderings
+    and averages to mitigate position bias.
+    """
 
-    def _compare(first: str, second: str) -> str:
-        response = client.messages.create(
-            model="claude-opus-4-5",
-            max_tokens=512,
-            messages=[{"role": "user", "content": (
-                f"Task: {task}\n\nResponse A:\n{first}\n\nResponse B:\n{second}\n\n"
-                "Which response better completes the task? Reply with 'A', 'B', or 'TIE' "
-                "and one sentence of reasoning."
-            )}]
+    def _compare(ra, rb, label_a, label_b) -> dict:
+        prompt = f"""Compare these two responses:
+
+CONTEXT: {context or 'None'}
+
+RESPONSE {label_a}:
+{ra}
+
+RESPONSE {label_b}:
+{rb}
+
+CRITERIA: {", ".join(criteria)}
+
+Which response is better overall? Respond with JSON:
+{{"winner": "{label_a} or {label_b} or tie", "confidence": "float 0-1", "reasoning": "string"}}"""
+
+        result = client.messages.create(
+            model="claude-haiku-4-5",
+            max_tokens=256,
+            system=JUDGE_SYSTEM,
+            messages=[{"role": "user", "content": prompt}],
         )
-        return response.content[0].text
+        import json
+        return json.loads(result.content[0].text)
 
-    result1 = _compare(response_a, response_b)
+    result1 = _compare(response_a, response_b, "A", "B")
+
     if not swap_and_average:
-        return {"winner": result1}
+        return result1
 
-    result2 = _compare(response_b, response_a)  # Swapped
-    # Normalize swapped result (A in position 2 = B in result2)
-    normalized2 = result2.replace(" A", " __B__").replace(" B", " A").replace(" __B__", " B")
+    result2 = _compare(response_b, response_a, "B", "A")
+    # Normalize result2 winner labels back to original A/B
+    if result2["winner"] == "B":
+        result2["winner"] = "A"
+    elif result2["winner"] == "A":
+        result2["winner"] = "B"
+
+    # Aggregate
+    votes = [result1["winner"], result2["winner"]]
+    if votes[0] == votes[1]:
+        winner = votes[0]
+    else:
+        winner = "tie"
 
     return {
-        "forward": result1,
-        "backward_normalized": normalized2,
-        "consensus": result1 if result1 == normalized2 else "INCONCLUSIVE"
+        "winner": winner,
+        "confidence": (result1["confidence"] + result2["confidence"]) / 2,
+        "reasoning": f"Run1: {result1['reasoning']} | Run2: {result2['reasoning']}",
     }
 ```
 
-### Filesystem Context Pattern
+---
+
+## BDI Mental States (Cognitive Architecture)
 
 ```python
-# filesystem_context.py — Use filesystem for dynamic context discovery
-import json
-from pathlib import Path
-from datetime import datetime
-
-class FilesystemContextManager:
-    """
-    Offload large context to files; inject only summaries into context window.
-    Follows the filesystem-context skill pattern.
-    """
-
-    def __init__(self, workspace: str = ".agent_workspace"):
-        self.workspace = Path(workspace)
-        self.workspace.mkdir(exist_ok=True)
-        (self.workspace / "plans").mkdir(exist_ok=True)
-        (self.workspace / "outputs").mkdir(exist_ok=True)
-        (self.workspace / "scratch").mkdir(exist_ok=True)
-
-    def save_plan(self, plan_id: str, steps: list[dict]) -> Path:
-        """Persist multi-step plan to filesystem instead of context."""
-        plan_path = self.workspace / "plans" / f"{plan_id}.json"
-        plan_data = {
-            "id": plan_id,
-            "created": datetime.now().isoformat(),
-            "steps": steps,
-            "status": {step["id"]: "pending" for step in steps}
-        }
-        plan_path.write_text(json.dumps(plan_data, indent=2))
-        return plan_path
-
-    def update_plan_step(self, plan_id: str, step_id: str, status: str, output: str = ""):
-        """Update a step status without holding full plan in context."""
-        plan_path = self.workspace / "plans" / f"{plan_id}.json"
-        plan = json.loads(plan_path.read_text())
-        plan["status"][step_id] = status
-        if output:
-            output_file = self.workspace / "outputs" / f"{plan_id}_{step_id}.txt"
-            output_file.write_text(output)
-            plan["output_refs"] = plan.get("output_refs", {})
-            plan["output_refs"][step_id] = str(output_file)
-        plan_path.write_text(json.dumps(plan, indent=2))
-
-    def get_plan_summary(self, plan_id: str) -> str:
-        """
-        Return minimal plan summary for context injection.
-        Load full outputs only when needed.
-        """
-        plan_path = self.workspace / "plans" / f"{plan_id}.json"
-        plan = json.loads(plan_path.read_text())
-        status_summary = "\n".join(
-            f"  [{v.upper()}] {k}" for k, v in plan["status"].items()
-        )
-        pending = [k for k, v in plan["status"].items() if v == "pending"]
-        return (
-            f"Plan: {plan_id}\n"
-            f"Steps:\n{status_summary}\n"
-            f"Next: {pending[0] if pending else 'COMPLETE'}"
-        )
-
-    def scratch(self, key: str, content: str = None) -> str | None:
-        """Agent scratch pad — read/write without polluting context."""
-        path = self.workspace / "scratch" / f"{key}.txt"
-        if content is not None:
-            path.write_text(content)
-            return None
-        return path.read_text() if path.exists() else None
-
-
-# Usage pattern
-ctx = FilesystemContextManager()
-plan_path = ctx.save_plan("feature-auth", [
-    {"id": "design", "description": "Design auth schema"},
-    {"id": "implement", "description": "Write auth code"},
-    {"id": "test", "description": "Write and run tests"},
-])
-
-# During execution — only inject summary, not full plan
-summary = ctx.get_plan_summary("feature-auth")
-print(summary)
-# Plan: feature-auth
-# Steps:
-#   [PENDING] design
-#   [PENDING] implement
-#   [PENDING] test
-# Next: design
-```
-
-## Common Patterns
-
-### Pattern 1: Progressive Context Loading
-
-Load only what's needed, when it's needed:
-
-```python
-class ProgressiveContextLoader:
-    """Load context in three levels: names → summaries → full content."""
-
-    def __init__(self, skills_dir: str = "skills"):
-        self.skills_dir = Path(skills_dir)
-
-    def level_1_names(self) -> list[str]:
-        """Startup: load only skill names (minimal tokens)."""
-        return [d.name for d in self.skills_dir.iterdir() if d.is_dir()]
-
-    def level_2_descriptions(self) -> dict[str, str]:
-        """On demand: load descriptions when task context is known."""
-        result = {}
-        for skill_dir in self.skills_dir.iterdir():
-            readme = skill_dir / "README.md"
-            if readme.exists():
-                # Extract first non-heading line as description
-                for line in readme.read_text().splitlines():
-                    if line.strip() and not line.startswith("#"):
-                        result[skill_dir.name] = line.strip()
-                        break
-        return result
-
-    def level_3_full(self, skill_name: str) -> str:
-        """Activation: load full skill content only when triggered."""
-        skill_file = self.skills_dir / skill_name / "SKILL.md"
-        if skill_file.exists():
-            return skill_file.read_text()
-        return f"Skill '{skill_name}' not found."
-```
-
-### Pattern 2: Context Poisoning Prevention
-
-```python
-def sanitize_tool_output(output: str, max_tokens: int = 2000) -> str:
-    """
-    Prevent context poisoning from verbose tool outputs.
-    Truncate, extract key info, and mark truncation clearly.
-    """
-    # Remove common noise patterns
-    import re
-    noise_patterns = [
-        r'\x1b\[[0-9;]*m',          # ANSI color codes
-        r'^\s*at .*\(.*\)\s*$',     # Stack trace lines
-        r'^\s*\.\.\.\s*$',          # Ellipsis-only lines
-    ]
-    for pattern in noise_patterns:
-        output = re.sub(pattern, '', output, flags=re.MULTILINE)
-
-    lines = output.strip().splitlines()
-
-    # Rough token estimate: 1 token ≈ 4 chars
-    char_budget = max_tokens * 4
-    if len(output) <= char_budget:
-        return output
-
-    # Keep first 60% and last 20% (avoid lost-in-middle)
-    head_budget = int(char_budget * 0.6)
-    tail_budget = int(char_budget * 0.2)
-    head = output[:head_budget]
-    tail = output[-tail_budget:] if tail_budget > 0 else ""
-    omitted = len(output) - head_budget - tail_budget
-
-    return (
-        f"{head}\n\n[... {omitted} characters omitted for context budget ...]\n\n{tail}"
-    )
-```
-
-### Pattern 3: BDI Mental State Modeling
-
-```python
-# bdi_agent.py — Beliefs, Desires, Intentions cognitive architecture
 from dataclasses import dataclass, field
-from typing import Any
+from enum import Enum
+
+class IntentionStatus(Enum):
+    PENDING = "pending"
+    ACTIVE = "active"
+    COMPLETED = "completed"
+    FAILED = "failed"
+    DROPPED = "dropped"
 
 @dataclass
 class Belief:
-    subject: str
-    predicate: str
-    object: Any
+    """What the agent believes to be true about the world."""
+    predicate: str          # e.g. "file_exists"
+    subject: str            # e.g. "src/auth.py"
+    value: object           # e.g. True
     confidence: float = 1.0
     source: str = "observation"
 
 @dataclass
 class Desire:
-    goal: str
-    priority: int  # 1=highest
-    conditions: list[str] = field(default_factory=list)
+    """Goals the agent wants to achieve."""
+    goal: str               # e.g. "refactor auth module"
+    priority: float = 0.5   # 0.0 (low) to 1.0 (critical)
+    preconditions: list[str] = field(default_factory=list)
 
 @dataclass
 class Intention:
-    action: str
-    rationale: str
-    derived_from: str  # desire.goal that triggered this
+    """Committed plans — desires the agent has decided to pursue."""
+    desire: Desire
+    plan: list[str]         # Ordered action steps
+    status: IntentionStatus = IntentionStatus.PENDING
+    current_step: int = 0
 
 class BDIAgent:
-    """Deliberative agent using BDI cognitive architecture."""
-
-    def __init__(self, name: str):
-        self.name = name
+    def __init__(self):
         self.beliefs: list[Belief] = []
         self.desires: list[Desire] = []
         self.intentions: list[Intention] = []
 
-    def perceive(self, observation: dict):
-        """Update beliefs from environment observation."""
-        for key, value in observation.items():
-            self.beliefs.append(Belief(
-                subject=self.name,
-                predicate=key,
-                object=value,
-                source="perception"
-            ))
+    def update_belief(self, predicate: str, subject: str, value: object,
+                      confidence: float = 1.0, source: str = "observation"):
+        # Remove outdated belief
+        self.beliefs = [
+            b for b in self.beliefs
+            if not (b.predicate == predicate and b.subject == subject)
+        ]
+        self.beliefs.append(Belief(predicate, subject, value, confidence, source))
 
-    def deliberate(self) -> list[Intention]:
-        """
-        Deliberation cycle: filter desires by belief state,
-        generate intentions for achievable goals.
-        """
-        self.intentions = []
-        active_desires = sorted(self.desires, key=lambda d: d.priority)
+    def add_desire(self, goal: str, priority: float = 0.5,
+                   preconditions: list[str] = None):
+        self.desires.append(Desire(goal, priority, preconditions or []))
+        self.desires.sort(key=lambda d: d.priority, reverse=True)
 
-        for desire in active_desires:
-            # Check if conditions are met by current beliefs
-            belief_facts = {f"{b.predicate}={b.object}" for b in self.beliefs}
-            conditions_met = all(c in belief_facts for c in desire.conditions)
+    def deliberate(self) -> Intention | None:
+        """Select highest-priority desire whose preconditions are met."""
+        active_intentions = {i.desire.goal for i in self.intentions
+                             if i.status == IntentionStatus.ACTIVE}
 
-            if conditions_met or not desire.conditions:
-                intention = Intention(
-                    action=f"pursue_{desire.goal.replace(' ', '_')}",
-                    rationale=f"Goal '{desire.goal}' is achievable given current beliefs",
-                    derived_from=desire.goal
-                )
-                self.intentions.append(intention)
+        for desire in self.desires:
+            if desire.goal in active_intentions:
+                continue
+            if self._preconditions_met(desire):
+                return self._form_intention(desire)
+        return None
 
-        return self.intentions
+    def _preconditions_met(self, desire: Desire) -> bool:
+        for precondition in desire.preconditions:
+            pred, subj, val = precondition.split(":", 2)
+            matching = [
+                b for b in self.beliefs
+                if b.predicate == pred and b.subject == subj
+            ]
+            if not matching or str(matching[0].value) != val:
+                return False
+        return True
 
-    def get_context_for_llm(self) -> str:
-        """Format BDI state as minimal context for LLM reasoning."""
-        beliefs_text = "\n".join(
-            f"  - {b.predicate}: {b.object} (confidence: {b.confidence})"
-            for b in self.beliefs[-10:]  # Last 10 beliefs only
-        )
-        intentions_text = "\n".join(
-            f"  - {i.action}: {i.rationale}"
-            for i in self.intentions[:5]  # Top 5 intentions
-        )
-        return (
-            f"[Agent Beliefs]\n{beliefs_text}\n\n"
-            f"[Current Intentions]\n{intentions_text}"
-        )
+    def _form_intention(self, desire: Desire) -> Intention:
+        # Simple plan generation — extend with actual planning logic
+        plan = [f"execute: {desire.goal}"]
+        intention = Intention(desire=desire, plan=plan,
+                              status=IntentionStatus.ACTIVE)
+        self.intentions.append(intention)
+        return intention
+
+
+# Usage
+agent = BDIAgent()
+agent.update_belief("file_exists", "src/auth.py", True)
+agent.update_belief("tests_passing", "auth_suite", False)
+
+agent.add_desire("fix failing tests", priority=0.9,
+                 preconditions=["file_exists:src/auth.py:True"])
+agent.add_desire("add documentation", priority=0.3)
+
+intention = agent.deliberate()
+print(f"Agent intends to: {intention.desire.goal}")
+print(f"Plan: {intention.plan}")
 ```
 
-## Troubleshooting
+---
 
-### Plugin Not Activating in Claude Code
+## Filesystem Context Pattern
 
-```bash
-# Verify marketplace registration
-/plugin list marketplaces
-
-# Reinstall specific plugin
-/plugin uninstall context-engineering-fundamentals
-/plugin install context-engineering-fundamentals@context-engineering-marketplace
-
-# Check plugin status
-/plugin list installed
-```
-
-### "Lost-in-the-Middle" Context Degradation
-
-**Symptom**: Agent ignores important information placed in the middle of long contexts.
-
-**Fix**: Restructure context with critical information at start and end:
+Use files to offload context that exceeds window limits:
 
 ```python
-def anti_lost_in_middle_context(
-    critical_instructions: str,
-    background_docs: list[str],
-    immediate_task: str
-) -> str:
+import json
+from pathlib import Path
+from datetime import datetime, timezone
+
+class FilesystemContext:
     """
-    U-shaped context structure to combat attention degradation.
-    Place high-priority content at edges, background in middle.
+    Offload large context to files. Agents read only what they need.
+    Implements the filesystem-context skill pattern.
     """
-    return (
-        f"[CRITICAL - READ FIRST]\n{critical_instructions}\n\n"
-        f"[BACKGROUND CONTEXT]\n" +
-        "\
+
+    def __init__(self, workspace: str = ".agent_workspace"):
+        self.root = Path(workspace)
+        self.root.mkdir(exist_ok=True)
+        (self.root / "plans").mkdir(exist_ok=True)
+        (self.root / "outputs").mkdir(exist_ok=True)
+        (self.root / "scratch").mkdir(exist_ok=True)
+
+    def save_plan(self, plan_id: str, steps: list[dict]) -> str:
+        """Persist a multi-step plan. Returns file path for agent reference."""
+        path = self.root / "plans" / f"{plan_id}.json"
+        data = {
+            "plan_id": plan_id,
+            "created": datetime.now(timezone.utc).isoformat(),
+            "steps": steps,
+            "status": "active",
+        }
+        path.write_text(json.dumps(data, indent=2))
+        return str(path)
+
+    def load_plan(self, plan_id: str) -> dict | None:
+        path = self.root / "plans" / f"{plan_id}.json"
+        if path.exists():
+            return json.loads(path.read_text())
+        return None
+
+    def save_tool_output(self, tool_name: str, output: str) -> str:
+        """
+        Offload large tool outputs to files instead of keeping in context.
+        Returns a short reference the agent includes in its context.
+        """
+        timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+        filename = f"{tool_name}_{timestamp}.txt"
+        path = self.root / "outputs" / filename
+        path.write_text(output)
+        # Return brief reference — agent includes this, not the full output
+        return f"[Tool output saved: {path} ({len(output)} chars)]"
+
+    def scratch(self, key: str, value: str = None) -> str | None:
+        """Simple key-value scratch pad for agent working memory."""
+        path = self.root / "scratch" / f"{key}.txt"
+        if value is not None:
+            path.write_text(value)
+            return value
+        return path.read_text() if path.exists() else None
+
+
+# Usage
+ctx = FilesystemContext()
+
+# Save a large plan — reference path in context, not full content
+plan_path = ctx.save_plan("refactor_auth", steps=[
+    {"step": 1, "action": "read current auth.py", "status": "pending"},
+    {"step": 2, "action": "identify security issues", "status": "pending"},
+    {"step": 3, "action": "implement fixes", "status": "pending"},
+    {"step": 4, "action": "run tests", "status": "pending"},
+])
+
+# Offload large output
+big_output = "... " * 10000  # Large tool result
+ref = ctx.save_tool_output("grep_search", big_output)
+# Agent context contains only: "[Tool output saved: .agent_workspace/outputs/grep_search_.... (40000 chars)]"
+```
+
+---
+
+## Common Patterns
+
+### Skill Trigger Matching
+
+```python
+import re
+
+SKILL_TRIGGERS = {
+    "context-fundamentals": [
+        "understand context", "explain context windows", "design agent architecture"
+    ],
+    "context-degradation": [
+        "diagnose context problems", "fix lost-in-middle", "debug agent failures"
+    ],
+    "context-compression": [
+        "compress context", "summarize conversation", "reduce token usage"
+    ],
+    "multi-agent-patterns": [
+        "design multi-agent system", "implement supervisor pattern"
+    ],
+    "memory-systems": [
+        "implement agent memory", "build knowledge graph", "track entities"
+    ],
+    "evaluation": [
+        "evaluate agent performance", "build test framework", "measure quality"
+    ],
+    "advanced-evaluation": [
+        "implement LLM-as-judge", "compare model outputs", "mitigate bias"
+    ],
+    "bdi-mental-states": [
+        "model agent mental states", "implement BD
