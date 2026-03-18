@@ -95,6 +95,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [karpathy-jobs-bls-visualizer](skills/karpathy-jobs-bls-visualizer/) | [install](https://skills.sh/aradotso/trending-skills/karpathy-jobs-bls-visualizer) | [karpathy/jobs](https://github.com/karpathy/jobs) | 2026-03-18 |
 | [obsidian-skills-agent](skills/obsidian-skills-agent/) | [install](https://skills.sh/aradotso/trending-skills/obsidian-skills-agent) | [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills) | 2026-03-18 |
 | [awesome-codex-subagents](skills/awesome-codex-subagents/) | [install](https://skills.sh/aradotso/trending-skills/awesome-codex-subagents) | [VoltAgent/awesome-codex-subagents](https://github.com/VoltAgent/awesome-codex-subagents) | 2026-03-18 |
+| [ralph-autonomous-agent-loop](skills/ralph-autonomous-agent-loop/) | [install](https://skills.sh/aradotso/trending-skills/ralph-autonomous-agent-loop) | [snarktank/ralph](https://github.com/snarktank/ralph) | 2026-03-18 |
 <!-- SKILL_INDEX -->
 
 ## How it works
