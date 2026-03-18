@@ -102,6 +102,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [anthropic-cybersecurity-skills-agent-library](skills/anthropic-cybersecurity-skills-agent-library/) | [install](https://skills.sh/aradotso/trending-skills/anthropic-cybersecurity-skills-agent-library) | [mukul975/Anthropic-Cybersecurity-Skills](https://github.com/mukul975/Anthropic-Cybersecurity-Skills) | 2026-03-18 |
 | [mirofish-offline-simulation](skills/mirofish-offline-simulation/) | [install](https://skills.sh/aradotso/trending-skills/mirofish-offline-simulation) | [nikmcfly/MiroFish-Offline](https://github.com/nikmcfly/MiroFish-Offline) | 2026-03-18 |
 | [agent-skills-context-engineering](skills/agent-skills-context-engineering/) | [install](https://skills.sh/aradotso/trending-skills/agent-skills-context-engineering) | [muratcankoylan/Agent-Skills-for-Context-Engineering](https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering) | 2026-03-18 |
+| [witr-process-inspector](skills/witr-process-inspector/) | [install](https://skills.sh/aradotso/trending-skills/witr-process-inspector) | [pranshuparmar/witr](https://github.com/pranshuparmar/witr) | 2026-03-18 |
 <!-- SKILL_INDEX -->
 
 ## How it works
