@@ -90,6 +90,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [context-mode-mcp](skills/context-mode-mcp/) | [install](https://skills.sh/aradotso/trending-skills/context-mode-mcp) | [mksglu/context-mode](https://github.com/mksglu/context-mode) | 2026-03-18 |
 | [planning-with-files-manus-workflow](skills/planning-with-files-manus-workflow/) | [install](https://skills.sh/aradotso/trending-skills/planning-with-files-manus-workflow) | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files) | 2026-03-18 |
 | [openviking-context-database](skills/openviking-context-database/) | [install](https://skills.sh/aradotso/trending-skills/openviking-context-database) | [volcengine/OpenViking](https://github.com/volcengine/OpenViking) | 2026-03-18 |
+| [json-render-generative-ui](skills/json-render-generative-ui/) | [install](https://skills.sh/aradotso/trending-skills/json-render-generative-ui) | [vercel-labs/json-render](https://github.com/vercel-labs/json-render) | 2026-03-18 |
 <!-- SKILL_INDEX -->
 
 ## How it works
