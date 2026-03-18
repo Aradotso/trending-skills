@@ -83,6 +83,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [opencli-social-platforms](skills/opencli-social-platforms/) | [install](https://skills.sh/aradotso/trending-skills/opencli-social-platforms) | [joeseesun/opencli-skill](https://github.com/joeseesun/opencli-skill) | 2026-03-18 |
 | [clui-cc-claude-overlay](skills/clui-cc-claude-overlay/) | [install](https://skills.sh/aradotso/trending-skills/clui-cc-claude-overlay) | [lcoutodemos/clui-cc](https://github.com/lcoutodemos/clui-cc) | 2026-03-18 |
 | [clawteam-agent-swarm](skills/clawteam-agent-swarm/) | [install](https://skills.sh/aradotso/trending-skills/clawteam-agent-swarm) | [HKUDS/ClawTeam](https://github.com/HKUDS/ClawTeam) | 2026-03-18 |
+| [antigravity-manager](skills/antigravity-manager/) | [install](https://skills.sh/aradotso/trending-skills/antigravity-manager) | [lbjlaq/Antigravity-Manager](https://github.com/lbjlaq/Antigravity-Manager) | 2026-03-18 |
 <!-- SKILL_INDEX -->
 
 ## How it works
