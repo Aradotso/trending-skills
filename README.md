@@ -77,6 +77,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [shadowbroker-osint-platform](skills/shadowbroker-osint-platform/) | [install](https://skills.sh/aradotso/trending-skills/shadowbroker-osint-platform) | [BigBodyCobain/Shadowbroker](https://github.com/BigBodyCobain/Shadowbroker) | 2026-03-17 |
 | [x-algorithm-feed](skills/x-algorithm-feed/) | [install](https://skills.sh/aradotso/trending-skills/x-algorithm-feed) | [xai-org/x-algorithm](https://github.com/xai-org/x-algorithm) | 2026-03-17 |
 | [awesome-ai-research-writing](skills/awesome-ai-research-writing/) | [install](https://skills.sh/aradotso/trending-skills/awesome-ai-research-writing) | [Leey21/awesome-ai-research-writing](https://github.com/Leey21/awesome-ai-research-writing) | 2026-03-17 |
+| [voicebox-voice-synthesis](skills/voicebox-voice-synthesis/) | [install](https://skills.sh/aradotso/trending-skills/voicebox-voice-synthesis) | [jamiepine/voicebox](https://github.com/jamiepine/voicebox) | 2026-03-18 |
 <!-- SKILL_INDEX -->
 
 ## How it works
