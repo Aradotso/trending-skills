@@ -1,14 +1,14 @@
 ---
 name: opencli-social-platforms
-description: Use opencli CLI to control Bilibili, Twitter/X, YouTube, Zhihu, Reddit, HackerNews, and 10+ other platforms via natural language, reusing your Chrome login sessions with no API keys needed.
+description: Use opencli CLI to control Bilibili, Twitter/X, YouTube, Reddit, HackerNews, Zhihu, Weibo, and 9 more platforms via natural language through Claude Code
 triggers:
   - search YouTube for videos
-  - get HackerNews top stories
-  - check Twitter trending
-  - browse Bilibili hot videos
+  - get trending on Twitter
+  - check Bilibili hot videos
+  - browse HackerNews top stories
   - search Reddit posts
   - check stock price on Yahoo Finance
-  - post a tweet using Claude
+  - post a tweet
   - get Zhihu hot list
 ---
 
@@ -16,97 +16,84 @@ triggers:
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-opencli is a CLI tool that turns 16 major social/content platforms into command-line interfaces by **reusing your existing Chrome browser login sessions**. No API keys, no re-authentication — just open Chrome, log in as usual, and your AI agent does the rest.
+opencli is a CLI tool that turns 16 major platforms (Bilibili, Twitter/X, YouTube, Reddit, HackerNews, Zhihu, Weibo, Xiaohongshu, V2EX, Xueqiu, BOSS直聘, BBC, Reuters, 什么值得买, Yahoo Finance, Ctrip) into command-line interfaces by reusing your existing Chrome login sessions. No API keys required — just log in to Chrome normally and opencli piggybacks on your session.
 
 ## Prerequisites
 
-Before using opencli, ensure all of these are in place:
+All four must be in place before using opencli commands:
 
 1. **Node.js v16+** — [nodejs.org](https://nodejs.org/)
 2. **Chrome browser** open and logged in to target platforms
 3. **Playwright MCP Bridge** Chrome extension — [Install from Chrome Web Store](https://chromewebstore.google.com/detail/playwright-mcp-bridge/kldoghpdblpjbjeechcaoibpfbgfomkn)
-4. **Playwright MCP** configured in your AI agent (Claude Code, etc.)
-5. **opencli** installed globally
+4. **Playwright MCP** configured in Claude Code
 
 ## Installation
 
-### Step 1 — Install opencli
-
 ```bash
+# Step 1: Install opencli globally
 npm install -g @jackwener/opencli
 
 # Verify installation
 opencli --version
-```
 
-### Step 2 — Install Playwright MCP Bridge in Chrome
+# Step 2: Install Playwright MCP Bridge extension in Chrome
+# (manual step — visit Chrome Web Store link above)
 
-1. Open Chrome → go to the [Playwright MCP Bridge extension page](https://chromewebstore.google.com/detail/playwright-mcp-bridge/kldoghpdblpjbjeechcaoibpfbgfomkn)
-2. Click **"Add to Chrome"** and confirm
-3. Verify the extension icon appears in Chrome's toolbar
-
-### Step 3 — Configure Playwright MCP in Claude Code
-
-```bash
-# Add Playwright MCP server (run once)
+# Step 3: Configure Playwright MCP in Claude Code
 claude mcp add playwright --scope user -- npx @playwright/mcp@latest
 
-# Verify it was added
+# Verify Playwright MCP is registered
 claude mcp list
-# Should show "playwright" in the list
-```
 
-### Step 4 — Install this Skill
-
-```bash
+# Step 4: Install this skill
 npx skills add joeseesun/opencli-skill
 ```
 
 Restart Claude Code after installation.
 
-## Supported Platforms
+## Platform Support Matrix
 
 | Platform | Read | Search | Write |
 |----------|------|--------|-------|
-| Bilibili (B站) | ✅ Hot/Ranking/Feed/History | ✅ Videos/Users | — |
-| Zhihu (知乎) | ✅ Hot list | ✅ | ✅ Question details |
-| Weibo (微博) | ✅ Trending | — | ✅ Post |
-| Twitter/X | ✅ Timeline/Trending/Bookmarks | ✅ | ✅ Post/Reply/Like |
+| Bilibili (B站) | Hot/Ranking/Feed/History | Videos/Users | — |
+| Zhihu (知乎) | Hot list | ✅ | Question details |
+| Weibo (微博) | Trending | — | Post (Playwright) |
+| Twitter/X | Timeline/Trending/Bookmarks | ✅ | Post/Reply/Like |
 | YouTube | — | ✅ | — |
-| Xiaohongshu (小红书) | ✅ Recommended feed | ✅ | — |
-| Reddit | ✅ Home/Hot | ✅ | — |
-| HackerNews | ✅ Top stories | — | — |
-| V2EX | ✅ Hot/Latest | — | ✅ Daily check-in |
-| Xueqiu (雪球) | ✅ Hot/Stocks/Watchlist | ✅ | — |
-| BOSS直聘 | — | ✅ Jobs | — |
-| BBC | ✅ News | — | — |
+| Xiaohongshu (小红书) | Recommended feed | ✅ | — |
+| Reddit | Home/Hot | ✅ | — |
+| HackerNews | Top stories | — | — |
+| V2EX | Hot/Latest | — | Daily check-in |
+| Xueqiu (雪球) | Hot/Stocks/Watchlist | ✅ | — |
+| BOSS直聘 | — | Jobs | — |
+| BBC | News | — | — |
 | Reuters | — | ✅ | — |
-| 什么值得买 | — | ✅ Deals | — |
-| Yahoo Finance | ✅ Stock quotes | — | — |
-| Ctrip (携程) | — | ✅ Attractions/Cities | — |
+| 什么值得买 | — | Deals | — |
+| Yahoo Finance | Stock quotes | — | — |
+| Ctrip (携程) | — | Attractions/Cities | — |
 
 ## Key Commands
 
 ### Bilibili (B站)
 
 ```bash
-# Get hot/trending videos
+# Get hot videos (JSON output for parsing)
 opencli bilibili hot --limit 10 -f json
 
-# Get video rankings
+# Get ranking list
 opencli bilibili ranking -f json
 
-# Get your feed/timeline
+# Search videos
+opencli bilibili search --keyword "AI大模型" -f json
+
+# Search users
+opencli bilibili search-user --keyword "技术博主" -f json
+
+# Get your feed/动态
 opencli bilibili feed -f json
 
 # Get watch history
-opencli bilibili history -f json
-
-# Search videos
-opencli bilibili search --keyword "AI大模型"
-
-# Search users
-opencli bilibili search-user --keyword "技术up主"
+opencli bilibili history --limit 20 -f json
 ```
 
 ### Twitter/X
@@ -118,20 +105,20 @@ opencli twitter timeline -f json
 # Get trending topics
 opencli twitter trending -f json
 
-# Get your bookmarks
+# Get bookmarks
 opencli twitter bookmarks -f json
 
 # Search tweets
 opencli twitter search --query "claude AI" -f json
 
-# Post a tweet (REQUIRES CONFIRMATION — content becomes immediately public)
+# Post a tweet (CONFIRM BEFORE RUNNING)
 opencli twitter post --text "Hello from Claude Code!"
 
-# Like a tweet
-opencli twitter like --id TWEET_ID
-
 # Reply to a tweet
-opencli twitter reply --id TWEET_ID --text "Great point!"
+opencli twitter reply --id "TWEET_ID" --text "Great point!"
+
+# Like a tweet
+opencli twitter like --id "TWEET_ID"
 ```
 
 ### YouTube
@@ -141,30 +128,17 @@ opencli twitter reply --id TWEET_ID --text "Great point!"
 opencli youtube search --query "LLM tutorial" -f json
 
 # Search with limit
-opencli youtube search --query "machine learning 2024" --limit 20 -f json
+opencli youtube search --query "rust programming" --limit 10 -f json
 ```
 
-### Zhihu (知乎)
+### HackerNews
 
 ```bash
-# Get hot list
-opencli zhihu hot -f json
+# Get top stories
+opencli hackernews top --limit 20 -f json
 
-# Search questions/answers
-opencli zhihu search --keyword "大模型" -f json
-
-# Get question details
-opencli zhihu question --id QUESTION_ID -f json
-```
-
-### Weibo (微博)
-
-```bash
-# Get trending hot search
-opencli weibo hot -f json
-
-# Post a Weibo update (uses Playwright — REQUIRES CONFIRMATION)
-opencli weibo post --text "今天天气真好"
+# Get top 5 stories
+opencli hackernews top --limit 5 -f json
 ```
 
 ### Reddit
@@ -177,38 +151,57 @@ opencli reddit home -f json
 opencli reddit hot --subreddit MachineLearning -f json
 
 # Search Reddit
-opencli reddit search --query "transformer architecture" -f json
+opencli reddit search --query "rust async" -f json
 ```
 
-### HackerNews
+### Zhihu (知乎)
 
 ```bash
-# Get top stories
-opencli hackernews top --limit 20 -f json
+# Get hot list
+opencli zhihu hot -f json
 
-# Get top stories (default limit)
-opencli hackernews top -f json
+# Search questions
+opencli zhihu search --keyword "大模型" -f json
+
+# Get question details
+opencli zhihu question --id "QUESTION_ID" -f json
 ```
 
-### Yahoo Finance / Xueqiu (雪球) — Stocks
+### Weibo (微博)
 
 ```bash
-# Get stock quote (Yahoo Finance)
-opencli yahoo-finance quote --symbol AAPL -f json
-opencli yahoo-finance quote --symbol TSLA -f json
+# Get trending/hot search
+opencli weibo hot -f json
 
-# Xueqiu hot stocks
+# Post to Weibo (uses Playwright, CONFIRM BEFORE RUNNING)
+opencli weibo post --text "今天天气真好！"
+```
+
+### Xueqiu (雪球) — Stocks
+
+```bash
+# Get hot stocks
 opencli xueqiu hot -f json
 
-# Xueqiu stock details
-opencli xueqiu stock --symbol SH600519   # Moutai (茅台)
-opencli xueqiu stock --symbol SZ000001   # Ping An Bank
+# Get stock quote (A-shares use SH/SZ prefix)
+opencli xueqiu stock --symbol SH600519   # Moutai/茅台
+opencli xueqiu stock --symbol SZ000858   # Wuliangye/五粮液
 
-# Xueqiu watchlist (your followed stocks)
+# US stocks
+opencli xueqiu stock --symbol AAPL
+opencli xueqiu stock --symbol TSLA
+
+# Get your watchlist (must be logged in to Xueqiu)
 opencli xueqiu watchlist -f json
+```
 
-# Search stocks on Xueqiu
-opencli xueqiu search --keyword "茅台" -f json
+### Yahoo Finance
+
+```bash
+# Get stock quote
+opencli yahoo-finance quote --symbol AAPL -f json
+opencli yahoo-finance quote --symbol GOOGL -f json
+opencli yahoo-finance quote --symbol BTC-USD -f json
 ```
 
 ### Xiaohongshu (小红书)
@@ -217,35 +210,35 @@ opencli xueqiu search --keyword "茅台" -f json
 # Get recommended feed
 opencli xiaohongshu feed -f json
 
-# Search posts
-opencli xiaohongshu search --keyword "咖啡" -f json
+# Search notes
+opencli xiaohongshu search --keyword "穿搭" -f json
 ```
 
 ### V2EX
 
 ```bash
-# Get hot posts
+# Get hot topics
 opencli v2ex hot -f json
 
 # Get latest posts
 opencli v2ex latest -f json
 
-# Daily check-in (签到)
+# Daily check-in (signs you in for points)
 opencli v2ex checkin
 ```
 
-### BOSS直聘 (Job Search)
+### BOSS直聘
 
 ```bash
 # Search jobs
-opencli boss search --keyword "Python工程师" -f json
-opencli boss search --keyword "AI researcher" --city "北京" -f json
+opencli boss search --keyword "前端工程师" --city "北京" -f json
+opencli boss search --keyword "product manager" --city "上海" -f json
 ```
 
 ### BBC News
 
 ```bash
-# Get BBC headlines
+# Get news headlines
 opencli bbc news -f json
 ```
 
@@ -253,183 +246,126 @@ opencli bbc news -f json
 
 ```bash
 # Search Reuters
-opencli reuters search --query "artificial intelligence" -f json
+opencli reuters search --query "AI regulation" -f json
 ```
 
-### 什么值得买 (Deals)
+### 什么值得买
 
 ```bash
 # Search deals
 opencli smzdm search --keyword "机械键盘" -f json
 ```
 
-### Ctrip / 携程 (Travel)
+### Ctrip (携程)
 
 ```bash
 # Search attractions
-opencli ctrip attractions --city "成都" -f json
+opencli ctrip search --keyword "北京故宫" -f json
 
-# Search cities
-opencli ctrip cities --keyword "云南" -f json
+# Search by city
+opencli ctrip city --name "成都" -f json
 ```
 
 ## Output Format
 
-Most commands support `-f json` for structured JSON output, which is ideal for AI agents to parse and display:
+All commands support `-f json` for structured JSON output. Always use this flag when you need to parse or display results:
 
 ```bash
-# JSON output (recommended for AI processing)
-opencli hackernews top --limit 10 -f json
+# JSON output example (Bilibili hot)
+opencli bilibili hot --limit 5 -f json
+# Returns array of: { title, author, views, url, cover }
 
-# Example output structure:
-# [
-#   {
-#     "rank": 1,
-#     "title": "Show HN: ...",
-#     "url": "https://...",
-#     "points": 342,
-#     "comments": 87
-#   },
-#   ...
-# ]
+# Default output is human-readable table format
+opencli hackernews top --limit 5
 ```
 
-## Common Agent Patterns
+## Common Patterns for AI Agents
 
-### Pattern 1: Research across platforms
+### Pattern 1: Fetch and display in a table
 
 ```bash
-# User asks: "What's trending in AI today?"
-
-# Check HackerNews
-opencli hackernews top --limit 10 -f json
-
-# Check Twitter trending
-opencli twitter trending -f json
-
-# Search Zhihu for AI discussions
-opencli zhihu search --keyword "人工智能" -f json
-
-# Search Reddit
-opencli reddit search --query "artificial intelligence" -f json
+# Get HackerNews top stories, display as table
+opencli hackernews top --limit 20 -f json
+# Agent formats JSON into markdown table with rank, title, score, url
 ```
 
-### Pattern 2: Stock research
+### Pattern 2: Cross-platform topic search
 
 ```bash
-# User asks: "How is Tesla doing today?"
+# Search the same topic across multiple platforms
+opencli zhihu search --keyword "Rust编程" -f json
+opencli reddit search --query "Rust programming" -f json
+opencli hackernews top --limit 30 -f json  # then filter client-side
+```
 
-# Yahoo Finance for US stocks
-opencli yahoo-finance quote --symbol TSLA -f json
+### Pattern 3: Stock research workflow
 
-# Check Xueqiu for Chinese market sentiment
+```bash
+# Get market overview then specific stocks
 opencli xueqiu hot -f json
+opencli xueqiu stock --symbol SH600519 -f json
+opencli yahoo-finance quote --symbol BABA -f json
 ```
 
-### Pattern 3: Content discovery
+### Pattern 4: Social media monitoring
 
 ```bash
-# User asks: "Find LLM tutorials on YouTube and Bilibili"
-
-opencli youtube search --query "LLM tutorial 2024" --limit 10 -f json
-opencli bilibili search --keyword "大模型教程" -f json
-```
-
-### Pattern 4: Job searching
-
-```bash
-# User asks: "Find AI engineer jobs in Beijing"
-
-opencli boss search --keyword "AI工程师" --city "北京" -f json
+# Check what's trending across platforms
+opencli twitter trending -f json
+opencli weibo hot -f json
+opencli bilibili hot --limit 10 -f json
+opencli zhihu hot -f json
 ```
 
 ### Pattern 5: Write operations (always confirm first)
 
 ```bash
-# IMPORTANT: Always show the user what will be posted and get explicit confirmation
+# ALWAYS show the user what will be posted and wait for explicit confirmation
 
-# Post to Twitter
-opencli twitter post --text "Just discovered opencli — control 16 platforms from the terminal!"
+# Twitter
+opencli twitter post --text "Content to post"
 
-# V2EX check-in
+# Weibo
+opencli weibo post --text "内容"
+
+# V2EX check-in (safe, non-public)
 opencli v2ex checkin
-
-# Post to Weibo
-opencli weibo post --text "今天用 Claude Code 搜了B站热门，太方便了"
 ```
 
-## ⚠️ Write Operations — Safety Rules
+## Output Parsing Tips
 
-**Always follow these rules for any write operation:**
+```bash
+# Pipe JSON to jq for filtering (if jq is available)
+opencli bilibili hot --limit 20 -f json | jq '.[].title'
 
-1. **Show content first** — Display exactly what will be posted to the user
-2. **Require explicit confirmation** — Wait for user to say "yes", "confirm", "post it", etc.
-3. **Never auto-post** — Even if the user said "post X", confirm the exact content before executing
-4. **One operation at a time** — Never batch multiple write operations
+# Get just the top 5 titles from HackerNews
+opencli hackernews top --limit 5 -f json | jq '[.[] | {title, url, score}]'
 
-Write operations include:
-- `opencli twitter post` / `reply` / `like`
-- `opencli weibo post`
-- `opencli v2ex checkin`
-- Any command that modifies platform state
+# Filter Reddit posts by score
+opencli reddit hot --subreddit programming -f json | jq '[.[] | select(.score > 1000)]'
+```
 
 ## Troubleshooting
 
-| Problem | Cause | Fix |
+| Symptom | Cause | Fix |
 |---------|-------|-----|
-| `opencli: command not found` | Not installed or PATH issue | Run `npm install -g @jackwener/opencli`; check `echo $PATH` includes npm global bin |
-| Chrome not being controlled | Extension missing or Chrome closed | Ensure Chrome is open; verify Playwright MCP Bridge extension is enabled in `chrome://extensions` |
-| Login state not recognized | Not logged in to the site | Open Chrome, manually log in to the target platform, then retry |
-| "Playwright MCP not found" error | MCP not configured | Run `claude mcp add playwright --scope user -- npx @playwright/mcp@latest` |
-| `npx skills add` fails | Node.js version too old | Upgrade to Node.js v16+: `node --version` to check |
-| Rate limit / CAPTCHA triggered | Too many rapid requests | Wait a few minutes; avoid repeated rapid commands to same platform |
-| JSON parse errors | Command output is not JSON | Ensure you're using `-f json` flag; some commands may not support JSON |
+| `opencli: command not found` | Not installed or PATH issue | `npm install -g @jackwener/opencli`; check `echo $PATH` |
+| Chrome not being controlled | Extension missing or Chrome closed | Open Chrome; verify Playwright MCP Bridge extension is enabled |
+| Login state not recognized | Not logged in on Chrome | Manually log in on Chrome first, then retry |
+| `Playwright MCP not found` error | MCP not configured | Run `claude mcp add playwright --scope user -- npx @playwright/mcp@latest` |
+| Empty results returned | Rate limited or session expired | Wait a moment; refresh the page in Chrome manually |
+| `npx skills add` fails | Old Node.js | Upgrade to Node.js v16+: `node --version` |
+| CAPTCHA triggered | Bot detection | Complete CAPTCHA manually in Chrome, then retry |
+| Weibo post fails | Playwright not connecting | Ensure Chrome is open with Playwright MCP Bridge active |
 
-### Verify Setup
+## Important Warnings
 
-```bash
-# 1. Check opencli is installed
-opencli --version
+⚠️ **Write operations** (posting tweets, Weibo updates, V2EX check-ins):
+- Always show the user the exact content and request explicit confirmation before executing
+- Platform bot-detection may trigger rate limits or temporary bans
+- Published content is immediately public — the AI cannot recall it
+- Never post rapidly in succession
 
-# 2. Check Node.js version
-node --version   # Should be v16+
+⚠️ **Login sessions**: opencli reuses your Chrome session. If Chrome is closed or you log out of a platform, commands for that platform will fail until you log back in via Chrome.
 
-# 3. Check Playwright MCP is configured (in Claude Code)
-claude mcp list  # Should show "playwright"
-
-# 4. Test a simple read command
-opencli hackernews top --limit 3 -f json
-```
-
-### Chrome Extension Verification
-
-1. Open Chrome → navigate to `chrome://extensions/`
-2. Find "Playwright MCP Bridge"
-3. Confirm it shows **"Enabled"** (toggle is blue)
-4. If missing, reinstall from the [Chrome Web Store](https://chromewebstore.google.com/detail/playwright-mcp-bridge/kldoghpdblpjbjeechcaoibpfbgfomkn)
-
-## Natural Language → Command Mapping
-
-When a user makes a request, map it to the appropriate command:
-
-| User Says | Command |
-|-----------|---------|
-| "What's trending on Twitter?" | `opencli twitter trending -f json` |
-| "Search YouTube for X" | `opencli youtube search --query "X" -f json` |
-| "Get HackerNews top stories" | `opencli hackernews top --limit 20 -f json` |
-| "Check AAPL stock" | `opencli yahoo-finance quote --symbol AAPL -f json` |
-| "What's hot on Bilibili?" | `opencli bilibili hot --limit 20 -f json` |
-| "Search Reddit for X" | `opencli reddit search --query "X" -f json` |
-| "Get Zhihu hot list" | `opencli zhihu hot -f json` |
-| "What's trending on Weibo?" | `opencli weibo hot -f json` |
-| "Find jobs for X" | `opencli boss search --keyword "X" -f json` |
-| "Check my Twitter timeline" | `opencli twitter timeline -f json` |
-| "Post a tweet saying X" | Confirm with user → `opencli twitter post --text "X"` |
-
-## Full Command Reference
-
-See [references/commands.md](references/commands.md) in the skill repository for the complete list of all 55 commands with parameters.
-
-## Credits
-
-Built on **[jackwener/opencli](https://github.com/jackwener/opencli)** by [@jakevin7](https://github.com/jackwener). The core idea — turning major websites into CLI interfaces that reuse existing browser sessions — makes AI agents dramatically more capable without requiring any platform API access.
+⚠️ **Rate limits**: Avoid running many commands in rapid succession against the same platform. Space requests out by a few seconds minimum.
