@@ -105,6 +105,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [witr-process-inspector](skills/witr-process-inspector/) | [install](https://skills.sh/aradotso/trending-skills/witr-process-inspector) | [pranshuparmar/witr](https://github.com/pranshuparmar/witr) | 2026-03-18 |
 | [git-city-3d-github-visualization](skills/git-city-3d-github-visualization/) | [install](https://skills.sh/aradotso/trending-skills/git-city-3d-github-visualization) | [srizzon/git-city](https://github.com/srizzon/git-city) | 2026-03-18 |
 | [grimmory-self-hosted-library](skills/grimmory-self-hosted-library/) | [install](https://skills.sh/aradotso/trending-skills/grimmory-self-hosted-library) | [grimmory-tools/grimmory](https://github.com/grimmory-tools/grimmory) | 2026-03-18 |
+| [toon-format](skills/toon-format/) | [install](https://skills.sh/aradotso/trending-skills/toon-format) | [toon-format/toon](https://github.com/toon-format/toon) | 2026-03-18 |
 <!-- SKILL_INDEX -->
 
 ## How it works
