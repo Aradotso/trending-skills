@@ -113,6 +113,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [slug-font-rendering](skills/slug-font-rendering/) | [install](https://skills.sh/aradotso/trending-skills/slug-font-rendering) | [EricLengyel/Slug](https://github.com/EricLengyel/Slug) | 2026-03-19 |
 | [collaborator-ai-canvas](skills/collaborator-ai-canvas/) | [install](https://skills.sh/aradotso/trending-skills/collaborator-ai-canvas) | [collaborator-ai/collab-public](https://github.com/collaborator-ai/collab-public) | 2026-03-19 |
 | [keyid-agent-kit-mcp](skills/keyid-agent-kit-mcp/) | [install](https://skills.sh/aradotso/trending-skills/keyid-agent-kit-mcp) | [KeyID-AI/agent-kit](https://github.com/KeyID-AI/agent-kit) | 2026-03-19 |
+| [openbrand-asset-extraction](skills/openbrand-asset-extraction/) | [install](https://skills.sh/aradotso/trending-skills/openbrand-asset-extraction) | [ethanjyx/OpenBrand](https://github.com/ethanjyx/OpenBrand) | 2026-03-19 |
 <!-- SKILL_INDEX -->
 
 ## How it works
