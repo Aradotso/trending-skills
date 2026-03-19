@@ -111,6 +111,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [kimodo-motion-diffusion](skills/kimodo-motion-diffusion/) | [install](https://skills.sh/aradotso/trending-skills/kimodo-motion-diffusion) | [nv-tlabs/kimodo](https://github.com/nv-tlabs/kimodo) | 2026-03-19 |
 | [nightingale-karaoke](skills/nightingale-karaoke/) | [install](https://skills.sh/aradotso/trending-skills/nightingale-karaoke) | [rzru/nightingale](https://github.com/rzru/nightingale) | 2026-03-19 |
 | [slug-font-rendering](skills/slug-font-rendering/) | [install](https://skills.sh/aradotso/trending-skills/slug-font-rendering) | [EricLengyel/Slug](https://github.com/EricLengyel/Slug) | 2026-03-19 |
+| [collaborator-ai-canvas](skills/collaborator-ai-canvas/) | [install](https://skills.sh/aradotso/trending-skills/collaborator-ai-canvas) | [collaborator-ai/collab-public](https://github.com/collaborator-ai/collab-public) | 2026-03-19 |
 <!-- SKILL_INDEX -->
 
 ## How it works
