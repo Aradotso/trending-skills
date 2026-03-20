@@ -120,6 +120,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [seoul-world-model](skills/seoul-world-model/) | [install](https://skills.sh/aradotso/trending-skills/seoul-world-model) | [naver-ai/seoul-world-model](https://github.com/naver-ai/seoul-world-model) | 2026-03-20 |
 | [netryx-street-level-geolocation](skills/netryx-street-level-geolocation/) | [install](https://skills.sh/aradotso/trending-skills/netryx-street-level-geolocation) | [sparkyniner/Netryx-OpenSource-Next-Gen-Street-Level-Geolocation](https://github.com/sparkyniner/Netryx-OpenSource-Next-Gen-Street-Level-Geolocation) | 2026-03-20 |
 | [translate-book-parallel](skills/translate-book-parallel/) | [install](https://skills.sh/aradotso/trending-skills/translate-book-parallel) | [deusyu/translate-book](https://github.com/deusyu/translate-book) | 2026-03-20 |
+| [openhanako-personal-ai-agent](skills/openhanako-personal-ai-agent/) | [install](https://skills.sh/aradotso/trending-skills/openhanako-personal-ai-agent) | [liliMozi/openhanako](https://github.com/liliMozi/openhanako) | 2026-03-20 |
 <!-- SKILL_INDEX -->
 
 ## How it works
