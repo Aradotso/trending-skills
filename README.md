@@ -117,6 +117,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [boss-cli-job-search](skills/boss-cli-job-search/) | [install](https://skills.sh/aradotso/trending-skills/boss-cli-job-search) | [jackwener/boss-cli](https://github.com/jackwener/boss-cli) | 2026-03-19 |
 | [fabro-workflow-factory](skills/fabro-workflow-factory/) | [install](https://skills.sh/aradotso/trending-skills/fabro-workflow-factory) | [fabro-sh/fabro](https://github.com/fabro-sh/fabro) | 2026-03-19 |
 | [autoresearch-genealogy](skills/autoresearch-genealogy/) | [install](https://skills.sh/aradotso/trending-skills/autoresearch-genealogy) | [mattprusak/autoresearch-genealogy](https://github.com/mattprusak/autoresearch-genealogy) | 2026-03-19 |
+| [seoul-world-model](skills/seoul-world-model/) | [install](https://skills.sh/aradotso/trending-skills/seoul-world-model) | [naver-ai/seoul-world-model](https://github.com/naver-ai/seoul-world-model) | 2026-03-20 |
 <!-- SKILL_INDEX -->
 
 ## How it works
