@@ -128,6 +128,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [does-it-age-verify](skills/does-it-age-verify/) | [install](https://skills.sh/aradotso/trending-skills/does-it-age-verify) | [BryanLunduke/DoesItAgeVerify](https://github.com/BryanLunduke/DoesItAgeVerify) | 2026-03-21 |
 | [flash-moe-inference](skills/flash-moe-inference/) | [install](https://skills.sh/aradotso/trending-skills/flash-moe-inference) | [danveloper/flash-moe](https://github.com/danveloper/flash-moe) | 2026-03-21 |
 | [memory-lancedb-pro-openclaw](skills/memory-lancedb-pro-openclaw/) | [install](https://skills.sh/aradotso/trending-skills/memory-lancedb-pro-openclaw) | [CortexReach/memory-lancedb-pro](https://github.com/CortexReach/memory-lancedb-pro) | 2026-03-21 |
+| [modly-image-to-3d](skills/modly-image-to-3d/) | [install](https://skills.sh/aradotso/trending-skills/modly-image-to-3d) | [lightningpixel/modly](https://github.com/lightningpixel/modly) | 2026-03-21 |
 <!-- SKILL_INDEX -->
 
 ## How it works
