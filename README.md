@@ -124,6 +124,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [posterskill-academic-posters](skills/posterskill-academic-posters/) | [install](https://skills.sh/aradotso/trending-skills/posterskill-academic-posters) | [ethanweber/posterskill](https://github.com/ethanweber/posterskill) | 2026-03-20 |
 | [nopua-ai-agent-skill](skills/nopua-ai-agent-skill/) | [install](https://skills.sh/aradotso/trending-skills/nopua-ai-agent-skill) | [wuji-labs/nopua](https://github.com/wuji-labs/nopua) | 2026-03-20 |
 | [goal-driven-multi-agent](skills/goal-driven-multi-agent/) | [install](https://skills.sh/aradotso/trending-skills/goal-driven-multi-agent) | [lidangzzz/goal-driven](https://github.com/lidangzzz/goal-driven) | 2026-03-20 |
+| [deepseek-ocr](skills/deepseek-ocr/) | [install](https://skills.sh/aradotso/trending-skills/deepseek-ocr) | [deepseek-ai/DeepSeek-OCR](https://github.com/deepseek-ai/DeepSeek-OCR) | 2026-03-21 |
 <!-- SKILL_INDEX -->
 
 ## How it works
