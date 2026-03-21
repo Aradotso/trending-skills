@@ -131,6 +131,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [modly-image-to-3d](skills/modly-image-to-3d/) | [install](https://skills.sh/aradotso/trending-skills/modly-image-to-3d) | [lightningpixel/modly](https://github.com/lightningpixel/modly) | 2026-03-21 |
 | [codex-autoresearch-loop](skills/codex-autoresearch-loop/) | [install](https://skills.sh/aradotso/trending-skills/codex-autoresearch-loop) | [leo-lilinxiao/codex-autoresearch](https://github.com/leo-lilinxiao/codex-autoresearch) | 2026-03-21 |
 | [app-store-preflight-skills](skills/app-store-preflight-skills/) | [install](https://skills.sh/aradotso/trending-skills/app-store-preflight-skills) | [truongduy2611/app-store-preflight-skills](https://github.com/truongduy2611/app-store-preflight-skills) | 2026-03-21 |
+| [ghostling-libghostty-terminal](skills/ghostling-libghostty-terminal/) | [install](https://skills.sh/aradotso/trending-skills/ghostling-libghostty-terminal) | [ghostty-org/ghostling](https://github.com/ghostty-org/ghostling) | 2026-03-21 |
 <!-- SKILL_INDEX -->
 
 ## How it works
