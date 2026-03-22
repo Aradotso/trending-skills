@@ -139,6 +139,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [codex-console-openai-registration](skills/codex-console-openai-registration/) | [install](https://skills.sh/aradotso/trending-skills/codex-console-openai-registration) | [dou-jiang/codex-console](https://github.com/dou-jiang/codex-console) | 2026-03-22 |
 | [clawteam-openclaw-swarm](skills/clawteam-openclaw-swarm/) | [install](https://skills.sh/aradotso/trending-skills/clawteam-openclaw-swarm) | [win4r/ClawTeam-OpenClaw](https://github.com/win4r/ClawTeam-OpenClaw) | 2026-03-22 |
 | [724-office-ai-agent](skills/724-office-ai-agent/) | [install](https://skills.sh/aradotso/trending-skills/724-office-ai-agent) | [wangziqi06/724-office](https://github.com/wangziqi06/724-office) | 2026-03-22 |
+| [my-brain-is-full-crew](skills/my-brain-is-full-crew/) | [install](https://skills.sh/aradotso/trending-skills/my-brain-is-full-crew) | [gnekt/My-Brain-Is-Full-Crew](https://github.com/gnekt/My-Brain-Is-Full-Crew) | 2026-03-22 |
 <!-- SKILL_INDEX -->
 
 ## How it works
