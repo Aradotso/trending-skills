@@ -137,6 +137,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [dontbesilent-dbskill](skills/dontbesilent-dbskill/) | [install](https://skills.sh/aradotso/trending-skills/dontbesilent-dbskill) | [dontbesilent2025/dbskill](https://github.com/dontbesilent2025/dbskill) | 2026-03-21 |
 | [opencode-claude-auth](skills/opencode-claude-auth/) | [install](https://skills.sh/aradotso/trending-skills/opencode-claude-auth) | [griffinmartin/opencode-claude-auth](https://github.com/griffinmartin/opencode-claude-auth) | 2026-03-22 |
 | [codex-console-openai-registration](skills/codex-console-openai-registration/) | [install](https://skills.sh/aradotso/trending-skills/codex-console-openai-registration) | [dou-jiang/codex-console](https://github.com/dou-jiang/codex-console) | 2026-03-22 |
+| [clawteam-openclaw-swarm](skills/clawteam-openclaw-swarm/) | [install](https://skills.sh/aradotso/trending-skills/clawteam-openclaw-swarm) | [win4r/ClawTeam-OpenClaw](https://github.com/win4r/ClawTeam-OpenClaw) | 2026-03-22 |
 <!-- SKILL_INDEX -->
 
 ## How it works
