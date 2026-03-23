@@ -144,6 +144,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [microwarp-cloudflare-proxy](skills/microwarp-cloudflare-proxy/) | [install](https://skills.sh/aradotso/trending-skills/microwarp-cloudflare-proxy) | [ccbkkb/MicroWARP](https://github.com/ccbkkb/MicroWARP) | 2026-03-23 |
 | [openyak-desktop-agent](skills/openyak-desktop-agent/) | [install](https://skills.sh/aradotso/trending-skills/openyak-desktop-agent) | [openyak/desktop](https://github.com/openyak/desktop) | 2026-03-23 |
 | [chops-ai-skills-manager](skills/chops-ai-skills-manager/) | [install](https://skills.sh/aradotso/trending-skills/chops-ai-skills-manager) | [Shpigford/chops](https://github.com/Shpigford/chops) | 2026-03-23 |
+| [ai-engineering-from-scratch](skills/ai-engineering-from-scratch/) | [install](https://skills.sh/aradotso/trending-skills/ai-engineering-from-scratch) | [rohitg00/ai-engineering-from-scratch](https://github.com/rohitg00/ai-engineering-from-scratch) | 2026-03-23 |
 <!-- SKILL_INDEX -->
 
 ## How it works
