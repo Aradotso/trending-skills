@@ -147,6 +147,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [ai-engineering-from-scratch](skills/ai-engineering-from-scratch/) | [install](https://skills.sh/aradotso/trending-skills/ai-engineering-from-scratch) | [rohitg00/ai-engineering-from-scratch](https://github.com/rohitg00/ai-engineering-from-scratch) | 2026-03-23 |
 | [filmkit-fujifilm-camera](skills/filmkit-fujifilm-camera/) | [install](https://skills.sh/aradotso/trending-skills/filmkit-fujifilm-camera) | [eggricesoy/filmkit](https://github.com/eggricesoy/filmkit) | 2026-03-23 |
 | [web-access-claude-skill](skills/web-access-claude-skill/) | [install](https://skills.sh/aradotso/trending-skills/web-access-claude-skill) | [eze-is/web-access](https://github.com/eze-is/web-access) | 2026-03-23 |
+| [creationix-rx-data-store](skills/creationix-rx-data-store/) | [install](https://skills.sh/aradotso/trending-skills/creationix-rx-data-store) | [creationix/rx](https://github.com/creationix/rx) | 2026-03-23 |
 <!-- SKILL_INDEX -->
 
 ## How it works
