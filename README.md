@@ -330,6 +330,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [progressive-blur-header-swiftui](skills/progressive-blur-header-swiftui/) | [install](https://skills.sh/aradotso/trending-skills/progressive-blur-header-swiftui) | [dominikmartn/ProgressiveBlurHeader](https://github.com/dominikmartn/ProgressiveBlurHeader) | 2026-04-12 |
 | [maoxuan-skill-cognitive-framework](skills/maoxuan-skill-cognitive-framework/) | [install](https://skills.sh/aradotso/trending-skills/maoxuan-skill-cognitive-framework) | [leezythu/maoxuan-skill](https://github.com/leezythu/maoxuan-skill) | 2026-04-12 |
 | [obsidian-ai-orange-book](skills/obsidian-ai-orange-book/) | [install](https://skills.sh/aradotso/trending-skills/obsidian-ai-orange-book) | [alchaincyf/obsidian-ai-orange-book](https://github.com/alchaincyf/obsidian-ai-orange-book) | 2026-04-12 |
+| [quien-whois-lookup](skills/quien-whois-lookup/) | [install](https://skills.sh/aradotso/trending-skills/quien-whois-lookup) | [retlehs/quien](https://github.com/retlehs/quien) | 2026-04-12 |
 <!-- SKILL_INDEX -->
 
 ## How it works
