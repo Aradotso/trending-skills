@@ -343,6 +343,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [webphysics-avbd-engine](skills/webphysics-avbd-engine/) | [install](https://skills.sh/aradotso/trending-skills/webphysics-avbd-engine) | [jure/webphysics](https://github.com/jure/webphysics) | 2026-04-13 |
 | [hermes-desktop-macos](skills/hermes-desktop-macos/) | [install](https://skills.sh/aradotso/trending-skills/hermes-desktop-macos) | [dodo-reach/hermes-desktop](https://github.com/dodo-reach/hermes-desktop) | 2026-04-13 |
 | [jinguyuan-dumpling-skill](skills/jinguyuan-dumpling-skill/) | [install](https://skills.sh/aradotso/trending-skills/jinguyuan-dumpling-skill) | [JinGuYuan/jinguyuan-dumpling-skill](https://github.com/JinGuYuan/jinguyuan-dumpling-skill) | 2026-04-13 |
+| [autoteam-chatgpt-rotation](skills/autoteam-chatgpt-rotation/) | [install](https://skills.sh/aradotso/trending-skills/autoteam-chatgpt-rotation) | [cnitlrt/AutoTeam](https://github.com/cnitlrt/AutoTeam) | 2026-04-13 |
 <!-- SKILL_INDEX -->
 
 ## How it works
