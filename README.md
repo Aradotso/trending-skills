@@ -341,6 +341,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [auto-deep-researcher-24x7](skills/auto-deep-researcher-24x7/) | [install](https://skills.sh/aradotso/trending-skills/auto-deep-researcher-24x7) | [Xiangyue-Zhang/auto-deep-researcher-24x7](https://github.com/Xiangyue-Zhang/auto-deep-researcher-24x7) | 2026-04-13 |
 | [yourvpndead-vpn-detection](skills/yourvpndead-vpn-detection/) | [install](https://skills.sh/aradotso/trending-skills/yourvpndead-vpn-detection) | [loop-uh/yourvpndead](https://github.com/loop-uh/yourvpndead) | 2026-04-13 |
 | [webphysics-avbd-engine](skills/webphysics-avbd-engine/) | [install](https://skills.sh/aradotso/trending-skills/webphysics-avbd-engine) | [jure/webphysics](https://github.com/jure/webphysics) | 2026-04-13 |
+| [hermes-desktop-macos](skills/hermes-desktop-macos/) | [install](https://skills.sh/aradotso/trending-skills/hermes-desktop-macos) | [dodo-reach/hermes-desktop](https://github.com/dodo-reach/hermes-desktop) | 2026-04-13 |
 <!-- SKILL_INDEX -->
 
 ## How it works
