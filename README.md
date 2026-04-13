@@ -338,6 +338,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [talk-normal-llm-prompt](skills/talk-normal-llm-prompt/) | [install](https://skills.sh/aradotso/trending-skills/talk-normal-llm-prompt) | [hexiecs/talk-normal](https://github.com/hexiecs/talk-normal) | 2026-04-13 |
 | [3dsvg-interactive-react](skills/3dsvg-interactive-react/) | [install](https://skills.sh/aradotso/trending-skills/3dsvg-interactive-react) | [renatoworks/3dsvg](https://github.com/renatoworks/3dsvg) | 2026-04-13 |
 | [material-3-skill](skills/material-3-skill/) | [install](https://skills.sh/aradotso/trending-skills/material-3-skill) | [hamen/material-3-skill](https://github.com/hamen/material-3-skill) | 2026-04-13 |
+| [auto-deep-researcher-24x7](skills/auto-deep-researcher-24x7/) | [install](https://skills.sh/aradotso/trending-skills/auto-deep-researcher-24x7) | [Xiangyue-Zhang/auto-deep-researcher-24x7](https://github.com/Xiangyue-Zhang/auto-deep-researcher-24x7) | 2026-04-13 |
 <!-- SKILL_INDEX -->
 
 ## How it works
