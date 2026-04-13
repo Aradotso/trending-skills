@@ -344,6 +344,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [hermes-desktop-macos](skills/hermes-desktop-macos/) | [install](https://skills.sh/aradotso/trending-skills/hermes-desktop-macos) | [dodo-reach/hermes-desktop](https://github.com/dodo-reach/hermes-desktop) | 2026-04-13 |
 | [jinguyuan-dumpling-skill](skills/jinguyuan-dumpling-skill/) | [install](https://skills.sh/aradotso/trending-skills/jinguyuan-dumpling-skill) | [JinGuYuan/jinguyuan-dumpling-skill](https://github.com/JinGuYuan/jinguyuan-dumpling-skill) | 2026-04-13 |
 | [autoteam-chatgpt-rotation](skills/autoteam-chatgpt-rotation/) | [install](https://skills.sh/aradotso/trending-skills/autoteam-chatgpt-rotation) | [cnitlrt/AutoTeam](https://github.com/cnitlrt/AutoTeam) | 2026-04-13 |
+| [anything-analyzer-cdp](skills/anything-analyzer-cdp/) | [install](https://skills.sh/aradotso/trending-skills/anything-analyzer-cdp) | [Mouseww/anything-analyzer](https://github.com/Mouseww/anything-analyzer) | 2026-04-13 |
 <!-- SKILL_INDEX -->
 
 ## How it works
