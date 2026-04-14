@@ -351,6 +351,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [cli-to-js-api-wrapper](skills/cli-to-js-api-wrapper/) | [install](https://skills.sh/aradotso/trending-skills/cli-to-js-api-wrapper) | [millionco/cli-to-js](https://github.com/millionco/cli-to-js) | 2026-04-14 |
 | [acgti-anime-persona-quiz](skills/acgti-anime-persona-quiz/) | [install](https://skills.sh/aradotso/trending-skills/acgti-anime-persona-quiz) | [tianxingleo/ACGTI](https://github.com/tianxingleo/ACGTI) | 2026-04-14 |
 | [ntwarden-windows-analysis-toolkit](skills/ntwarden-windows-analysis-toolkit/) | [install](https://skills.sh/aradotso/trending-skills/ntwarden-windows-analysis-toolkit) | [mrT4ntr4/NtWarden](https://github.com/mrT4ntr4/NtWarden) | 2026-04-14 |
+| [darwin-skill-optimizer](skills/darwin-skill-optimizer/) | [install](https://skills.sh/aradotso/trending-skills/darwin-skill-optimizer) | [alchaincyf/darwin-skill](https://github.com/alchaincyf/darwin-skill) | 2026-04-14 |
 <!-- SKILL_INDEX -->
 
 ## How it works
