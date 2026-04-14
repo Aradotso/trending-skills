@@ -348,6 +348,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [capso-screenshot-macos](skills/capso-screenshot-macos/) | [install](https://skills.sh/aradotso/trending-skills/capso-screenshot-macos) | [lzhgus/Capso](https://github.com/lzhgus/Capso) | 2026-04-13 |
 | [moss-tts-nano-speech](skills/moss-tts-nano-speech/) | [install](https://skills.sh/aradotso/trending-skills/moss-tts-nano-speech) | [OpenMOSS/MOSS-TTS-Nano](https://github.com/OpenMOSS/MOSS-TTS-Nano) | 2026-04-13 |
 | [sni-spoofing-dpi-bypass](skills/sni-spoofing-dpi-bypass/) | [install](https://skills.sh/aradotso/trending-skills/sni-spoofing-dpi-bypass) | [patterniha/SNI-Spoofing](https://github.com/patterniha/SNI-Spoofing) | 2026-04-14 |
+| [cli-to-js-api-wrapper](skills/cli-to-js-api-wrapper/) | [install](https://skills.sh/aradotso/trending-skills/cli-to-js-api-wrapper) | [millionco/cli-to-js](https://github.com/millionco/cli-to-js) | 2026-04-14 |
 <!-- SKILL_INDEX -->
 
 ## How it works
