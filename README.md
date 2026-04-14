@@ -354,6 +354,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [darwin-skill-optimizer](skills/darwin-skill-optimizer/) | [install](https://skills.sh/aradotso/trending-skills/darwin-skill-optimizer) | [alchaincyf/darwin-skill](https://github.com/alchaincyf/darwin-skill) | 2026-04-14 |
 | [geoflow-content-automation](skills/geoflow-content-automation/) | [install](https://skills.sh/aradotso/trending-skills/geoflow-content-automation) | [yaojingang/GEOFlow](https://github.com/yaojingang/GEOFlow) | 2026-04-14 |
 | [codeburn-claude-cost-dashboard](skills/codeburn-claude-cost-dashboard/) | [install](https://skills.sh/aradotso/trending-skills/codeburn-claude-cost-dashboard) | [AgentSeal/codeburn](https://github.com/AgentSeal/codeburn) | 2026-04-14 |
+| [nothing-ever-happens-polymarket-bot](skills/nothing-ever-happens-polymarket-bot/) | [install](https://skills.sh/aradotso/trending-skills/nothing-ever-happens-polymarket-bot) | [sterlingcrispin/nothing-ever-happens](https://github.com/sterlingcrispin/nothing-ever-happens) | 2026-04-14 |
 <!-- SKILL_INDEX -->
 
 ## How it works
