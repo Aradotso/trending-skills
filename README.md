@@ -350,6 +350,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [sni-spoofing-dpi-bypass](skills/sni-spoofing-dpi-bypass/) | [install](https://skills.sh/aradotso/trending-skills/sni-spoofing-dpi-bypass) | [patterniha/SNI-Spoofing](https://github.com/patterniha/SNI-Spoofing) | 2026-04-14 |
 | [cli-to-js-api-wrapper](skills/cli-to-js-api-wrapper/) | [install](https://skills.sh/aradotso/trending-skills/cli-to-js-api-wrapper) | [millionco/cli-to-js](https://github.com/millionco/cli-to-js) | 2026-04-14 |
 | [acgti-anime-persona-quiz](skills/acgti-anime-persona-quiz/) | [install](https://skills.sh/aradotso/trending-skills/acgti-anime-persona-quiz) | [tianxingleo/ACGTI](https://github.com/tianxingleo/ACGTI) | 2026-04-14 |
+| [ntwarden-windows-analysis-toolkit](skills/ntwarden-windows-analysis-toolkit/) | [install](https://skills.sh/aradotso/trending-skills/ntwarden-windows-analysis-toolkit) | [mrT4ntr4/NtWarden](https://github.com/mrT4ntr4/NtWarden) | 2026-04-14 |
 <!-- SKILL_INDEX -->
 
 ## How it works
