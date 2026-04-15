@@ -362,6 +362,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [maeil-mail-contents](skills/maeil-mail-contents/) | [install](https://skills.sh/aradotso/trending-skills/maeil-mail-contents) | [maeil-mail/maeil-mail-contents](https://github.com/maeil-mail/maeil-mail-contents) | 2026-04-15 |
 | [anubis-android-app-manager](skills/anubis-android-app-manager/) | [install](https://skills.sh/aradotso/trending-skills/anubis-android-app-manager) | [sogonov/anubis](https://github.com/sogonov/anubis) | 2026-04-15 |
 | [wterm-web-terminal](skills/wterm-web-terminal/) | [install](https://skills.sh/aradotso/trending-skills/wterm-web-terminal) | [vercel-labs/wterm](https://github.com/vercel-labs/wterm) | 2026-04-15 |
+| [antivibe-code-learning](skills/antivibe-code-learning/) | [install](https://skills.sh/aradotso/trending-skills/antivibe-code-learning) | [mohi-devhub/antivibe](https://github.com/mohi-devhub/antivibe) | 2026-04-15 |
 <!-- SKILL_INDEX -->
 
 ## How it works
