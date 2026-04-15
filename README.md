@@ -360,6 +360,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [openduck-distributed-duckdb](skills/openduck-distributed-duckdb/) | [install](https://skills.sh/aradotso/trending-skills/openduck-distributed-duckdb) | [CITGuru/openduck](https://github.com/CITGuru/openduck) | 2026-04-15 |
 | [llm-internals-learning](skills/llm-internals-learning/) | [install](https://skills.sh/aradotso/trending-skills/llm-internals-learning) | [amitshekhariitbhu/llm-internals](https://github.com/amitshekhariitbhu/llm-internals) | 2026-04-15 |
 | [maeil-mail-contents](skills/maeil-mail-contents/) | [install](https://skills.sh/aradotso/trending-skills/maeil-mail-contents) | [maeil-mail/maeil-mail-contents](https://github.com/maeil-mail/maeil-mail-contents) | 2026-04-15 |
+| [anubis-android-app-manager](skills/anubis-android-app-manager/) | [install](https://skills.sh/aradotso/trending-skills/anubis-android-app-manager) | [sogonov/anubis](https://github.com/sogonov/anubis) | 2026-04-15 |
 <!-- SKILL_INDEX -->
 
 ## How it works
