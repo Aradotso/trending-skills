@@ -357,6 +357,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [nothing-ever-happens-polymarket-bot](skills/nothing-ever-happens-polymarket-bot/) | [install](https://skills.sh/aradotso/trending-skills/nothing-ever-happens-polymarket-bot) | [sterlingcrispin/nothing-ever-happens](https://github.com/sterlingcrispin/nothing-ever-happens) | 2026-04-14 |
 | [dflash-mlx-speculative-decoding](skills/dflash-mlx-speculative-decoding/) | [install](https://skills.sh/aradotso/trending-skills/dflash-mlx-speculative-decoding) | [bstnxbt/dflash-mlx](https://github.com/bstnxbt/dflash-mlx) | 2026-04-14 |
 | [palantir-for-family-trips](skills/palantir-for-family-trips/) | [install](https://skills.sh/aradotso/trending-skills/palantir-for-family-trips) | [andrewjiang/palantir-for-family-trips](https://github.com/andrewjiang/palantir-for-family-trips) | 2026-04-15 |
+| [openduck-distributed-duckdb](skills/openduck-distributed-duckdb/) | [install](https://skills.sh/aradotso/trending-skills/openduck-distributed-duckdb) | [CITGuru/openduck](https://github.com/CITGuru/openduck) | 2026-04-15 |
 <!-- SKILL_INDEX -->
 
 ## How it works
