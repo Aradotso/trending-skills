@@ -369,6 +369,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [builderpulse-daily-intelligence](skills/builderpulse-daily-intelligence/) | [install](https://skills.sh/aradotso/trending-skills/builderpulse-daily-intelligence) | [BuilderPulse/BuilderPulse](https://github.com/BuilderPulse/BuilderPulse) | 2026-04-16 |
 | [hy-world-2-0-3d-world-model](skills/hy-world-2-0-3d-world-model/) | [install](https://skills.sh/aradotso/trending-skills/hy-world-2-0-3d-world-model) | [Tencent-Hunyuan/HY-World-2.0](https://github.com/Tencent-Hunyuan/HY-World-2.0) | 2026-04-16 |
 | [html-ppt-skill](skills/html-ppt-skill/) | [install](https://skills.sh/aradotso/trending-skills/html-ppt-skill) | [lewislulu/html-ppt-skill](https://github.com/lewislulu/html-ppt-skill) | 2026-04-16 |
+| [redsun](skills/redsun/) | [install](https://skills.sh/aradotso/trending-skills/redsun) | [Nightmare-Eclipse/RedSun](https://github.com/Nightmare-Eclipse/RedSun) | 2026-04-16 |
 <!-- SKILL_INDEX -->
 
 ## How it works
