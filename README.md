@@ -370,6 +370,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [hy-world-2-0-3d-world-model](skills/hy-world-2-0-3d-world-model/) | [install](https://skills.sh/aradotso/trending-skills/hy-world-2-0-3d-world-model) | [Tencent-Hunyuan/HY-World-2.0](https://github.com/Tencent-Hunyuan/HY-World-2.0) | 2026-04-16 |
 | [html-ppt-skill](skills/html-ppt-skill/) | [install](https://skills.sh/aradotso/trending-skills/html-ppt-skill) | [lewislulu/html-ppt-skill](https://github.com/lewislulu/html-ppt-skill) | 2026-04-16 |
 | [redsun](skills/redsun/) | [install](https://skills.sh/aradotso/trending-skills/redsun) | [Nightmare-Eclipse/RedSun](https://github.com/Nightmare-Eclipse/RedSun) | 2026-04-16 |
+| [fresh-start-nirholas](skills/fresh-start-nirholas/) | [install](https://skills.sh/aradotso/trending-skills/fresh-start-nirholas) | [nirholas/fresh-start](https://github.com/nirholas/fresh-start) | 2026-04-16 |
 <!-- SKILL_INDEX -->
 
 ## How it works
