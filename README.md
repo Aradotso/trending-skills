@@ -378,6 +378,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [meta-harness-optimization](skills/meta-harness-optimization/) | [install](https://skills.sh/aradotso/trending-skills/meta-harness-optimization) | [stanford-iris-lab/meta-harness](https://github.com/stanford-iris-lab/meta-harness) | 2026-04-17 |
 | [claude-doctor-session-diagnostics](skills/claude-doctor-session-diagnostics/) | [install](https://skills.sh/aradotso/trending-skills/claude-doctor-session-diagnostics) | [millionco/claude-doctor](https://github.com/millionco/claude-doctor) | 2026-04-17 |
 | [border-beam-react](skills/border-beam-react/) | [install](https://skills.sh/aradotso/trending-skills/border-beam-react) | [Jakubantalik/border-beam](https://github.com/Jakubantalik/border-beam) | 2026-04-17 |
+| [design-md-chrome-extractor](skills/design-md-chrome-extractor/) | [install](https://skills.sh/aradotso/trending-skills/design-md-chrome-extractor) | [bergside/design-md-chrome](https://github.com/bergside/design-md-chrome) | 2026-04-17 |
 <!-- SKILL_INDEX -->
 
 ## How it works
