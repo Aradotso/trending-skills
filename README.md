@@ -375,6 +375,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [logo-generator-skill](skills/logo-generator-skill/) | [install](https://skills.sh/aradotso/trending-skills/logo-generator-skill) | [op7418/logo-generator-skill](https://github.com/op7418/logo-generator-skill) | 2026-04-17 |
 | [uzi-skill-stock-analyzer](skills/uzi-skill-stock-analyzer/) | [install](https://skills.sh/aradotso/trending-skills/uzi-skill-stock-analyzer) | [wbh604/UZI-Skill](https://github.com/wbh604/UZI-Skill) | 2026-04-17 |
 | [lingbot-map-3d-reconstruction](skills/lingbot-map-3d-reconstruction/) | [install](https://skills.sh/aradotso/trending-skills/lingbot-map-3d-reconstruction) | [Robbyant/lingbot-map](https://github.com/Robbyant/lingbot-map) | 2026-04-17 |
+| [meta-harness-optimization](skills/meta-harness-optimization/) | [install](https://skills.sh/aradotso/trending-skills/meta-harness-optimization) | [stanford-iris-lab/meta-harness](https://github.com/stanford-iris-lab/meta-harness) | 2026-04-17 |
 <!-- SKILL_INDEX -->
 
 ## How it works
