@@ -381,6 +381,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [design-md-chrome-extractor](skills/design-md-chrome-extractor/) | [install](https://skills.sh/aradotso/trending-skills/design-md-chrome-extractor) | [bergside/design-md-chrome](https://github.com/bergside/design-md-chrome) | 2026-04-17 |
 | [agentic-stack-portable-brain](skills/agentic-stack-portable-brain/) | [install](https://skills.sh/aradotso/trending-skills/agentic-stack-portable-brain) | [codejunkie99/agentic-stack](https://github.com/codejunkie99/agentic-stack) | 2026-04-18 |
 | [tech-doc-style-chinese](skills/tech-doc-style-chinese/) | [install](https://skills.sh/aradotso/trending-skills/tech-doc-style-chinese) | [Fenng/Tech-Doc-Style-Chinese](https://github.com/Fenng/Tech-Doc-Style-Chinese) | 2026-04-18 |
+| [wx-cli-wechat-local-data](skills/wx-cli-wechat-local-data/) | [install](https://skills.sh/aradotso/trending-skills/wx-cli-wechat-local-data) | [jackwener/wx-cli](https://github.com/jackwener/wx-cli) | 2026-04-18 |
 <!-- SKILL_INDEX -->
 
 ## How it works
