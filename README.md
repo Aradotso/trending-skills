@@ -388,6 +388,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [diagram-design-editorial](skills/diagram-design-editorial/) | [install](https://skills.sh/aradotso/trending-skills/diagram-design-editorial) | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design) | 2026-04-19 |
 | [pgque-postgres-queue](skills/pgque-postgres-queue/) | [install](https://skills.sh/aradotso/trending-skills/pgque-postgres-queue) | [NikolayS/pgque](https://github.com/NikolayS/pgque) | 2026-04-19 |
 | [obscura-headless-browser](skills/obscura-headless-browser/) | [install](https://skills.sh/aradotso/trending-skills/obscura-headless-browser) | [h4ckf0r0day/obscura](https://github.com/h4ckf0r0day/obscura) | 2026-04-19 |
+| [awesome-gpt-image-2-prompts](skills/awesome-gpt-image-2-prompts/) | [install](https://skills.sh/aradotso/trending-skills/awesome-gpt-image-2-prompts) | [EvoLinkAI/awesome-gpt-image-2-prompts](https://github.com/EvoLinkAI/awesome-gpt-image-2-prompts) | 2026-04-19 |
 <!-- SKILL_INDEX -->
 
 ## How it works
