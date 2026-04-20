@@ -394,6 +394,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [awesome-claude-design](skills/awesome-claude-design/) | [install](https://skills.sh/aradotso/trending-skills/awesome-claude-design) | [VoltAgent/awesome-claude-design](https://github.com/VoltAgent/awesome-claude-design) | 2026-04-19 |
 | [freebuff2api-openai-proxy](skills/freebuff2api-openai-proxy/) | [install](https://skills.sh/aradotso/trending-skills/freebuff2api-openai-proxy) | [Quorinex/Freebuff2API](https://github.com/Quorinex/Freebuff2API) | 2026-04-20 |
 | [permiso-accessibility-permissions](skills/permiso-accessibility-permissions/) | [install](https://skills.sh/aradotso/trending-skills/permiso-accessibility-permissions) | [zats/permiso](https://github.com/zats/permiso) | 2026-04-20 |
+| [cc-design-html-prototyping](skills/cc-design-html-prototyping/) | [install](https://skills.sh/aradotso/trending-skills/cc-design-html-prototyping) | [ZeroZ-lab/cc-design](https://github.com/ZeroZ-lab/cc-design) | 2026-04-20 |
 <!-- SKILL_INDEX -->
 
 ## How it works
