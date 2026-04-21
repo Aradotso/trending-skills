@@ -398,6 +398,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [create-simulated-aeronautics-mod](skills/create-simulated-aeronautics-mod/) | [install](https://skills.sh/aradotso/trending-skills/create-simulated-aeronautics-mod) | [Creators-of-Aeronautics/Simulated-Project](https://github.com/Creators-of-Aeronautics/Simulated-Project) | 2026-04-20 |
 | [cangjie-skill-book-distillation](skills/cangjie-skill-book-distillation/) | [install](https://skills.sh/aradotso/trending-skills/cangjie-skill-book-distillation) | [kangarooking/cangjie-skill](https://github.com/kangarooking/cangjie-skill) | 2026-04-20 |
 | [killerpdf-portable-editor](skills/killerpdf-portable-editor/) | [install](https://skills.sh/aradotso/trending-skills/killerpdf-portable-editor) | [SteveTheKiller/KillerPDF](https://github.com/SteveTheKiller/KillerPDF) | 2026-04-20 |
+| [mdv-markdown-visualization](skills/mdv-markdown-visualization/) | [install](https://skills.sh/aradotso/trending-skills/mdv-markdown-visualization) | [drasimwagan/mdv](https://github.com/drasimwagan/mdv) | 2026-04-21 |
 <!-- SKILL_INDEX -->
 
 ## How it works
