@@ -412,6 +412,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [opengame-agentic-game-creation](skills/opengame-agentic-game-creation/) | [install](https://skills.sh/aradotso/trending-skills/opengame-agentic-game-creation) | [leigest519/OpenGame](https://github.com/leigest519/OpenGame) | 2026-04-22 |
 | [aglais-xqvm-quantum-vm](skills/aglais-xqvm-quantum-vm/) | [install](https://skills.sh/aradotso/trending-skills/aglais-xqvm-quantum-vm) | [QuipNetwork/xq-rs](https://github.com/QuipNetwork/xq-rs) | 2026-04-23 |
 | [flashkda-delta-attention](skills/flashkda-delta-attention/) | [install](https://skills.sh/aradotso/trending-skills/flashkda-delta-attention) | [MoonshotAI/FlashKDA](https://github.com/MoonshotAI/FlashKDA) | 2026-04-23 |
+| [web-design-skill](skills/web-design-skill/) | [install](https://skills.sh/aradotso/trending-skills/web-design-skill) | [ConardLi/web-design-skill](https://github.com/ConardLi/web-design-skill) | 2026-04-23 |
 <!-- SKILL_INDEX -->
 
 ## How it works
