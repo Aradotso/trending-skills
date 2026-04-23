@@ -417,6 +417,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [mitm-domainfronting](skills/mitm-domainfronting/) | [install](https://skills.sh/aradotso/trending-skills/mitm-domainfronting) | [patterniha/MITM-DomainFronting](https://github.com/patterniha/MITM-DomainFronting) | 2026-04-23 |
 | [openai-privacy-filter](skills/openai-privacy-filter/) | [install](https://skills.sh/aradotso/trending-skills/openai-privacy-filter) | [openai/privacy-filter](https://github.com/openai/privacy-filter) | 2026-04-23 |
 | [tilekernels-gpu-kernels](skills/tilekernels-gpu-kernels/) | [install](https://skills.sh/aradotso/trending-skills/tilekernels-gpu-kernels) | [deepseek-ai/TileKernels](https://github.com/deepseek-ai/TileKernels) | 2026-04-23 |
+| [crabtrap-llm-proxy](skills/crabtrap-llm-proxy/) | [install](https://skills.sh/aradotso/trending-skills/crabtrap-llm-proxy) | [brexhq/CrabTrap](https://github.com/brexhq/CrabTrap) | 2026-04-23 |
 <!-- SKILL_INDEX -->
 
 ## How it works
