@@ -411,6 +411,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [oransim-causal-marketing-twin](skills/oransim-causal-marketing-twin/) | [install](https://skills.sh/aradotso/trending-skills/oransim-causal-marketing-twin) | [OranAi-Ltd/oransim](https://github.com/OranAi-Ltd/oransim) | 2026-04-22 |
 | [opengame-agentic-game-creation](skills/opengame-agentic-game-creation/) | [install](https://skills.sh/aradotso/trending-skills/opengame-agentic-game-creation) | [leigest519/OpenGame](https://github.com/leigest519/OpenGame) | 2026-04-22 |
 | [aglais-xqvm-quantum-vm](skills/aglais-xqvm-quantum-vm/) | [install](https://skills.sh/aradotso/trending-skills/aglais-xqvm-quantum-vm) | [QuipNetwork/xq-rs](https://github.com/QuipNetwork/xq-rs) | 2026-04-23 |
+| [flashkda-delta-attention](skills/flashkda-delta-attention/) | [install](https://skills.sh/aradotso/trending-skills/flashkda-delta-attention) | [MoonshotAI/FlashKDA](https://github.com/MoonshotAI/FlashKDA) | 2026-04-23 |
 <!-- SKILL_INDEX -->
 
 ## How it works
