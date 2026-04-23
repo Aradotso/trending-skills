@@ -410,6 +410,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [kiro-auto-aws-builder-id](skills/kiro-auto-aws-builder-id/) | [install](https://skills.sh/aradotso/trending-skills/kiro-auto-aws-builder-id) | [AERT-7Y/kiro-auto](https://github.com/AERT-7Y/kiro-auto) | 2026-04-22 |
 | [oransim-causal-marketing-twin](skills/oransim-causal-marketing-twin/) | [install](https://skills.sh/aradotso/trending-skills/oransim-causal-marketing-twin) | [OranAi-Ltd/oransim](https://github.com/OranAi-Ltd/oransim) | 2026-04-22 |
 | [opengame-agentic-game-creation](skills/opengame-agentic-game-creation/) | [install](https://skills.sh/aradotso/trending-skills/opengame-agentic-game-creation) | [leigest519/OpenGame](https://github.com/leigest519/OpenGame) | 2026-04-22 |
+| [aglais-xqvm-quantum-vm](skills/aglais-xqvm-quantum-vm/) | [install](https://skills.sh/aradotso/trending-skills/aglais-xqvm-quantum-vm) | [QuipNetwork/xq-rs](https://github.com/QuipNetwork/xq-rs) | 2026-04-23 |
 <!-- SKILL_INDEX -->
 
 ## How it works
