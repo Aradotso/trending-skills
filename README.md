@@ -418,6 +418,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [openai-privacy-filter](skills/openai-privacy-filter/) | [install](https://skills.sh/aradotso/trending-skills/openai-privacy-filter) | [openai/privacy-filter](https://github.com/openai/privacy-filter) | 2026-04-23 |
 | [tilekernels-gpu-kernels](skills/tilekernels-gpu-kernels/) | [install](https://skills.sh/aradotso/trending-skills/tilekernels-gpu-kernels) | [deepseek-ai/TileKernels](https://github.com/deepseek-ai/TileKernels) | 2026-04-23 |
 | [crabtrap-llm-proxy](skills/crabtrap-llm-proxy/) | [install](https://skills.sh/aradotso/trending-skills/crabtrap-llm-proxy) | [brexhq/CrabTrap](https://github.com/brexhq/CrabTrap) | 2026-04-23 |
+| [masterhttprelayvpn-proxy](skills/masterhttprelayvpn-proxy/) | [install](https://skills.sh/aradotso/trending-skills/masterhttprelayvpn-proxy) | [masterking32/MasterHttpRelayVPN](https://github.com/masterking32/MasterHttpRelayVPN) | 2026-04-23 |
 <!-- SKILL_INDEX -->
 
 ## How it works
