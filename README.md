@@ -420,6 +420,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [crabtrap-llm-proxy](skills/crabtrap-llm-proxy/) | [install](https://skills.sh/aradotso/trending-skills/crabtrap-llm-proxy) | [brexhq/CrabTrap](https://github.com/brexhq/CrabTrap) | 2026-04-23 |
 | [masterhttprelayvpn-proxy](skills/masterhttprelayvpn-proxy/) | [install](https://skills.sh/aradotso/trending-skills/masterhttprelayvpn-proxy) | [masterking32/MasterHttpRelayVPN](https://github.com/masterking32/MasterHttpRelayVPN) | 2026-04-23 |
 | [masterhttprelayvpn-rust](skills/masterhttprelayvpn-rust/) | [install](https://skills.sh/aradotso/trending-skills/masterhttprelayvpn-rust) | [therealaleph/MasterHttpRelayVPN-RUST](https://github.com/therealaleph/MasterHttpRelayVPN-RUST) | 2026-04-23 |
+| [guizang-ppt-skill](skills/guizang-ppt-skill/) | [install](https://skills.sh/aradotso/trending-skills/guizang-ppt-skill) | [op7418/guizang-ppt-skill](https://github.com/op7418/guizang-ppt-skill) | 2026-04-24 |
 <!-- SKILL_INDEX -->
 
 ## How it works
