@@ -1,68 +1,95 @@
 ```markdown
 ---
 name: deepseek-v4-roleplay-instruct
-description: Control DeepSeek-V4 thinking mode during roleplay — switch between immersive character inner monologue and pure analytical planning in the <think> block
+description: Control DeepSeek-V4's thinking chain style during roleplay with special marker instructions for immersive character inner monologue or pure analytical planning modes.
 triggers:
-  - deepseek roleplay thinking mode
-  - deepseek v4 inner monologue
-  - deepseek character immersion mode
-  - control deepseek think block
-  - deepseek roleplay instruct
-  - deepseek pure analysis mode
-  - deepseek v4 roleplay api
-  - switch deepseek thinking style
+  - "add deepseek roleplay thinking mode"
+  - "switch deepseek inner monologue mode"
+  - "use deepseek character immersion instruct"
+  - "set deepseek v4 roleplay thinking style"
+  - "inject deepseek roleplay marker"
+  - "configure deepseek think tag behavior"
+  - "enable deepseek pure analysis mode"
+  - "deepseek roleplay control instruction"
 ---
 
 # DeepSeek V4 Roleplay Instruct
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-DeepSeek-V4 supports special control instructions that change how the model *thinks* during roleplay. By appending a marker to the **first user message**, you can steer the `<think>` block between two styles:
+## What This Project Does
 
-| Mode | Think Block Style |
+DeepSeek-V4 exposes special control markers you can inject into the **first user message** of a conversation to steer how the model reasons inside its `<think>` tags during roleplay. There are two modes beyond the default:
+
+| Mode | Effect on `<think>` content |
 |---|---|
-| **Default** | Model chooses automatically based on complexity |
-| **Role Immersion** (`inner_os`) | First-person inner monologue wrapped in parentheses `（心想：…）` |
-| **Pure Analysis** (`no_inner_os`) | Detached director-style planning, no inner monologue |
+| **Default** | Model auto-selects based on scene complexity |
+| **Character Immersion** (`inner_os`) | First-person inner monologue wrapped in parentheses `（心想：…）` |
+| **Pure Analysis** (`no_inner_os`) | Cold director-style planning, no inner monologue |
 
 **Supported surfaces:**
-- DeepSeek official APP / web — **Expert Mode only** (深度思考/专家模式)
-- API models: `deepseek-v4-flash`, `deepseek-v4-pro`
-- Web Quick Mode is **not** supported
+- DeepSeek official APP / web **Expert Mode**
+- `deepseek-v4-flash` and `deepseek-v4-pro` APIs
+- *(Web Quick Mode is NOT supported)*
+
+**Key constraint:** Markers go in the **first user message only** — they remain in conversation history and auto-apply to all subsequent turns.
 
 ---
 
-## How It Works
+## Installation / Setup
 
-The marker is appended to the **first user turn only**. Because the model always sees full conversation history, the instruction stays in context for every subsequent turn automatically. No changes needed to later messages.
+No package installation required. This is a prompting technique. For API usage, copy the marker strings into your application code.
 
----
+### Environment Variables
 
-## The Two Markers (copy-ready)
-
-### Role Immersion Marker
+```bash
+# Your DeepSeek API key
+export DEEPSEEK_API_KEY="your_api_key_here"
+export DEEPSEEK_API_BASE="https://api.deepseek.com"  # or your endpoint
 ```
-【角色沉浸要求】在你的思考过程（<think>标签内）中，请遵守以下规则：
-1. 请以角色第一人称进行内心独白，用括号包裹内心活动，例如"（心想：……）"或"(内心OS：……)"
-2. 用第一人称描写角色的内心感受，例如"我心想""我觉得""我暗自"等
-3. 思考内容应沉浸在角色中，通过内心独白分析剧情和规划回复
+
+---
+
+## The Marker Strings
+
+### Character Immersion Marker
+
+```python
+INNER_OS_MARKER = (
+    "\n\n【角色沉浸要求】在你的思考过程（<think>标签内）中，请遵守以下规则：\n"
+    "1. 请以角色第一人称进行内心独白，用括号包裹内心活动，例如"（心想：……）"或"(内心OS：……)"\n"
+    "2. 用第一人称描写角色的内心感受，例如"我心想""我觉得""我暗自"等\n"
+    "3. 思考内容应沉浸在角色中，通过内心独白分析剧情和规划回复"
+)
 ```
 
 ### Pure Analysis Marker
-```
-【思维模式要求】在你的思考过程（<think>标签内）中，请遵守以下规则：
-1. 禁止使用圆括号包裹内心独白，例如"（心想：……）"或"(内心OS：……)"，所有分析内容直接陈述即可
-2. 禁止以角色第一人称描写内心活动，例如"我心想""我觉得""我暗自"等，请用分析性语言替代
-3. 思考内容应聚焦于剧情走向分析和回复内容规划，不要在思考中进行角色扮演式的内心戏表演
+
+```python
+NO_INNER_OS_MARKER = (
+    "\n\n【思维模式要求】在你的思考过程（<think>标签内）中，请遵守以下规则：\n"
+    "1. 禁止使用圆括号包裹内心独白，例如"（心想：……）"或"(内心OS：……)"，所有分析内容直接陈述即可\n"
+    "2. 禁止以角色第一人称描写内心活动，例如"我心想""我觉得""我暗自"等，请用分析性语言替代\n"
+    "3. 思考内容应聚焦于剧情走向分析和回复内容规划，不要在思考中进行角色扮演式的内心戏表演"
+)
 ```
 
 ---
 
-## Python API Integration
+## Core API Usage Pattern
 
-### Constants
+### Full Working Example (Python)
 
 ```python
+import os
+from openai import OpenAI  # DeepSeek is OpenAI-compatible
+
+client = OpenAI(
+    api_key=os.environ["DEEPSEEK_API_KEY"],
+    base_url=os.environ.get("DEEPSEEK_API_BASE", "https://api.deepseek.com"),
+)
+
+# --- Marker definitions ---
 INNER_OS_MARKER = (
     "\n\n【角色沉浸要求】在你的思考过程（<think>标签内）中，请遵守以下规则：\n"
     "1. 请以角色第一人称进行内心独白，用括号包裹内心活动，例如"（心想：……）"或"(内心OS：……)"\n"
@@ -76,103 +103,154 @@ NO_INNER_OS_MARKER = (
     "2. 禁止以角色第一人称描写内心活动，例如"我心想""我觉得""我暗自"等，请用分析性语言替代\n"
     "3. 思考内容应聚焦于剧情走向分析和回复内容规划，不要在思考中进行角色扮演式的内心戏表演"
 )
-```
 
-### Message Builder
+MARKERS = {
+    "inner_os": INNER_OS_MARKER,
+    "no_inner_os": NO_INNER_OS_MARKER,
+    "default": "",
+}
 
-```python
-def build_messages(
-    system_prompt: str,
-    user_first_message: str,
-    mode: str = "default"  # "default" | "inner_os" | "no_inner_os"
-) -> list[dict]:
+
+def build_messages(system_prompt: str, user_first_message: str, mode: str = "default") -> list[dict]:
     """
-    Build the initial message list with the appropriate thinking-mode marker
-    injected into the first user turn.
-    """
-    if mode == "inner_os":
-        user_first_message += INNER_OS_MARKER
-    elif mode == "no_inner_os":
-        user_first_message += NO_INNER_OS_MARKER
-    # "default" → no modification
+    Build the initial messages list with the appropriate marker appended
+    to the first user message.
 
+    Args:
+        system_prompt: The character/scenario system prompt.
+        user_first_message: The first user turn content.
+        mode: One of "inner_os", "no_inner_os", or "default".
+
+    Returns:
+        List of message dicts ready to send to the API.
+    """
+    marker = MARKERS.get(mode, "")
     return [
         {"role": "system", "content": system_prompt},
-        {"role": "user",   "content": user_first_message},
+        {"role": "user", "content": user_first_message + marker},
     ]
-```
 
-### Full Multi-Turn Example
 
-```python
-import os
-from openai import OpenAI
+def chat(messages: list[dict], model: str = "deepseek-v4-flash") -> str:
+    """Send messages and return the assistant reply text."""
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+    )
+    return response.choices[0].message.content
 
-client = OpenAI(
-    api_key=os.environ["DEEPSEEK_API_KEY"],
-    base_url="https://api.deepseek.com/v1",
-)
 
-SYSTEM_PROMPT = "你是一个傲娇的女高中生，性格表面冷淡但内心温柔。"
+# --- Example: multi-turn roleplay with character immersion mode ---
 
-# --- Turn 1: inject marker once ---
+system_prompt = "你是一个傲娇的女高中生，表面上对人冷漠，内心其实很在意别人的感受。"
+
+# Turn 1 — marker is injected here automatically
 messages = build_messages(
-    system_prompt=SYSTEM_PROMPT,
+    system_prompt=system_prompt,
     user_first_message="「我走进教室」"早上好。"",
-    mode="inner_os",   # or "no_inner_os" or "default"
+    mode="inner_os",
 )
+reply = chat(messages)
+print("Turn 1:", reply)
 
-response = client.chat.completions.create(
-    model="deepseek-v4-pro",   # or "deepseek-v4-flash"
-    messages=messages,
-)
-reply = response.choices[0].message.content
-print(reply)
-
-# --- Turn 2+: append normally, marker stays in history ---
+# Turn 2 — no special handling needed; marker stays in history
 messages.append({"role": "assistant", "content": reply})
 messages.append({"role": "user", "content": "「我在她旁边坐下」"今天心情不好吗？""})
+reply = chat(messages)
+print("Turn 2:", reply)
 
-response2 = client.chat.completions.create(
-    model="deepseek-v4-pro",
-    messages=messages,
-)
-print(response2.choices[0].message.content)
-```
-
-### Streaming Variant
-
-```python
-stream = client.chat.completions.create(
-    model="deepseek-v4-pro",
-    messages=messages,
-    stream=True,
-)
-
-think_buf, reply_buf = [], []
-in_think = False
-
-for chunk in stream:
-    delta = chunk.choices[0].delta.content or ""
-    # DeepSeek wraps reasoning in <think>...</think>
-    if "<think>" in delta:
-        in_think = True
-    if in_think:
-        think_buf.append(delta)
-    else:
-        reply_buf.append(delta)
-    if "</think>" in delta:
-        in_think = False
-
-print("THINK:", "".join(think_buf))
-print("REPLY:", "".join(reply_buf))
+# Turn 3
+messages.append({"role": "assistant", "content": reply})
+messages.append({"role": "user", "content": "「我注意到她手上有一道疤痕」"你的手……没事吧？""})
+reply = chat(messages)
+print("Turn 3:", reply)
 ```
 
 ---
 
-## Web Usage (1-step)
+## Common Patterns
 
-Paste the marker at the end of your **first** message, separated by a blank line:
+### Pattern 1: Conversation Manager Class
+
+```python
+class DeepSeekRoleplay:
+    """Manages a stateful DeepSeek roleplay conversation."""
+
+    MARKERS = {
+        "inner_os": (
+            "\n\n【角色沉浸要求】在你的思考过程（<think>标签内）中，请遵守以下规则：\n"
+            "1. 请以角色第一人称进行内心独白，用括号包裹内心活动，例如"（心想：……）"或"(内心OS：……)"\n"
+            "2. 用第一人称描写角色的内心感受，例如"我心想""我觉得""我暗自"等\n"
+            "3. 思考内容应沉浸在角色中，通过内心独白分析剧情和规划回复"
+        ),
+        "no_inner_os": (
+            "\n\n【思维模式要求】在你的思考过程（<think>标签内）中，请遵守以下规则：\n"
+            "1. 禁止使用圆括号包裹内心独白，例如"（心想：……）"或"(内心OS：……)"，所有分析内容直接陈述即可\n"
+            "2. 禁止以角色第一人称描写内心活动，例如"我心想""我觉得""我暗自"等，请用分析性语言替代\n"
+            "3. 思考内容应聚焦于剧情走向分析和回复内容规划，不要在思考中进行角色扮演式的内心戏表演"
+        ),
+        "default": "",
+    }
+
+    def __init__(
+        self,
+        system_prompt: str,
+        mode: str = "default",
+        model: str = "deepseek-v4-flash",
+    ):
+        self.model = model
+        self.mode = mode
+        self.messages: list[dict] = [{"role": "system", "content": system_prompt}]
+        self._first_turn = True
+        self.client = OpenAI(
+            api_key=os.environ["DEEPSEEK_API_KEY"],
+            base_url=os.environ.get("DEEPSEEK_API_BASE", "https://api.deepseek.com"),
+        )
+
+    def send(self, user_message: str) -> str:
+        content = user_message
+        if self._first_turn:
+            content += self.MARKERS.get(self.mode, "")
+            self._first_turn = False
+
+        self.messages.append({"role": "user", "content": content})
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=self.messages,
+        )
+        reply = response.choices[0].message.content
+        self.messages.append({"role": "assistant", "content": reply})
+        return reply
+
+    def reset(self, system_prompt: str | None = None, mode: str | None = None):
+        """Start a fresh conversation, optionally changing system prompt or mode."""
+        if system_prompt:
+            self.messages = [{"role": "system", "content": system_prompt}]
+        else:
+            self.messages = [self.messages[0]]
+        if mode:
+            self.mode = mode
+        self._first_turn = True
+
+
+# Usage
+rp = DeepSeekRoleplay(
+    system_prompt="你是咖啡店里沉默寡言的男店员，暗恋常客。",
+    mode="inner_os",
+    model="deepseek-v4-pro",
+)
+
+print(rp.send("「我推开咖啡店的门」"你好，请问还有位置吗？""))
+print(rp.send("「我坐到窗边」"来一杯美式。""))
+
+# Switch to pure analysis mode for a new scenario
+rp.reset(system_prompt="你是一个冷静的侦探，正在审讯嫌疑人。", mode="no_inner_os")
+print(rp.send("「我把一张照片推到桌上」"你认识这个人吗？""))
+```
+
+### Pattern 2: Web Prompt Template (Copy-Paste Format)
+
+For use in DeepSeek web Expert Mode, structure your first message like:
 
 ```
 「我推开咖啡店的门，看到你正在擦吧台。」"你好，请问还有位置吗？"
@@ -183,154 +261,98 @@ Paste the marker at the end of your **first** message, separated by a blank line
 3. 思考内容应沉浸在角色中，通过内心独白分析剧情和规划回复
 ```
 
-Subsequent turns need no marker — just write normally.
+Subsequent messages need no special formatting.
 
----
+### Pattern 3: Async API Usage
 
-## TypeScript / JavaScript
+```python
+import asyncio
+import os
+from openai import AsyncOpenAI
 
-```typescript
-const INNER_OS_MARKER = `\n\n【角色沉浸要求】在你的思考过程（<think>标签内）中，请遵守以下规则：
-1. 请以角色第一人称进行内心独白，用括号包裹内心活动，例如"（心想：……）"或"(内心OS：……)"
-2. 用第一人称描写角色的内心感受，例如"我心想""我觉得""我暗自"等
-3. 思考内容应沉浸在角色中，通过内心独白分析剧情和规划回复`;
+client = AsyncOpenAI(
+    api_key=os.environ["DEEPSEEK_API_KEY"],
+    base_url=os.environ.get("DEEPSEEK_API_BASE", "https://api.deepseek.com"),
+)
 
-const NO_INNER_OS_MARKER = `\n\n【思维模式要求】在你的思考过程（<think>标签内）中，请遵守以下规则：
-1. 禁止使用圆括号包裹内心独白，例如"（心想：……）"或"(内心OS：……)"，所有分析内容直接陈述即可
-2. 禁止以角色第一人称描写内心活动，例如"我心想""我觉得""我暗自"等，请用分析性语言替代
-3. 思考内容应聚焦于剧情走向分析和回复内容规划，不要在思考中进行角色扮演式的内心戏表演`;
+INNER_OS_MARKER = (
+    "\n\n【角色沉浸要求】在你的思考过程（<think>标签内）中，请遵守以下规则：\n"
+    "1. 请以角色第一人称进行内心独白，用括号包裹内心活动，例如"（心想：……）"或"(内心OS：……)"\n"
+    "2. 用第一人称描写角色的内心感受，例如"我心想""我觉得""我暗自"等\n"
+    "3. 思考内容应沉浸在角色中，通过内心独白分析剧情和规划回复"
+)
 
-type ThinkMode = "default" | "inner_os" | "no_inner_os";
+async def roleplay_turn(messages: list[dict], model: str = "deepseek-v4-flash") -> str:
+    response = await client.chat.completions.create(
+        model=model,
+        messages=messages,
+    )
+    return response.choices[0].message.content
 
-interface Message {
-  role: "system" | "user" | "assistant";
-  content: string;
-}
+async def main():
+    system = "你是一个温柔的图书管理员，喜欢推荐冷门好书。"
+    first_user = "「我走进图书馆，四处张望」"请问有什么好看的书推荐吗？"" + INNER_OS_MARKER
 
-function buildMessages(
-  systemPrompt: string,
-  userFirstMessage: string,
-  mode: ThinkMode = "default"
-): Message[] {
-  let firstMsg = userFirstMessage;
-  if (mode === "inner_os") firstMsg += INNER_OS_MARKER;
-  if (mode === "no_inner_os") firstMsg += NO_INNER_OS_MARKER;
+    messages = [
+        {"role": "system", "content": system},
+        {"role": "user", "content": first_user},
+    ]
 
-  return [
-    { role: "system", content: systemPrompt },
-    { role: "user",   content: firstMsg },
-  ];
-}
+    reply = await roleplay_turn(messages)
+    print(reply)
 
-// Usage
-import OpenAI from "openai";
-
-const client = new OpenAI({
-  apiKey: process.env.DEEPSEEK_API_KEY,
-  baseURL: "https://api.deepseek.com/v1",
-});
-
-const messages = buildMessages(
-  "你是一个傲娇的女高中生。",
-  "「我走进教室」"早上好。"",
-  "inner_os"
-);
-
-const res = await client.chat.completions.create({
-  model: "deepseek-v4-pro",
-  messages,
-});
-
-console.log(res.choices[0].message.content);
+asyncio.run(main())
 ```
 
 ---
 
-## Common Patterns
+## Configuration Reference
 
-### Reusable Roleplay Session Class (Python)
-
-```python
-class DeepSeekRoleplaySession:
-    """Manages a stateful multi-turn roleplay conversation."""
-
-    def __init__(
-        self,
-        system_prompt: str,
-        model: str = "deepseek-v4-pro",
-        mode: str = "inner_os",
-    ):
-        self.model = model
-        self.mode = mode
-        self.system_prompt = system_prompt
-        self.history: list[dict] = []
-        self._first_turn = True
-        self.client = OpenAI(
-            api_key=os.environ["DEEPSEEK_API_KEY"],
-            base_url="https://api.deepseek.com/v1",
-        )
-
-    def chat(self, user_message: str) -> str:
-        if self._first_turn:
-            if self.mode == "inner_os":
-                user_message += INNER_OS_MARKER
-            elif self.mode == "no_inner_os":
-                user_message += NO_INNER_OS_MARKER
-            self._first_turn = False
-
-        self.history.append({"role": "user", "content": user_message})
-
-        messages = [{"role": "system", "content": self.system_prompt}] + self.history
-
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=messages,
-        )
-        reply = response.choices[0].message.content
-        self.history.append({"role": "assistant", "content": reply})
-        return reply
-
-
-# Usage
-session = DeepSeekRoleplaySession(
-    system_prompt="你是一个在咖啡店打工的神秘少年。",
-    mode="inner_os",
-)
-
-print(session.chat("「我推开门走进来」"今天有什么特调吗？""))
-print(session.chat("「我在吧台旁坐下」"你平时喜欢喝什么？""))
-```
-
-### Switch Modes Between Conversations
-
-```python
-# Start a new session with a different mode — never reuse old session
-analysis_session = DeepSeekRoleplaySession(
-    system_prompt="你是一个冷静的侦探。",
-    mode="no_inner_os",
-)
-```
+| Parameter | Values | Notes |
+|---|---|---|
+| `mode` | `"inner_os"`, `"no_inner_os"`, `"default"` | Determines which marker (if any) is appended |
+| `model` | `"deepseek-v4-flash"`, `"deepseek-v4-pro"` | Both support marker injection |
+| Marker position | First user message **only** | System prompt placement is less stable |
+| Marker placement | Append at **end** of message | Separate from main content with a blank line |
 
 ---
 
 ## Troubleshooting
 
-| Problem | Solution |
-|---|---|
-| Marker didn't trigger (think block still wrong style) | Re-roll — triggers are probabilistic, not guaranteed. Try 2–3 times. |
-| Using web Quick Mode | Switch to **Expert Mode** (专家模式). Quick Mode is unsupported. |
-| Putting marker in system prompt | Move it to the **first user message** — that's where the model was trained to read it. |
-| Marker fires on turn 2+ | Only inject on turn 1; the history carries it forward automatically. |
-| Think block not visible in web UI | Click "查看思考过程" to expand the reasoning panel. |
-| `deepseek-v4-flash` vs `deepseek-v4-pro` | Both supported. `flash` is faster/cheaper; `pro` produces richer inner monologue. |
+### Marker not taking effect
 
----
+- **Cause:** Markers are probabilistic, not guaranteed 100%.
+- **Fix:** Retry the generation (re-roll). The marker increases probability but doesn't guarantee the format on every single generation.
 
-## Key Rules to Remember
+### Mode applied to wrong surface
 
-1. **First user message only** — inject the marker once, never repeat it.
-2. **Blank line separator** — when typing manually in web UI, leave a blank line between your message and the marker.
-3. **Think block only** — markers control `<think>` content, not the final reply. Final reply style is only indirectly affected.
-4. **New conversation = new mode** — to switch modes, start a fresh conversation.
-5. **Probabilistic** — if the first generation doesn't show the expected think style, retry.
+- **Cause:** Web Quick Mode is not supported.
+- **Fix:** Switch to **Expert Mode** on the DeepSeek web interface, or use the API directly.
+
+### Marker placed in system prompt doesn't work reliably
+
+- **Cause:** The model was trained with markers in the user message position.
+- **Fix:** Always inject the marker into the **first user message**, not `system`.
+
+### Mode bleeds into a new conversation
+
+- **Cause:** The marker is still in conversation history.
+- **Fix:** Start a new conversation/session. Markers only persist within a single conversation's context window.
+
+### Want to switch modes mid-story
+
+- **Cause:** Markers only take effect when present in the first turn.
+- **Fix:** Start a new conversation with the desired marker in the first message. There is no mid-conversation mode switch mechanism.
+
+### Thinking content not visible
+
+- **Cause:** You need to click "查看思考过程" (View thinking process) in the web UI, or parse the `<think>...</think>` block from the API response.
+- **Fix (API):**
+  ```python
+  raw = response.choices[0].message.content
+  import re
+  think_match = re.search(r"<think>(.*?)</think>", raw, re.DOTALL)
+  think_content = think_match.group(1).strip() if think_match else ""
+  reply_content = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
+  ```
 ```
