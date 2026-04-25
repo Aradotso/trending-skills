@@ -429,6 +429,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [future-agi-platform](skills/future-agi-platform/) | [install](https://skills.sh/aradotso/trending-skills/future-agi-platform) | [future-agi/future-agi](https://github.com/future-agi/future-agi) | 2026-04-25 |
 | [text-to-cad-harness](skills/text-to-cad-harness/) | [install](https://skills.sh/aradotso/trending-skills/text-to-cad-harness) | [earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad) | 2026-04-25 |
 | [gpt-image-2-skill](skills/gpt-image-2-skill/) | [install](https://skills.sh/aradotso/trending-skills/gpt-image-2-skill) | [wuyoscar/gpt_image_2_skill](https://github.com/wuyoscar/gpt_image_2_skill) | 2026-04-25 |
+| [freellmapi-proxy](skills/freellmapi-proxy/) | [install](https://skills.sh/aradotso/trending-skills/freellmapi-proxy) | [tashfeenahmed/freellmapi](https://github.com/tashfeenahmed/freellmapi) | 2026-04-25 |
 <!-- SKILL_INDEX -->
 
 ## How it works
