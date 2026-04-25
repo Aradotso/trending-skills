@@ -431,6 +431,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [gpt-image-2-skill](skills/gpt-image-2-skill/) | [install](https://skills.sh/aradotso/trending-skills/gpt-image-2-skill) | [wuyoscar/gpt_image_2_skill](https://github.com/wuyoscar/gpt_image_2_skill) | 2026-04-25 |
 | [freellmapi-proxy](skills/freellmapi-proxy/) | [install](https://skills.sh/aradotso/trending-skills/freellmapi-proxy) | [tashfeenahmed/freellmapi](https://github.com/tashfeenahmed/freellmapi) | 2026-04-25 |
 | [clawsweeper-issue-triage](skills/clawsweeper-issue-triage/) | [install](https://skills.sh/aradotso/trending-skills/clawsweeper-issue-triage) | [openclaw/clawsweeper](https://github.com/openclaw/clawsweeper) | 2026-04-25 |
+| [pi-computer-use](skills/pi-computer-use/) | [install](https://skills.sh/aradotso/trending-skills/pi-computer-use) | [injaneity/pi-computer-use](https://github.com/injaneity/pi-computer-use) | 2026-04-25 |
 <!-- SKILL_INDEX -->
 
 ## How it works
