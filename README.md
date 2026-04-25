@@ -425,6 +425,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [harmonist-agent-orchestration](skills/harmonist-agent-orchestration/) | [install](https://skills.sh/aradotso/trending-skills/harmonist-agent-orchestration) | [GammaLabTechnologies/harmonist](https://github.com/GammaLabTechnologies/harmonist) | 2026-04-25 |
 | [superlevels-chrome-extension](skills/superlevels-chrome-extension/) | [install](https://skills.sh/aradotso/trending-skills/superlevels-chrome-extension) | [levelsio/superlevels](https://github.com/levelsio/superlevels) | 2026-04-25 |
 | [garden-skills-web-design-engineer](skills/garden-skills-web-design-engineer/) | [install](https://skills.sh/aradotso/trending-skills/garden-skills-web-design-engineer) | [ConardLi/garden-skills](https://github.com/ConardLi/garden-skills) | 2026-04-25 |
+| [agent-sprite-forge](skills/agent-sprite-forge/) | [install](https://skills.sh/aradotso/trending-skills/agent-sprite-forge) | [0x0funky/agent-sprite-forge](https://github.com/0x0funky/agent-sprite-forge) | 2026-04-25 |
 <!-- SKILL_INDEX -->
 
 ## How it works
