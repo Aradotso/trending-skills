@@ -423,6 +423,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [guizang-ppt-skill](skills/guizang-ppt-skill/) | [install](https://skills.sh/aradotso/trending-skills/guizang-ppt-skill) | [op7418/guizang-ppt-skill](https://github.com/op7418/guizang-ppt-skill) | 2026-04-24 |
 | [deepseek-v4-roleplay-instruct](skills/deepseek-v4-roleplay-instruct/) | [install](https://skills.sh/aradotso/trending-skills/deepseek-v4-roleplay-instruct) | [victorchen96/deepseek_v4_rolepaly_instruct](https://github.com/victorchen96/deepseek_v4_rolepaly_instruct) | 2026-04-24 |
 | [harmonist-agent-orchestration](skills/harmonist-agent-orchestration/) | [install](https://skills.sh/aradotso/trending-skills/harmonist-agent-orchestration) | [GammaLabTechnologies/harmonist](https://github.com/GammaLabTechnologies/harmonist) | 2026-04-25 |
+| [superlevels-chrome-extension](skills/superlevels-chrome-extension/) | [install](https://skills.sh/aradotso/trending-skills/superlevels-chrome-extension) | [levelsio/superlevels](https://github.com/levelsio/superlevels) | 2026-04-25 |
 <!-- SKILL_INDEX -->
 
 ## How it works
