@@ -427,6 +427,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [garden-skills-web-design-engineer](skills/garden-skills-web-design-engineer/) | [install](https://skills.sh/aradotso/trending-skills/garden-skills-web-design-engineer) | [ConardLi/garden-skills](https://github.com/ConardLi/garden-skills) | 2026-04-25 |
 | [agent-sprite-forge](skills/agent-sprite-forge/) | [install](https://skills.sh/aradotso/trending-skills/agent-sprite-forge) | [0x0funky/agent-sprite-forge](https://github.com/0x0funky/agent-sprite-forge) | 2026-04-25 |
 | [future-agi-platform](skills/future-agi-platform/) | [install](https://skills.sh/aradotso/trending-skills/future-agi-platform) | [future-agi/future-agi](https://github.com/future-agi/future-agi) | 2026-04-25 |
+| [text-to-cad-harness](skills/text-to-cad-harness/) | [install](https://skills.sh/aradotso/trending-skills/text-to-cad-harness) | [earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad) | 2026-04-25 |
 <!-- SKILL_INDEX -->
 
 ## How it works
