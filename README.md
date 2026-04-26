@@ -439,6 +439,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [thclaws-agent-harness](skills/thclaws-agent-harness/) | [install](https://skills.sh/aradotso/trending-skills/thclaws-agent-harness) | [thClaws/thClaws](https://github.com/thClaws/thClaws) | 2026-04-26 |
 | [awawausb-webusb-firefox](skills/awawausb-webusb-firefox/) | [install](https://skills.sh/aradotso/trending-skills/awawausb-webusb-firefox) | [ArcaneNibble/awawausb](https://github.com/ArcaneNibble/awawausb) | 2026-04-26 |
 | [token-dashboard-claude-analytics](skills/token-dashboard-claude-analytics/) | [install](https://skills.sh/aradotso/trending-skills/token-dashboard-claude-analytics) | [nateherkai/token-dashboard](https://github.com/nateherkai/token-dashboard) | 2026-04-26 |
+| [humanize-korean-ai-text](skills/humanize-korean-ai-text/) | [install](https://skills.sh/aradotso/trending-skills/humanize-korean-ai-text) | [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) | 2026-04-26 |
 <!-- SKILL_INDEX -->
 
 ## How it works
