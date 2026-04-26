@@ -436,6 +436,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [privacy-parser-pii-extraction](skills/privacy-parser-pii-extraction/) | [install](https://skills.sh/aradotso/trending-skills/privacy-parser-pii-extraction) | [chiefautism/privacy-parser](https://github.com/chiefautism/privacy-parser) | 2026-04-26 |
 | [mckinsey-pptx-generator](skills/mckinsey-pptx-generator/) | [install](https://skills.sh/aradotso/trending-skills/mckinsey-pptx-generator) | [seulee26/mckinsey-pptx](https://github.com/seulee26/mckinsey-pptx) | 2026-04-26 |
 | [wanman-agent-matrix](skills/wanman-agent-matrix/) | [install](https://skills.sh/aradotso/trending-skills/wanman-agent-matrix) | [chekusu/wanman](https://github.com/chekusu/wanman) | 2026-04-26 |
+| [thclaws-agent-harness](skills/thclaws-agent-harness/) | [install](https://skills.sh/aradotso/trending-skills/thclaws-agent-harness) | [thClaws/thClaws](https://github.com/thClaws/thClaws) | 2026-04-26 |
 <!-- SKILL_INDEX -->
 
 ## How it works
