@@ -1,468 +1,297 @@
 ```markdown
 ---
 name: humanize-korean-ai-text
-description: Remove AI-tell patterns from Korean text using the im-not-ai Claude Code skill harness — detects 40+ patterns across 10 categories and rewrites with surgical precision while preserving meaning.
+description: Remove AI-generated writing patterns from Korean text using the im-not-ai Claude Code skill harness
 triggers:
   - "AI 티 없애줘"
   - "GPT 문체 제거해줘"
   - "사람이 쓴 것처럼 윤문해줘"
   - "번역투 제거해줘"
-  - "한글 AI 윤문해줘"
-  - "remove AI writing patterns from Korean text"
-  - "humanize this Korean AI-generated text"
-  - "ChatGPT 글 자연스럽게 고쳐줘"
+  - "한글 AI 윤문"
+  - "remove AI tells from Korean text"
+  - "humanize this Korean writing"
+  - "AI가 쓴 글 자연스럽게 만들어줘"
 ---
 
-# Humanize KR — 한글 AI 티 제거기 (im-not-ai)
+# Humanize Korean AI Text (im-not-ai)
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-A Claude Code skill harness that removes AI-tell patterns from Korean text — fixing translation-style phrasing, mechanical structure, and AI clichés while **never changing facts, numbers, or meaning**.
+A Claude Code skill harness that removes AI-generated writing patterns from Korean text while preserving meaning 100%. Targets 10 categories × 40+ sub-patterns (translation artifacts, mechanical structure, AI clichés, hedging overuse, etc.) with surgical span-level edits.
 
 ## What It Does
 
-Korean AI text (ChatGPT, Claude, Gemini output) contains distinctive patterns inherited from English translation. This skill detects and rewrites them:
-
-| Before (AI-tell) | After (Natural Korean) |
-|---|---|
-| "AI 기술을 **통해** 효율을 높**일 수 있다**" | "AI로 효율을 높인다" |
-| "**결론적으로**, 이는 **시사하는 바가 크다**" | *(삭제)* |
-| "이에 **있어서** 중요한 **점은**" | "여기서 중요한 건" |
-| "~**에 의해** 생성된" | "~가 만든" |
-
-**4 Inviolable Rules:**
-1. **의미 불변** — Facts, claims, numbers, proper nouns, direct quotes: 100% preserved
-2. **근거 기반** — Only detected spans get edited; undetected passages untouched
-3. **장르 유지** — Column stays column; report stays report
-4. **과윤문 금지** — >30% change rate = warning; >50% = forced stop
+- Detects and removes **번역투** (translation artifacts): "~를 통해", "~에 있어서", "~에 의해"
+- Eliminates **AI 관용구**: "결론적으로", "시사하는 바가 크다", "주목할 만하다"
+- Fixes **기계적 병렬**: "첫째/둘째/셋째" lists, excessive bullets/headings/emoji
+- Reduces **피동태 남용**, **접속사 남발** (또한/따라서/즉/나아가), **형식명사 과다**
+- Two modes: **Fast** (monolith, ≤5,000 chars, ~3 min) and **Strict** (5-agent pipeline, 8,000+ chars)
+- 4 iron rules: meaning unchanged, evidence-based edits only, genre preserved, ≤30% change rate
 
 ## Installation
-
-### Prerequisites
-
-[Claude Code](https://claude.com/claude-code) must be installed:
-
-```bash
-# Verify Claude Code is available
-claude --version
-```
-
-### Clone and Enter
 
 ```bash
 git clone https://github.com/epoko77-ai/im-not-ai.git
 cd im-not-ai
-
-# Launch Claude Code from INSIDE this directory (critical!)
 claude
 ```
 
-> ⚠️ You must run `claude` from within the `im-not-ai` directory. Running from elsewhere means the skills won't load.
+**Critical:** Always launch `claude` from inside the `im-not-ai` directory. Skills only load from the local `.claude/` folder.
 
-## Usage — Three Methods
+```bash
+# Verify Claude Code is installed
+claude --version
 
-### Method A: Natural Language (Easiest)
+# Always run from project root
+cd im-not-ai && claude
+```
 
-Paste any of these trigger phrases + your text:
+## Key Commands
+
+### Method A — Natural Language (Easiest)
+
+Paste AI-generated Korean text and ask naturally:
 
 ```
 이 AI 글 자연스럽게 윤문해줘:
 
-[paste your ChatGPT/Claude/Gemini output here]
+[ChatGPT / Claude / Gemini 초안 붙여넣기]
 ```
 
 Any of these phrases trigger the skill automatically:
-- `"AI 티 없애줘"`
-- `"GPT 문체 제거해줘"`
-- `"사람이 쓴 것처럼 윤문해줘"`
-- `"번역투 제거"`
-- `"한글 AI 윤문"`
+- `AI 티 없애줘`
+- `GPT 문체 제거해줘`
+- `사람이 쓴 것처럼 윤문해줘`
+- `번역투 제거`
+- `한글 AI 윤문`
 
-### Method B: Slash Command
+### Method B — Slash Command
 
-```
-/humanize [text or file path]
+```bash
+# Basic usage
+/humanize [텍스트 또는 파일 경로]
 
-# With options (natural language at end)
-/humanize ./draft.md 장르: 칼럼 강도: 적극 최소심각도: S1
+# With options
+/humanize draft.txt 장르: 칼럼
+/humanize draft.txt 강도: 적극
+/humanize draft.txt 최소심각도: S1
 
 # Redo with specific focus
 /humanize-redo "번역투만 다시"
-/humanize-redo "관용구 카테고리만 재처리"
+/humanize-redo "관용구 카테고리만"
 ```
 
-### Method C: Strict Mode (for long text or precision work)
+### Method C — Strict Mode (Explicit)
 
 ```bash
-# Force strict mode explicitly
-/humanize --strict [text]
+# Force strict 5-agent pipeline
+/humanize --strict [텍스트]
 
-# Auto-triggers for 8,000+ character input
-# Uses 5-agent pipeline instead of monolith
+# Auto-upgrades to strict for 8,000+ character inputs
 ```
 
-## Two Processing Modes
+## Output Files
 
-### Fast Mode (Default, ≤5,000 chars, ~3 min)
+All runs write to `_workspace/{date-number}/`:
 
-Single `humanize-monolith` agent call: detect → rewrite → self-verify in one pass.
-
+### Fast Mode Output
 ```
-_workspace/{date-number}/
-├── 01_input.txt      # Original text, untouched
-├── final.md          # Rewritten output
-└── summary.md        # Metrics, before/after, grade, highlights
-```
-
-### Strict Mode (`--strict` or 8,000+ chars auto-upgrade)
-
-5-agent pipeline with separate audit files:
-
-```
-_workspace/{date-number}/
-├── 01_input.txt            # Original
-├── 02_detection.json       # AI-tell spans (position, category, severity)
-├── 03_rewrite.md           # Rewritten draft
-├── 04_fidelity_audit.json  # 13-point meaning-preservation audit
-├── 05_naturalness_review.json  # Residual AI-tell + over-rewrite check
-├── final.md                # Accepted final
-└── summary.md              # Score, grade, key changes
+_workspace/20260426-001/
+├── 01_input.txt        # Original text (unchanged)
+├── final.md            # Humanized result
+└── summary.md          # Metrics, detected patterns, grade, change highlights
 ```
 
-## AI-Tell Pattern Taxonomy
+### Strict Mode Output
+```
+_workspace/20260426-001/
+├── 01_input.txt              # Original text
+├── 02_detection.json         # AI-tell detection report (spans, categories, severity)
+├── 03_rewrite.md             # Humanized draft
+├── 04_fidelity_audit.json    # Content fidelity audit (13-point checklist)
+├── 05_naturalness_review.json # Naturalness re-measurement
+├── final.md                  # Final humanized text
+└── summary.md                # Score, grade, key changes
+```
 
-### 10 Categories × 40+ Patterns
+## Detection Categories
 
 | ID | Category | Key Patterns |
 |----|----------|-------------|
-| **A** | 번역투 | `~를 통해`, `~에 대해`, `~에 있어서`, 이중 피동 `~되어진다`, `가지고 있다` |
-| **B** | 영어 인용 과다 | 과도한 괄호 병기, 번역 가능한 영어 그대로 사용 |
-| **C** | 구조적 AI 패턴 | 기계적 `첫째/둘째/셋째`, 과도한 불릿·헤딩·이모지 |
-| **D** | AI 특유 관용구 | `결론적으로`, `시사하는 바가 크다`, `주목할 만하다`, `혁신적인` |
-| **E** | 리듬 균일성 | 문장 길이 표준편차 낮음, 동일 종결어미 반복 |
-| **F** | 수식·중복 | `매우`, `정말`, 동의어 이중 수식, `~적/~성/~화` 남발 |
-| **G** | Hedging 남용 | `~할 수 있을 것으로 보인다` 다중 완곡 |
-| **H** | 접속사 남발 | 문두 `또한/따라서/즉/나아가` 연속 |
-| **I** | 형식명사 과다 | `것이다`, `점`, `수`, `바`, `~할 필요가 있다` |
-| **J** | 시각 장식 남용 | 과도한 **볼드**, `"따옴표"`, 대시(—) 남발 |
+| A | 번역투 | `~를 통해`, `~에 대해`, `~에 있어서`, `~되어진다`, `가지고 있다` |
+| B | 영어 과다 | Unnecessary English terms, excessive parenthetical bilingual |
+| C | 구조적 패턴 | `첫째/둘째/셋째`, excessive bullets, headings, emoji |
+| D | AI 관용구 | `결론적으로`, `시사하는 바가 크다`, `혁신적인`, `주목할 만하다` |
+| E | 리듬 균일 | Low sentence-length variance, repeated endings |
+| F | 수식·중복 | `매우`, `정말`, double synonyms, `-적/-성/-화` overuse |
+| G | Hedging | `~할 수 있을 것으로 보인다` stacked hedges |
+| H | 접속사 남발 | Sentence-initial `또한/따라서/즉/나아가` chains |
+| I | 형식명사 | `것이다`, `점`, `수`, `바`, `~할 필요가 있다` |
+| J | 시각 장식 | Excessive **bold**, "quotes", em-dash overuse |
 
-### Severity Levels
+## Severity Levels
 
-- **S1 결정적**: Appears once → AI confirmed. Always remove.
-- **S2 강함**: 1-2 occurrences OK; 3+ must be removed.
-- **S3 약함**: Only problematic when co-occurring with other patterns.
+- **S1 결정적**: Remove unconditionally — one occurrence confirms AI authorship
+- **S2 강함**: Allow 1–2 occurrences; flag 3+
+- **S3 약함**: Only problematic when combined with other patterns
 
-### Quality Grades (Post-Rewrite)
+## Quality Grades (Post-Humanization)
 
 | Grade | Criteria |
 |-------|----------|
-| **A** | S1: 0, S2: ≤2, improvement ≥70% |
-| **B** | S1: 0, S2: ≤4, improvement ≥50% |
-| **C** | S1: 1-2 or 2 over-rewrite signals → trigger round 2 |
-| **D** | S1: 3+ or severe over-rewrite → human review required |
-
-## The 7 Agents
-
-| Agent | Mode | Role |
-|-------|------|------|
-| `humanize-monolith` | **Fast (default)** | Single-call detect + rewrite + self-verify (4-5 tool calls capped) |
-| `ai-tell-detector` | Strict | JSON detection report with span positions |
-| `korean-style-rewriter` | Strict | Surgical rewrite from findings, monitors change rate |
-| `content-fidelity-auditor` | Strict | 13-point meaning-equivalence audit, triggers rollback |
-| `naturalness-reviewer` | Strict | Re-runs detection, grades A-D, flags over-rewrite |
-| `korean-ai-tell-taxonomist` | Separate command | Manages SSOT taxonomy, promotes new patterns |
-| `humanize-web-architect` | Optional | Next.js 15 + Vercel web service design |
+| **A** | S1=0, S2≤2, ≥70% pattern improvement |
+| **B** | S1=0, S2≤4, ≥50% improvement |
+| **C** | S1=1–2 or 2+ over-edit signals → triggers round 2 |
+| **D** | S1≥3 or severe over-edit → human review recommended |
 
 ## Refinement Commands
 
-After getting results, speak naturally to refine:
+After initial humanization, iterate with natural language:
 
 ```
-# Redo a specific section
-"이 문단만 다시 윤문해줘"
+# Re-process a specific paragraph
+이 문단만 다시 윤문해줘
 
 # Target a specific category
-"번역투만 더 손봐줘"
-"관용구만 다시"
+번역투만 더 손봐줘
+관용구만 다시 처리해줘
 
 # Adjust intensity
-"윤문 강도 낮춰줘"          # Conservative — S1 patterns only
-"원문 톤을 더 살려줘"       # Lower change rate ceiling
-"2차 윤문해줘"              # Polish current result further
+윤문 강도 낮춰줘          # Conservative — only S1 patterns
+원문 톤을 더 살려줘        # Lower change rate cap
+2차 윤문해줘              # Re-polish current result
 ```
 
-## Do-NOT Touch List
+## 7-Agent Architecture
 
-The skill will never modify:
+| Agent | Mode | Role |
+|-------|------|------|
+| `humanize-monolith` | Fast (default) | Single-call detect + rewrite + self-verify (4–5 tool calls cap) |
+| `ai-tell-detector` | Strict | JSON detection report with span positions |
+| `korean-style-rewriter` | Strict | Evidence-based surgical rewriting |
+| `content-fidelity-auditor` | Strict | 13-point meaning-equivalence audit |
+| `naturalness-reviewer` | Strict | Residual AI-tell + over-edit judgment, grades A–D |
+| `korean-ai-tell-taxonomist` | Standalone | SSOT taxonomy management, pattern promotion |
+| `humanize-web-architect` | Optional | Next.js 15 + Vercel web service design |
+
+## What Is Never Changed (Do-NOT List)
+
+```
 - Numbers, units, dates
-- Proper nouns, person names, product names, model names
-- Text inside `"직접 인용"` (direct quotes)
-- Legal/regulatory article text
-- Academic terms (when unavoidable)
-
-## Configuration Reference
-
-### Workspace Structure
-
-```
-im-not-ai/
-├── .claude/
-│   ├── skills/humanize-korean/
-│   │   ├── agents/           # 7 agent definitions
-│   │   └── references/
-│   │       ├── ai-tell-taxonomy.md    # Full 40+ pattern SSOT
-│   │       ├── rewriting-playbook.md  # Prescription per pattern
-│   │       ├── quick-rules.md         # Slim rulebook for monolith (~150 lines)
-│   │       └── web-service-spec.md    # Web expansion spec
-│   └── commands/
-│       ├── humanize.md        # /humanize command definition
-│       └── humanize-redo.md   # /humanize-redo command definition
-└── _workspace/               # Auto-created output directory
-    └── {date-number}/
-        ├── 01_input.txt
-        ├── final.md
-        └── summary.md
+- Proper nouns, person names, product names, model names  
+- Direct quotations (inside 큰따옴표)
+- Legal or regulatory text
+- Academic technical terms (when unavoidable)
 ```
 
-### Genre/Domain Options
+## Real Usage Example
 
-Pass as natural language after the text:
-
+**Input (AI-generated):**
 ```
-/humanize ./essay.md 장르: 칼럼
-/humanize ./report.md 장르: 학술 강도: 보수
-/humanize ./blog.md 장르: 블로그 최소심각도: S2
-```
-
-## Common Patterns for Developers
-
-### Programmatic Integration (Python wrapper example)
-
-```python
-import subprocess
-import json
-from pathlib import Path
-
-def humanize_korean(text: str, strict: bool = False) -> dict:
-    """
-    Run im-not-ai humanization on Korean text.
-    
-    Args:
-        text: Korean AI-generated text to humanize
-        strict: Use 5-agent pipeline instead of monolith
-    
-    Returns:
-        dict with 'final' (rewritten text) and 'summary' (metrics)
-    """
-    # Write input to temp file
-    input_path = Path("_workspace/temp_input.txt")
-    input_path.parent.mkdir(exist_ok=True)
-    input_path.write_text(text, encoding="utf-8")
-    
-    # Build command
-    cmd_parts = ["/humanize", str(input_path)]
-    if strict:
-        cmd_parts.append("--strict")
-    
-    prompt = " ".join(cmd_parts)
-    
-    result = subprocess.run(
-        ["claude", "-p", prompt],
-        cwd="/path/to/im-not-ai",  # Must run from project root
-        capture_output=True,
-        text=True,
-        encoding="utf-8"
-    )
-    
-    if result.returncode != 0:
-        raise RuntimeError(f"Humanization failed: {result.stderr}")
-    
-    # Find latest workspace output
-    workspace = Path("_workspace")
-    latest = sorted(workspace.iterdir())[-1]
-    
-    return {
-        "final": (latest / "final.md").read_text(encoding="utf-8"),
-        "summary": (latest / "summary.md").read_text(encoding="utf-8"),
-        "input": text,
-    }
-
-
-# Usage
-result = humanize_korean("""
-AI 기술을 통해 다양한 분야에서 혁신적인 변화가 일어나고 있다.
-첫째, 의료 분야에서는 진단 정확도를 높일 수 있다.
-둘째, 교육 분야에서는 맞춤형 학습이 가능해진다.
-결론적으로, 이는 우리 사회에 시사하는 바가 크다.
-""")
-
-print(result["final"])
-# AI로 여러 분야가 바뀌고 있다.
-# 의료에서는 진단이 더 정확해졌고,
-# 교육에서는 각자 수준에 맞는 수업이 가능해졌다.
+인공지능 기술을 통해 다양한 분야에서 혁신적인 변화가 일어나고 있다. 
+첫째, 의료 분야에서의 활용이 주목할 만하다. 둘째, 교육 분야에 있어서도 
+중요한 시사하는 바가 크다. 결론적으로, 이러한 기술적 발전은 사회 전반에 
+걸쳐 패러다임 시프트를 가져올 것으로 보인다.
 ```
 
-### Batch Processing Multiple Files
-
-```python
-import subprocess
-from pathlib import Path
-
-def batch_humanize(input_dir: str, output_dir: str):
-    """Process all .txt and .md files in a directory."""
-    input_path = Path(input_dir)
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
-    
-    files = list(input_path.glob("*.txt")) + list(input_path.glob("*.md"))
-    
-    for file in files:
-        print(f"Processing: {file.name}")
-        
-        text = file.read_text(encoding="utf-8")
-        char_count = len(text)
-        
-        # Auto-select mode based on length
-        strict_flag = "--strict" if char_count > 8000 else ""
-        prompt = f"/humanize {file} {strict_flag}".strip()
-        
-        result = subprocess.run(
-            ["claude", "-p", prompt],
-            cwd="/path/to/im-not-ai",
-            capture_output=True,
-            text=True,
-            encoding="utf-8"
-        )
-        
-        if result.returncode == 0:
-            # Copy final.md to output dir with original filename
-            workspace = sorted(Path("_workspace").iterdir())[-1]
-            final = (workspace / "final.md").read_text(encoding="utf-8")
-            (output_path / file.name).write_text(final, encoding="utf-8")
-            print(f"  ✓ Saved to {output_path / file.name}")
-        else:
-            print(f"  ✗ Failed: {result.stderr[:100]}")
-
-
-batch_humanize("./ai_drafts", "./humanized_output")
+**After humanization:**
+```
+인공지능이 여러 분야를 바꾸고 있다. 의료에서는 진단 보조가 실용화됐고, 
+교육에서는 개인 맞춤 학습이 가능해졌다. 기술 속도를 보면 사회 전반의 
+변화는 이미 시작됐다.
 ```
 
-### Parse Detection JSON (Strict Mode)
-
-```python
-import json
-from pathlib import Path
-
-def analyze_ai_tells(workspace_dir: str) -> dict:
-    """Parse the detection report from a strict-mode run."""
-    detection_file = Path(workspace_dir) / "02_detection.json"
-    
-    with open(detection_file, encoding="utf-8") as f:
-        detection = json.load(f)
-    
-    # Group by severity
-    by_severity = {"S1": [], "S2": [], "S3": []}
-    by_category = {}
-    
-    for span in detection.get("spans", []):
-        sev = span.get("severity", "S3")
-        by_severity[sev].append(span)
-        
-        cat = span.get("category", "unknown")
-        by_category.setdefault(cat, []).append(span)
-    
-    return {
-        "total_findings": len(detection.get("spans", [])),
-        "by_severity": {k: len(v) for k, v in by_severity.items()},
-        "by_category": {k: len(v) for k, v in by_category.items()},
-        "critical_spans": by_severity["S1"],  # Must-fix items
-    }
-
-
-# After a strict mode run:
-analysis = analyze_ai_tells("_workspace/2026-04-26-001")
-print(f"Critical (S1): {analysis['by_severity']['S1']} patterns found")
-print(f"Category breakdown: {analysis['by_category']}")
+**summary.md excerpt:**
 ```
+## 탐지 결과
+- A (번역투): "~를 통해" ×1 [S1], "~에 있어서" ×1 [S1] → 제거
+- C (구조적): "첫째/둘째" ×2 [S2] → 산문 통합
+- D (AI 관용구): "결론적으로" ×1 [S1], "시사하는 바가 크다" ×1 [S1],
+                 "주목할 만하다" ×1 [S1], "혁신적인" ×1 [S2] → 제거
+- G (Hedging): "~것으로 보인다" ×1 [S2] → 단정형
 
-### Adding New Patterns to Taxonomy
-
+변경률: 43% | 등급: B
 ```
-# Invoke the taxonomist agent directly
-claude -p "새 패턴 심사 요청: '~와 같은 맥락에서' — 문두에서 불필요한 연결어로 사용됨. 심각도 S2 제안"
-```
-
-Or as a slash command inside Claude Code:
-```
-/taxonomy-review "~와 같은 맥락에서" 심각도: S2 카테고리: H
-```
-
-## Troubleshooting
-
-### Skill Not Loading
-
-```bash
-# Wrong — skill won't load
-cd ~/Documents
-claude  # ← opens generic Claude Code
-
-# Right — must be in project root
-cd /path/to/im-not-ai
-claude  # ← loads humanize-korean skill
-```
-
-### Output Taking Too Long
-
-v1.5 fixed the 25-minute wall-clock regression. If still slow:
-- Fast mode (≤5,000 chars): should complete in 2-3 minutes
-- Strict mode: longer by design (5-agent pipeline)
-- Check you're not accidentally triggering strict mode on short text
-
-### Over-Rewrite Warning
-
-If you see a >30% change rate warning:
-```
-"윤문 강도 낮춰줘"          # Reduce intensity
-"S1 패턴만 제거해줘"         # Only critical patterns
-"원문 유지 비율 높여줘"       # Preserve more original text
-```
-
-### Grade C or D Results
-
-```
-# Grade C — triggers auto round-2, or manually:
-"2차 윤문해줘"
-
-# Grade D — requires human review, but you can try:
-"S1 패턴만 먼저 제거하고 결과 보여줘"
-```
-
-### Content Changed Incorrectly
-
-The `content-fidelity-auditor` (strict mode) runs 13-point checks. In fast mode, self-verification catches most issues. If meaning was altered:
-```
-"원문의 [구체적 내용] 부분이 바뀌었어. 롤백해줘"
-"이 수치/고유명사가 바뀌면 안 돼. 다시 윤문해줘"
-```
-
-### Multiple Runs Stay Separate
-
-Each run creates a new `_workspace/{date-number}/` folder — previous results are never overwritten.
 
 ## Reference Files
 
-| File | Purpose |
-|------|---------|
-| `.claude/skills/humanize-korean/references/ai-tell-taxonomy.md` | Full SSOT: 40+ patterns, examples, prescriptions |
-| `.claude/skills/humanize-korean/references/rewriting-playbook.md` | Pattern-by-pattern rewrite instructions |
-| `.claude/skills/humanize-korean/references/quick-rules.md` | Slim rulebook for monolith fast path (~150 lines) |
-| `.claude/skills/humanize-korean/references/web-service-spec.md` | Next.js 15 web service expansion spec |
-| `.claude/commands/humanize.md` | `/humanize` command definition |
-| `.claude/commands/humanize-redo.md` | `/humanize-redo` command definition |
+```
+.claude/skills/humanize-korean/references/
+├── ai-tell-taxonomy.md      # Full 40+ sub-pattern SSOT with prescriptions
+├── rewriting-playbook.md    # Rewrite recipes per category
+├── quick-rules.md           # Slim rulebook for monolith fast path (~150 lines)
+└── web-service-spec.md      # Next.js 15 web service expansion spec
 
-## Version History
+.claude/commands/
+├── humanize.md              # /humanize slash command definition
+└── humanize-redo.md         # /humanize-redo slash command definition
+```
 
-- **v1.5** (2026-04-26) — Rolled back v1.2-v1.4; added `humanize-monolith` fast path; 5,000-char target 2-3 min wall-clock
-- **v1.1** — Base 5-agent pipeline (still used as strict mode)
-- **v1.2-v1.4** — Voice profile, candidate pool, model distribution experiments (abandoned — caused 25-min regressions)
+## Over-Edit Safeguards
+
+```
+Change rate < 30%  → proceed normally
+Change rate 30–50% → warning logged in summary.md
+Change rate > 50%  → forced stop, human review required
+```
+
+## Running Multiple Documents
+
+Each run creates a new timestamped workspace — no cross-contamination:
+
+```bash
+# Run 1 → _workspace/20260426-001/
+# Run 2 → _workspace/20260426-002/
+# Run 3 → _workspace/20260426-003/
+```
+
+Within the same Claude Code session, just paste a new text and request again.
+
+## Web Service Extension (Optional)
+
+The `humanize-web-architect` agent designs a full web app:
+
+- **Stack**: Next.js 15 App Router + Vercel Fluid Compute + AI Gateway
+- **UX Flow**: Input → Detection highlights → Left/right diff → Copy humanized output
+- **Roadmap**: v0 MVP (anonymous) → v1 (auth + history) → v2 (Pro/Team + API) → v3 (Chrome Extension) → v4 (Japanese/Chinese)
+
+Spec: `.claude/skills/humanize-korean/references/web-service-spec.md`
+
+## Troubleshooting
+
+**Skill not activating:**
+```bash
+# Make sure you're in the project directory
+pwd  # must show .../im-not-ai
+ls .claude/  # must exist
+claude  # restart from correct directory
+```
+
+**Fast mode taking too long (>5 min):**
+- Input may have exceeded 5,000 chars → auto-upgraded to strict mode (expected)
+- For very long texts, use `--strict` explicitly so you set expectations correctly
+
+**Grade C/D result:**
+```
+# Ask for a second round explicitly
+2차 윤문해줘
+
+# Or target the remaining issues
+S1 패턴만 다시 처리해줘
+```
+
+**Over-edit warning triggered:**
+```
+원문 톤을 더 살려줘
+# or
+윤문 강도 낮춰줘
+```
+
+**Content changed (meaning altered):**
+- The `content-fidelity-auditor` (strict mode) will catch this and trigger rollback automatically
+- In fast mode, check `summary.md` self-verification section — 6-point checklist included
+
+## Version Notes (v1.5)
+
+v1.2–v1.4 are deprecated. v1.5 rolls back to v1.1's simple structure + adds the monolith fast path. Root cause of previous slowness: agent-to-agent context reload overhead, not model choice. Fast mode wall-clock target: **2–3 minutes** for ≤5,000 chars (was 25 min in v1.4).
 ```
