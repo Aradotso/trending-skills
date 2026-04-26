@@ -437,6 +437,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [mckinsey-pptx-generator](skills/mckinsey-pptx-generator/) | [install](https://skills.sh/aradotso/trending-skills/mckinsey-pptx-generator) | [seulee26/mckinsey-pptx](https://github.com/seulee26/mckinsey-pptx) | 2026-04-26 |
 | [wanman-agent-matrix](skills/wanman-agent-matrix/) | [install](https://skills.sh/aradotso/trending-skills/wanman-agent-matrix) | [chekusu/wanman](https://github.com/chekusu/wanman) | 2026-04-26 |
 | [thclaws-agent-harness](skills/thclaws-agent-harness/) | [install](https://skills.sh/aradotso/trending-skills/thclaws-agent-harness) | [thClaws/thClaws](https://github.com/thClaws/thClaws) | 2026-04-26 |
+| [awawausb-webusb-firefox](skills/awawausb-webusb-firefox/) | [install](https://skills.sh/aradotso/trending-skills/awawausb-webusb-firefox) | [ArcaneNibble/awawausb](https://github.com/ArcaneNibble/awawausb) | 2026-04-26 |
 <!-- SKILL_INDEX -->
 
 ## How it works
