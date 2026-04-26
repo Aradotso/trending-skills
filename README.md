@@ -433,6 +433,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [clawsweeper-issue-triage](skills/clawsweeper-issue-triage/) | [install](https://skills.sh/aradotso/trending-skills/clawsweeper-issue-triage) | [openclaw/clawsweeper](https://github.com/openclaw/clawsweeper) | 2026-04-25 |
 | [pi-computer-use](skills/pi-computer-use/) | [install](https://skills.sh/aradotso/trending-skills/pi-computer-use) | [injaneity/pi-computer-use](https://github.com/injaneity/pi-computer-use) | 2026-04-25 |
 | [flowdriver-covert-transport](skills/flowdriver-covert-transport/) | [install](https://skills.sh/aradotso/trending-skills/flowdriver-covert-transport) | [NullLatency/FlowDriver](https://github.com/NullLatency/FlowDriver) | 2026-04-26 |
+| [privacy-parser-pii-extraction](skills/privacy-parser-pii-extraction/) | [install](https://skills.sh/aradotso/trending-skills/privacy-parser-pii-extraction) | [chiefautism/privacy-parser](https://github.com/chiefautism/privacy-parser) | 2026-04-26 |
 <!-- SKILL_INDEX -->
 
 ## How it works
