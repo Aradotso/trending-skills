@@ -447,6 +447,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [oh-story-claudecode-writing](skills/oh-story-claudecode-writing/) | [install](https://skills.sh/aradotso/trending-skills/oh-story-claudecode-writing) | [worldwonderer/oh-story-claudecode](https://github.com/worldwonderer/oh-story-claudecode) | 2026-04-27 |
 | [vercel-xhttp-relay](skills/vercel-xhttp-relay/) | [install](https://skills.sh/aradotso/trending-skills/vercel-xhttp-relay) | [avaco-cloud/Vercel-XHTTP](https://github.com/avaco-cloud/Vercel-XHTTP) | 2026-04-27 |
 | [ppt-image-first-workflow](skills/ppt-image-first-workflow/) | [install](https://skills.sh/aradotso/trending-skills/ppt-image-first-workflow) | [NyxTides/ppt-image-first](https://github.com/NyxTides/ppt-image-first) | 2026-04-27 |
+| [unit-3-hyprland-nier-rice](skills/unit-3-hyprland-nier-rice/) | [install](https://skills.sh/aradotso/trending-skills/unit-3-hyprland-nier-rice) | [samyns/Unit-3](https://github.com/samyns/Unit-3) | 2026-04-27 |
 <!-- SKILL_INDEX -->
 
 ## How it works
