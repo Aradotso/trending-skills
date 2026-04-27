@@ -442,6 +442,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [humanize-korean-ai-text](skills/humanize-korean-ai-text/) | [install](https://skills.sh/aradotso/trending-skills/humanize-korean-ai-text) | [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) | 2026-04-26 |
 | [stash-ai-memory](skills/stash-ai-memory/) | [install](https://skills.sh/aradotso/trending-skills/stash-ai-memory) | [alash3al/stash](https://github.com/alash3al/stash) | 2026-04-26 |
 | [gpt-image-playground](skills/gpt-image-playground/) | [install](https://skills.sh/aradotso/trending-skills/gpt-image-playground) | [CookSleep/gpt_image_playground](https://github.com/CookSleep/gpt_image_playground) | 2026-04-27 |
+| [tech-debt-skill](skills/tech-debt-skill/) | [install](https://skills.sh/aradotso/trending-skills/tech-debt-skill) | [ksimback/tech-debt-skill](https://github.com/ksimback/tech-debt-skill) | 2026-04-27 |
 <!-- SKILL_INDEX -->
 
 ## How it works
