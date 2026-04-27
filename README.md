@@ -445,6 +445,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [tech-debt-skill](skills/tech-debt-skill/) | [install](https://skills.sh/aradotso/trending-skills/tech-debt-skill) | [ksimback/tech-debt-skill](https://github.com/ksimback/tech-debt-skill) | 2026-04-27 |
 | [gova-declarative-gui](skills/gova-declarative-gui/) | [install](https://skills.sh/aradotso/trending-skills/gova-declarative-gui) | [NV404/gova](https://github.com/NV404/gova) | 2026-04-27 |
 | [oh-story-claudecode-writing](skills/oh-story-claudecode-writing/) | [install](https://skills.sh/aradotso/trending-skills/oh-story-claudecode-writing) | [worldwonderer/oh-story-claudecode](https://github.com/worldwonderer/oh-story-claudecode) | 2026-04-27 |
+| [vercel-xhttp-relay](skills/vercel-xhttp-relay/) | [install](https://skills.sh/aradotso/trending-skills/vercel-xhttp-relay) | [avaco-cloud/Vercel-XHTTP](https://github.com/avaco-cloud/Vercel-XHTTP) | 2026-04-27 |
 <!-- SKILL_INDEX -->
 
 ## How it works
