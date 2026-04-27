@@ -444,6 +444,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [gpt-image-playground](skills/gpt-image-playground/) | [install](https://skills.sh/aradotso/trending-skills/gpt-image-playground) | [CookSleep/gpt_image_playground](https://github.com/CookSleep/gpt_image_playground) | 2026-04-27 |
 | [tech-debt-skill](skills/tech-debt-skill/) | [install](https://skills.sh/aradotso/trending-skills/tech-debt-skill) | [ksimback/tech-debt-skill](https://github.com/ksimback/tech-debt-skill) | 2026-04-27 |
 | [gova-declarative-gui](skills/gova-declarative-gui/) | [install](https://skills.sh/aradotso/trending-skills/gova-declarative-gui) | [NV404/gova](https://github.com/NV404/gova) | 2026-04-27 |
+| [oh-story-claudecode-writing](skills/oh-story-claudecode-writing/) | [install](https://skills.sh/aradotso/trending-skills/oh-story-claudecode-writing) | [worldwonderer/oh-story-claudecode](https://github.com/worldwonderer/oh-story-claudecode) | 2026-04-27 |
 <!-- SKILL_INDEX -->
 
 ## How it works
