@@ -454,6 +454,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [open-design-ai](skills/open-design-ai/) | [install](https://skills.sh/aradotso/trending-skills/open-design-ai) | [nexu-io/open-design](https://github.com/nexu-io/open-design) | 2026-04-28 |
 | [gitbackup-github-desktop](skills/gitbackup-github-desktop/) | [install](https://skills.sh/aradotso/trending-skills/gitbackup-github-desktop) | [hiteshchoudhary/gitbackup](https://github.com/hiteshchoudhary/gitbackup) | 2026-04-28 |
 | [hackingtool-plugin-claude](skills/hackingtool-plugin-claude/) | [install](https://skills.sh/aradotso/trending-skills/hackingtool-plugin-claude) | [AKCodez/hackingtool-plugin](https://github.com/AKCodez/hackingtool-plugin) | 2026-04-28 |
+| [bux-claude-agent](skills/bux-claude-agent/) | [install](https://skills.sh/aradotso/trending-skills/bux-claude-agent) | [browser-use/bux](https://github.com/browser-use/bux) | 2026-04-28 |
 <!-- SKILL_INDEX -->
 
 ## How it works
