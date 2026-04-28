@@ -451,6 +451,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [evanflow-tdd-loop](skills/evanflow-tdd-loop/) | [install](https://skills.sh/aradotso/trending-skills/evanflow-tdd-loop) | [evanklem/evanflow](https://github.com/evanklem/evanflow) | 2026-04-28 |
 | [hyperliquid-grid-trading-bot](skills/hyperliquid-grid-trading-bot/) | [install](https://skills.sh/aradotso/trending-skills/hyperliquid-grid-trading-bot) | [PolyPulse-Analytics/hyperliquid-trading-bot](https://github.com/PolyPulse-Analytics/hyperliquid-trading-bot) | 2026-04-28 |
 | [aster-bot-trading](skills/aster-bot-trading/) | [install](https://skills.sh/aradotso/trending-skills/aster-bot-trading) | [SignalBot-Labs/aster-bot](https://github.com/SignalBot-Labs/aster-bot) | 2026-04-28 |
+| [open-design-ai](skills/open-design-ai/) | [install](https://skills.sh/aradotso/trending-skills/open-design-ai) | [nexu-io/open-design](https://github.com/nexu-io/open-design) | 2026-04-28 |
 <!-- SKILL_INDEX -->
 
 ## How it works
