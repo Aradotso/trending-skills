@@ -455,6 +455,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [gitbackup-github-desktop](skills/gitbackup-github-desktop/) | [install](https://skills.sh/aradotso/trending-skills/gitbackup-github-desktop) | [hiteshchoudhary/gitbackup](https://github.com/hiteshchoudhary/gitbackup) | 2026-04-28 |
 | [hackingtool-plugin-claude](skills/hackingtool-plugin-claude/) | [install](https://skills.sh/aradotso/trending-skills/hackingtool-plugin-claude) | [AKCodez/hackingtool-plugin](https://github.com/AKCodez/hackingtool-plugin) | 2026-04-28 |
 | [bux-claude-agent](skills/bux-claude-agent/) | [install](https://skills.sh/aradotso/trending-skills/bux-claude-agent) | [browser-use/bux](https://github.com/browser-use/bux) | 2026-04-28 |
+| [gooserelayvpn-socks5-tunnel](skills/gooserelayvpn-socks5-tunnel/) | [install](https://skills.sh/aradotso/trending-skills/gooserelayvpn-socks5-tunnel) | [Kianmhz/GooseRelayVPN](https://github.com/Kianmhz/GooseRelayVPN) | 2026-04-28 |
 <!-- SKILL_INDEX -->
 
 ## How it works
