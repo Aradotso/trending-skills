@@ -1,80 +1,91 @@
 ---
 name: hyperliquid-grid-trading-bot
-description: Configure and run a grid trading bot on the Hyperliquid DEX using TypeScript/Node.js with layered buy/sell orders, risk management, and rebalancing.
+description: Configurable grid trading bot for Hyperliquid DEX supporting perpetuals and spot, with layered buy/sell orders, risk management, and TypeScript/Python implementations.
 triggers:
-  - set up a hyperliquid trading bot
-  - configure grid trading on hyperliquid
-  - run a bot on hyperliquid dex
-  - hyperliquid grid strategy configuration
-  - automate trading on hyperliquid
-  - hyperliquid perpetuals trading bot
-  - set up crypto grid bot with stop loss
-  - deploy hyperliquid spot trading automation
+  - "set up hyperliquid trading bot"
+  - "configure grid trading on hyperliquid"
+  - "hyperliquid bot grid strategy"
+  - "automate trading on hyperliquid"
+  - "hyperliquid perpetuals bot"
+  - "grid bot crypto trading setup"
+  - "hyperliquid dex algorithmic trading"
+  - "configure stop loss take profit grid bot"
 ---
 
 # Hyperliquid Grid Trading Bot
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-A configurable grid strategy runner for [Hyperliquid](https://hyperliquid.xyz) DEX. Places layered buy and sell orders around a price range and supports stop loss, take profit, drawdown limits, position size limits, and automatic rebalancing. Primary implementation is **TypeScript on Node.js 20.19+**; a legacy Python tree exists for reference and learning examples.
+A configurable grid strategy runner for [Hyperliquid](https://hyperliquid.xyz) DEX. Places layered buy/sell limit orders around a price range with risk controls (stop loss, take profit, drawdown limits, rebalancing). Primary implementation is **TypeScript/Node.js**; a legacy **Python** tree exists for reference and learning examples.
 
 ---
 
 ## Installation
 
+### Requirements
+
+- Node.js **20.19+** (primary bot)
+- A Hyperliquid wallet private key (use a dedicated testnet key to start)
+- `git`
+- Optional: [uv](https://github.com/astral-sh/uv) for Python examples
+
+### Setup
+
 ```bash
 git clone https://github.com/PolyPulse-Analytics/hyperliquid-trading-bot.git
 cd hyperliquid-trading-bot
 npm install
-```
-
-**Requirements:**
-- Node.js 20.19 or newer
-- A Hyperliquid wallet private key (use a dedicated testnet key to start)
-
----
-
-## Environment Setup
-
-```bash
 cp .env.example .env
 ```
 
 Edit `.env` — minimum required fields:
 
-```env
-# Testnet (recommended for development)
-HYPERLIQUID_TESTNET_PRIVATE_KEY=0xyour_private_key_here
+```bash
+# Testnet (recommended to start)
 HYPERLIQUID_TESTNET=true
+HYPERLIQUID_TESTNET_PRIVATE_KEY=$YOUR_TESTNET_PRIVATE_KEY
 
-# Mainnet (real funds — double-check YAML exchange.testnet: false)
-# HYPERLIQUID_MAINNET_PRIVATE_KEY=0xyour_private_key_here
+# Mainnet (real funds — use with caution)
 # HYPERLIQUID_TESTNET=false
+# HYPERLIQUID_MAINNET_PRIVATE_KEY=$YOUR_MAINNET_PRIVATE_KEY
 ```
 
-**Never commit `.env` or share your private key.**
+Never commit `.env` or expose private keys.
 
 ---
 
-## Key Commands
+## Key CLI Commands
 
 | Command | Purpose |
-|---------|---------|
+|---|---|
 | `npm start` | Run bot using first `active: true` config in `bots/` |
 | `npm run validate` | Validate selected YAML config (no private key needed) |
 | `npm test` | Run automated tests (grid math, etc.) |
-| `npx tsx ts/src/runBot.ts path/to/config.yaml` | Run with explicit config file |
+| `npx tsx ts/src/runBot.ts path/to/config.yaml` | Run with an explicit config file |
 | `npx tsc --noEmit` | TypeScript type check |
 
-Press **Ctrl+C** to stop — the engine attempts to cancel open orders on shutdown.
+### Python (legacy/learning)
+
+```bash
+uv sync
+uv run src/run_bot.py --validate
+uv run src/run_bot.py
+
+# Learning examples
+uv run learning_examples/01_websockets/realtime_prices.py
+uv run learning_examples/02_market_data/get_all_prices.py
+uv run learning_examples/04_trading/place_limit_order.py
+```
 
 ---
 
-## Bot Configuration (YAML)
+## Configuration
 
-Configs live in `bots/*.yaml`. Only one file should have `active: true` when using auto-discovery.
+### Bot YAML (`bots/<name>.yaml`)
 
-### Full example: `bots/btc_conservative.yaml`
+Each bot config is a YAML file. Set `active: true` on exactly one file for auto-discovery, or pass an explicit path to the runner.
+
+**Full annotated example:**
 
 ```yaml
 name: "btc_conservative"
@@ -82,249 +93,317 @@ active: true
 
 exchange:
   type: "hyperliquid"
-  testnet: true          # Set false for mainnet — also check HYPERLIQUID_TESTNET in .env
+  testnet: true          # Set false for mainnet (also set HYPERLIQUID_TESTNET=false in .env)
 
 account:
-  max_allocation_pct: 10.0   # Use at most 10% of account balance
+  max_allocation_pct: 10.0   # % of account balance bot may use
 
 grid:
-  symbol: "BTC"
-  levels: 10                 # Number of buy/sell levels on each side
+  symbol: "BTC"              # Trading pair (e.g. BTC, ETH, SOL for perps)
+  levels: 10                 # Number of grid levels (buy + sell orders)
+  order_size_usd: 50.0       # Size per grid level in USD
   price_range:
-    mode: "auto"             # "auto" computes range from current price; "manual" uses fixed bounds
+    mode: "auto"             # "auto" or "manual"
     auto:
-      range_pct: 5.0         # ±5% from mid price
+      range_pct: 5.0         # Grid spans ±5% from current price
     # manual:
     #   lower: 90000
     #   upper: 100000
 
 risk_management:
   stop_loss_enabled: false
-  stop_loss_pct: 8.0
+  stop_loss_pct: 8.0          # Stop all trading if loss exceeds this %
   take_profit_enabled: false
-  take_profit_pct: 20.0
-  max_drawdown_pct: 15.0       # Cancel all orders if drawdown exceeds this
-  max_position_size_pct: 40.0  # Max position as % of account
+  take_profit_pct: 20.0       # Close and stop if profit exceeds this %
+  max_drawdown_pct: 15.0      # Maximum portfolio drawdown allowed
+  max_position_size_pct: 40.0 # Max % of allocation in any single position
   rebalance:
-    price_move_threshold_pct: 12.0  # Rebuild grid if price moves outside band by this %
+    enabled: true
+    price_move_threshold_pct: 12.0  # Rebalance grid if price moves >12% from center
 
 monitoring:
-  log_level: "INFO"   # DEBUG | INFO | WARN | ERROR
+  log_level: "INFO"           # DEBUG | INFO | WARN | ERROR
 ```
 
-### Minimal config for a new symbol
+### Environment Variables (`.env`)
 
-```yaml
-name: "eth_grid"
-active: true
+```bash
+# Network
+HYPERLIQUID_TESTNET=true
 
-exchange:
-  type: "hyperliquid"
-  testnet: true
+# Keys
+HYPERLIQUID_TESTNET_PRIVATE_KEY=$YOUR_TESTNET_KEY
+HYPERLIQUID_MAINNET_PRIVATE_KEY=$YOUR_MAINNET_KEY
 
-account:
-  max_allocation_pct: 5.0
-
-grid:
-  symbol: "ETH"
-  levels: 8
-  price_range:
-    mode: "auto"
-    auto:
-      range_pct: 4.0
-
-risk_management:
-  max_drawdown_pct: 10.0
-  max_position_size_pct: 30.0
-  rebalance:
-    price_move_threshold_pct: 10.0
-
-monitoring:
-  log_level: "INFO"
+# API URLs (optional — defaults in .env.example)
+HYPERLIQUID_TESTNET_API_URL=https://api.hyperliquid-testnet.xyz
+HYPERLIQUID_MAINNET_API_URL=https://api.hyperliquid.xyz
 ```
 
 ---
 
-## Running with Explicit Config
+## How Grid Trading Works Here
 
-To run multiple strategies or switch configs without editing `active`:
-
-```bash
-# Run a specific config file
-npx tsx ts/src/runBot.ts bots/eth_grid.yaml
-
-# Validate before running
-npm run validate -- bots/eth_grid.yaml
-npx tsx ts/src/runBot.ts bots/eth_grid.yaml
-```
+1. Bot fetches current market price for the configured `symbol`.
+2. In `auto` mode, it calculates `levels` equally-spaced price points spanning `±range_pct` around current price.
+3. Buy limit orders are placed below current price; sell limit orders above.
+4. As price moves through levels, filled orders trigger new orders on the opposite side, capturing the spread.
+5. Risk rules are evaluated continuously — stop loss, drawdown, position size, and rebalance triggers.
 
 ---
 
-## Python Legacy Entrypoint
+## Real Code Examples
 
-The `src/` tree and `src/run_bot.py` are the older Python implementation. Requires [uv](https://github.com/astral-sh/uv).
+### TypeScript — Running the bot programmatically
+
+```typescript
+// ts/src/runBot.ts (simplified invocation pattern)
+import { runBot } from './bot/engine';
+import { loadConfig } from './config/loader';
+
+async function main() {
+  const configPath = process.argv[2] ?? './bots/btc_conservative.yaml';
+  const config = await loadConfig(configPath);
+  await runBot(config);
+}
+
+main().catch((err) => {
+  console.error('Bot crashed:', err);
+  process.exit(1);
+});
+```
 
 ```bash
-uv sync
+npx tsx ts/src/runBot.ts bots/btc_conservative.yaml
+```
 
-# Validate config
+### TypeScript — Custom config override (testnet flag from env)
+
+```typescript
+import { loadConfig } from './config/loader';
+
+const config = await loadConfig('./bots/btc_conservative.yaml');
+
+// HYPERLIQUID_TESTNET env var overrides YAML exchange.testnet
+// This is handled automatically by the loader — no manual override needed.
+console.log('Testnet mode:', config.exchange.testnet);
+```
+
+### Python — Place a limit order (learning example pattern)
+
+```python
+# learning_examples/04_trading/place_limit_order.py
+import os
+from hyperliquid.exchange import Exchange
+from hyperliquid.utils import constants
+import eth_account
+
+def get_exchange(testnet: bool = True) -> Exchange:
+    private_key = os.environ.get(
+        "HYPERLIQUID_TESTNET_PRIVATE_KEY" if testnet
+        else "HYPERLIQUID_MAINNET_PRIVATE_KEY"
+    )
+    account = eth_account.Account.from_key(private_key)
+    base_url = constants.TESTNET_API_URL if testnet else constants.MAINNET_API_URL
+    return Exchange(account, base_url)
+
+def place_limit_order(symbol: str, is_buy: bool, size: float, price: float):
+    exchange = get_exchange(testnet=True)
+    result = exchange.order(
+        symbol,
+        is_buy=is_buy,
+        sz=size,
+        limit_px=price,
+        order_type={"limit": {"tif": "Gtc"}},  # Good-till-cancelled
+    )
+    print("Order result:", result)
+    return result
+
+if __name__ == "__main__":
+    # BTC buy limit: 0.001 BTC at $90,000
+    place_limit_order("BTC", is_buy=True, size=0.001, price=90000.0)
+```
+
+### Python — Fetch real-time prices via WebSocket
+
+```python
+# learning_examples/01_websockets/realtime_prices.py
+import os
+from hyperliquid.utils import constants
+from hyperliquid.websocket_manager import WebsocketManager
+
+def on_price_update(data):
+    print("Price update:", data)
+
+def main():
+    ws = WebsocketManager(constants.TESTNET_API_URL)
+    ws.subscribe({"type": "allMids"}, on_price_update)
+    ws.daemon = True
+    ws.start()
+    input("Press Enter to stop...\n")
+
+if __name__ == "__main__":
+    main()
+```
+
+### Python — Validate bot config before starting
+
+```bash
 uv run src/run_bot.py --validate
-
-# Run bot
-uv run src/run_bot.py
 ```
 
----
+```python
+# Pattern inside run_bot.py
+import argparse
+from src.config import load_config, validate_config
 
-## Learning Examples (Python)
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--validate", action="store_true")
+    parser.add_argument("--config", default="bots/btc_conservative.yaml")
+    args = parser.parse_args()
 
-Educational scripts under `learning_examples/` — always use testnet keys:
+    config = load_config(args.config)
+    issues = validate_config(config)
 
-```bash
-# Real-time price feed via WebSocket
-uv run learning_examples/01_websockets/realtime_prices.py
+    if issues:
+        for issue in issues:
+            print(f"[CONFIG ERROR] {issue}")
+        raise SystemExit(1)
 
-# Fetch all current prices
-uv run learning_examples/02_market_data/get_all_prices.py
+    if args.validate:
+        print("Config is valid.")
+        return
 
-# Place a single limit order
-uv run learning_examples/04_trading/place_limit_order.py
+    # start bot...
 ```
 
 ---
 
 ## Common Patterns
 
-### Pattern 1: Conservative testnet setup (start here)
+### Pattern: Multiple bots with explicit config paths
 
-```yaml
-# bots/testnet_safe.yaml
-name: "testnet_safe"
-active: true
-
-exchange:
-  type: "hyperliquid"
-  testnet: true        # MUST be true for testnet
-
-account:
-  max_allocation_pct: 5.0   # Small allocation
-
-grid:
-  symbol: "BTC"
-  levels: 5            # Fewer levels = fewer orders = easier to monitor
-  price_range:
-    mode: "auto"
-    auto:
-      range_pct: 3.0   # Tight range for low volatility testing
-
-risk_management:
-  stop_loss_enabled: true
-  stop_loss_pct: 5.0
-  max_drawdown_pct: 8.0
-  max_position_size_pct: 20.0
-  rebalance:
-    price_move_threshold_pct: 8.0
-
-monitoring:
-  log_level: "DEBUG"   # Verbose for learning
-```
-
-### Pattern 2: Manual price range (range-bound markets)
-
-```yaml
-grid:
-  symbol: "ETH"
-  levels: 12
-  price_range:
-    mode: "manual"
-    manual:
-      lower: 3000
-      upper: 3600
-```
-
-### Pattern 3: Run two bots on different symbols
-
-Create two YAML files. Use explicit paths, not `active: true` on both:
+Only use `active: true` for auto-discovery. For multiple strategies, pass paths explicitly:
 
 ```bash
 # Terminal 1
-npx tsx ts/src/runBot.ts bots/btc_grid.yaml
+npx tsx ts/src/runBot.ts bots/btc_conservative.yaml
 
 # Terminal 2
+npx tsx ts/src/runBot.ts bots/eth_aggressive.yaml
+```
+
+### Pattern: Adding a new grid config
+
+```bash
+cp bots/btc_conservative.yaml bots/eth_grid.yaml
+# Edit bots/eth_grid.yaml:
+#   name: "eth_grid"
+#   active: false          # keep false; pass path explicitly
+#   grid.symbol: "ETH"
+#   grid.levels: 8
+#   grid.price_range.auto.range_pct: 6.0
+npm run validate -- bots/eth_grid.yaml
 npx tsx ts/src/runBot.ts bots/eth_grid.yaml
 ```
 
----
+### Pattern: Safe testnet-first workflow
 
-## TypeScript Integration Examples
+1. Set `HYPERLIQUID_TESTNET=true` in `.env`
+2. Set `exchange.testnet: true` in YAML
+3. Run `npm run validate`
+4. Run `npm start` and monitor logs
+5. Only after validating behavior, switch both flags to `false` for mainnet
 
-### Importing bot types (if extending the bot)
+### Pattern: Graceful shutdown
 
-```typescript
-// ts/src/runBot.ts is the main entrypoint
-// To run programmatically from your own script:
-
-import { runBot } from './ts/src/runBot';
-
-// Pass config path as argument
-// npx tsx your_script.ts bots/btc_conservative.yaml
-```
-
-### Checking grid math in tests
+The bot handles `Ctrl+C` (SIGINT) and attempts to cancel all open orders before exit. Always check logs after shutdown to confirm order cancellation succeeded:
 
 ```bash
-npm test
-# Runs grid calculation unit tests — useful when tuning levels/range
+npm start 2>&1 | tee bot.log
+# On Ctrl+C, review bot.log for "cancelled" confirmations
 ```
 
 ---
 
 ## Troubleshooting
 
-### Bot doesn't start / "no active config found"
-- Ensure exactly one `bots/*.yaml` has `active: true`
-- Or pass an explicit path: `npx tsx ts/src/runBot.ts bots/myconfig.yaml`
+### Bot won't start — "No active config found"
 
-### Auth / private key errors
-- Confirm `HYPERLIQUID_TESTNET_PRIVATE_KEY` is set in `.env` (not committed, not quoted with extra spaces)
-- For mainnet, use the mainnet key variable and set `HYPERLIQUID_TESTNET=false`
-- Ensure `exchange.testnet` in YAML matches `HYPERLIQUID_TESTNET` in `.env`
+Ensure exactly one `bots/*.yaml` has `active: true`, or pass an explicit path:
 
-### Orders not cancelling on shutdown
-- Check logs after Ctrl+C for cancellation errors
-- Manually review open orders on Hyperliquid UI or testnet explorer
-- On hard crashes, cancel orders manually via the exchange interface
-
-### `HYPERLIQUID_TESTNET` mismatch
-- The TypeScript runner can override YAML `exchange.testnet` with the env var
-- To be explicit, set both: `HYPERLIQUID_TESTNET=true` in `.env` **and** `testnet: true` in YAML
-
-### Node.js version errors
 ```bash
-node --version   # Must be 20.19+
-nvm install 20
-nvm use 20
+npx tsx ts/src/runBot.ts bots/btc_conservative.yaml
 ```
 
-### Python uv not found
-```bash
-# Install uv
-curl -LsSf https://astral.sh/uv/install.sh | sh
-uv sync
-```
+### Validation errors
 
-### Validate config without connecting
 ```bash
 npm run validate
-# Exits with error code and prints schema violations if config is malformed
+# or for a specific file:
+npx tsx ts/src/validateConfig.ts bots/my_config.yaml
+```
+
+Common causes: missing required fields (`grid.symbol`, `grid.levels`), invalid `price_range.mode`, `max_allocation_pct` out of `0–100` range.
+
+### Private key / authentication errors
+
+- Confirm the correct env var is set for testnet vs. mainnet (`HYPERLIQUID_TESTNET_PRIVATE_KEY` vs. `HYPERLIQUID_MAINNET_PRIVATE_KEY`).
+- Confirm `HYPERLIQUID_TESTNET` in `.env` matches `exchange.testnet` in YAML.
+- Fund testnet wallet via [Hyperliquid testnet faucet](https://faucet.chainstack.com/hyperliquid-testnet-faucet).
+
+### Orders not filling / grid not moving
+
+- `range_pct` too narrow (price already outside band) — increase `range_pct` or use `manual` mode with wider bounds.
+- Insufficient account balance for `max_allocation_pct` × `levels` × `order_size_usd`.
+- Check `monitoring.log_level: "DEBUG"` for detailed order placement logs.
+
+### Python `uv` errors
+
+```bash
+uv sync          # Re-sync dependencies
+uv python pin 3.11   # Pin Python version if needed
+```
+
+### TypeScript compilation errors
+
+```bash
+npx tsc --noEmit   # Check for type errors without building
+npm test           # Run tests to catch logic regressions
 ```
 
 ---
 
-## Risk Reminders
+## Project Structure
 
-- **Always start on testnet** with a dedicated key and small allocation
-- `max_allocation_pct` limits exposure as a percentage of account balance
-- Enable `stop_loss_enabled: true` and set `max_drawdown_pct` before going live
-- Grid bots lose money in strongly trending markets — tune `rebalance.price_move_threshold_pct` accordingly
-- This project is for education and research; you are solely responsible for trading decisions
+```
+hyperliquid-trading-bot/
+├── bots/                      # YAML strategy configs
+│   └── btc_conservative.yaml  # Sample conservative BTC grid
+├── ts/
+│   └── src/
+│       ├── runBot.ts          # TypeScript entrypoint
+│       ├── bot/engine.ts      # Core grid engine
+│       └── config/loader.ts   # YAML + env config loader
+├── src/                       # Legacy Python bot
+│   └── run_bot.py             # Python entrypoint
+├── learning_examples/         # Educational scripts (Python)
+│   ├── 01_websockets/
+│   ├── 02_market_data/
+│   └── 04_trading/
+├── scripts/
+│   └── publish-to-polypulse.ps1
+├── .env.example               # Environment variable template
+├── package.json
+└── AGENTS.md / CLAUDE.md      # Contributor conventions
+```
+
+---
+
+## Risk Reminder
+
+- Always test on **testnet** with a dedicated key before any mainnet use.
+- Grid trading can accumulate large directional positions in trending markets.
+- `max_drawdown_pct` and `stop_loss_enabled: true` are your primary safeguards — review them before going live.
+- Never share or commit private keys. Use environment variables only.
