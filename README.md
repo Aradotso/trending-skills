@@ -449,6 +449,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [ppt-image-first-workflow](skills/ppt-image-first-workflow/) | [install](https://skills.sh/aradotso/trending-skills/ppt-image-first-workflow) | [NyxTides/ppt-image-first](https://github.com/NyxTides/ppt-image-first) | 2026-04-27 |
 | [unit-3-hyprland-nier-rice](skills/unit-3-hyprland-nier-rice/) | [install](https://skills.sh/aradotso/trending-skills/unit-3-hyprland-nier-rice) | [samyns/Unit-3](https://github.com/samyns/Unit-3) | 2026-04-27 |
 | [evanflow-tdd-loop](skills/evanflow-tdd-loop/) | [install](https://skills.sh/aradotso/trending-skills/evanflow-tdd-loop) | [evanklem/evanflow](https://github.com/evanklem/evanflow) | 2026-04-28 |
+| [hyperliquid-grid-trading-bot](skills/hyperliquid-grid-trading-bot/) | [install](https://skills.sh/aradotso/trending-skills/hyperliquid-grid-trading-bot) | [PolyPulse-Analytics/hyperliquid-trading-bot](https://github.com/PolyPulse-Analytics/hyperliquid-trading-bot) | 2026-04-28 |
 <!-- SKILL_INDEX -->
 
 ## How it works
