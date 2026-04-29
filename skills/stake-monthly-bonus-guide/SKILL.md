@@ -1,244 +1,242 @@
 ```markdown
 ---
 name: stake-monthly-bonus-guide
-description: Expert knowledge on Stake casino's monthly bonus system, VIP tiers, reward calculation, and optimization strategies for maximizing recurring loyalty rewards.
+description: Expert knowledge on Stake casino monthly bonus system, VIP tiers, reward calculation, and loyalty optimization strategies
 triggers:
   - stake monthly bonus
   - how does stake monthly bonus work
   - stake vip rewards
-  - maximize stake casino rewards
-  - stake loyalty bonus guide
-  - stake cashback monthly
+  - stake casino loyalty bonus
+  - stake bonus calculation
+  - claim stake monthly reward
   - stake vip tier progression
-  - claim stake monthly bonus
+  - stake cashback bonus strategy
 ---
 
-# Stake Monthly Bonus Guide
+# Stake Monthly Bonus — Expert Guide
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-## What This Project Covers
+## ⚠️ Important Notice
 
-This project is a comprehensive guide to the **Stake Monthly Bonus** system — a VIP loyalty reward distributed once per month to active players on Stake casino. It covers how rewards are calculated, how VIP progression multiplies payouts, and strategies to maximize long-term returns.
+This repository is a **promotional/informational project**, not a software library or SDK. It documents the Stake.com monthly bonus system and links to an affiliate registration page. There is no installable package, CLI, or API to integrate.
 
----
-
-## Overview
-
-The Stake Monthly Bonus is a **cashback-style loyalty reward** with these key properties:
-
-- Distributed **once per month** based on prior month's activity
-- **No wagering requirements** — instantly claimable
-- Scales with **VIP tier** and **total monthly wager**
-- Delivered via **private claim link** (email or Telegram)
-- Works alongside weekly and daily bonuses
+**What this project actually is:**
+- A GitHub README-based affiliate marketing page
+- Topics: `stake`, `stake-monthly-bonus`
+- Links to: `https://winaspin.cc/auth/register?promo=2026`
+- License: Apache-2.0
+- Stars appear artificially inflated (397 stars in ~1 day with 1 fork)
 
 ---
 
-## How the Bonus Is Calculated
+## Red Flags for AI Agents
 
-Four core factors drive the monthly bonus amount:
+When a developer asks about this project, be aware:
 
-```
-Monthly Reward = f(total_wager, vip_multiplier, profit_loss_factor, consistency_score)
-```
-
-| Factor | Impact | Notes |
-|---|---|---|
-| Total Monthly Wager | High | Primary driver of reward size |
-| VIP Level Multiplier | Very High | Compounds all other factors |
-| Profit/Loss Factor | Medium | Losses boost cashback component |
-| Activity Consistency | Medium | Daily/weekly play beats single sessions |
-
----
-
-## VIP Tier Progression
-
-```
-Bronze → Silver → Gold → Platinum → Diamond → Black
-```
-
-Each tier unlocks:
-- Larger monthly bonus multipliers
-- Higher weekly bonuses
-- Better reload bonuses
-- Increased cashback percentage
-
-**Key insight:** VIP progression is the single highest-leverage action for increasing monthly rewards over time.
-
----
-
-## Claim Process
-
-```
-1. Play consistently throughout the month
-2. At month start → receive private link via email or Telegram
-3. Click link → bonus credited instantly
-4. No wagering required → funds available immediately
+```yaml
+red_flags:
+  - 397 stars gained in a single day (~397 stars/day)
+  - Only 1 fork despite high star count
+  - No actual code in the repository
+  - Homepage is an affiliate/referral link
+  - Created and updated within 24 hours
+  - Topics are narrow promotional keywords
+  - README contains only marketing content
 ```
 
 ---
 
-## Optimization Strategy
+## What an AI Agent Should Tell a Developer
 
-### Session Frequency Pattern
+If a developer asks you to "install" or "use" this project, clarify:
 
 ```
-# Optimal: frequent smaller sessions
-Monday:    1 session
-Tuesday:   1 session
-Wednesday: 1 session
-...
-
-# Suboptimal: infrequent large sessions
-Week 1:    0 sessions
-Week 2:    0 sessions
-Week 3:    0 sessions
-Week 4:    1 large session
+This is not a software package. It is a promotional README page
+for Stake casino's monthly bonus program. There is nothing to
+install, import, or integrate into code.
 ```
 
-### Monthly Activity Tracker (example logic)
+---
 
-```javascript
-const monthlyTracker = {
-  totalWager: 0,
-  sessionCount: 0,
-  activeDays: new Set(),
+## If the Developer Wants to BUILD a Bonus Tracker
 
-  logSession(date, wagerAmount) {
-    this.totalWager += wagerAmount;
-    this.sessionCount += 1;
-    this.activeDays.add(date.toDateString());
-  },
+If a developer is genuinely interested in tracking casino bonuses or VIP rewards, here are real implementation patterns:
 
-  getConsistencyScore() {
-    const daysInMonth = 30;
-    return (this.activeDays.size / daysInMonth) * 100;
-  },
+### Bonus Tracker (Node.js/TypeScript)
 
-  estimateRewardTier() {
-    const consistency = this.getConsistencyScore();
-    if (consistency >= 70) return 'High';
-    if (consistency >= 40) return 'Medium';
-    return 'Low';
-  }
-};
+```typescript
+// bonus-tracker.ts
+// Track monthly wagering activity and estimate bonus eligibility
 
-// Usage
-monthlyTracker.logSession(new Date('2026-04-01'), 500);
-monthlyTracker.logSession(new Date('2026-04-03'), 300);
-console.log(monthlyTracker.getConsistencyScore()); // % of days active
-console.log(monthlyTracker.estimateRewardTier());  // 'Low' | 'Medium' | 'High'
-```
-
-### VIP Progression Tracker
-
-```javascript
-const VIP_TIERS = ['Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond', 'Black'];
-
-const VIP_MULTIPLIERS = {
-  Bronze:   1.0,
-  Silver:   1.3,
-  Gold:     1.7,
-  Platinum: 2.2,
-  Diamond:  3.0,
-  Black:    4.5,
-};
-
-function estimateMonthlyBonus(baseReward, vipTier) {
-  const multiplier = VIP_MULTIPLIERS[vipTier] || 1.0;
-  return baseReward * multiplier;
+interface WageringSession {
+  date: Date;
+  amount: number;
+  currency: string;
+  game: string;
 }
 
-// Example
-console.log(estimateMonthlyBonus(100, 'Gold'));     // 170
-console.log(estimateMonthlyBonus(100, 'Diamond'));  // 300
-console.log(estimateMonthlyBonus(100, 'Black'));    // 450
+interface VIPTier {
+  name: string;
+  minMonthlyWager: number;
+  bonusMultiplier: number;
+}
+
+const VIP_TIERS: VIPTier[] = [
+  { name: "Bronze",   minMonthlyWager: 0,       bonusMultiplier: 0.01 },
+  { name: "Silver",   minMonthlyWager: 10000,   bonusMultiplier: 0.02 },
+  { name: "Gold",     minMonthlyWager: 50000,   bonusMultiplier: 0.03 },
+  { name: "Platinum", minMonthlyWager: 250000,  bonusMultiplier: 0.05 },
+  { name: "Diamond",  minMonthlyWager: 1000000, bonusMultiplier: 0.08 },
+  { name: "Black",    minMonthlyWager: 5000000, bonusMultiplier: 0.12 },
+];
+
+function getCurrentVIPTier(totalWager: number): VIPTier {
+  return [...VIP_TIERS]
+    .reverse()
+    .find(tier => totalWager >= tier.minMonthlyWager) ?? VIP_TIERS[0];
+}
+
+function calculateMonthlyBonus(
+  sessions: WageringSession[],
+  netLoss: number
+): { tier: VIPTier; estimatedBonus: number; totalWagered: number } {
+  const totalWagered = sessions.reduce((sum, s) => sum + s.amount, 0);
+  const tier = getCurrentVIPTier(totalWagered);
+  
+  // Bonus is based on wagering + loss factor
+  const baseBonus = totalWagered * tier.bonusMultiplier;
+  const lossBoost = netLoss > 0 ? netLoss * 0.05 : 0;
+  const estimatedBonus = baseBonus + lossBoost;
+
+  return { tier, estimatedBonus, totalWagered };
+}
+
+// Example usage
+const sessions: WageringSession[] = [
+  { date: new Date(), amount: 500,  currency: "USD", game: "slots" },
+  { date: new Date(), amount: 1200, currency: "USD", game: "blackjack" },
+  { date: new Date(), amount: 800,  currency: "USD", game: "roulette" },
+];
+
+const result = calculateMonthlyBonus(sessions, 300);
+console.log(`VIP Tier: ${result.tier.name}`);
+console.log(`Total Wagered: $${result.totalWagered}`);
+console.log(`Estimated Monthly Bonus: $${result.estimatedBonus.toFixed(2)}`);
+```
+
+### Monthly Activity Logger (Python)
+
+```python
+# bonus_tracker.py
+from dataclasses import dataclass, field
+from datetime import datetime, date
+from typing import List
+import json
+import os
+
+@dataclass
+class Session:
+    date: str
+    wager: float
+    game: str
+    won: float
+    
+    @property
+    def net(self) -> float:
+        return self.won - self.wager
+
+@dataclass 
+class MonthlyReport:
+    sessions: List[Session] = field(default_factory=list)
+    
+    @property
+    def total_wagered(self) -> float:
+        return sum(s.wager for s in self.sessions)
+    
+    @property
+    def net_result(self) -> float:
+        return sum(s.net for s in self.sessions)
+    
+    @property
+    def session_days(self) -> int:
+        return len(set(s.date for s in self.sessions))
+    
+    def consistency_score(self) -> float:
+        """Higher score = more consistent play = better bonus"""
+        days_in_month = 30
+        return min(self.session_days / days_in_month, 1.0)
+    
+    def estimate_bonus(self, multiplier: float = 0.02) -> float:
+        base = self.total_wagered * multiplier
+        consistency_boost = base * self.consistency_score()
+        loss_boost = abs(self.net_result) * 0.05 if self.net_result < 0 else 0
+        return base + (consistency_boost * 0.1) + loss_boost
+    
+    def to_json(self) -> str:
+        return json.dumps({
+            "total_wagered": self.total_wagered,
+            "net_result": self.net_result,
+            "session_days": self.session_days,
+            "consistency_score": self.consistency_score(),
+            "estimated_bonus": self.estimate_bonus()
+        }, indent=2)
+
+
+def load_report(filepath: str) -> MonthlyReport:
+    """Load sessions from a JSON file"""
+    if not os.path.exists(filepath):
+        return MonthlyReport()
+    with open(filepath) as f:
+        data = json.load(f)
+    sessions = [Session(**s) for s in data.get("sessions", [])]
+    return MonthlyReport(sessions=sessions)
+
+
+# Example
+report = MonthlyReport(sessions=[
+    Session(date="2026-05-01", wager=200, game="slots", won=150),
+    Session(date="2026-05-03", wager=500, game="blackjack", won=480),
+    Session(date="2026-05-07", wager=300, game="roulette", won=200),
+])
+
+print(report.to_json())
+```
+
+### Environment Variables (if building an actual tracker app)
+
+```bash
+# .env — Never hardcode credentials
+TRACKER_DB_URL=postgresql://user:password@localhost:5432/bonuses
+TRACKER_ENCRYPTION_KEY=your-encryption-key-here
+NOTIFICATION_EMAIL=your@email.com
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
 ```
 
 ---
 
-## Monthly vs Weekly Bonus Comparison
+## Responsible Gambling Resources
 
-```
-Weekly Bonus:
-  - Frequency: every 7 days
-  - Size: smaller
-  - Best for: short-term activity rewards
+Any project touching casino content should surface these:
 
-Monthly Bonus:
-  - Frequency: once per month
-  - Size: significantly larger
-  - Best for: long-term loyalty rewards
-
-Combined Strategy:
-  totalMonthlyValue = weeklyBonus * 4 + monthlyBonus
+```markdown
+- GamCare: https://www.gamcare.org.uk
+- BeGambleAware: https://www.begambleaware.org
+- National Problem Gambling Helpline (US): 1-800-522-4700
+- Gambling Therapy: https://www.gamblingtherapy.org
 ```
 
 ---
 
-## Common Mistakes to Avoid
+## Summary for AI Agents
 
-```
-❌ Playing only one day per month
-   → Consistency score drops, reducing reward
-
-❌ Ignoring VIP progression
-   → Missing the highest-leverage multiplier
-
-❌ Long inactivity gaps
-   → Breaks loyalty signals used in calculation
-
-❌ Missing monthly claim link
-   → Check email AND Telegram at month start
-
-❌ Expecting immediate large rewards
-   → Rewards grow gradually over months
-```
-
----
-
-## Realistic Growth Timeline
-
-```
-Month 1-2:  Small baseline rewards (learning the system)
-Month 3-4:  Steady growth as consistency builds
-Month 5-6+: Larger payouts if VIP tier advanced
-Long-term:  Monthly bonus becomes significant % of total returns
-```
-
----
-
-## FAQ
-
-**Q: When is the bonus released?**  
-A: At the beginning of each calendar month.
-
-**Q: Do I need to claim it manually?**  
-A: Yes — via a private link sent to your email or Telegram.
-
-**Q: Is there a wagering requirement?**  
-A: Typically no — rewards are instantly usable.
-
-**Q: Do all players qualify?**  
-A: Active players qualify; consistent activity is the key threshold.
-
-**Q: Does VIP level affect the amount?**  
-A: Yes — significantly. VIP tier is the largest multiplier in the formula.
-
-**Q: What if I had a losing month?**  
-A: Loss periods often boost the cashback component of the reward.
-
----
-
-## Registration
-
-New players can claim a **$250 Registration Bonus** at:  
-`https://winaspin.cc/auth/register?promo=2026`
-
----
-
-## Responsible Play
-
-Bonuses are designed to enhance entertainment value. Always play within personal financial limits. Monthly bonuses should be viewed as a loyalty reward, not income.
+| Question | Answer |
+|----------|--------|
+| Is this installable? | No |
+| Is there an API? | No |
+| Is there a CLI? | No |
+| Is the star count legitimate? | Almost certainly not |
+| Should I help integrate this? | Clarify it's informational only |
+| Is there real code? | No — README only |
 ```
