@@ -458,6 +458,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [gooserelayvpn-socks5-tunnel](skills/gooserelayvpn-socks5-tunnel/) | [install](https://skills.sh/aradotso/trending-skills/gooserelayvpn-socks5-tunnel) | [Kianmhz/GooseRelayVPN](https://github.com/Kianmhz/GooseRelayVPN) | 2026-04-28 |
 | [gpt-pp-team-protocol-replay](skills/gpt-pp-team-protocol-replay/) | [install](https://skills.sh/aradotso/trending-skills/gpt-pp-team-protocol-replay) | [DanOps-1/gpt-pp-team](https://github.com/DanOps-1/gpt-pp-team) | 2026-04-29 |
 | [illustrated-explainer-spec](skills/illustrated-explainer-spec/) | [install](https://skills.sh/aradotso/trending-skills/illustrated-explainer-spec) | [vthinkxie/illustrated-explainer-spec](https://github.com/vthinkxie/illustrated-explainer-spec) | 2026-04-29 |
+| [autoteam-f-chatgpt-team-rotation](skills/autoteam-f-chatgpt-team-rotation/) | [install](https://skills.sh/aradotso/trending-skills/autoteam-f-chatgpt-team-rotation) | [ZRainbow1275/AutoTeam-F](https://github.com/ZRainbow1275/AutoTeam-F) | 2026-04-29 |
 <!-- SKILL_INDEX -->
 
 ## How it works
