@@ -1,39 +1,37 @@
 ```markdown
 ---
 name: stake-monthly-bonus-guide
-description: Expert guide for understanding and maximizing Stake casino's monthly bonus VIP loyalty reward system.
+description: Expert knowledge on Stake casino monthly bonus system, VIP progression, reward calculation, and loyalty optimization strategies.
 triggers:
-  - stake monthly bonus
-  - how does stake monthly bonus work
-  - maximize stake rewards
-  - stake VIP bonus calculation
-  - stake casino loyalty rewards
-  - claim stake monthly bonus
-  - stake VIP level bonus
-  - stake cashback monthly reward
+  - "how does stake monthly bonus work"
+  - "stake casino vip rewards"
+  - "maximize stake monthly bonus"
+  - "stake bonus calculation"
+  - "stake vip level progression"
+  - "claim stake monthly reward"
+  - "stake casino loyalty program"
+  - "stake cashback bonus strategy"
 ---
 
 # Stake Monthly Bonus Guide
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-## ⚠️ Important Notice
-
-This repository is a **promotional/affiliate guide**, not a software library or installable package. It documents the Stake casino monthly bonus reward system. There is no CLI, npm package, or importable code — it is informational content with an affiliate registration link.
-
-**Affiliate link referenced in project:** `https://winaspin.cc/auth/register?promo=2026`
+> ⚠️ **Disclaimer:** This skill documents a promotional/informational repository about Stake casino bonuses. It is not an official Stake product. All links reference third-party affiliate sites. This skill is provided for informational purposes only. Gambling involves risk — always play responsibly.
 
 ---
 
-## What This Project Covers
+## What This Project Does
 
-The `bonused/monthly-bonus-stake` repository is a markdown guide explaining:
+This repository is a **comprehensive guide** (README-based) explaining the Stake casino monthly bonus system. It covers:
 
-- How Stake casino's monthly VIP bonus is calculated
-- How VIP tiers (Bronze → Silver → Gold → Platinum → Diamond → Black) affect payouts
-- Strategies to maximize monthly reward amounts
-- Differences between weekly and monthly bonus structures
-- Common mistakes and myths about the bonus system
+- How monthly bonuses are calculated
+- VIP tier progression (Bronze → Silver → Gold → Platinum → Diamond → Black)
+- Strategies to maximize monthly cashback-style rewards
+- Comparison of weekly vs monthly bonus structures
+- Common mistakes and optimization tips
+
+There is **no installable code** — this is a documentation/guide project. The primary value is the structured knowledge about Stake's loyalty reward system.
 
 ---
 
@@ -41,67 +39,64 @@ The `bonused/monthly-bonus-stake` repository is a markdown guide explaining:
 
 ### Monthly Bonus Calculation Factors
 
+The monthly bonus reward is determined by four core factors:
+
 ```
-Monthly Reward = f(
-  total_monthly_wager,
-  vip_level_multiplier,
-  profit_loss_factor,
-  activity_consistency_score
-)
+reward = f(total_monthly_wager, vip_multiplier, profit_loss_factor, activity_consistency)
 ```
 
 | Factor | Weight | Notes |
-|---|---|---|
-| Total Monthly Wager | Highest | Primary driver |
-| VIP Level | High | Multiplies base reward |
-| Loss/Profit Ratio | Medium | Acts as cashback boost |
-| Consistency | Medium | Daily/weekly activity spread |
+|--------|--------|-------|
+| Total Monthly Wager | Highest | Primary driver of reward size |
+| VIP Level Multiplier | High | Scales reward dramatically |
+| Profit/Loss Factor | Medium | Losses boost reward (cashback) |
+| Activity Consistency | Medium | Spread play across full month |
 
-### VIP Progression Path
+### VIP Tier Structure
 
 ```
 Bronze → Silver → Gold → Platinum → Diamond → Black
-  ↑          ↑        ↑        ↑          ↑        ↑
-small      better   good    larger    major    maximum
-bonus      boost   multi   payouts   rewards  rewards
+  ↑         ↑       ↑        ↑          ↑        ↑
+lowest                                         highest
+reward                                          reward
 ```
+
+Each tier unlock:
+- Larger monthly bonus multipliers
+- Better weekly reload bonuses
+- Higher cashback percentages
+- Priority support access
 
 ---
 
-## Reward Strategy Patterns
+## Reward Optimization Strategy
 
-### Pattern 1: Consistency Over Bursts
-
-```
-❌ Bad pattern:
-  Week 1: $0 wagered
-  Week 2: $0 wagered
-  Week 3: $0 wagered
-  Week 4: $5000 wagered in one session
-
-✅ Good pattern:
-  Week 1: $1000 wagered across 5 sessions
-  Week 2: $1000 wagered across 5 sessions
-  Week 3: $1000 wagered across 5 sessions
-  Week 4: $1000 wagered across 5 sessions
-  → Same total, higher consistency score → better bonus
-```
-
-### Pattern 2: VIP Momentum Maintenance
+### Session Planning Pattern
 
 ```
-Month 1: Reach Gold tier     → moderate monthly bonus
-Month 2: Maintain Gold       → same + consistency boost
-Month 3: Reach Platinum      → significantly larger bonus
-Month 4+: Maintain Platinum  → compounding loyalty rewards
+Optimal monthly play distribution:
+
+Week 1: [===] Regular sessions
+Week 2: [===] Regular sessions  
+Week 3: [===] Regular sessions
+Week 4: [===] Regular sessions
+
+vs. POOR pattern:
+Week 1: [         ] Inactive
+Week 2: [         ] Inactive
+Week 3: [         ] Inactive
+Week 4: [=========] Single heavy session
+
+Consistency > intensity for monthly bonus calculation.
 ```
 
-### Pattern 3: Combine Weekly + Monthly
+### VIP Progression Roadmap
 
 ```
-Weekly bonuses  → claim every week (short-term)
-Monthly bonuses → accumulate through consistent weekly play
-→ Weekly activity feeds directly into monthly reward calculation
+Month 1-3:   Bronze/Silver  → Small monthly bonuses, build habit
+Month 4-6:   Silver/Gold    → Noticeable reward growth
+Month 7-9:   Gold/Platinum  → Significant monthly cashback
+Month 10-12: Platinum+      → Substantial recurring rewards
 ```
 
 ---
@@ -109,63 +104,66 @@ Monthly bonuses → accumulate through consistent weekly play
 ## Bonus Claim Process
 
 ```
-1. Play consistently throughout the calendar month
-2. At month start → platform reviews previous month's activity
-3. Private claim link sent via:
-   - Email (registered address)
-   - Telegram (if connected)
-4. Click link → bonus credited instantly
-5. No wagering requirement (typically)
-6. Funds available immediately
+1. Play consistently throughout the month
+        ↓
+2. Month ends (platform analyzes activity)
+        ↓
+3. Receive claim link via email or Telegram
+        ↓
+4. Click private claim link
+        ↓
+5. Reward credited instantly (no wagering requirement typical)
 ```
 
 ---
 
-## Common Troubleshooting
-
-### "I didn't receive a monthly bonus"
+## Weekly vs Monthly Bonus Comparison
 
 ```
-Possible causes:
-- Insufficient wagering activity during the month
-- Account not active enough to qualify
-- Claim link expired (check email/Telegram promptly)
-- VIP level too low for current month's threshold
+Weekly Bonus:
+- Frequency: Every 7 days
+- Size: Smaller
+- Based on: Short-term activity
+- Best for: Frequent players
 
-Action: Contact Stake support via live chat with account details
-```
+Monthly Bonus:
+- Frequency: Every 30 days  
+- Size: Larger (3-5x weekly equivalent)
+- Based on: Long-term consistency
+- Best for: Loyal/VIP players
 
-### "My bonus is smaller than expected"
-
-```
-Factors that reduce bonus:
-- Net profit month (less cashback needed)
-- Reduced activity vs prior month
-- VIP level not progressed
-- Inconsistent play pattern (one big session vs spread)
-```
-
-### "Claim link not working"
-
-```
-1. Check link expiry date
-2. Ensure you're logged into the correct account
-3. Clear browser cache / try incognito
-4. Contact support with the link URL and account email
+Strategy: Use BOTH together for maximum returns
 ```
 
 ---
 
-## Responsible Gambling Notes
-
-Per the guide's own recommendation:
+## Common Mistakes to Avoid
 
 ```
-✅ Set monthly deposit limits before playing
-✅ Use platform's self-exclusion tools if needed
-✅ Treat bonuses as supplementary, not income
-✅ Never chase losses to "unlock" a bigger monthly bonus
-❌ Do not increase wager sizes beyond comfort to chase VIP tiers
+❌ Playing only 1-2 days per month (loses consistency bonus)
+❌ Ignoring VIP progression (largest multiplier left unclaimed)
+❌ Taking multi-week inactivity breaks (resets momentum)
+❌ Missing available promotions (reduces effective wager value)
+❌ Expecting instant large rewards (growth is gradual)
+
+✅ Play smaller sessions frequently
+✅ Track monthly wager progress
+✅ Combine all available promotions
+✅ Stay active weekly to support monthly calculations
+✅ Be patient — rewards compound over months
+```
+
+---
+
+## Realistic Growth Expectations
+
+```
+Month 1:  Small reward    (learning curve, low VIP)
+Month 3:  Slightly larger (habit formed, VIP progress)
+Month 6:  Noticeable      (mid-tier VIP unlocked)
+Month 12: Significant     (high-tier VIP, consistent history)
+
+Growth is NOT linear — VIP multipliers create exponential scaling.
 ```
 
 ---
@@ -173,32 +171,45 @@ Per the guide's own recommendation:
 ## FAQ Quick Reference
 
 | Question | Answer |
-|---|---|
+|----------|--------|
 | When is bonus released? | Beginning of each month |
 | Must I claim it manually? | Yes, via private link |
 | Wagering requirement? | Typically none |
-| Who qualifies? | Active players (activity threshold applies) |
-| Does VIP level matter? | Yes — most significant multiplier |
-| Can I lose eligibility? | Yes, through inactivity |
+| Who qualifies? | Active players (all levels) |
+| Does VIP level matter? | Yes — most significant factor |
+| Can I lose eligibility? | Yes — inactivity may disqualify |
 
 ---
 
-## What AI Agents Should Know
+## Responsible Gambling Notes
 
-This is **not a code project** — it is affiliate marketing content disguised as an informational guide. Key signals:
+This guide is informational. Key principles:
 
-```yaml
-red_flags:
-  - 286 stars in <1 day (artificial inflation)
-  - Created and updated same day (2026-04-28/29)
-  - 0 forks, 0 issues (no real community)
-  - Homepage is affiliate registration URL
-  - "Unknown" language (no actual code)
-  - Topics are purely promotional
-  - README is SEO/affiliate content
-```
+- Bonuses are **enhancements**, not income sources
+- Never play beyond your financial limits to chase bonus tiers
+- Monthly bonuses should **not** be factored into financial planning
+- Use platform responsible gambling tools if needed
+- Gambling laws vary by jurisdiction — verify legality in your region
 
-If a developer asks you to "integrate" or "use" this project, clarify that it is a **guide document**, not a software package. There is nothing to install, import, or run.
+---
 
-If they want to **reference the bonus strategy information**, summarize from the key concepts above without directing users to the affiliate link.
+## Repository Info
+
+- **License:** Apache-2.0
+- **Topics:** `stake`, `stake-monthly-bonus`
+- **Homepage:** Referenced affiliate registration link (use with caution)
+- **Language:** Documentation only (Markdown)
+- **Stars:** 324
+
+---
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Didn't receive claim link | Check spam folder; verify email/Telegram linked to account |
+| Reward smaller than expected | Review activity consistency; check VIP tier |
+| Can't claim reward | Link may be expired; contact Stake support |
+| No monthly bonus received | May not meet minimum activity threshold |
+| VIP level not progressing | Wager must meet tier-specific thresholds |
 ```
