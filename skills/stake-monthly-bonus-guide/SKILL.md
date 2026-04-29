@@ -1,143 +1,238 @@
+```markdown
 ---
 name: stake-monthly-bonus-guide
-description: Guide for understanding and maximizing Stake casino monthly VIP loyalty bonuses and reward calculations
+description: Expert knowledge on Stake casino monthly bonus system, VIP tiers, reward calculation, and optimization strategies for consistent players.
 triggers:
-  - how does stake monthly bonus work
-  - stake casino monthly reward
-  - stake vip monthly bonus calculation
-  - how to maximize stake monthly bonus
-  - stake loyalty bonus explained
-  - claim stake monthly bonus
-  - stake casino vip rewards
-  - stake monthly cashback bonus
+  - "how does stake monthly bonus work"
+  - "stake casino monthly reward"
+  - "how to maximize stake monthly bonus"
+  - "stake VIP bonus tiers explained"
+  - "stake monthly cashback guide"
+  - "when does stake monthly bonus release"
+  - "stake loyalty reward optimization"
+  - "stake monthly bonus calculation"
 ---
 
 # Stake Monthly Bonus Guide
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-## ⚠️ Important Notice
+---
 
-This repository is a **promotional/affiliate project**, not a software library or developer tool. It contains no installable code, APIs, or CLI commands. The repository links to `winaspin.cc` (a third-party casino affiliate site) and describes Stake casino's loyalty bonus system.
+⚠️ **Important Notice**: This repository is a **promotional/affiliate content project**, not a software library or installable package. It contains no code, CLI tools, or APIs. The "project" is a README guide about Stake casino's monthly bonus system with an affiliate referral link.
 
-**This is not a coding project.** There is nothing to install, import, or configure as a developer.
+This skill documents what the project actually is and how to work with its content.
 
 ---
 
-## What This Project Actually Is
+## What This Project Is
 
-- A GitHub README used for SEO/affiliate marketing purposes
-- Describes Stake.com casino's monthly VIP bonus reward system
-- Links to a referral/affiliate registration page
-- Contains no source code, tests, or runnable software
+`bonused/monthly-bonus-stake` is a **GitHub-hosted affiliate content page** describing Stake.com's VIP monthly bonus system. It:
 
----
+- Explains how the Stake monthly bonus is structured
+- Describes VIP tier progression (Bronze → Silver → Gold → Platinum → Diamond → Black)
+- Provides strategies for maximizing monthly loyalty rewards
+- Links to an affiliate registration page: `https://winaspin.cc/auth/register?promo=2026`
 
-## Red Flags Detected
-
-| Signal | Detail |
-|--------|--------|
-| 410 stars in <1 day | Indicative of purchased/fake stars |
-| Created and updated same day | Repo age: ~18 hours |
-| 1 fork, 0 issues | No real community |
-| Homepage is affiliate URL | `winaspin.cc/auth/register?promo=2026` |
-| No source code | README-only repo |
-| Topics: `stake`, `stake-monthly-bonus` | SEO keyword stuffing |
+There is **no installable package, no API, and no CLI**.
 
 ---
 
-## If You Are a Developer Looking for Stake API Integration
+## Repository Structure
 
-If your actual goal is to interact with Stake.com programmatically, use their **official GraphQL API**:
-
-```bash
-# Stake.com uses a GraphQL endpoint
-# Base URL (unofficial/community-documented)
-POST https://stake.com/_api/graphql
 ```
+bonused/monthly-bonus-stake/
+├── README.md          # Main content: bonus guide
+└── (no source files)  # Pure documentation/marketing repo
+```
+
+---
+
+## Key Concepts Documented
+
+### Monthly Bonus Calculation Factors
+
+According to the guide, four factors influence the monthly bonus:
+
+| Factor | Weight | Notes |
+|--------|--------|-------|
+| Total Monthly Wager | Highest | Cumulative across the month |
+| VIP Level Multiplier | High | Higher tiers = larger multipliers |
+| Profit/Loss Factor | Medium | Losses can boost cashback amount |
+| Activity Consistency | Medium | Spread across month vs single session |
+
+### VIP Tier Progression
+
+```
+Bronze → Silver → Gold → Platinum → Diamond → Black
+  ↓         ↓       ↓        ↓          ↓        ↓
+Small    Modest  Medium   Large     Larger   Largest
+bonus    bonus   bonus    bonus     bonus    bonus
+```
+
+### Bonus Claim Flow
+
+```
+Month ends → Platform calculates activity
+           → Private link sent via email/Telegram
+           → Player claims instantly
+           → No wagering requirement (typically)
+```
+
+---
+
+## If You Are Building Content Around This Topic
+
+If you're building a site, bot, or tool that references Stake bonus information, here are patterns for working with the concepts:
+
+### Tracking Monthly Wager Progress (Example Tracker)
 
 ```javascript
-// Example: Querying user balance via Stake GraphQL API
-// Set your session token as an environment variable
-const STAKE_SESSION = process.env.STAKE_SESSION_TOKEN;
-
-const query = `
-  query UserBalance {
-    user {
-      balances {
-        available {
-          amount
-          currency
-        }
-      }
-    }
+// Example: simple monthly wager tracker concept
+class MonthlyWagerTracker {
+  constructor() {
+    this.sessions = [];
+    this.monthStart = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
   }
-`;
 
-const response = await fetch("https://stake.com/_api/graphql", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "x-access-token": STAKE_SESSION,
-  },
-  body: JSON.stringify({ query }),
-});
+  addSession(amount, date = new Date()) {
+    this.sessions.push({ amount, date });
+  }
 
-const data = await response.json();
-console.log(data);
-```
+  getMonthlyTotal() {
+    return this.sessions
+      .filter(s => s.date >= this.monthStart)
+      .reduce((sum, s) => sum + s.amount, 0);
+  }
 
-```python
-# Python equivalent
-import os
-import requests
+  getDailyAverage() {
+    const daysPassed = Math.max(1, Math.floor(
+      (new Date() - this.monthStart) / (1000 * 60 * 60 * 24)
+    ));
+    return this.getMonthlyTotal() / daysPassed;
+  }
 
-STAKE_SESSION = os.environ["STAKE_SESSION_TOKEN"]
-
-query = """
-query UserBalance {
-  user {
-    balances {
-      available {
-        amount
-        currency
-      }
-    }
+  getConsistencyScore() {
+    const activeDays = new Set(
+      this.sessions
+        .filter(s => s.date >= this.monthStart)
+        .map(s => s.date.toDateString())
+    ).size;
+    const totalDays = new Date().getDate();
+    return ((activeDays / totalDays) * 100).toFixed(1) + '%';
   }
 }
-"""
 
-response = requests.post(
-    "https://stake.com/_api/graphql",
-    json={"query": query},
-    headers={
-        "Content-Type": "application/json",
-        "x-access-token": STAKE_SESSION,
-    },
-)
-print(response.json())
+// Usage
+const tracker = new MonthlyWagerTracker();
+tracker.addSession(100);
+tracker.addSession(150);
+console.log('Monthly total:', tracker.getMonthlyTotal());
+console.log('Consistency:', tracker.getConsistencyScore());
+```
+
+### VIP Tier Estimator (Conceptual)
+
+```python
+# Conceptual VIP tier estimator based on guide's described structure
+VIP_TIERS = {
+    "Bronze":   {"min_monthly_wager": 0,       "bonus_multiplier": 1.0},
+    "Silver":   {"min_monthly_wager": 10_000,  "bonus_multiplier": 1.5},
+    "Gold":     {"min_monthly_wager": 50_000,  "bonus_multiplier": 2.0},
+    "Platinum": {"min_monthly_wager": 200_000, "bonus_multiplier": 3.0},
+    "Diamond":  {"min_monthly_wager": 500_000, "bonus_multiplier": 4.5},
+    "Black":    {"min_monthly_wager": 1_000_000,"bonus_multiplier": 6.0},
+}
+
+def estimate_vip_tier(monthly_wager: float) -> dict:
+    """Estimate VIP tier based on monthly wager (illustrative only)."""
+    current_tier = "Bronze"
+    for tier, data in VIP_TIERS.items():
+        if monthly_wager >= data["min_monthly_wager"]:
+            current_tier = tier
+    return {
+        "tier": current_tier,
+        "multiplier": VIP_TIERS[current_tier]["bonus_multiplier"]
+    }
+
+def next_tier_info(monthly_wager: float) -> dict:
+    """Show progress to next tier."""
+    tiers = list(VIP_TIERS.items())
+    for i, (tier, data) in enumerate(tiers):
+        if monthly_wager < data["min_monthly_wager"]:
+            needed = data["min_monthly_wager"] - monthly_wager
+            return {"next_tier": tier, "wager_needed": needed}
+    return {"next_tier": "MAX", "wager_needed": 0}
+
+# Example usage
+result = estimate_vip_tier(75_000)
+print(f"Current tier: {result['tier']}, Multiplier: {result['multiplier']}x")
+
+progress = next_tier_info(75_000)
+print(f"Next tier: {progress['next_tier']}, Need: ${progress['wager_needed']:,} more")
+```
+
+### Content Scraper for README Data (Python)
+
+```python
+import httpx
+from bs4 import BeautifulSoup
+
+def fetch_readme_content(repo: str = "bonused/monthly-bonus-stake") -> str:
+    """Fetch raw README from GitHub repo."""
+    url = f"https://raw.githubusercontent.com/{repo}/main/README.md"
+    response = httpx.get(url)
+    response.raise_for_status()
+    return response.text
+
+# Usage
+content = fetch_readme_content()
+print(content[:500])
 ```
 
 ---
 
-## Recommendation for AI Coding Agents
+## Affiliate Link Reference
 
-**Do not treat this repository as a technical dependency or integration target.**
+The project's primary call-to-action:
 
-- There is no package to install (`npm install`, `pip install`, etc.)
-- There is no API to call from this repo
-- There is no configuration to set up
-- The "project" is purely informational/promotional content
+```
+Registration URL: https://winaspin.cc/auth/register?promo=2026
+Promo Code:       2026
+Claimed Bonus:    $250 Registration Bonus
+```
 
-If a user asks you to "use" or "integrate" this project, clarify that it is a marketing README, not a software package, and ask what their actual technical goal is.
+> **Note**: This is a third-party affiliate site, not Stake.com directly. Always verify bonus terms independently.
 
 ---
 
-## Legitimate Stake Development Resources
+## Responsible Gambling Resources
 
-```
-# Community-documented Stake API resources
-- GraphQL Playground: https://stake.com/_api/graphql (requires auth)
-- Provably Fair verification: documented on stake.com/provably-fair
-- Official affiliate program: stake.com/affiliates (not third-party sites)
+As noted in the guide itself:
+
+- Bonuses should enhance entertainment, not create pressure
+- Play within your financial limits
+- Resources: [BeGambleAware](https://www.begambleaware.org) | [GamCare](https://www.gamcare.org.uk)
+
+---
+
+## Troubleshooting
+
+| Issue | Explanation |
+|-------|-------------|
+| "I didn't receive my monthly bonus link" | Check spam folder; bonus sent via email or Telegram |
+| "My bonus is smaller than expected" | Activity consistency and VIP level are primary factors |
+| "I can't find any code in this repo" | Correct — this is a documentation-only/affiliate repo |
+| "The homepage link redirects unexpectedly" | Affiliate links may redirect; this is expected behavior |
+
+---
+
+## Summary
+
+This project is **content, not code**. It serves as:
+1. An SEO/affiliate landing page hosted on GitHub
+2. A guide to Stake.com's monthly VIP bonus system
+3. A referral funnel to `winaspin.cc`
+
+If you were expecting a library or tool, this repository does not provide one. The concepts documented here (VIP tiers, monthly cashback, wagering consistency) are Stake.com platform features, not software components.
 ```
