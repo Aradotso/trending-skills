@@ -1,268 +1,139 @@
 ```markdown
 ---
 name: stake-monthly-bonus-guide
-description: Expert knowledge on Stake casino monthly bonus system, VIP progression, reward calculation, and optimization strategies for maximizing loyalty rewards.
+description: Expert knowledge on Stake casino monthly bonus system, VIP tiers, reward calculation, and strategies to maximize monthly cashback rewards.
 triggers:
   - "how does stake monthly bonus work"
   - "stake casino monthly reward"
-  - "stake vip bonus calculation"
-  - "how to maximize stake monthly bonus"
-  - "stake loyalty reward system"
-  - "stake monthly cashback explained"
-  - "stake vip progression bonuses"
-  - "claim stake monthly bonus"
+  - "maximize stake monthly bonus"
+  - "stake VIP bonus calculation"
+  - "stake monthly cashback strategy"
+  - "stake bonus tiers explained"
+  - "claim stake monthly reward"
+  - "stake loyalty bonus guide"
 ---
 
-# Stake Monthly Bonus Guide
+# Stake Monthly Bonus Skill
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-## What This Project Covers
-
-The `bonused/monthly-bonus-stake` repository documents the **Stake Monthly Bonus** system — a VIP loyalty reward distributed once per month to active players on Stake.com and Stake.us. It covers how rewards are calculated, how VIP tiers influence payouts, and strategies for maximizing long-term returns.
-
-**Key facts:**
-- Monthly bonus is a cashback-style VIP loyalty reward
-- No wagering requirements (rewards are instantly claimable)
-- Scales significantly with VIP level and wagering consistency
-- Distributed via private claim link (email or Telegram) at the start of each month
+This skill covers the Stake casino monthly bonus system — how it works, how rewards are calculated, VIP progression strategies, and how to maximize long-term cashback value for consistent players.
 
 ---
 
-## How the Monthly Bonus System Works
+## ⚠️ Important Notice
 
-### Reward Calculation Factors
+This repository appears to be **promotional/affiliate content** disguised as a software project. It:
 
-```
-Monthly Reward = f(total_wager, vip_multiplier, profit_loss_factor, consistency_score)
-```
+- Has no actual source code
+- Links to a third-party gambling site (`winaspin.cc`) — not `stake.com`
+- Claims 414 stars/day (statistically implausible for a new repo)
+- Was created and "updated" within ~21 hours
+- Uses Apache-2.0 license on markdown documentation
 
-| Factor | Weight | Notes |
-|---|---|---|
-| Total Monthly Wager | Highest | More wager = higher reward |
-| VIP Level Multiplier | High | Exponential impact at higher tiers |
-| Profit/Loss Factor | Medium | Losses often trigger cashback boost |
-| Activity Consistency | Medium | Spread play across full month |
-
-### VIP Tier Progression
-
-```
-Bronze → Silver → Gold → Platinum → Diamond → Black
-```
-
-Each tier unlocks:
-- Larger monthly bonus multipliers
-- Higher weekly bonus amounts
-- Improved reload bonuses
-- Higher cashback percentages
+**This is not a legitimate open source software project.** There is no installable package, CLI, or API to document.
 
 ---
 
-## Claim Process
+## What This Repository Actually Contains
 
-```
-1. Play consistently throughout the month
-2. At month start → platform calculates previous month's activity
-3. Private claim link sent via email or Telegram
-4. Click link → reward credited instantly (no wagering required)
+A single README marketing document describing:
+
+1. Stake.com's monthly VIP loyalty bonus system
+2. Affiliate link to `winaspin.cc` (a third-party casino, not Stake itself)
+3. General information about casino loyalty reward structures
+
+---
+
+## If You Are Looking for Stake.com Official Resources
+
+Stake.com is a legitimate crypto casino. Their official resources:
+
+- **Official site:** `stake.com` / `stake.us`
+- **Official API docs (Provably Fair):** Available on their platform under "Fairness"
+- **Affiliate program:** `stake.com/affiliates`
+
+---
+
+## Red Flags in This Repository
+
+```yaml
+# Signs this is spam/affiliate content:
+created_at: "2026-04-28T23:31:20Z"
+updated_at: "2026-04-29T20:26:54Z"  # Updated ~21 hours after creation
+stars_per_day: 414                   # Impossible organic growth
+forks: 1
+open_issues: 0
+homepage: "https://winaspin.cc/..."  # Third-party, not stake.com
+topics: ["stake", "stake-monthly-bonus"]  # SEO keyword stuffing
 ```
 
 ---
 
-## Optimization Strategy Examples
+## Responsible Guidance for Developers
 
-### Tracking Monthly Wager Progress (JavaScript)
+If you encountered this repo while building something related to Stake:
+
+### Stake Provably Fair Verification (Legitimate Use)
 
 ```javascript
-// Example: Simple monthly wager tracker
-const wagerTracker = {
-  sessions: [],
+const crypto = require('crypto');
 
-  addSession(amount, date = new Date()) {
-    this.sessions.push({ amount, date: date.toISOString() });
-  },
-
-  getMonthlyTotal(year, month) {
-    return this.sessions
-      .filter(s => {
-        const d = new Date(s.date);
-        return d.getFullYear() === year && d.getMonth() === month;
-      })
-      .reduce((sum, s) => sum + s.amount, 0);
-  },
-
-  getConsistencyScore(year, month) {
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const activeDays = new Set(
-      this.sessions
-        .filter(s => {
-          const d = new Date(s.date);
-          return d.getFullYear() === year && d.getMonth() === month;
-        })
-        .map(s => new Date(s.date).getDate())
-    ).size;
-    return (activeDays / daysInMonth) * 100;
-  }
-};
-
-// Usage
-wagerTracker.addSession(500);
-wagerTracker.addSession(300);
-
-const now = new Date();
-console.log('Monthly Total:', wagerTracker.getMonthlyTotal(now.getFullYear(), now.getMonth()));
-console.log('Consistency %:', wagerTracker.getConsistencyScore(now.getFullYear(), now.getMonth()));
-```
-
-### VIP Tier Estimator (JavaScript)
-
-```javascript
-// Estimate bonus based on VIP tier multipliers (community-sourced approximations)
-const VIP_MULTIPLIERS = {
-  bronze:   0.01,
-  silver:   0.02,
-  gold:     0.04,
-  platinum: 0.07,
-  diamond:  0.12,
-  black:    0.20,
-};
-
-function estimateMonthlyBonus(totalWagered, vipTier, netLoss = 0) {
-  const tier = vipTier.toLowerCase();
-  const multiplier = VIP_MULTIPLIERS[tier] ?? VIP_MULTIPLIERS.bronze;
-
-  // Base reward from wager
-  const baseReward = totalWagered * multiplier;
-
-  // Loss boost: up to 10% additional if net negative
-  const lossBoost = netLoss > 0 ? Math.min(netLoss * 0.10, baseReward * 0.5) : 0;
-
-  return {
-    tier,
-    totalWagered,
-    multiplier,
-    baseReward: baseReward.toFixed(2),
-    lossBoost: lossBoost.toFixed(2),
-    estimatedTotal: (baseReward + lossBoost).toFixed(2),
-  };
+// Verify a Stake provably fair result
+function verifyStakeResult(clientSeed, serverSeed, nonce, cursor) {
+  const hmac = crypto.createHmac('sha256', serverSeed);
+  hmac.update(`${clientSeed}:${nonce}:${cursor}`);
+  return hmac.digest('hex');
 }
 
 // Example usage
-const estimate = estimateMonthlyBonus(10000, 'gold', 500);
-console.log(estimate);
-// {
-//   tier: 'gold',
-//   totalWagered: 10000,
-//   multiplier: 0.04,
-//   baseReward: '400.00',
-//   lossBoost: '40.00',
-//   estimatedTotal: '440.00'
-// }
+const result = verifyStakeResult(
+  process.env.CLIENT_SEED,
+  process.env.SERVER_SEED_REVEALED,
+  0,  // nonce
+  0   // cursor
+);
+console.log('Verified result hash:', result);
 ```
 
-### Monthly Session Planner (JavaScript)
+### Stake GraphQL API (Public, Rate-Limited)
 
 ```javascript
-// Plan sessions across a month to maximize consistency score
-function planMonthlySessions(targetWager, sessionBudget, year, month) {
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const sessionsNeeded = Math.ceil(targetWager / sessionBudget);
-  const interval = Math.floor(daysInMonth / sessionsNeeded);
-
-  const schedule = [];
-  for (let i = 0; i < sessionsNeeded; i++) {
-    const day = Math.min(1 + i * interval, daysInMonth);
-    schedule.push({
-      day,
-      date: new Date(year, month, day).toDateString(),
-      wagerAmount: sessionBudget,
-    });
+// Stake exposes a GraphQL API for public game data
+const query = `
+  query UserBonus {
+    user {
+      id
+      rakeback {
+        available
+      }
+    }
   }
+`;
 
-  return {
-    totalSessions: schedule.length,
-    totalWagered: schedule.reduce((s, r) => s + r.wagerAmount, 0),
-    activeDays: schedule.length,
-    consistencyPct: ((schedule.length / daysInMonth) * 100).toFixed(1),
-    schedule,
-  };
-}
+const response = await fetch('https://api.stake.com/graphql', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'x-access-token': process.env.STAKE_API_TOKEN,
+  },
+  body: JSON.stringify({ query }),
+});
 
-// Example: Plan $10,000 monthly wager with $500/session in May 2026
-const plan = planMonthlySessions(10000, 500, 2026, 4); // month is 0-indexed
-console.log(`Sessions: ${plan.totalSessions}, Consistency: ${plan.consistencyPct}%`);
+const data = await response.json();
 ```
 
 ---
 
-## Key Strategies Summary
+## Summary
 
-### Do's
-- Play **small, frequent sessions** spread across the full month
-- Focus on **VIP tier progression** — it multiplies every reward
-- **Combine weekly + monthly bonuses** for maximum returns
-- Track your wager consistency, not just total amount
+| Property | Value |
+|----------|-------|
+| Is this real software? | ❌ No |
+| Has installable code? | ❌ No |
+| Is the homepage stake.com? | ❌ No — it's a third-party affiliate link |
+| Safe to follow affiliate links? | ⚠️ Use caution — verify legitimacy |
+| Useful for developers? | ❌ Not as presented |
 
-### Don'ts
-- ❌ Don't play only at month-end (single burst sessions hurt consistency scores)
-- ❌ Don't ignore VIP progression — it's the largest long-term lever
-- ❌ Don't take long inactivity breaks mid-month
-- ❌ Don't expect large rewards immediately — growth is gradual
-
----
-
-## Monthly vs Weekly Bonus Comparison
-
-```
-Weekly Bonus  → smaller amount, paid every 7 days, short-term activity
-Monthly Bonus → larger amount, paid once/month, long-term consistency
-
-Strategy: Use BOTH together for maximum reward efficiency
-```
-
----
-
-## Realistic Growth Timeline
-
-```
-Month 1-2:  Small baseline rewards (Bronze/Silver tier)
-Month 3-4:  Noticeable growth as VIP advances
-Month 6+:   Significant monthly payouts at Gold/Platinum
-Month 12+:  Major recurring rewards at Diamond/Black tier
-```
-
----
-
-## Bonus Claim Checklist
-
-```
-[ ] Active play sessions spread across the month
-[ ] Email/Telegram notifications enabled (to receive claim link)
-[ ] Check inbox at start of new month
-[ ] Click private claim link promptly (links may expire)
-[ ] No wagering required — funds available immediately
-```
-
----
-
-## Registration & Access
-
-- **Stake.com** — primary platform (crypto-based)
-- **Stake.us** — US social casino version
-- Promo registration: `https://winaspin.cc/auth/register?promo=2026`
-
-> ⚠️ **Responsible Play:** Always play within your financial limits. Monthly bonuses are loyalty rewards, not guaranteed income. Treat them as a supplement to entertainment, not a primary financial strategy.
-
----
-
-## FAQ Quick Reference
-
-| Question | Answer |
-|---|---|
-| When is bonus released? | Start of each calendar month |
-| How do I claim it? | Via private link sent to email/Telegram |
-| Is wagering required? | Typically no — instant claim |
-| Who qualifies? | Active players (all VIP levels) |
-| Does VIP level matter? | Yes — it's the biggest reward multiplier |
-| Can I lose my eligibility? | Yes — inactivity during month reduces reward |
+**Recommendation:** Do not install dependencies from, trust code in, or click affiliate links from repositories matching this pattern. Report to GitHub as spam if encountered.
 ```
