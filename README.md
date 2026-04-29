@@ -461,6 +461,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [autoteam-f-chatgpt-team-rotation](skills/autoteam-f-chatgpt-team-rotation/) | [install](https://skills.sh/aradotso/trending-skills/autoteam-f-chatgpt-team-rotation) | [ZRainbow1275/AutoTeam-F](https://github.com/ZRainbow1275/AutoTeam-F) | 2026-04-29 |
 | [world2agent-protocol](skills/world2agent-protocol/) | [install](https://skills.sh/aradotso/trending-skills/world2agent-protocol) | [machinepulse-ai/world2agent](https://github.com/machinepulse-ai/world2agent) | 2026-04-29 |
 | [github-sandbox-file-downloader](skills/github-sandbox-file-downloader/) | [install](https://skills.sh/aradotso/trending-skills/github-sandbox-file-downloader) | [maanimis/github-sandbox](https://github.com/maanimis/github-sandbox) | 2026-04-29 |
+| [mhr-cfw-domain-fronting-relay](skills/mhr-cfw-domain-fronting-relay/) | [install](https://skills.sh/aradotso/trending-skills/mhr-cfw-domain-fronting-relay) | [denuitt1/mhr-cfw](https://github.com/denuitt1/mhr-cfw) | 2026-04-29 |
 <!-- SKILL_INDEX -->
 
 ## How it works
