@@ -460,6 +460,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [illustrated-explainer-spec](skills/illustrated-explainer-spec/) | [install](https://skills.sh/aradotso/trending-skills/illustrated-explainer-spec) | [vthinkxie/illustrated-explainer-spec](https://github.com/vthinkxie/illustrated-explainer-spec) | 2026-04-29 |
 | [autoteam-f-chatgpt-team-rotation](skills/autoteam-f-chatgpt-team-rotation/) | [install](https://skills.sh/aradotso/trending-skills/autoteam-f-chatgpt-team-rotation) | [ZRainbow1275/AutoTeam-F](https://github.com/ZRainbow1275/AutoTeam-F) | 2026-04-29 |
 | [world2agent-protocol](skills/world2agent-protocol/) | [install](https://skills.sh/aradotso/trending-skills/world2agent-protocol) | [machinepulse-ai/world2agent](https://github.com/machinepulse-ai/world2agent) | 2026-04-29 |
+| [github-sandbox-file-downloader](skills/github-sandbox-file-downloader/) | [install](https://skills.sh/aradotso/trending-skills/github-sandbox-file-downloader) | [maanimis/github-sandbox](https://github.com/maanimis/github-sandbox) | 2026-04-29 |
 <!-- SKILL_INDEX -->
 
 ## How it works
