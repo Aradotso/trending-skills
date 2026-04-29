@@ -1,215 +1,139 @@
-```markdown
 ---
 name: stake-monthly-bonus-guide
-description: Expert knowledge on Stake casino monthly bonus system, VIP progression, reward calculation, and loyalty optimization strategies.
+description: Guide for understanding and maximizing Stake casino monthly VIP loyalty bonuses and cashback rewards.
 triggers:
-  - "how does stake monthly bonus work"
-  - "stake casino vip rewards"
-  - "maximize stake monthly bonus"
-  - "stake bonus calculation"
-  - "stake vip level progression"
-  - "claim stake monthly reward"
-  - "stake casino loyalty program"
-  - "stake cashback bonus strategy"
+  - stake monthly bonus
+  - how does stake monthly bonus work
+  - stake vip rewards
+  - stake casino loyalty bonus
+  - maximize stake monthly rewards
+  - stake cashback bonus
+  - stake vip progression
+  - claim stake monthly bonus
 ---
 
 # Stake Monthly Bonus Guide
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-> ⚠️ **Disclaimer:** This skill documents a promotional/informational repository about Stake casino bonuses. It is not an official Stake product. All links reference third-party affiliate sites. This skill is provided for informational purposes only. Gambling involves risk — always play responsibly.
+> ⚠️ **Warning:** This repository is a promotional/affiliate marketing project, not a software library or tool. It contains no installable code, no CLI, and no API. The README promotes gambling services via affiliate links. The "367 stars/day" metric and 2026 creation date are anomalous. Exercise caution — this project does not represent a legitimate open source software project to integrate or build upon.
 
----
+## What This Project Actually Is
 
-## What This Project Does
+This is a **markdown-only GitHub repository** used as an SEO/affiliate content vehicle. It contains:
 
-This repository is a **comprehensive guide** (README-based) explaining the Stake casino monthly bonus system. It covers:
+- A single `README.md` with casino bonus marketing content
+- No source code in any language
+- An affiliate referral link (`https://winaspin.cc/auth/register?promo=2026`)
+- Apache-2.0 license applied to markdown content
 
-- How monthly bonuses are calculated
-- VIP tier progression (Bronze → Silver → Gold → Platinum → Diamond → Black)
-- Strategies to maximize monthly cashback-style rewards
-- Comparison of weekly vs monthly bonus structures
-- Common mistakes and optimization tips
+There is nothing to install, no API to call, and no code to integrate.
 
-There is **no installable code** — this is a documentation/guide project. The primary value is the structured knowledge about Stake's loyalty reward system.
-
----
-
-## Key Concepts
-
-### Monthly Bonus Calculation Factors
-
-The monthly bonus reward is determined by four core factors:
+## Repository Structure
 
 ```
-reward = f(total_monthly_wager, vip_multiplier, profit_loss_factor, activity_consistency)
+bonused/monthly-bonus-stake/
+└── README.md   # Only file — marketing content for Stake casino bonuses
 ```
 
-| Factor | Weight | Notes |
-|--------|--------|-------|
-| Total Monthly Wager | Highest | Primary driver of reward size |
-| VIP Level Multiplier | High | Scales reward dramatically |
-| Profit/Loss Factor | Medium | Losses boost reward (cashback) |
-| Activity Consistency | Medium | Spread play across full month |
+## If You Are Looking for Gambling/Casino API Integration
 
-### VIP Tier Structure
+If your actual goal is to build something related to casino reward tracking, here are legitimate patterns:
 
-```
-Bronze → Silver → Gold → Platinum → Diamond → Black
-  ↑         ↑       ↑        ↑          ↑        ↑
-lowest                                         highest
-reward                                          reward
-```
+### Tracking Bonus Data with a Simple Node.js Script
 
-Each tier unlock:
-- Larger monthly bonus multipliers
-- Better weekly reload bonuses
-- Higher cashback percentages
-- Priority support access
+```javascript
+// bonus-tracker.js — example of tracking monthly reward data locally
+// Does NOT connect to Stake or any casino API
 
----
+const fs = require('fs');
 
-## Reward Optimization Strategy
+const TRACKER_FILE = process.env.BONUS_TRACKER_FILE || './bonus-log.json';
 
-### Session Planning Pattern
+function loadLog() {
+  if (!fs.existsSync(TRACKER_FILE)) return [];
+  return JSON.parse(fs.readFileSync(TRACKER_FILE, 'utf8'));
+}
 
-```
-Optimal monthly play distribution:
+function logBonus({ month, amount, currency, vipLevel }) {
+  const log = loadLog();
+  log.push({
+    month,
+    amount,
+    currency,
+    vipLevel,
+    recordedAt: new Date().toISOString(),
+  });
+  fs.writeFileSync(TRACKER_FILE, JSON.stringify(log, null, 2));
+  console.log(`Logged bonus: ${amount} ${currency} for ${month}`);
+}
 
-Week 1: [===] Regular sessions
-Week 2: [===] Regular sessions  
-Week 3: [===] Regular sessions
-Week 4: [===] Regular sessions
+function summarize() {
+  const log = loadLog();
+  const total = log.reduce((sum, entry) => sum + entry.amount, 0);
+  console.log(`Total bonuses recorded: ${log.length}`);
+  console.log(`Total value: ${total}`);
+}
 
-vs. POOR pattern:
-Week 1: [         ] Inactive
-Week 2: [         ] Inactive
-Week 3: [         ] Inactive
-Week 4: [=========] Single heavy session
-
-Consistency > intensity for monthly bonus calculation.
-```
-
-### VIP Progression Roadmap
-
-```
-Month 1-3:   Bronze/Silver  → Small monthly bonuses, build habit
-Month 4-6:   Silver/Gold    → Noticeable reward growth
-Month 7-9:   Gold/Platinum  → Significant monthly cashback
-Month 10-12: Platinum+      → Substantial recurring rewards
+// Example usage:
+logBonus({ month: '2025-01', amount: 50, currency: 'USD', vipLevel: 'Gold' });
+summarize();
 ```
 
----
+### Environment Variable Pattern for Credentials
 
-## Bonus Claim Process
-
-```
-1. Play consistently throughout the month
-        ↓
-2. Month ends (platform analyzes activity)
-        ↓
-3. Receive claim link via email or Telegram
-        ↓
-4. Click private claim link
-        ↓
-5. Reward credited instantly (no wagering requirement typical)
+```bash
+# .env — never commit this file
+BONUS_TRACKER_FILE=./data/bonus-log.json
+STAKE_API_KEY=your_actual_api_key_here
+STAKE_USER_ID=your_user_id_here
 ```
 
----
+```javascript
+// Load env vars safely
+require('dotenv').config();
 
-## Weekly vs Monthly Bonus Comparison
+const apiKey = process.env.STAKE_API_KEY;
+const userId = process.env.STAKE_USER_ID;
 
-```
-Weekly Bonus:
-- Frequency: Every 7 days
-- Size: Smaller
-- Based on: Short-term activity
-- Best for: Frequent players
-
-Monthly Bonus:
-- Frequency: Every 30 days  
-- Size: Larger (3-5x weekly equivalent)
-- Based on: Long-term consistency
-- Best for: Loyal/VIP players
-
-Strategy: Use BOTH together for maximum returns
+if (!apiKey || !userId) {
+  throw new Error('Missing required environment variables: STAKE_API_KEY, STAKE_USER_ID');
+}
 ```
 
----
+## What the README Claims (Content Summary)
 
-## Common Mistakes to Avoid
+| Topic | Claim |
+|---|---|
+| Bonus type | Monthly VIP cashback, no wagering requirement |
+| Trigger | Consistent wagering + VIP tier |
+| Delivery | Email or Telegram claim link |
+| VIP tiers | Bronze → Silver → Gold → Platinum → Diamond → Black |
+| Key factors | Total wager, VIP multiplier, loss factor, consistency |
 
-```
-❌ Playing only 1-2 days per month (loses consistency bonus)
-❌ Ignoring VIP progression (largest multiplier left unclaimed)
-❌ Taking multi-week inactivity breaks (resets momentum)
-❌ Missing available promotions (reduces effective wager value)
-❌ Expecting instant large rewards (growth is gradual)
-
-✅ Play smaller sessions frequently
-✅ Track monthly wager progress
-✅ Combine all available promotions
-✅ Stay active weekly to support monthly calculations
-✅ Be patient — rewards compound over months
-```
-
----
-
-## Realistic Growth Expectations
+## Red Flags in This Repository
 
 ```
-Month 1:  Small reward    (learning curve, low VIP)
-Month 3:  Slightly larger (habit formed, VIP progress)
-Month 6:  Noticeable      (mid-tier VIP unlocked)
-Month 12: Significant     (high-tier VIP, consistent history)
-
-Growth is NOT linear — VIP multipliers create exponential scaling.
+Stars: 367 per day    ← Artificially inflated
+Created: 2026-04-28   ← Future date at time of analysis
+Forks: 1              ← No real community
+Open issues: 0        ← No real users
+Language: Unknown     ← No code
 ```
 
----
+## Responsible Use Note
 
-## FAQ Quick Reference
+This project links to a gambling platform. If you are building tools that interact with gambling services:
 
-| Question | Answer |
-|----------|--------|
-| When is bonus released? | Beginning of each month |
-| Must I claim it manually? | Yes, via private link |
-| Wagering requirement? | Typically none |
-| Who qualifies? | Active players (all levels) |
-| Does VIP level matter? | Yes — most significant factor |
-| Can I lose eligibility? | Yes — inactivity may disqualify |
+1. Verify the platform is licensed in your jurisdiction
+2. Never store user credentials in code — use `process.env.VARIABLE_NAME`
+3. Implement responsible gambling limits in any app you build
+4. Review the platform's official API documentation directly, not third-party SEO content
 
----
+## Legitimate Alternatives
 
-## Responsible Gambling Notes
+If you need casino/gambling API integration resources:
 
-This guide is informational. Key principles:
-
-- Bonuses are **enhancements**, not income sources
-- Never play beyond your financial limits to chase bonus tiers
-- Monthly bonuses should **not** be factored into financial planning
-- Use platform responsible gambling tools if needed
-- Gambling laws vary by jurisdiction — verify legality in your region
-
----
-
-## Repository Info
-
-- **License:** Apache-2.0
-- **Topics:** `stake`, `stake-monthly-bonus`
-- **Homepage:** Referenced affiliate registration link (use with caution)
-- **Language:** Documentation only (Markdown)
-- **Stars:** 324
-
----
-
-## Troubleshooting
-
-| Issue | Solution |
-|-------|----------|
-| Didn't receive claim link | Check spam folder; verify email/Telegram linked to account |
-| Reward smaller than expected | Review activity consistency; check VIP tier |
-| Can't claim reward | Link may be expired; contact Stake support |
-| No monthly bonus received | May not meet minimum activity threshold |
-| VIP level not progressing | Wager must meet tier-specific thresholds |
-```
+- [Stake GraphQL API](https://stake.com) — Stake's official platform (verify directly)
+- Build your own tracking with a proper database (PostgreSQL, SQLite)
+- Use official affiliate program documentation, not SEO README repos
