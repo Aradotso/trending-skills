@@ -7,232 +7,179 @@ triggers:
   - "stake casino monthly reward"
   - "how to maximize stake monthly bonus"
   - "stake VIP bonus tiers explained"
-  - "stake monthly cashback guide"
+  - "stake monthly cashback strategy"
   - "when does stake monthly bonus release"
-  - "stake loyalty reward optimization"
-  - "stake monthly bonus calculation"
+  - "stake loyalty reward calculation"
+  - "stake casino bonus optimization"
 ---
 
 # Stake Monthly Bonus Guide
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
----
+## Overview
 
-⚠️ **Important Notice**: This repository is a **promotional/affiliate content project**, not a software library or installable package. It contains no code, CLI tools, or APIs. The "project" is a README guide about Stake casino's monthly bonus system with an affiliate referral link.
+The **Stake Monthly Bonus** is a VIP loyalty reward distributed once per calendar month to active players on Stake.com and Stake.us. It functions as a cashback-style system with no wagering requirements, scaled by wager volume, VIP tier, and activity consistency.
 
-This skill documents what the project actually is and how to work with its content.
-
----
-
-## What This Project Is
-
-`bonused/monthly-bonus-stake` is a **GitHub-hosted affiliate content page** describing Stake.com's VIP monthly bonus system. It:
-
-- Explains how the Stake monthly bonus is structured
-- Describes VIP tier progression (Bronze → Silver → Gold → Platinum → Diamond → Black)
-- Provides strategies for maximizing monthly loyalty rewards
-- Links to an affiliate registration page: `https://winaspin.cc/auth/register?promo=2026`
-
-There is **no installable package, no API, and no CLI**.
+**Key facts:**
+- Released at the start of each month
+- Claimed via a private link (email or Telegram)
+- No wagering requirements on claimed rewards
+- Scales with VIP level and monthly wager total
+- Available on both Stake.com and Stake.us
 
 ---
 
-## Repository Structure
+## How the Bonus Is Calculated
+
+The reward is proprietary but confirmed to weight these factors:
+
+| Factor | Impact |
+|---|---|
+| Total monthly wager | Primary driver |
+| VIP level multiplier | Major amplifier |
+| Profit/Loss ratio | Cashback boost on losses |
+| Activity consistency | Spread of play across the month |
 
 ```
-bonused/monthly-bonus-stake/
-├── README.md          # Main content: bonus guide
-└── (no source files)  # Pure documentation/marketing repo
+estimated_bonus = base_rate * monthly_wager * vip_multiplier * consistency_factor
 ```
+
+Where:
+- `base_rate` — platform-set percentage (not public)
+- `vip_multiplier` — increases at each VIP tier
+- `consistency_factor` — higher when sessions are spread across the month
 
 ---
 
-## Key Concepts Documented
-
-### Monthly Bonus Calculation Factors
-
-According to the guide, four factors influence the monthly bonus:
-
-| Factor | Weight | Notes |
-|--------|--------|-------|
-| Total Monthly Wager | Highest | Cumulative across the month |
-| VIP Level Multiplier | High | Higher tiers = larger multipliers |
-| Profit/Loss Factor | Medium | Losses can boost cashback amount |
-| Activity Consistency | Medium | Spread across month vs single session |
-
-### VIP Tier Progression
+## VIP Tier Progression
 
 ```
 Bronze → Silver → Gold → Platinum → Diamond → Black
-  ↓         ↓       ↓        ↓          ↓        ↓
-Small    Modest  Medium   Large     Larger   Largest
-bonus    bonus   bonus    bonus     bonus    bonus
 ```
 
-### Bonus Claim Flow
+Each tier unlocks:
+- Higher monthly bonus multipliers
+- Larger weekly bonuses
+- Better reload bonuses
+- Increased cashback percentage
+
+**Strategy:** VIP progression compounds over time — climbing tiers increases every future monthly payout.
+
+---
+
+## Claiming the Bonus
+
+1. Remain active throughout the previous month
+2. Wait for the notification at the start of the new month
+3. Check registered email or linked Telegram
+4. Click the private claim link
+5. Bonus is credited instantly — no wagering lock
+
+---
+
+## Optimization Strategies
+
+### Consistency Over Volume
 
 ```
-Month ends → Platform calculates activity
-           → Private link sent via email/Telegram
-           → Player claims instantly
-           → No wagering requirement (typically)
+# Suboptimal: one heavy session
+Day 1:  wager $10,000
+Days 2-30: $0
+
+# Optimal: distributed sessions
+Days 1-30: wager ~$333/day = $10,000 total
+```
+
+Consistency signals loyalty and improves the `consistency_factor` in reward calculation.
+
+### Stack Bonus Types
+
+```
+Weekly Bonus   → rewards short-term activity
+Monthly Bonus  → rewards long-term loyalty
+Reload Bonus   → boosts wager efficiency mid-month
+Promotions     → increase effective wager volume
+```
+
+Using all four together maximizes total return percentage.
+
+### VIP Momentum Maintenance
+
+```
+# Avoid inactivity gaps that stall VIP progress
+Month 1: Active → VIP progress
+Month 2: Inactive → progress may stall
+Month 3: Active → starts lower
+
+# Better approach
+All months: consistent low-to-medium activity
+→ steady VIP climb
+→ each tier multiplies monthly reward
 ```
 
 ---
 
-## If You Are Building Content Around This Topic
+## Common Mistakes
 
-If you're building a site, bot, or tool that references Stake bonus information, here are patterns for working with the concepts:
-
-### Tracking Monthly Wager Progress (Example Tracker)
-
-```javascript
-// Example: simple monthly wager tracker concept
-class MonthlyWagerTracker {
-  constructor() {
-    this.sessions = [];
-    this.monthStart = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
-  }
-
-  addSession(amount, date = new Date()) {
-    this.sessions.push({ amount, date });
-  }
-
-  getMonthlyTotal() {
-    return this.sessions
-      .filter(s => s.date >= this.monthStart)
-      .reduce((sum, s) => sum + s.amount, 0);
-  }
-
-  getDailyAverage() {
-    const daysPassed = Math.max(1, Math.floor(
-      (new Date() - this.monthStart) / (1000 * 60 * 60 * 24)
-    ));
-    return this.getMonthlyTotal() / daysPassed;
-  }
-
-  getConsistencyScore() {
-    const activeDays = new Set(
-      this.sessions
-        .filter(s => s.date >= this.monthStart)
-        .map(s => s.date.toDateString())
-    ).size;
-    const totalDays = new Date().getDate();
-    return ((activeDays / totalDays) * 100).toFixed(1) + '%';
-  }
-}
-
-// Usage
-const tracker = new MonthlyWagerTracker();
-tracker.addSession(100);
-tracker.addSession(150);
-console.log('Monthly total:', tracker.getMonthlyTotal());
-console.log('Consistency:', tracker.getConsistencyScore());
 ```
-
-### VIP Tier Estimator (Conceptual)
-
-```python
-# Conceptual VIP tier estimator based on guide's described structure
-VIP_TIERS = {
-    "Bronze":   {"min_monthly_wager": 0,       "bonus_multiplier": 1.0},
-    "Silver":   {"min_monthly_wager": 10_000,  "bonus_multiplier": 1.5},
-    "Gold":     {"min_monthly_wager": 50_000,  "bonus_multiplier": 2.0},
-    "Platinum": {"min_monthly_wager": 200_000, "bonus_multiplier": 3.0},
-    "Diamond":  {"min_monthly_wager": 500_000, "bonus_multiplier": 4.5},
-    "Black":    {"min_monthly_wager": 1_000_000,"bonus_multiplier": 6.0},
-}
-
-def estimate_vip_tier(monthly_wager: float) -> dict:
-    """Estimate VIP tier based on monthly wager (illustrative only)."""
-    current_tier = "Bronze"
-    for tier, data in VIP_TIERS.items():
-        if monthly_wager >= data["min_monthly_wager"]:
-            current_tier = tier
-    return {
-        "tier": current_tier,
-        "multiplier": VIP_TIERS[current_tier]["bonus_multiplier"]
-    }
-
-def next_tier_info(monthly_wager: float) -> dict:
-    """Show progress to next tier."""
-    tiers = list(VIP_TIERS.items())
-    for i, (tier, data) in enumerate(tiers):
-        if monthly_wager < data["min_monthly_wager"]:
-            needed = data["min_monthly_wager"] - monthly_wager
-            return {"next_tier": tier, "wager_needed": needed}
-    return {"next_tier": "MAX", "wager_needed": 0}
-
-# Example usage
-result = estimate_vip_tier(75_000)
-print(f"Current tier: {result['tier']}, Multiplier: {result['multiplier']}x")
-
-progress = next_tier_info(75_000)
-print(f"Next tier: {progress['next_tier']}, Need: ${progress['wager_needed']:,} more")
-```
-
-### Content Scraper for README Data (Python)
-
-```python
-import httpx
-from bs4 import BeautifulSoup
-
-def fetch_readme_content(repo: str = "bonused/monthly-bonus-stake") -> str:
-    """Fetch raw README from GitHub repo."""
-    url = f"https://raw.githubusercontent.com/{repo}/main/README.md"
-    response = httpx.get(url)
-    response.raise_for_status()
-    return response.text
-
-# Usage
-content = fetch_readme_content()
-print(content[:500])
+❌ Playing only on one or two days per month
+❌ Taking multi-week breaks mid-month
+❌ Ignoring VIP progression milestones
+❌ Missing weekly bonuses (they support monthly calculations)
+❌ Expecting large rewards before VIP progression matures
 ```
 
 ---
 
-## Affiliate Link Reference
-
-The project's primary call-to-action:
+## Bonus Timeline
 
 ```
-Registration URL: https://winaspin.cc/auth/register?promo=2026
-Promo Code:       2026
-Claimed Bonus:    $250 Registration Bonus
+Month N activity recorded
+         ↓
+Month N+1 starts
+         ↓
+Platform calculates reward (wager + VIP + consistency)
+         ↓
+Private claim link sent via email/Telegram
+         ↓
+Player clicks link → instant credit, no lock
 ```
 
-> **Note**: This is a third-party affiliate site, not Stake.com directly. Always verify bonus terms independently.
+---
+
+## FAQ
+
+**Q: Do all players receive a monthly bonus?**  
+A: Players who maintained consistent activity during the previous month qualify. Inactive accounts do not receive a bonus.
+
+**Q: Is there a minimum wager threshold?**  
+A: Not publicly disclosed, but higher wager volume always increases the reward. Even smaller consistent players see growing rewards over time.
+
+**Q: Does VIP level from the previous month apply?**  
+A: Yes — the VIP level held during the activity month determines the multiplier applied.
+
+**Q: Can I receive both Stake.com and Stake.us monthly bonuses?**  
+A: These are separate platforms with separate accounts and separate reward calculations.
+
+**Q: What if I don't claim the bonus immediately?**  
+A: Claim links expire — claim promptly when the notification arrives.
+
+**Q: Is there a wagering requirement on the monthly bonus?**  
+A: Typically no — this is one of the key advantages over standard casino bonuses.
 
 ---
 
-## Responsible Gambling Resources
+## Responsible Play
 
-As noted in the guide itself:
-
-- Bonuses should enhance entertainment, not create pressure
-- Play within your financial limits
-- Resources: [BeGambleAware](https://www.begambleaware.org) | [GamCare](https://www.gamcare.org.uk)
+Monthly bonuses are a reward for entertainment-based play — not a guaranteed income mechanism. Set session limits and monthly budgets independent of bonus expectations.
 
 ---
 
-## Troubleshooting
+## External Reference
 
-| Issue | Explanation |
-|-------|-------------|
-| "I didn't receive my monthly bonus link" | Check spam folder; bonus sent via email or Telegram |
-| "My bonus is smaller than expected" | Activity consistency and VIP level are primary factors |
-| "I can't find any code in this repo" | Correct — this is a documentation-only/affiliate repo |
-| "The homepage link redirects unexpectedly" | Affiliate links may redirect; this is expected behavior |
-
----
-
-## Summary
-
-This project is **content, not code**. It serves as:
-1. An SEO/affiliate landing page hosted on GitHub
-2. A guide to Stake.com's monthly VIP bonus system
-3. A referral funnel to `winaspin.cc`
-
-If you were expecting a library or tool, this repository does not provide one. The concepts documented here (VIP tiers, monthly cashback, wagering consistency) are Stake.com platform features, not software components.
+- Homepage / Registration: set via `STAKE_PROMO_URL` environment variable (never hardcode referral links in production code)
+- Platform: Stake.com / Stake.us
+- Bonus type: VIP Monthly Loyalty Reward
+- License: Apache-2.0
 ```
