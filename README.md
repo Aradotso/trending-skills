@@ -472,6 +472,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [gpt-agreement-payment-replay](skills/gpt-agreement-payment-replay/) | [install](https://skills.sh/aradotso/trending-skills/gpt-agreement-payment-replay) | [DanOps-1/Gpt-Agreement-Payment](https://github.com/DanOps-1/Gpt-Agreement-Payment) | 2026-04-30 |
 | [codex-plusplus-tweak-system](skills/codex-plusplus-tweak-system/) | [install](https://skills.sh/aradotso/trending-skills/codex-plusplus-tweak-system) | [b-nnett/codex-plusplus](https://github.com/b-nnett/codex-plusplus) | 2026-04-30 |
 | [quip-node-manager](skills/quip-node-manager/) | [install](https://skills.sh/aradotso/trending-skills/quip-node-manager) | [QuipNetwork/quip-node-manager](https://github.com/QuipNetwork/quip-node-manager) | 2026-04-30 |
+| [xq-py-quantum-vm](skills/xq-py-quantum-vm/) | [install](https://skills.sh/aradotso/trending-skills/xq-py-quantum-vm) | [QuipNetwork/xq-py](https://github.com/QuipNetwork/xq-py) | 2026-04-30 |
 <!-- SKILL_INDEX -->
 
 ## How it works
