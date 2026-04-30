@@ -477,6 +477,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [ps5-linux-loader](skills/ps5-linux-loader/) | [install](https://skills.sh/aradotso/trending-skills/ps5-linux-loader) | [ps5-linux/ps5-linux-loader](https://github.com/ps5-linux/ps5-linux-loader) | 2026-04-30 |
 | [kwcode-local-coding-agent](skills/kwcode-local-coding-agent/) | [install](https://skills.sh/aradotso/trending-skills/kwcode-local-coding-agent) | [val1813/kwcode](https://github.com/val1813/kwcode) | 2026-04-30 |
 | [cve-2026-31431-copy-fail](skills/cve-2026-31431-copy-fail/) | [install](https://skills.sh/aradotso/trending-skills/cve-2026-31431-copy-fail) | [rootsecdev/cve_2026_31431](https://github.com/rootsecdev/cve_2026_31431) | 2026-04-30 |
+| [dnshe-freedomains](skills/dnshe-freedomains/) | [install](https://skills.sh/aradotso/trending-skills/dnshe-freedomains) | [dnshe/DNSHE-FreeDomains](https://github.com/dnshe/DNSHE-FreeDomains) | 2026-04-30 |
 <!-- SKILL_INDEX -->
 
 ## How it works
