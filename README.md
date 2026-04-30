@@ -470,6 +470,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [chromex-ai-chrome-assistant](skills/chromex-ai-chrome-assistant/) | [install](https://skills.sh/aradotso/trending-skills/chromex-ai-chrome-assistant) | [GENEXIS-AI/chromex](https://github.com/GENEXIS-AI/chromex) | 2026-04-30 |
 | [mike-ai-legal-platform](skills/mike-ai-legal-platform/) | [install](https://skills.sh/aradotso/trending-skills/mike-ai-legal-platform) | [willchen96/mike](https://github.com/willchen96/mike) | 2026-04-30 |
 | [gpt-agreement-payment-replay](skills/gpt-agreement-payment-replay/) | [install](https://skills.sh/aradotso/trending-skills/gpt-agreement-payment-replay) | [DanOps-1/Gpt-Agreement-Payment](https://github.com/DanOps-1/Gpt-Agreement-Payment) | 2026-04-30 |
+| [codex-plusplus-tweak-system](skills/codex-plusplus-tweak-system/) | [install](https://skills.sh/aradotso/trending-skills/codex-plusplus-tweak-system) | [b-nnett/codex-plusplus](https://github.com/b-nnett/codex-plusplus) | 2026-04-30 |
 <!-- SKILL_INDEX -->
 
 ## How it works
