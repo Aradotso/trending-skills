@@ -464,6 +464,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [mhr-cfw-domain-fronting-relay](skills/mhr-cfw-domain-fronting-relay/) | [install](https://skills.sh/aradotso/trending-skills/mhr-cfw-domain-fronting-relay) | [denuitt1/mhr-cfw](https://github.com/denuitt1/mhr-cfw) | 2026-04-29 |
 | [stake-monthly-bonus-guide](skills/stake-monthly-bonus-guide/) | [install](https://skills.sh/aradotso/trending-skills/stake-monthly-bonus-guide) | [bonused/monthly-bonus-stake](https://github.com/bonused/monthly-bonus-stake) | 2026-04-29 |
 | [video-use-editor](skills/video-use-editor/) | [install](https://skills.sh/aradotso/trending-skills/video-use-editor) | [browser-use/video-use](https://github.com/browser-use/video-use) | 2026-04-30 |
+| [cubesandbox-ai-sandbox](skills/cubesandbox-ai-sandbox/) | [install](https://skills.sh/aradotso/trending-skills/cubesandbox-ai-sandbox) | [TencentCloud/CubeSandbox](https://github.com/TencentCloud/CubeSandbox) | 2026-04-30 |
 <!-- SKILL_INDEX -->
 
 ## How it works
