@@ -474,6 +474,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [quip-node-manager](skills/quip-node-manager/) | [install](https://skills.sh/aradotso/trending-skills/quip-node-manager) | [QuipNetwork/quip-node-manager](https://github.com/QuipNetwork/quip-node-manager) | 2026-04-30 |
 | [xq-py-quantum-vm](skills/xq-py-quantum-vm/) | [install](https://skills.sh/aradotso/trending-skills/xq-py-quantum-vm) | [QuipNetwork/xq-py](https://github.com/QuipNetwork/xq-py) | 2026-04-30 |
 | [aibijia-price-comparison](skills/aibijia-price-comparison/) | [install](https://skills.sh/aradotso/trending-skills/aibijia-price-comparison) | [ka-pi-ba-la/AIbijia](https://github.com/ka-pi-ba-la/AIbijia) | 2026-04-30 |
+| [ps5-linux-loader](skills/ps5-linux-loader/) | [install](https://skills.sh/aradotso/trending-skills/ps5-linux-loader) | [ps5-linux/ps5-linux-loader](https://github.com/ps5-linux/ps5-linux-loader) | 2026-04-30 |
 <!-- SKILL_INDEX -->
 
 ## How it works
