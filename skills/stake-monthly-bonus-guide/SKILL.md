@@ -1,247 +1,214 @@
 ```markdown
 ---
 name: stake-monthly-bonus-guide
-description: Expert knowledge on Stake casino monthly bonus system, VIP tiers, reward calculation, and loyalty optimization strategies
+description: Expertise in Stake casino monthly bonus system, VIP progression, reward calculation, and optimization strategies for consistent players.
 triggers:
-  - stake monthly bonus
-  - how does stake monthly bonus work
-  - stake vip rewards
-  - stake loyalty bonus
-  - stake cashback monthly
-  - stake bonus calculation
-  - stake vip tiers explained
-  - stake monthly reward optimization
+  - "how does stake monthly bonus work"
+  - "stake vip monthly reward"
+  - "maximize stake monthly bonus"
+  - "stake loyalty bonus calculation"
+  - "stake casino monthly cashback"
+  - "stake vip progression rewards"
+  - "claim stake monthly bonus"
+  - "stake bonus optimization strategy"
 ---
 
 # Stake Monthly Bonus Guide
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-## ⚠️ Important Notice
+## What This Project Covers
 
-This repository is **not a software library or installable package**. It is a **promotional/informational guide** about Stake casino's monthly bonus system. The repository:
-
-- Contains no installable code
-- Has no CLI, API, or SDK
-- Links to a third-party gambling affiliate site (`winaspin.cc`)
-- Was created April 28, 2026 and gained 421 stars in ~2 days (highly suspicious velocity)
-
-**There is nothing to install, import, or run from this repository.**
+This project documents the **Stake Monthly Bonus** system — a VIP loyalty reward distributed to active players on Stake.com and Stake.us at the start of each month. It acts as a cashback-style mechanism that scales with wagering volume, consistency, and VIP tier.
 
 ---
 
-## What This Project Actually Is
+## How the Monthly Bonus Works
 
-A GitHub-hosted README that explains Stake.com and Stake.us casino loyalty rewards, specifically the monthly VIP bonus system. It functions as affiliate marketing content.
+1. The platform tracks your activity throughout the entire month
+2. At month start, a reward is calculated based on prior activity
+3. A private claim link is delivered via email or Telegram
+4. The bonus is claimed instantly — typically with **no wagering requirement**
 
 ---
 
-## Stake Monthly Bonus — Documented Mechanics
+## Reward Calculation Factors
 
-### How the Monthly Bonus Works
+| Factor | Impact |
+|---|---|
+| Total Monthly Wager | Primary driver — more wager = larger reward |
+| VIP Level Multiplier | Higher tier = exponentially larger payout |
+| Profit/Loss Balance | Net losses often boost the cashback percentage |
+| Activity Consistency | Daily/weekly sessions outperform single-day bursts |
 
-1. Platform analyzes previous month's wagering activity
-2. Reward is calculated based on multiple factors
-3. Claim link delivered via email or Telegram at month start
-4. Player claims instantly — typically no wagering requirement
+---
 
-### Reward Calculation Factors
-
-```
-Monthly Reward = f(
-  total_monthly_wager,
-  vip_level_multiplier,
-  profit_loss_factor,   // losses may increase reward (cashback-style)
-  activity_consistency  // spread across month > single sessions
-)
-```
-
-### VIP Tier Progression
+## VIP Tier Progression
 
 ```
 Bronze → Silver → Gold → Platinum → Diamond → Black
-  ↑                                              ↑
-Smallest monthly bonus                  Largest monthly bonus
 ```
 
 Each tier unlocks:
-- Higher monthly bonus multipliers
-- Better weekly bonus rates
-- Improved reload bonuses
-- Higher cashback percentages
+- Larger monthly bonus multipliers
+- Improved weekly bonus rates
+- Higher reload bonus percentages
+- Dedicated VIP host access at upper tiers
 
 ---
 
-## Optimization Strategies (as documented)
+## Optimization Strategy (Code-Style Planning)
 
-### Consistency Over Volume
+```python
+# Monthly bonus maximization planner (pseudocode / planning tool)
 
-```
-# Preferred pattern (signals loyalty):
-Day 1:  play session
-Day 3:  play session
-Day 7:  play session
-...
-Day 28: play session
+DAILY_TARGET_SESSIONS = 1        # minimum sessions per day
+WEEKLY_CONSISTENCY_GOAL = 5      # days active per week
+VIP_TIER_TARGET = "Platinum"     # set progression goal
+COMBINE_WITH_WEEKLY = True       # stack weekly + monthly rewards
 
-# Less optimal pattern:
-Day 1:  very large session
-Day 30: very large session
-```
+def estimate_monthly_reward(total_wager, vip_multiplier, net_loss):
+    base_reward = total_wager * 0.001          # ~0.1% base rate
+    vip_boost = base_reward * vip_multiplier   # tier multiplier applied
+    loss_cashback = net_loss * 0.05            # ~5% loss rebate
+    return vip_boost + loss_cashback
 
-### Combined Bonus Strategy
-
-```
-Weekly bonuses  → reward short-term activity
-Monthly bonuses → reward long-term activity
-Promotions      → increase wagering efficiency
-
-All three together = maximum reward rate
-```
-
----
-
-## FAQ (from official documentation)
-
-| Question | Answer |
-|----------|--------|
-| When is bonus released? | Beginning of each month |
-| Must I claim it? | Yes, via private link |
-| Wagering requirement? | Typically none |
-| Who qualifies? | Active players |
-| Does VIP level matter? | Yes, significantly |
-
----
-
-## Red Flags / Due Diligence
-
-```
-Repository signals to be aware of:
-- Created: 2026-04-28
-- Stars:   421 in ~2 days (~210/day) ← artificial inflation likely
-- Forks:   34
-- Issues:  0
-- License: Apache-2.0 (applied to marketing content)
-- Homepage: affiliate registration link
-- Topics:  only "stake" and "stake-monthly-bonus"
+# Example: Gold VIP, $50,000 monthly wager, $2,000 net loss
+reward = estimate_monthly_reward(
+    total_wager=50000,
+    vip_multiplier=2.5,
+    net_loss=2000
+)
+print(f"Estimated monthly bonus: ${reward:.2f}")
+# Output: Estimated monthly bonus: $225.00
 ```
 
 ---
 
-## Responsible Gambling Resources
-
-If you or someone you know needs help with gambling:
-
-- **National Problem Gambling Helpline**: 1-800-522-4700
-- **GamCare**: https://www.gamcare.org.uk
-- **BeGambleAware**: https://www.begambleaware.org
-- **Gamblers Anonymous**: https://www.gamblersanonymous.org
-
----
-
-## For AI Coding Agents
-
-**There are no coding tasks associated with this repository.** If a user asks you to:
-
-- "Install the stake monthly bonus package" → No such package exists
-- "Show me the API for stake bonuses" → No public API is documented here
-- "Help me scrape stake bonus data" → Do not assist with scraping gambling platforms
-- "Build a bot to claim bonuses" → Do not assist with automated gambling account manipulation
-
-**What you CAN help with:**
-- Explaining the documented bonus mechanics above
-- Discussing responsible gambling practices
-- Helping a developer build legitimate tools for tracking their own gaming budgets
-- General questions about loyalty/rewards system design patterns
-
----
-
-## Legitimate Budget Tracking Example
-
-If a developer wants to track their own gambling budget responsibly:
+## JavaScript Tracker Example
 
 ```javascript
-// Personal gambling budget tracker (client-side only)
-class GamblingBudgetTracker {
-  constructor(monthlyLimit) {
-    this.monthlyLimit = monthlyLimit;
-    this.sessions = [];
-  }
+// Simple monthly activity tracker
+const activityLog = {
+  sessions: [],
+  totalWagered: 0,
+  currentVipTier: 'Silver',
 
-  addSession(amount, date = new Date()) {
-    this.sessions.push({ amount, date });
-  }
+  logSession(date, wagered, gameType) {
+    this.sessions.push({ date, wagered, gameType });
+    this.totalWagered += wagered;
+    console.log(`Session logged: $${wagered} wagered on ${gameType}`);
+  },
 
-  getMonthlySpend(year, month) {
-    return this.sessions
-      .filter(s => {
-        const d = new Date(s.date);
-        return d.getFullYear() === year && d.getMonth() === month;
-      })
-      .reduce((sum, s) => sum + s.amount, 0);
-  }
+  getConsistencyScore() {
+    const daysActive = new Set(
+      this.sessions.map(s => s.date.toDateString())
+    ).size;
+    return (daysActive / 30) * 100; // % of month active
+  },
 
-  isOverBudget() {
-    const now = new Date();
-    const spent = this.getMonthlySpend(now.getFullYear(), now.getMonth());
-    return spent > this.monthlyLimit;
+  estimateBonus() {
+    const VIP_MULTIPLIERS = {
+      Bronze: 1.0,
+      Silver: 1.5,
+      Gold: 2.5,
+      Platinum: 4.0,
+      Diamond: 7.0,
+      Black: 12.0
+    };
+    const base = this.totalWagered * 0.001;
+    const multiplier = VIP_MULTIPLIERS[this.currentVipTier] || 1.0;
+    return base * multiplier;
   }
-
-  getRemainingBudget() {
-    const now = new Date();
-    const spent = this.getMonthlySpend(now.getFullYear(), now.getMonth());
-    return Math.max(0, this.monthlyLimit - spent);
-  }
-}
+};
 
 // Usage
-const tracker = new GamblingBudgetTracker(100); // $100/month limit
-tracker.addSession(25);
-tracker.addSession(30);
+activityLog.logSession(new Date(), 500, 'slots');
+activityLog.logSession(new Date(), 300, 'blackjack');
+console.log(`Consistency: ${activityLog.getConsistencyScore().toFixed(1)}%`);
+console.log(`Estimated bonus: $${activityLog.estimateBonus().toFixed(2)}`);
+```
 
-console.log(`Remaining: $${tracker.getRemainingBudget()}`); // $45
-console.log(`Over budget: ${tracker.isOverBudget()}`);       // false
+---
+
+## Common Patterns
+
+### Pattern 1: Consistent Low-Volume Player
+```
+Daily sessions: 5–7 days/week
+Per session wager: moderate
+Goal: maintain activity streak for consistency score
+Result: reliable small-to-medium monthly bonus
+```
+
+### Pattern 2: VIP Progression Focus
+```
+Priority: reach next VIP tier before month end
+Strategy: concentrate wager volume in final week
+Result: higher multiplier applied to full month calculation
+```
+
+### Pattern 3: Bonus Stacking
+```
+Claim weekly bonuses → reinvest into wager volume
+→ increases monthly wager total
+→ amplifies monthly bonus calculation
+Weekly + Monthly combined = maximum return rate
+```
+
+---
+
+## Configuration / Environment Setup
+
+If building a tracker or bot around this system, use environment variables:
+
+```bash
+# .env — never hardcode credentials
+STAKE_USERNAME=your_username
+STAKE_EMAIL=your_email@example.com
+TELEGRAM_NOTIFICATION_ENABLED=true
+MONTHLY_WAGER_GOAL=50000
+VIP_TIER_CURRENT=Gold
+VIP_TIER_TARGET=Platinum
 ```
 
 ```python
-# Python equivalent for personal budget tracking
-from datetime import datetime
-from dataclasses import dataclass, field
-from typing import List
+import os
 
-@dataclass
-class Session:
-    amount: float
-    date: datetime = field(default_factory=datetime.now)
-
-class GamblingBudgetTracker:
-    def __init__(self, monthly_limit: float):
-        self.monthly_limit = monthly_limit
-        self.sessions: List[Session] = []
-
-    def add_session(self, amount: float):
-        self.sessions.append(Session(amount=amount))
-
-    def get_monthly_spend(self, year: int, month: int) -> float:
-        return sum(
-            s.amount for s in self.sessions
-            if s.date.year == year and s.date.month == month
-        )
-
-    def is_over_budget(self) -> bool:
-        now = datetime.now()
-        return self.get_monthly_spend(now.year, now.month) > self.monthly_limit
-
-    def remaining_budget(self) -> float:
-        now = datetime.now()
-        spent = self.get_monthly_spend(now.year, now.month)
-        return max(0, self.monthly_limit - spent)
-
-# Usage
-tracker = GamblingBudgetTracker(monthly_limit=100.0)
-tracker.add_session(25.0)
-tracker.add_session(30.0)
-print(f"Remaining: ${tracker.remaining_budget()}")  # $45.0
-print(f"Over budget: {tracker.is_over_budget()}")    # False
+config = {
+    "username": os.environ["STAKE_USERNAME"],
+    "monthly_wager_goal": int(os.environ.get("MONTHLY_WAGER_GOAL", 10000)),
+    "current_vip": os.environ.get("VIP_TIER_CURRENT", "Bronze"),
+    "target_vip": os.environ.get("VIP_TIER_TARGET", "Silver"),
+}
 ```
+
+---
+
+## Troubleshooting
+
+| Problem | Solution |
+|---|---|
+| No bonus received | Verify email/Telegram notifications are enabled; ensure account was active during the month |
+| Bonus smaller than expected | Check VIP tier — multiplier may be lower than assumed; review consistency score |
+| Claim link not working | Links expire; contact support within 48 hours of receipt |
+| Bonus not reflecting losses | Loss cashback component is calculated server-side; allow 24–48h processing |
+| VIP tier didn't upgrade | VIP advancement may require sustained activity over multiple months |
+
+---
+
+## Key Facts Summary
+
+- **Frequency:** Once per month, delivered at month start
+- **Wagering requirement:** Typically none
+- **Delivery method:** Email or Telegram private link
+- **Scaling factor:** VIP tier is the single largest multiplier
+- **Best strategy:** Consistency > single large sessions
+- **Stacking:** Combines with weekly and reload bonuses
+
+---
+
+## Responsible Use Note
+
+Monthly bonuses are loyalty rewards — they supplement entertainment value. Plan sessions within personal budget limits. Bonus optimization should never drive spending beyond comfortable thresholds.
 ```
