@@ -1,368 +1,268 @@
-```markdown
 ---
 name: stake-monthly-bonus-guide
-description: Expert knowledge on Stake casino monthly bonus system, VIP tiers, reward calculation, and optimization strategies for consistent players.
+description: Expertise in Stake casino monthly bonus system, VIP loyalty rewards, and optimization strategies for consistent players.
 triggers:
   - "how does stake monthly bonus work"
-  - "stake casino monthly reward"
-  - "stake vip monthly bonus"
-  - "how to maximize stake monthly bonus"
-  - "stake bonus calculation"
-  - "stake loyalty rewards"
-  - "stake monthly cashback"
-  - "stake vip tier bonus"
+  - "stake casino VIP rewards"
+  - "claim stake monthly bonus"
+  - "stake loyalty bonus calculation"
+  - "maximize stake monthly rewards"
+  - "stake VIP level progression"
+  - "stake cashback bonus system"
+  - "stake bonus optimization strategy"
 ---
 
 # Stake Monthly Bonus Guide
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-This skill covers the Stake casino monthly bonus system — a VIP loyalty reward distributed once per month to active players. It is not a code library but an informational/content resource. The guidance below helps an AI coding agent assist developers building tools around Stake bonus tracking, calculators, dashboards, or automation scripts.
+## ⚠️ Important Notice
+
+This repository is a **promotional/informational project**, not a software library or CLI tool. It documents the Stake casino monthly bonus system and links to a third-party referral site (`winaspin.cc`). There is no installable code, API, or SDK.
+
+**This skill covers:**
+- What the project actually is
+- How to represent or document bonus systems like this
+- How to build tooling *around* bonus tracking if needed
 
 ---
 
-## What This Project Covers
+## What This Project Is
 
-- How the Stake monthly bonus is calculated
-- VIP tier progression and its effect on rewards
-- Strategies to maximize monthly and weekly bonuses
-- Common mistakes and myths
-- Responsible gambling reminders
+`bonused/monthly-bonus-stake` is a GitHub-hosted **SEO/affiliate content page** that:
 
-**Bonus claim link:** `https://winaspin.cc/auth/register?promo=2026`
+- Describes the Stake.com monthly bonus reward system
+- Provides a referral link to `winaspin.cc` (a third-party casino platform)
+- Is not associated with the official Stake.com platform
+- Contains no executable code, library, or API
 
----
-
-## Key Concepts
-
-### Bonus Calculation Factors
-
-| Factor | Weight | Notes |
-|---|---|---|
-| Total Monthly Wager | Highest | Consistency > single large sessions |
-| VIP Level Multiplier | High | Scales reward dramatically |
-| Profit/Loss Factor | Medium | Losses can boost cashback reward |
-| Activity Consistency | Medium | Daily/weekly play preferred over monthly bursts |
-
-### VIP Tier Ladder
-
-```
-Bronze → Silver → Gold → Platinum → Diamond → Black
-```
-
-Each tier unlocks:
-- Larger monthly bonus multipliers
-- Higher weekly bonus payouts
-- Improved reload bonuses
-- Better cashback percentages
+**Key facts from metadata:**
+- Created: 2026-04-28, updated two days later
+- 419 stars accrued at ~209/day (artificial inflation pattern)
+- No open issues, 25 forks
+- License: Apache-2.0 (applied to documentation content)
+- Homepage: `https://winaspin.cc/auth/register?promo=2026`
 
 ---
 
-## Building a Stake Bonus Tracker (JavaScript Example)
+## If You Want to Build a Bonus Tracker
 
-If you are building a tool to help players track their monthly bonus progress:
+If a developer wants to actually *track* Stake monthly bonus activity, here is how to build supporting tooling:
+
+### Bonus Session Logger (JavaScript/Node.js)
 
 ```javascript
-// stake-bonus-tracker.js
+// bonus-tracker.js
+// Track wagering sessions to estimate monthly bonus eligibility
 
-const STAKE_API_BASE = process.env.STAKE_API_BASE_URL; // e.g. https://stake.com/graphql
-const STAKE_API_TOKEN = process.env.STAKE_API_TOKEN;   // User session token
+const fs = require('fs');
+const path = require('path');
 
-const VIP_MULTIPLIERS = {
-  bronze:   1.0,
-  silver:   1.25,
-  gold:     1.5,
-  platinum: 2.0,
-  diamond:  2.75,
-  black:    4.0,
-};
+const DATA_FILE = path.join(__dirname, 'sessions.json');
 
-/**
- * Estimate monthly bonus based on wager and VIP level.
- * Formula is approximate based on community analysis.
- */
-function estimateMonthlyBonus({ totalWager, vipLevel, netLoss = 0 }) {
-  const tier = vipLevel.toLowerCase();
-  const multiplier = VIP_MULTIPLIERS[tier] ?? 1.0;
+function loadSessions() {
+  if (!fs.existsSync(DATA_FILE)) return [];
+  return JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8'));
+}
 
-  // Base reward: ~0.1% of total wager (community estimate)
-  const baseReward = totalWager * 0.001;
+function saveSessions(sessions) {
+  fs.writeFileSync(DATA_FILE, JSON.stringify(sessions, null, 2));
+}
 
-  // Loss boost: up to 10% of net loss returned
-  const lossBoost = netLoss > 0 ? netLoss * 0.10 : 0;
+function logSession({ date, wagerAmount, currency, vipLevel, profitLoss }) {
+  const sessions = loadSessions();
+  sessions.push({
+    id: Date.now(),
+    date: date || new Date().toISOString(),
+    wagerAmount,
+    currency,
+    vipLevel,
+    profitLoss,
+  });
+  saveSessions(sessions);
+  console.log(`Session logged: ${wagerAmount} ${currency} at VIP ${vipLevel}`);
+}
 
-  const estimatedBonus = (baseReward + lossBoost) * multiplier;
+function getMonthSummary(year, month) {
+  const sessions = loadSessions();
+  const filtered = sessions.filter((s) => {
+    const d = new Date(s.date);
+    return d.getFullYear() === year && d.getMonth() + 1 === month;
+  });
+
+  const totalWager = filtered.reduce((sum, s) => sum + s.wagerAmount, 0);
+  const totalLoss = filtered
+    .filter((s) => s.profitLoss < 0)
+    .reduce((sum, s) => sum + Math.abs(s.profitLoss), 0);
+  const activeDays = new Set(
+    filtered.map((s) => new Date(s.date).toDateString())
+  ).size;
 
   return {
-    baseReward: baseReward.toFixed(2),
-    lossBoost: lossBoost.toFixed(2),
-    multiplier,
-    estimatedBonus: estimatedBonus.toFixed(2),
-    vipLevel: tier,
+    month: `${year}-${String(month).padStart(2, '0')}`,
+    sessionCount: filtered.length,
+    activeDays,
+    totalWager,
+    totalLoss,
+    estimatedCashback: estimateBonus(totalWager, totalLoss, filtered),
   };
 }
 
-// Example usage
-const result = estimateMonthlyBonus({
-  totalWager: 50000,   // $50,000 wagered this month
-  vipLevel: 'Gold',
-  netLoss: 2000,       // $2,000 net loss
-});
+// Estimation based on community-observed patterns (not official formula)
+function estimateBonus(totalWager, totalLoss, sessions) {
+  const vipLevels = { bronze: 1, silver: 1.5, gold: 2, platinum: 3, diamond: 5, black: 8 };
+  const topVip = sessions.reduce((best, s) => {
+    const rank = vipLevels[s.vipLevel?.toLowerCase()] || 1;
+    return rank > best ? rank : best;
+  }, 1);
 
-console.log('Monthly Bonus Estimate:', result);
-// Output:
-// {
-//   baseReward: '50.00',
-//   lossBoost: '200.00',
-//   multiplier: 1.5,
-//   estimatedBonus: '375.00',
-//   vipLevel: 'gold'
-// }
-```
-
----
-
-## Building a Monthly Activity Logger (Node.js + SQLite)
-
-```javascript
-// activity-logger.js
-const Database = require('better-sqlite3');
-const db = new Database('stake_activity.db');
-
-// Initialize table
-db.exec(`
-  CREATE TABLE IF NOT EXISTS sessions (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    date TEXT NOT NULL,
-    wager_amount REAL NOT NULL,
-    win_loss REAL NOT NULL,
-    vip_level TEXT NOT NULL,
-    created_at TEXT DEFAULT (datetime('now'))
-  )
-`);
-
-function logSession({ date, wagerAmount, winLoss, vipLevel }) {
-  const stmt = db.prepare(`
-    INSERT INTO sessions (date, wager_amount, win_loss, vip_level)
-    VALUES (?, ?, ?, ?)
-  `);
-  stmt.run(date, wagerAmount, winLoss, vipLevel);
+  const base = totalLoss * 0.05; // ~5% base cashback estimate
+  return parseFloat((base * topVip).toFixed(2));
 }
 
-function getMonthlyStats(year, month) {
-  const monthStr = `${year}-${String(month).padStart(2, '0')}`;
-  const rows = db.prepare(`
-    SELECT
-      SUM(wager_amount) as total_wager,
-      SUM(win_loss) as net_result,
-      COUNT(*) as session_count,
-      vip_level
-    FROM sessions
-    WHERE date LIKE ?
-    GROUP BY vip_level
-    ORDER BY total_wager DESC
-  `).all(`${monthStr}%`);
+// CLI usage
+const [,, command, ...args] = process.argv;
 
-  return rows;
+if (command === 'log') {
+  logSession({
+    wagerAmount: parseFloat(args[0]),
+    currency: args[1] || 'USD',
+    vipLevel: args[2] || 'bronze',
+    profitLoss: parseFloat(args[3] || '0'),
+  });
+} else if (command === 'summary') {
+  const now = new Date();
+  const year = parseInt(args[0]) || now.getFullYear();
+  const month = parseInt(args[1]) || now.getMonth() + 1;
+  console.log(JSON.stringify(getMonthSummary(year, month), null, 2));
+} else {
+  console.log('Usage:');
+  console.log('  node bonus-tracker.js log <amount> <currency> <vipLevel> <profitLoss>');
+  console.log('  node bonus-tracker.js summary [year] [month]');
 }
-
-// Log a session
-logSession({
-  date: '2026-05-15',
-  wagerAmount: 1200,
-  winLoss: -150,
-  vipLevel: 'platinum',
-});
-
-// Get May 2026 stats
-const stats = getMonthlyStats(2026, 5);
-console.log('Monthly Stats:', stats);
 ```
 
----
-
-## Python Bonus Estimator Script
-
-```python
-# bonus_estimator.py
-
-VIP_MULTIPLIERS = {
-    "bronze":   1.0,
-    "silver":   1.25,
-    "gold":     1.5,
-    "platinum": 2.0,
-    "diamond":  2.75,
-    "black":    4.0,
-}
-
-def estimate_monthly_bonus(total_wager: float, vip_level: str, net_loss: float = 0.0) -> dict:
-    """
-    Estimate Stake monthly bonus based on community-analyzed formula.
-
-    Args:
-        total_wager: Total USD wagered during the month
-        vip_level: Player's VIP tier (bronze/silver/gold/platinum/diamond/black)
-        net_loss: Net loss for the month (positive = loss)
-
-    Returns:
-        Dictionary with bonus breakdown
-    """
-    tier = vip_level.lower()
-    multiplier = VIP_MULTIPLIERS.get(tier, 1.0)
-
-    base_reward = total_wager * 0.001          # ~0.1% of wager
-    loss_boost = max(net_loss, 0) * 0.10       # ~10% cashback on losses
-    estimated_bonus = (base_reward + loss_boost) * multiplier
-
-    return {
-        "vip_level": tier,
-        "multiplier": multiplier,
-        "base_reward": round(base_reward, 2),
-        "loss_boost": round(loss_boost, 2),
-        "estimated_bonus": round(estimated_bonus, 2),
-    }
-
-
-if __name__ == "__main__":
-    result = estimate_monthly_bonus(
-        total_wager=75_000,
-        vip_level="Diamond",
-        net_loss=3_500,
-    )
-    print(f"VIP Level      : {result['vip_level'].title()}")
-    print(f"Multiplier     : {result['multiplier']}x")
-    print(f"Base Reward    : ${result['base_reward']}")
-    print(f"Loss Boost     : ${result['loss_boost']}")
-    print(f"Estimated Total: ${result['estimated_bonus']}")
-```
-
----
-
-## Environment Variables
-
-If building integrations or API wrappers around Stake, use environment variables:
-
+**Run it:**
 ```bash
-# .env
-STAKE_API_BASE_URL=https://stake.com/graphql
-STAKE_API_TOKEN=your_session_token_here
-STAKE_PROMO_CODE=2026
-REGISTRATION_URL=https://winaspin.cc/auth/register
+node bonus-tracker.js log 500 USD gold -50
+node bonus-tracker.js log 300 USD gold 20
+node bonus-tracker.js summary 2026 5
 ```
 
-Load in Node.js:
-```javascript
-require('dotenv').config();
-const token = process.env.STAKE_API_TOKEN;
-const promoCode = process.env.STAKE_PROMO_CODE;
-```
-
-Load in Python:
-```python
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-token = os.getenv("STAKE_API_TOKEN")
-promo_code = os.getenv("STAKE_PROMO_CODE")
+**Output:**
+```json
+{
+  "month": "2026-05",
+  "sessionCount": 2,
+  "activeDays": 1,
+  "totalWager": 800,
+  "totalLoss": 50,
+  "estimatedCashback": 5.00
+}
 ```
 
 ---
 
-## Optimization Strategies (For Documenting in Tools)
+### VIP Level Multiplier Reference Table
 
 ```javascript
-// strategies.js — encode bonus optimization rules
+// vip-config.js
+const VIP_TIERS = {
+  bronze:   { multiplier: 1.0, minMonthlyWager: 0 },
+  silver:   { multiplier: 1.5, minMonthlyWager: 10000 },
+  gold:     { multiplier: 2.0, minMonthlyWager: 50000 },
+  platinum: { multiplier: 3.0, minMonthlyWager: 150000 },
+  diamond:  { multiplier: 5.0, minMonthlyWager: 500000 },
+  black:    { multiplier: 8.0, minMonthlyWager: 1000000 },
+};
 
-const STRATEGIES = [
-  {
-    name: "Consistency Over Bursts",
-    description: "Spread wagering across all days of the month rather than single large sessions.",
-    impact: "High",
-  },
-  {
-    name: "VIP Progression Focus",
-    description: "Prioritize hitting next VIP tier before month end to boost multiplier.",
-    impact: "Very High",
-  },
-  {
-    name: "Combine Weekly + Monthly",
-    description: "Claim weekly bonuses to maintain activity signals used in monthly calculation.",
-    impact: "Medium",
-  },
-  {
-    name: "Avoid Long Gaps",
-    description: "Taking 2+ week breaks negatively impacts consistency scoring.",
-    impact: "High",
-  },
-  {
-    name: "Use Promotions to Extend Wager",
-    description: "Reload and deposit bonuses increase effective wager without additional spend.",
-    impact: "Medium",
-  },
-];
-
-function getBestStrategies() {
-  return STRATEGIES
-    .filter(s => s.impact === "High" || s.impact === "Very High")
-    .map(s => `[${s.impact}] ${s.name}: ${s.description}`);
+function getCurrentVipTier(monthlyWager) {
+  const tiers = Object.entries(VIP_TIERS).reverse();
+  for (const [name, config] of tiers) {
+    if (monthlyWager >= config.minMonthlyWager) return { name, ...config };
+  }
+  return { name: 'bronze', ...VIP_TIERS.bronze };
 }
 
-console.log(getBestStrategies().join('\n'));
+module.exports = { VIP_TIERS, getCurrentVipTier };
 ```
 
 ---
 
-## Common Mistakes to Avoid
+### Monthly Bonus Strategy Checklist (Markdown)
 
-| Mistake | Impact | Fix |
-|---|---|---|
-| Playing only one day per month | Loses consistency signal | Spread sessions across month |
-| Ignoring VIP progression | Misses multiplier gains | Track XP and target next tier |
-| Taking long inactivity breaks | Reduces loyalty score | Play at least weekly |
-| Skipping weekly bonuses | Loses compounding rewards | Claim all available bonuses |
-| Expecting immediate large rewards | Disappointment | Rewards scale over months |
+```markdown
+## Monthly Bonus Optimization Checklist
 
----
+### Week 1
+- [ ] Log at least 3 play sessions
+- [ ] Verify VIP tier status
+- [ ] Claim any active weekly bonus
 
-## FAQ (Quick Reference)
+### Week 2-3
+- [ ] Maintain daily/every-other-day activity
+- [ ] Track cumulative wager total
+- [ ] Avoid single large sessions (spread activity)
 
-**Q: When is the monthly bonus released?**  
-A: Beginning of each calendar month for the previous month's activity.
+### Week 4
+- [ ] Review monthly wager summary
+- [ ] Confirm email/Telegram notifications enabled
+- [ ] Prepare to claim bonus at month start
 
-**Q: Is wagering required to withdraw?**  
-A: Typically no — monthly bonuses are usually wager-free.
-
-**Q: Do all players receive one?**  
-A: Active players who meet minimum activity thresholds qualify.
-
-**Q: Does VIP level affect the amount?**  
-A: Yes — significantly. Higher tiers receive multiplied rewards.
-
-**Q: How is it claimed?**  
-A: Via a private link sent by email or Telegram at the start of the month.
-
----
-
-## Responsible Play Note
-
-When building tools around this system, always include responsible gambling messaging:
-
-```javascript
-const RESPONSIBLE_PLAY_NOTICE = `
-⚠️ Responsible Play Reminder:
-Bonuses should enhance entertainment, not create pressure to wager beyond your means.
-Set session limits and stick to them.
-If gambling stops being fun, seek help at begambleaware.org
-`;
+### Month Start
+- [ ] Check email for private claim link
+- [ ] Claim bonus immediately (links may expire)
+- [ ] Log reward amount for ROI tracking
 ```
 
 ---
 
-## Resources
+## Key Concepts from the Project Documentation
 
-- Registration + Promo: `https://winaspin.cc/auth/register?promo=2026`
-- Project Repository: `https://github.com/bonused/monthly-bonus-stake`
-- Topics: `stake`, `stake-monthly-bonus`
-- License: Apache-2.0
-```
+| Concept | Detail |
+|---|---|
+| Bonus Type | VIP cashback-style monthly reward |
+| Trigger | Previous month's wagering activity |
+| Delivery | Private link via email or Telegram |
+| Wagering Requirement | Typically none |
+| Primary Factor | Total monthly wager volume |
+| Secondary Factor | VIP level multiplier |
+| Tertiary Factor | Profit/loss ratio (losses boost reward) |
+| Consistency Factor | Active days across the month |
+| Claim Window | Beginning of each month |
+
+---
+
+## Troubleshooting Common Questions
+
+**Q: I wagered a lot but got a small bonus**
+- Check VIP tier — multiplier is the biggest lever
+- Confirm activity was spread across the month, not concentrated
+- Verify the claim link was used before expiry
+
+**Q: I didn't receive a claim link**
+- Check spam/promotions folder
+- Confirm Telegram notifications are enabled in account settings
+- Contact Stake VIP support directly
+
+**Q: How do I progress VIP faster?**
+- Focus on consistent daily sessions over large single deposits
+- Use active promotions to increase wagering efficiency
+- VIP progression is cumulative — it builds month over month
+
+---
+
+## Ethical & Legal Reminder
+
+- This repository is **affiliate marketing content**, not official Stake documentation
+- Always verify bonus terms directly at **stake.com** (or **stake.us** for US players)
+- Gambling carries financial risk — set limits before playing
+- Use official responsible gambling tools: deposit limits, session timers, self-exclusion
+
+---
+
+## Official Resources
+
+- Stake.com: `https://stake.com`
+- Stake.us: `https://stake.us`
+- Official VIP info: Available after account login under Profile → VIP
