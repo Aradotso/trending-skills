@@ -471,6 +471,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [mike-ai-legal-platform](skills/mike-ai-legal-platform/) | [install](https://skills.sh/aradotso/trending-skills/mike-ai-legal-platform) | [willchen96/mike](https://github.com/willchen96/mike) | 2026-04-30 |
 | [gpt-agreement-payment-replay](skills/gpt-agreement-payment-replay/) | [install](https://skills.sh/aradotso/trending-skills/gpt-agreement-payment-replay) | [DanOps-1/Gpt-Agreement-Payment](https://github.com/DanOps-1/Gpt-Agreement-Payment) | 2026-04-30 |
 | [codex-plusplus-tweak-system](skills/codex-plusplus-tweak-system/) | [install](https://skills.sh/aradotso/trending-skills/codex-plusplus-tweak-system) | [b-nnett/codex-plusplus](https://github.com/b-nnett/codex-plusplus) | 2026-04-30 |
+| [quip-node-manager](skills/quip-node-manager/) | [install](https://skills.sh/aradotso/trending-skills/quip-node-manager) | [QuipNetwork/quip-node-manager](https://github.com/QuipNetwork/quip-node-manager) | 2026-04-30 |
 <!-- SKILL_INDEX -->
 
 ## How it works
