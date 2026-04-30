@@ -1,200 +1,174 @@
 ```markdown
 ---
 name: stake-monthly-bonus-guide
-description: Expertise in Stake casino monthly bonus system, VIP loyalty rewards, and cashback optimization strategies
+description: Expert guidance on Stake casino monthly bonus system, VIP progression, reward calculation, and optimization strategies
 triggers:
-  - "stake monthly bonus"
-  - "stake casino loyalty reward"
-  - "stake VIP bonus calculator"
-  - "how to maximize stake monthly reward"
-  - "stake cashback monthly"
-  - "stake bonus claim"
-  - "stake VIP progression bonus"
-  - "stake.com monthly reward system"
+  - stake monthly bonus
+  - how to get stake monthly bonus
+  - stake vip rewards
+  - stake casino loyalty bonus
+  - stake bonus calculation
+  - maximize stake monthly reward
+  - stake vip progression strategy
+  - stake cashback bonus
 ---
 
 # Stake Monthly Bonus Guide
 
 > Skill by [ara.so](https://ara.so) — Daily 2026 Skills collection.
 
-This project is a **community knowledge base** documenting the Stake.com and Stake.us monthly bonus system — a VIP cashback-style loyalty reward distributed once per month to active players. It covers reward calculation factors, VIP tier multipliers, claim procedures, and optimization strategies.
+This project is a **community knowledge base** documenting how the Stake.com and Stake.us monthly bonus system works, including reward calculation logic, VIP tier progression, and optimization strategies. It contains no installable code — it is a reference guide and documentation resource.
 
 ---
 
 ## What This Project Covers
 
-- How the monthly bonus is calculated
-- VIP level impact on reward size
-- Claim process and timing
-- Strategies to maximize long-term rewards
-- Comparison between weekly and monthly bonuses
+- How Stake's monthly bonus is calculated (wager volume, VIP multiplier, loss factor, consistency)
+- VIP tier breakdown: Bronze → Silver → Gold → Platinum → Diamond → Black
+- Differences between weekly and monthly bonuses
+- Long-term loyalty strategies to maximize recurring rewards
+- Common mistakes and myths
 
 ---
 
-## Bonus System Overview
+## Key Concepts
 
-The monthly bonus is **not a standard deposit match**. Key characteristics:
-
-| Feature | Detail |
-|---|---|
-| Frequency | Once per month (start of month) |
-| Wagering requirement | Typically none |
-| Claim method | Private link via email or Telegram |
-| Scaling factor | VIP level + monthly wager volume |
-| Eligibility | Active players (not new registrations only) |
-
----
-
-## Reward Calculation Factors
-
-The monthly bonus amount is influenced by four primary factors:
-
-### 1. Total Monthly Wager
-The dominant factor. Consistent wagering across the full month outperforms single large sessions.
-
-### 2. VIP Level Multiplier
-Higher tiers unlock larger multipliers:
+### Monthly Bonus Calculation Factors
 
 ```
-Bronze    → base reward (1x)
-Silver    → ~1.5x
-Gold      → ~2x
-Platinum  → ~3x
-Diamond   → ~5x
-Black     → ~10x (estimated community data)
+Monthly Reward ≈ f(total_wager, vip_multiplier, loss_factor, consistency_score)
 ```
 
-### 3. Profit/Loss Factor
-Net losses during the month can trigger **boosted cashback-style rewards**. Functions similarly to a loss rebate system.
+| Factor | Weight | Notes |
+|---|---|---|
+| Total Monthly Wager | Highest | Core driver of reward size |
+| VIP Level Multiplier | High | Scales dramatically at upper tiers |
+| Profit/Loss Factor | Medium | Acts as cashback for losing months |
+| Activity Consistency | Medium | Daily/weekly play > single bursts |
 
-### 4. Activity Consistency
-Playing across many days in the month signals loyalty and improves the reward calculation versus playing only on a few days.
-
----
-
-## VIP Progression Path
+### VIP Tier Progression
 
 ```
 Bronze → Silver → Gold → Platinum → Diamond → Black
-```
-
-Each tier unlocks:
-- Larger monthly bonus multiplier
-- Better weekly reload bonuses
-- Higher cashback rates
-- Dedicated VIP host (Diamond+)
-
-**Strategy:** VIP progression compounds over time. Prioritize consistent play over sporadic heavy sessions to advance tiers faster.
-
----
-
-## Claim Process
-
-```
-1. Play consistently throughout the month
-2. Receive private claim link via:
-   - Registered email, OR
-   - Linked Telegram account
-3. Click link to claim instantly
-4. Funds credited with no wagering requirement
-```
-
-> **Important:** Bonus links are time-limited. Check email/Telegram at the start of each month.
-
----
-
-## Optimization Strategies
-
-### Maximize Monthly Rewards
-
-```javascript
-// Conceptual session planning model
-const monthlyStrategy = {
-  sessionFrequency: "daily or near-daily",   // consistency > volume
-  sessionLength: "moderate",                  // avoid single marathon sessions
-  vipFocus: true,                             // prioritize tier progression
-  combineWithWeekly: true,                    // weekly bonuses support monthly calc
-  trackWagerProgress: true                    // monitor monthly total
-};
-```
-
-### Session Distribution
-
-```
-❌ Bad:  Play heavily 3 days, inactive 27 days
-✅ Good: Play moderately 20-25 days spread across the month
-```
-
-### Weekly + Monthly Synergy
-
-```
-Weekly bonuses   → Short-term activity rewards (smaller, frequent)
-Monthly bonuses  → Long-term loyalty rewards (larger, once/month)
-Combined use     → Maximum total return on activity
+  ↑         ↑       ↑        ↑          ↑        ↑
+small    +boost  +multi  +cashback  +boost²  max rewards
 ```
 
 ---
 
-## Common Mistakes
+## Optimization Strategy Patterns
+
+### Pattern 1: Consistency Over Burst Play
 
 ```
-mistake: "Playing only at month end to boost wager total"
-fix: "Spread sessions across the entire month for consistency scoring"
+# Bad: Play $10,000 on one day
+Day 1:  $10,000 wagered
+Days 2-30: $0
 
-mistake: "Ignoring VIP progression"
-fix: "VIP multipliers compound — early tier investment pays long-term"
+# Good: Distribute activity across month
+Days 1-30: ~$333/day = $10,000 total
+→ Higher consistency score → larger monthly bonus
+```
 
-mistake: "Missing the claim link"
-fix: "Check email/Telegram on the 1st of each month; links may expire"
+### Pattern 2: VIP Momentum Strategy
 
-mistake: "Expecting immediate large bonuses"
-fix: "Rewards grow gradually — month 3-6 typically shows meaningful scaling"
+```
+Monthly Bonus Value at Different VIP Levels (community estimates):
 
-mistake: "Skipping weeks mid-month"
-fix: "Inactivity gaps reduce consistency scoring"
+Bronze:   base reward × 1.0x
+Silver:   base reward × 1.5x
+Gold:     base reward × 2.5x
+Platinum: base reward × 4.0x
+Diamond:  base reward × 7.0x
+Black:    base reward × 10.0x+
+```
+
+### Pattern 3: Combined Weekly + Monthly Stacking
+
+```
+Weekly Bonus  →  increases wager volume
+                      ↓
+              improves monthly calculation
+                      ↓
+Monthly Bonus  →  larger payout
 ```
 
 ---
 
-## Realistic Expectations Timeline
+## How to Claim the Monthly Bonus
+
+1. Stay active throughout the calendar month
+2. At the start of the next month, check your **registered email** or **linked Telegram**
+3. A private claim link is sent automatically
+4. Click the link to instantly credit the reward (typically no wagering requirement)
+
+> ⚠️ The claim link expires — check email/Telegram promptly at month start.
+
+---
+
+## Common Mistakes to Avoid
 
 ```
-Month 1-2:   Small introductory rewards
-Month 3-4:   Noticeable growth as VIP advances
-Month 6+:    Significant recurring rewards at mid-tier VIP
-Month 12+:   Substantial monthly cashback at high VIP levels
+✗ Playing only 1-2 days per month
+✗ Ignoring VIP progression (biggest long-term multiplier)
+✗ Taking multi-week inactivity breaks mid-month
+✗ Missing weekly promotions (they feed monthly totals)
+✗ Expecting large rewards in first 1-2 months
 ```
 
 ---
 
-## FAQ (Agent Reference)
+## Realistic Reward Timeline
 
-**Q: When is the bonus distributed?**
-A: Beginning of each calendar month.
-
-**Q: Is wagering required after claiming?**
-A: Typically no — rewards are immediately usable.
-
-**Q: Do all players qualify?**
-A: Active players qualify. Inactive accounts may not receive offers.
-
-**Q: Does VIP level affect the bonus?**
-A: Yes — it is the single largest multiplier in the reward formula.
-
-**Q: Can I claim on both Stake.com and Stake.us?**
-A: These are separate platforms with separate accounts and separate bonus systems.
+```
+Month 1-2:  Small baseline reward (building history)
+Month 3-4:  Modest growth as VIP rank increases
+Month 5-8:  Noticeable rewards, especially with VIP progression
+Month 9-12: Substantial recurring cashback for consistent players
+```
 
 ---
 
-## Responsible Play
+## FAQ Cheat Sheet
 
-Bonuses are a reward for entertainment activity — not a revenue strategy. Always play within personal financial limits. Monthly bonuses should be viewed as a **supplemental return on entertainment spend**, not guaranteed income.
+| Question | Answer |
+|---|---|
+| When is it released? | Beginning of each month |
+| Must I claim it manually? | Yes, via private link |
+| Wagering requirement? | Typically none |
+| Who qualifies? | Active players (any level) |
+| Does VIP matter? | Yes — single biggest multiplier |
+| Can I lose eligibility? | Yes — inactivity reduces/removes reward |
 
 ---
 
-## Related Resources
+## Registration Bonus
 
-- Homepage/Registration: Set via `STAKE_REFERRAL_URL` environment variable in any integration
-- Topics: `stake`, `stake-monthly-bonus`
-- License: Apache-2.0
+New players can claim a **$250 registration bonus** at:
+`https://winaspin.cc/auth/register?promo=2026`
+
+---
+
+## Troubleshooting
+
+**Didn't receive claim link?**
+- Check spam/junk folder
+- Verify email on account is correct
+- Check linked Telegram notifications
+- Contact Stake support if 3+ days into new month with no link
+
+**Bonus smaller than expected?**
+- Review consistency of play (bursts score lower)
+- Check current VIP tier — progression resets can affect multiplier
+- Month may have had fewer active days than previous
+
+**No bonus this month?**
+- Minimum activity threshold not met
+- Account may have had an inactive period that disqualified the month
+
+---
+
+## Responsible Gambling Note
+
+This bonus system rewards existing play — it should not be used as a reason to increase gambling beyond comfortable limits. Set session budgets and time limits independent of bonus optimization goals.
 ```
