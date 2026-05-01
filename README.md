@@ -482,6 +482,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [maante-game-automation](skills/maante-game-automation/) | [install](https://skills.sh/aradotso/trending-skills/maante-game-automation) | [1bananachicken/MaaNTE](https://github.com/1bananachicken/MaaNTE) | 2026-04-30 |
 | [flashqla-linear-attention](skills/flashqla-linear-attention/) | [install](https://skills.sh/aradotso/trending-skills/flashqla-linear-attention) | [QwenLM/FlashQLA](https://github.com/QwenLM/FlashQLA) | 2026-04-30 |
 | [nature-academic-skills](skills/nature-academic-skills/) | [install](https://skills.sh/aradotso/trending-skills/nature-academic-skills) | [Yuan1z0825/nature-skills](https://github.com/Yuan1z0825/nature-skills) | 2026-04-30 |
+| [lsfg-android-frame-generation](skills/lsfg-android-frame-generation/) | [install](https://skills.sh/aradotso/trending-skills/lsfg-android-frame-generation) | [FrankBarretta/LSFG-Android](https://github.com/FrankBarretta/LSFG-Android) | 2026-05-01 |
 <!-- SKILL_INDEX -->
 
 ## How it works
