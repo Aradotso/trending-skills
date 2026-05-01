@@ -486,6 +486,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [hermes-labyrinth-observability](skills/hermes-labyrinth-observability/) | [install](https://skills.sh/aradotso/trending-skills/hermes-labyrinth-observability) | [stainlu/hermes-labyrinth](https://github.com/stainlu/hermes-labyrinth) | 2026-05-01 |
 | [whatcable-macos-usb-inspector](skills/whatcable-macos-usb-inspector/) | [install](https://skills.sh/aradotso/trending-skills/whatcable-macos-usb-inspector) | [darrylmorley/whatcable](https://github.com/darrylmorley/whatcable) | 2026-05-01 |
 | [dictionary-of-ai-coding](skills/dictionary-of-ai-coding/) | [install](https://skills.sh/aradotso/trending-skills/dictionary-of-ai-coding) | [mattpocock/dictionary-of-ai-coding](https://github.com/mattpocock/dictionary-of-ai-coding) | 2026-05-01 |
+| [serve-sim-apple-simulator](skills/serve-sim-apple-simulator/) | [install](https://skills.sh/aradotso/trending-skills/serve-sim-apple-simulator) | [EvanBacon/serve-sim](https://github.com/EvanBacon/serve-sim) | 2026-05-01 |
 <!-- SKILL_INDEX -->
 
 ## How it works
