@@ -490,6 +490,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [club-3090-llm-serving](skills/club-3090-llm-serving/) | [install](https://skills.sh/aradotso/trending-skills/club-3090-llm-serving) | [noonghunna/club-3090](https://github.com/noonghunna/club-3090) | 2026-05-02 |
 | [copyfail-go-lpe](skills/copyfail-go-lpe/) | [install](https://skills.sh/aradotso/trending-skills/copyfail-go-lpe) | [badsectorlabs/copyfail-go](https://github.com/badsectorlabs/copyfail-go) | 2026-05-02 |
 | [tiangolo-library-skills](skills/tiangolo-library-skills/) | [install](https://skills.sh/aradotso/trending-skills/tiangolo-library-skills) | [tiangolo/library-skills](https://github.com/tiangolo/library-skills) | 2026-05-02 |
+| [openless-voice-input](skills/openless-voice-input/) | [install](https://skills.sh/aradotso/trending-skills/openless-voice-input) | [appergb/openless](https://github.com/appergb/openless) | 2026-05-02 |
 <!-- SKILL_INDEX -->
 
 ## How it works
