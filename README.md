@@ -491,6 +491,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [copyfail-go-lpe](skills/copyfail-go-lpe/) | [install](https://skills.sh/aradotso/trending-skills/copyfail-go-lpe) | [badsectorlabs/copyfail-go](https://github.com/badsectorlabs/copyfail-go) | 2026-05-02 |
 | [tiangolo-library-skills](skills/tiangolo-library-skills/) | [install](https://skills.sh/aradotso/trending-skills/tiangolo-library-skills) | [tiangolo/library-skills](https://github.com/tiangolo/library-skills) | 2026-05-02 |
 | [openless-voice-input](skills/openless-voice-input/) | [install](https://skills.sh/aradotso/trending-skills/openless-voice-input) | [appergb/openless](https://github.com/appergb/openless) | 2026-05-02 |
+| [gpt-image-2-api-prompts](skills/gpt-image-2-api-prompts/) | [install](https://skills.sh/aradotso/trending-skills/gpt-image-2-api-prompts) | [EvoLinkAI/awesome-gpt-image-2-API-and-Prompts](https://github.com/EvoLinkAI/awesome-gpt-image-2-API-and-Prompts) | 2026-05-02 |
 <!-- SKILL_INDEX -->
 
 ## How it works
