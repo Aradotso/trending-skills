@@ -1,16 +1,16 @@
 ```markdown
 ---
 name: gpt-image-2-api-prompts
-description: Expert skill for using GPT-Image-2 API via Evolink, including prompt engineering patterns, image generation workflows, and curated prompt templates for e-commerce, portraits, posters, UI mockups, and more.
+description: Expertise in using the GPT-Image-2 API via Evolink, prompt engineering patterns, and curated visual workflows for image generation
 triggers:
   - generate an image with GPT Image 2
-  - use the GPT Image 2 API
-  - create a prompt for image generation
-  - how do I call the Evolink image API
-  - text to image with GPT Image 2
-  - image to image generation prompt
-  - gpt-image-2 prompt examples
-  - set up GPT Image 2 in my project
+  - use gpt-image-2 api
+  - create image generation prompts
+  - text to image with openai gpt image
+  - gpt image 2 api integration
+  - image generation prompt patterns
+  - evolink image api
+  - awesome gpt image prompts
 ---
 
 # GPT-Image-2 API and Prompts
@@ -19,44 +19,37 @@ triggers:
 
 ## What This Project Does
 
-**awesome-gpt-image-2-API-and-Prompts** is a curated collection of 330+ prompt patterns, reference cases, and reusable workflows for the GPT-Image-2 model served via the [Evolink API](https://evolink.ai). It covers:
+**awesome-gpt-image-2-API-and-Prompts** is a curated collection of 330+ prompt patterns, reference cases, and reusable visual workflows for the GPT-Image-2 model served via the [Evolink API](https://evolink.ai). It covers:
 
-- **Text-to-image** generation with detailed, production-ready prompts
-- **Image-to-image** transformation workflows
-- Prompt categories: e-commerce product shots, ad creatives, portraits, posters, character design, UI/social mockups, and community comparisons
-- A callable skill (`gpt-image-2-gen-skill`) for one-line integration
-- A `gpt_image_2_prompt.json` file tracking prompt-only updates
+- Text-to-image and image-to-image generation
+- Domain-specific prompt patterns: e-commerce, ad creative, portrait, poster, character design, UI mockups
+- A callable skill (`gpt-image-2-gen-skill`) for agent integration
+- A cinematic workflow combining GPT-Image-2 with Seedance 2.0
 
 ---
 
-## Installation
+## Installation & Setup
 
-### Option 1 — Callable Skill (Node.js, quickest)
+### 1. Install the Callable Skill (Node.js)
 
 ```bash
 npx evolink-gpt-image -y
 ```
 
-### Option 2 — Direct API (no install required)
+### 2. Get Your API Key
 
-Set your API key as an environment variable:
+1. Go to [https://evolink.ai/dashboard](https://evolink.ai/dashboard)
+2. Create an account and generate an API key
+3. Store it as an environment variable:
 
 ```bash
 export EVOLINK_API_KEY="your_api_key_here"
 ```
 
-Get a key at: https://evolink.ai/dashboard
-
-### Option 3 — Python SDK pattern (manual)
+### 3. Python Dependencies
 
 ```bash
-pip install requests python-dotenv
-```
-
-Create a `.env` file:
-
-```
-EVOLINK_API_KEY=your_api_key_here
+pip install openai requests python-dotenv
 ```
 
 ---
@@ -65,487 +58,441 @@ EVOLINK_API_KEY=your_api_key_here
 
 **Base URL:** `https://api.evolink.ai/v1`
 
-**Endpoint:** `POST /images/generations`
+**Image Generation Endpoint:** `POST /images/generations`
 
-### Request Schema
+**Headers:**
+- `Authorization: Bearer YOUR_API_KEY`
+- `Content-Type: application/json`
 
-| Field    | Type   | Required | Description                                      |
-|----------|--------|----------|--------------------------------------------------|
-| model    | string | Yes      | `"gpt-image-2"`                                  |
-| prompt   | string | Yes      | Natural language description of the image        |
-| size     | string | No       | `"1024x1024"`, `"1792x1024"`, `"1024x1792"`      |
-| quality  | string | No       | `"standard"` or `"hd"`                           |
-| n        | int    | No       | Number of images (1–4)                           |
-| response_format | string | No | `"url"` or `"b64_json"`                    |
+**Key Parameters:**
 
-### Response Schema
-
-```json
-{
-  "created": 1714000000,
-  "data": [
-    {
-      "url": "https://...",
-      "revised_prompt": "..."
-    }
-  ]
-}
-```
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `model` | string | Always `"gpt-image-2"` |
+| `prompt` | string | Text description of desired image |
+| `n` | integer | Number of images (default: 1) |
+| `size` | string | `"1024x1024"`, `"1792x1024"`, `"1024x1792"` |
+| `quality` | string | `"standard"` or `"hd"` |
+| `response_format` | string | `"url"` or `"b64_json"` |
 
 ---
 
-## Quick Start — cURL
+## Code Examples
 
-```bash
-curl --request POST \
-  --url https://api.evolink.ai/v1/images/generations \
-  --header "Authorization: Bearer $EVOLINK_API_KEY" \
-  --header 'Content-Type: application/json' \
-  --data '{
-    "model": "gpt-image-2",
-    "prompt": "A beautiful colorful sunset over the ocean",
-    "size": "1024x1024",
-    "quality": "hd",
-    "n": 1
-  }'
-```
-
----
-
-## Python Examples
-
-### Basic Text-to-Image
+### Basic Text-to-Image (Python, requests)
 
 ```python
 import os
 import requests
-from dotenv import load_dotenv
 
-load_dotenv()
+api_key = os.environ["EVOLINK_API_KEY"]
 
-API_KEY = os.environ["EVOLINK_API_KEY"]
-BASE_URL = "https://api.evolink.ai/v1"
-
-def generate_image(prompt: str, size: str = "1024x1024", quality: str = "hd") -> dict:
-    headers = {
-        "Authorization": f"Bearer {API_KEY}",
+response = requests.post(
+    "https://api.evolink.ai/v1/images/generations",
+    headers={
+        "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
-    }
-    payload = {
+    },
+    json={
         "model": "gpt-image-2",
-        "prompt": prompt,
-        "size": size,
-        "quality": quality,
+        "prompt": "A beautiful colorful sunset over the ocean",
         "n": 1,
-    }
-    response = requests.post(f"{BASE_URL}/images/generations", json=payload, headers=headers)
-    response.raise_for_status()
-    return response.json()
+        "size": "1024x1024",
+    },
+)
 
-result = generate_image("A hyper-realistic miniature diorama of a luxury skincare product")
-print(result["data"][0]["url"])
+data = response.json()
+image_url = data["data"][0]["url"]
+print(image_url)
 ```
 
-### Save Image to Disk
+### Using the OpenAI Python Client (Compatible)
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ["EVOLINK_API_KEY"],
+    base_url="https://api.evolink.ai/v1",
+)
+
+response = client.images.generate(
+    model="gpt-image-2",
+    prompt="Hyper-realistic miniature diorama product advertisement, luxury skincare bottle, tiny figurine workers on scaffolding, warm beige palette, studio photography, 8K",
+    n=1,
+    size="1024x1024",
+    quality="hd",
+)
+
+print(response.data[0].url)
+```
+
+### Download and Save Image
 
 ```python
 import os
 import requests
 from pathlib import Path
-from dotenv import load_dotenv
+from openai import OpenAI
 
-load_dotenv()
+client = OpenAI(
+    api_key=os.environ["EVOLINK_API_KEY"],
+    base_url="https://api.evolink.ai/v1",
+)
 
-API_KEY = os.environ["EVOLINK_API_KEY"]
-
-def generate_and_save(prompt: str, output_path: str = "output.png") -> str:
-    headers = {
-        "Authorization": f"Bearer {API_KEY}",
-        "Content-Type": "application/json",
-    }
-    payload = {
-        "model": "gpt-image-2",
-        "prompt": prompt,
-        "size": "1024x1024",
-        "quality": "hd",
-        "n": 1,
-        "response_format": "url",
-    }
-    response = requests.post(
-        "https://api.evolink.ai/v1/images/generations",
-        json=payload,
-        headers=headers,
+def generate_and_save(prompt: str, output_path: str, size: str = "1024x1024") -> str:
+    response = client.images.generate(
+        model="gpt-image-2",
+        prompt=prompt,
+        n=1,
+        size=size,
+        quality="hd",
     )
-    response.raise_for_status()
-    image_url = response.json()["data"][0]["url"]
-
-    image_data = requests.get(image_url).content
-    Path(output_path).write_bytes(image_data)
+    image_url = response.data[0].url
+    img_data = requests.get(image_url).content
+    Path(output_path).write_bytes(img_data)
     print(f"Saved to {output_path}")
-    return output_path
+    return image_url
 
 generate_and_save(
-    "Cinematic hero shot of a gourmet cheeseburger, warm side light, shallow depth of field",
-    "burger_hero.png",
+    prompt="Cinematic hero image of a gourmet cheeseburger on dark stone surface, glossy brioche bun, melted cheese, warm side light, shallow depth of field, premium food commercial style",
+    output_path="burger_hero.jpg",
+    size="1792x1024",
 )
 ```
 
-### Batch Generation (Multiple Prompts)
+### Batch Generation from Prompt List
 
 ```python
 import os
-import requests
+import json
 import time
-from dotenv import load_dotenv
+import requests
+from openai import OpenAI
 
-load_dotenv()
+client = OpenAI(
+    api_key=os.environ["EVOLINK_API_KEY"],
+    base_url="https://api.evolink.ai/v1",
+)
 
-API_KEY = os.environ["EVOLINK_API_KEY"]
-
-PROMPTS = [
-    "Luxury watch advertisement, dark background, dramatic lighting",
-    "Miniature diorama skincare product, tilt-shift aesthetic, studio lighting",
-    "Flat lay UI mockup for a mobile app, clean white background",
-]
-
-def batch_generate(prompts: list[str], delay_seconds: float = 1.0) -> list[dict]:
-    headers = {
-        "Authorization": f"Bearer {API_KEY}",
-        "Content-Type": "application/json",
-    }
+def batch_generate(prompts: list[dict], delay: float = 1.0) -> list[dict]:
+    """
+    prompts: list of {"id": str, "prompt": str, "size": str}
+    """
     results = []
-    for i, prompt in enumerate(prompts):
-        payload = {
-            "model": "gpt-image-2",
-            "prompt": prompt,
-            "size": "1024x1024",
-            "quality": "standard",
-        }
-        resp = requests.post(
-            "https://api.evolink.ai/v1/images/generations",
-            json=payload,
-            headers=headers,
-        )
-        resp.raise_for_status()
-        results.append({"prompt": prompt, "url": resp.json()["data"][0]["url"]})
-        print(f"[{i+1}/{len(prompts)}] Done: {prompt[:60]}...")
-        if i < len(prompts) - 1:
-            time.sleep(delay_seconds)
+    for item in prompts:
+        try:
+            response = client.images.generate(
+                model="gpt-image-2",
+                prompt=item["prompt"],
+                n=1,
+                size=item.get("size", "1024x1024"),
+                quality=item.get("quality", "standard"),
+            )
+            results.append({
+                "id": item["id"],
+                "url": response.data[0].url,
+                "status": "success",
+            })
+        except Exception as e:
+            results.append({"id": item["id"], "status": "error", "error": str(e)})
+        time.sleep(delay)
     return results
 
-results = batch_generate(PROMPTS)
+# Load prompts from the repo's JSON file
+with open("gpt_image_2_prompt.json") as f:
+    prompt_data = json.load(f)
+
+results = batch_generate(prompt_data[:5])
 for r in results:
-    print(r["url"])
+    print(r)
 ```
 
-### Base64 Response (for in-memory processing)
+### cURL Quick Test
 
-```python
-import os
-import base64
-import requests
-from PIL import Image
-from io import BytesIO
-from dotenv import load_dotenv
-
-load_dotenv()
-
-API_KEY = os.environ["EVOLINK_API_KEY"]
-
-def generate_image_base64(prompt: str) -> Image.Image:
-    headers = {
-        "Authorization": f"Bearer {API_KEY}",
-        "Content-Type": "application/json",
-    }
-    payload = {
-        "model": "gpt-image-2",
-        "prompt": prompt,
-        "size": "1024x1024",
-        "response_format": "b64_json",
-    }
-    resp = requests.post(
-        "https://api.evolink.ai/v1/images/generations",
-        json=payload,
-        headers=headers,
-    )
-    resp.raise_for_status()
-    b64 = resp.json()["data"][0]["b64_json"]
-    return Image.open(BytesIO(base64.b64decode(b64)))
-
-img = generate_image_base64("A serene Japanese garden at sunrise, ultra-detailed")
-img.show()
-img.save("garden.png")
+```bash
+curl --request POST \
+  --url https://api.evolink.ai/v1/images/generations \
+  --header "Authorization: Bearer ${EVOLINK_API_KEY}" \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "model": "gpt-image-2",
+    "prompt": "A beautiful colorful sunset over the ocean",
+    "n": 1,
+    "size": "1024x1024"
+  }'
 ```
 
 ---
 
-## Prompt Engineering Patterns
+## Prompt Patterns by Category
 
-### Pattern 1: Product Photography (E-commerce)
-
-Use tilt-shift miniature aesthetics, warm color palettes, and explicit studio settings:
+### E-commerce Product Shots
 
 ```python
-prompt = """
-A hyper-realistic miniature diorama product advertisement featuring an oversized 
-luxury skincare pump bottle labeled "LUXEVEIL Skin Science" in cream/beige with 
-a polished gold pump top, placed on a circular platform. Tiny figurine construction 
-workers in yellow coveralls swarm the bottle on scaffolding. Warm beige, cream, 
-gold palette. Studio photography, soft diffused lighting, clean beige background. 
-Tilt-shift miniature aesthetic, ultra-detailed, 8K resolution, photorealistic CGI.
+ECOMMERCE_TEMPLATE = """
+A hyper-realistic {style} product advertisement featuring {product_description}.
+{scene_elements}.
+Color palette: {palette}.
+Studio photography style with soft diffused lighting, clean {background} background.
+Tilt-shift miniature aesthetic, ultra-detailed, commercial product photography, 8K resolution, photorealistic CGI render.
 """
+
+prompt = ECOMMERCE_TEMPLATE.format(
+    style="miniature diorama",
+    product_description="oversized luxury skincare pump bottle labeled 'LUXEVEIL Skin Science' in cream/beige with polished gold pump top",
+    scene_elements="Tiny figurine construction workers in yellow coveralls and white hard hats, scaffolding, tower crane, industrial tanks",
+    palette="warm beige, cream, gold, and mustard yellow",
+    background="beige",
+)
 ```
 
-### Pattern 2: Cinematic Food Photography
+### Portrait & Photography
 
 ```python
-prompt = """
-Cinematic hero image of a gourmet cheeseburger on a dark stone surface with 
-glossy brioche bun, melted cheese, crisp lettuce, tomato, grilled patty, sauce, 
-realistic texture, appetizing steam, warm side light, shallow depth of field, 
-premium food commercial style. No text, no logos, no watermark.
+PORTRAIT_TEMPLATE = """
+{subject_description}, {lighting_style} lighting, {lens_style} lens,
+{mood} mood, {color_grade} color grade, {camera_style} photography,
+ultra-detailed, photorealistic, professional headshot composition.
 """
+
+prompt = PORTRAIT_TEMPLATE.format(
+    subject_description="close-up portrait of a woman in her 30s with natural makeup",
+    lighting_style="soft golden hour",
+    lens_style="85mm f/1.4 bokeh",
+    mood="serene and confident",
+    color_grade="warm film",
+    camera_style="editorial",
+)
 ```
 
-### Pattern 3: 9-Panel Storyboard Layout
+### Poster & Illustration
 
 ```python
-prompt = """
-Create a 9-cell hybrid keyframe-to-transition storyboard sheet for a 15-second 
-gourmet burger ad. Use large scene cells and smaller transition cells, motion 
-arrows, ghosted ingredient positions, steam, sauce trails, camera push-in icons. 
-Style: premium food commercial, warm lighting, rich texture, cinematic. 
-Minimal labels only. No logos, no watermark.
+POSTER_TEMPLATE = """
+{art_style} poster design for {subject},
+{color_scheme} color scheme, {typography_notes},
+{visual_elements}, {composition_style} composition,
+high detail, print-ready quality, {resolution}.
 """
+
+prompt = POSTER_TEMPLATE.format(
+    art_style="vintage Art Deco",
+    subject="an international jazz festival",
+    color_scheme="deep navy, gold, and ivory",
+    typography_notes="bold serif headline with geometric decorative borders",
+    visual_elements="silhouette of saxophone player, geometric patterns, starbursts",
+    composition_style="symmetrical centered",
+    resolution="8K",
+)
 ```
 
-### Pattern 4: UI / Social Media Mockup
+### UI & Social Media Mockups
 
 ```python
-prompt = """
-Flat lay mockup of a mobile app home screen on an iPhone 15 Pro, clean white 
-marble surface, minimal design, pastel color scheme, soft shadows, studio lighting, 
-top-down perspective, ultra-sharp, commercial product photography style.
+UI_MOCKUP_TEMPLATE = """
+Clean {platform} UI mockup for {app_type} app,
+{design_system} design language, {color_palette} color palette,
+showing {screen_content}, {device_frame} device frame,
+professional app store screenshot style, high fidelity, pixel-perfect.
 """
+
+prompt = UI_MOCKUP_TEMPLATE.format(
+    platform="iOS",
+    app_type="fitness tracking",
+    design_system="Material You",
+    color_palette="vibrant coral and white",
+    screen_content="dashboard with weekly activity rings, step count, and heart rate chart",
+    device_frame="iPhone 15 Pro",
+)
 ```
 
-### Pattern 5: Portrait / Character Design
+### 9-Panel Storyboard (Advanced)
 
 ```python
-prompt = """
-Hyper-realistic portrait of a young woman with warm studio lighting, shallow 
-depth of field, skin detail, natural makeup, soft bokeh background in warm tones. 
-High-end fashion editorial style, 85mm lens simulation, photorealistic, 8K.
+STORYBOARD_TEMPLATE = """
+Create a 9-cell hybrid keyframe-to-transition storyboard sheet for a {duration}-second {product_type} ad.
+Panels should progress: {story_arc}.
+Use large scene cells and smaller transition cells, motion arrows, camera push-in icons.
+Style: {visual_style}, {lighting}, {aesthetic}.
+Include panel labels with timestamps. No logos, no watermarks.
 """
+
+prompt = STORYBOARD_TEMPLATE.format(
+    duration="15",
+    product_type="gourmet burger",
+    story_arc="empty surface → ingredient assembly → final macro hero shot",
+    visual_style="premium food commercial",
+    lighting="warm cinematic lighting",
+    aesthetic="rich texture, appetizing, minimal labels only",
+)
 ```
 
 ---
 
-## Loading Prompts from the JSON Catalog
+## Working with `gpt_image_2_prompt.json`
 
-The repository ships `gpt_image_2_prompt.json` with all curated prompts. Use it to pick prompts programmatically:
+The repo ships a JSON file tracking all curated prompts. Use it programmatically:
 
 ```python
 import json
-import random
-import requests
+
+with open("gpt_image_2_prompt.json") as f:
+    prompts = json.load(f)
+
+# Filter by category
+portrait_prompts = [p for p in prompts if p.get("category") == "portrait"]
+poster_prompts = [p for p in prompts if p.get("category") == "poster"]
+
+# Get a specific case
+case_151 = next((p for p in prompts if p.get("id") == "case151"), None)
+if case_151:
+    print(case_151["prompt"])
+```
+
+---
+
+## Environment Configuration
+
+```bash
+# .env file
+EVOLINK_API_KEY=your_api_key_here
+EVOLINK_BASE_URL=https://api.evolink.ai/v1
+IMAGE_OUTPUT_DIR=./generated_images
+DEFAULT_IMAGE_SIZE=1024x1024
+DEFAULT_IMAGE_QUALITY=hd
+```
+
+```python
+# config.py
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.environ["EVOLINK_API_KEY"]
-
-with open("gpt_image_2_prompt.json", "r", encoding="utf-8") as f:
-    catalog = json.load(f)
-
-# Pick a random prompt from the catalog
-entry = random.choice(catalog)
-prompt = entry["prompt"]
-category = entry.get("category", "unknown")
-print(f"Category: {category}")
-print(f"Prompt: {prompt[:120]}...")
-
-headers = {
-    "Authorization": f"Bearer {API_KEY}",
-    "Content-Type": "application/json",
-}
-payload = {"model": "gpt-image-2", "prompt": prompt, "size": "1024x1024"}
-resp = requests.post(
-    "https://api.evolink.ai/v1/images/generations",
-    json=payload,
-    headers=headers,
-)
-resp.raise_for_status()
-print("Image URL:", resp.json()["data"][0]["url"])
+EVOLINK_API_KEY = os.environ["EVOLINK_API_KEY"]
+EVOLINK_BASE_URL = os.getenv("EVOLINK_BASE_URL", "https://api.evolink.ai/v1")
+IMAGE_OUTPUT_DIR = os.getenv("IMAGE_OUTPUT_DIR", "./generated_images")
+DEFAULT_SIZE = os.getenv("DEFAULT_IMAGE_SIZE", "1024x1024")
+DEFAULT_QUALITY = os.getenv("DEFAULT_IMAGE_QUALITY", "hd")
 ```
 
 ---
 
-## Callable Skill Integration (Node.js / npx)
+## GPT-Image-2 × Seedance 2.0 Cinematic Workflow
 
-After installing with `npx evolink-gpt-image -y`, the skill is callable from agent pipelines:
-
-```bash
-# Generate a single image
-evolink-gpt-image generate --prompt "A cinematic sunset over Tokyo" --size 1024x1024
-
-# List available prompt templates
-evolink-gpt-image templates --category poster
-
-# Use a template by case ID
-evolink-gpt-image generate --case 151
-```
-
-Set your key before calling:
+For video generation from GPT-Image-2 outputs:
 
 ```bash
-export EVOLINK_API_KEY="your_api_key_here"
-```
-
----
-
-## Cinematic Workflow: GPT-Image-2 × Seedance 2.0
-
-For video generation from still images:
-
-```bash
-# Clone the workflow repo
+# Install the cinematic workflow
 git clone https://github.com/EvoLinkAI/GPT-Image-2-Seedance2-Workflow
 cd GPT-Image-2-Seedance2-Workflow
 ```
 
-Workflow: `text prompt → GPT-Image-2 still → Seedance 2.0 video animation`
-
-See the workflow README for full pipeline configuration.
-
----
-
-## Common Patterns and Tips
-
-### Always Specify Output Style
-
 ```python
-# Weak prompt
-prompt = "a bottle of perfume"
-
-# Strong prompt — specifies lighting, background, style, resolution
-prompt = """
-Luxury perfume bottle on a black marble surface, dramatic rim lighting, 
-deep shadows, reflections on surface, cinematic product photography, 
-8K ultra-detailed, no text, no watermark.
-"""
-```
-
-### Use Explicit Negative Instructions
-
-GPT-Image-2 respects explicit exclusions inline:
-
-```python
-prompt = "... No text, no logos, no watermarks, no UI overlays, clean background."
-```
-
-### Aspect Ratio Selection
-
-```python
-# Portrait (tall) — ideal for mobile, fashion, portrait
-size = "1024x1792"
-
-# Landscape — ideal for banners, cinematic shots
-size = "1792x1024"
-
-# Square — ideal for product shots, social media
-size = "1024x1024"
-```
-
-### Quality vs Speed Trade-off
-
-```python
-# Faster, lower cost
-payload["quality"] = "standard"
-
-# Slower, more detailed — recommended for final assets
-payload["quality"] = "hd"
-```
-
----
-
-## Error Handling
-
-```python
+# Pattern: generate keyframe image, then animate with Seedance 2.0
 import os
-import requests
-from dotenv import load_dotenv
+from openai import OpenAI
 
-load_dotenv()
+client = OpenAI(
+    api_key=os.environ["EVOLINK_API_KEY"],
+    base_url="https://api.evolink.ai/v1",
+)
 
-API_KEY = os.environ["EVOLINK_API_KEY"]
+# Step 1: Generate cinematic keyframe
+keyframe = client.images.generate(
+    model="gpt-image-2",
+    prompt="Cinematic establishing shot, golden hour, lone figure on misty mountain ridge, dramatic sky, photorealistic, 8K",
+    size="1792x1024",
+    quality="hd",
+)
+keyframe_url = keyframe.data[0].url
 
-def safe_generate(prompt: str) -> str | None:
-    try:
-        headers = {
-            "Authorization": f"Bearer {API_KEY}",
-            "Content-Type": "application/json",
-        }
-        payload = {"model": "gpt-image-2", "prompt": prompt}
-        resp = requests.post(
-            "https://api.evolink.ai/v1/images/generations",
-            json=payload,
-            headers=headers,
-            timeout=60,
-        )
-        resp.raise_for_status()
-        return resp.json()["data"][0]["url"]
-    except requests.exceptions.Timeout:
-        print("Request timed out — the model may be under heavy load, retry.")
-    except requests.exceptions.HTTPError as e:
-        status = e.response.status_code
-        if status == 401:
-            print("Invalid API key — check EVOLINK_API_KEY env var.")
-        elif status == 429:
-            print("Rate limit hit — add delay between requests.")
-        elif status == 400:
-            print(f"Bad request: {e.response.json()}")
+# Step 2: Pass keyframe_url to Seedance 2.0 for animation
+# (see GPT-Image-2-Seedance2-Workflow repo for full integration)
+print(f"Keyframe ready for animation: {keyframe_url}")
+```
+
+---
+
+## Troubleshooting
+
+### Authentication Errors (401)
+
+```python
+# Verify your key is set
+import os
+key = os.environ.get("EVOLINK_API_KEY")
+if not key:
+    raise ValueError("EVOLINK_API_KEY environment variable not set")
+if len(key) < 20:
+    raise ValueError("API key looks malformed")
+```
+
+### Rate Limiting (429)
+
+```python
+import time
+
+def generate_with_retry(client, prompt, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            return client.images.generate(
+                model="gpt-image-2",
+                prompt=prompt,
+                n=1,
+                size="1024x1024",
+            )
+        except Exception as e:
+            if "429" in str(e) and attempt < max_retries - 1:
+                wait = 2 ** attempt  # exponential backoff
+                print(f"Rate limited. Waiting {wait}s...")
+                time.sleep(wait)
+            else:
+                raise
+```
+
+### Prompt Too Long
+
+GPT-Image-2 works best with prompts under ~1000 characters. For complex storyboard prompts, break them into separate calls:
+
+```python
+def chunk_prompt(full_prompt: str, max_chars: int = 900) -> list[str]:
+    """Split a long prompt into chunks for sequential generation."""
+    if len(full_prompt) <= max_chars:
+        return [full_prompt]
+    sentences = full_prompt.split(". ")
+    chunks, current = [], ""
+    for sentence in sentences:
+        if len(current) + len(sentence) < max_chars:
+            current += sentence + ". "
         else:
-            print(f"HTTP error {status}: {e.response.text}")
-    except Exception as e:
-        print(f"Unexpected error: {e}")
-    return None
+            chunks.append(current.strip())
+            current = sentence + ". "
+    if current:
+        chunks.append(current.strip())
+    return chunks
+```
+
+### Validate Response
+
+```python
+def safe_get_url(response) -> str | None:
+    try:
+        return response.data[0].url
+    except (AttributeError, IndexError, KeyError):
+        return None
 ```
 
 ---
 
-## Project Structure
+## Key Links
 
-```
-awesome-gpt-image-2-API-and-Prompts/
-├── README.md                    # Main English docs with all cases
-├── README_zh-CN.md              # Simplified Chinese
-├── README_ja.md                 # Japanese
-├── README_es.md                 # Spanish
-├── README_fr.md                 # French
-├── README_de.md                 # German
-├── gpt_image_2_prompt.json      # Machine-readable prompt catalog
-├── images/                      # Output images by case ID
-│   └── poster_case151/
-│       └── output.jpg
-├── cases/
-│   ├── ecommerce.md             # E-commerce prompt cases
-│   ├── ad-creative.md           # Ad creative cases
-│   ├── portrait.md              # Portrait & photography cases
-│   ├── poster.md                # Poster & illustration cases
-│   ├── character.md             # Character design cases
-│   ├── ui.md                    # UI & social media mockup cases
-│   └── comparison.md            # Comparison & community examples
-```
-
----
-
-## Resources
-
+- [GPT-Image-2 Prompts Gallery](https://evolink.ai/gpt-image-2-prompts)
+- [API Documentation](https://docs.evolink.ai/en/api-manual/image-series/gpt-image-2/gpt-image-2-image-generation)
 - [Evolink Dashboard (API Keys)](https://evolink.ai/dashboard)
-- [GPT-Image-2 API Docs](https://docs.evolink.ai/en/api-manual/image-series/gpt-image-2/gpt-image-2-image-generation)
-- [Try Prompts Online](https://evolink.ai/gpt-image-2-prompts)
-- [Callable Skill Repo](https://github.com/EvoLinkAI/gpt-image-2-gen-skill)
-- [Cinematic Workflow (GPT-Image-2 × Seedance 2.0)](https://github.com/EvoLinkAI/GPT-Image-2-Seedance2-Workflow)
+- [gpt-image-2-gen-skill (callable skill)](https://github.com/EvoLinkAI/gpt-image-2-gen-skill)
+- [GPT-Image-2 × Seedance 2.0 Workflow](https://github.com/EvoLinkAI/GPT-Image-2-Seedance2-Workflow)
+- [Prompt JSON file](https://github.com/EvoLinkAI/awesome-gpt-image-2-API-and-Prompts/blob/main/gpt_image_2_prompt.json)
 ```
