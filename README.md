@@ -496,6 +496,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [cuimao-translator](skills/cuimao-translator/) | [install](https://skills.sh/aradotso/trending-skills/cuimao-translator) | [Cuimao777/cuimao-translator](https://github.com/Cuimao777/cuimao-translator) | 2026-05-03 |
 | [keep-codex-fast-maintenance](skills/keep-codex-fast-maintenance/) | [install](https://skills.sh/aradotso/trending-skills/keep-codex-fast-maintenance) | [vibeforge1111/keep-codex-fast](https://github.com/vibeforge1111/keep-codex-fast) | 2026-05-03 |
 | [compose-performance-skills](skills/compose-performance-skills/) | [install](https://skills.sh/aradotso/trending-skills/compose-performance-skills) | [skydoves/compose-performance-skills](https://github.com/skydoves/compose-performance-skills) | 2026-05-03 |
+| [baguette-ios-simulator](skills/baguette-ios-simulator/) | [install](https://skills.sh/aradotso/trending-skills/baguette-ios-simulator) | [tddworks/baguette](https://github.com/tddworks/baguette) | 2026-05-03 |
 <!-- SKILL_INDEX -->
 
 ## How it works
