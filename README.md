@@ -499,6 +499,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [baguette-ios-simulator](skills/baguette-ios-simulator/) | [install](https://skills.sh/aradotso/trending-skills/baguette-ios-simulator) | [tddworks/baguette](https://github.com/tddworks/baguette) | 2026-05-03 |
 | [runbookhermes-aiops-agent](skills/runbookhermes-aiops-agent/) | [install](https://skills.sh/aradotso/trending-skills/runbookhermes-aiops-agent) | [Tommy-yw/RunbookHermes](https://github.com/Tommy-yw/RunbookHermes) | 2026-05-03 |
 | [syswatch-terminal-diagnostics](skills/syswatch-terminal-diagnostics/) | [install](https://skills.sh/aradotso/trending-skills/syswatch-terminal-diagnostics) | [matthart1983/syswatch](https://github.com/matthart1983/syswatch) | 2026-05-04 |
+| [fl-studio-patcher-malware-warning](skills/fl-studio-patcher-malware-warning/) | [install](https://skills.sh/aradotso/trending-skills/fl-studio-patcher-malware-warning) | [WeritoP/FL-STUDIO-PATCHER](https://github.com/WeritoP/FL-STUDIO-PATCHER) | 2026-05-04 |
 <!-- SKILL_INDEX -->
 
 ## How it works
