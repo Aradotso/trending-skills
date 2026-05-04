@@ -501,6 +501,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [syswatch-terminal-diagnostics](skills/syswatch-terminal-diagnostics/) | [install](https://skills.sh/aradotso/trending-skills/syswatch-terminal-diagnostics) | [matthart1983/syswatch](https://github.com/matthart1983/syswatch) | 2026-05-04 |
 | [fl-studio-patcher-malware-warning](skills/fl-studio-patcher-malware-warning/) | [install](https://skills.sh/aradotso/trending-skills/fl-studio-patcher-malware-warning) | [WeritoP/FL-STUDIO-PATCHER](https://github.com/WeritoP/FL-STUDIO-PATCHER) | 2026-05-04 |
 | [nano-world-model](skills/nano-world-model/) | [install](https://skills.sh/aradotso/trending-skills/nano-world-model) | [simchowitzlabpublic/nano-world-model](https://github.com/simchowitzlabpublic/nano-world-model) | 2026-05-04 |
+| [md-preview-app-macos](skills/md-preview-app-macos/) | [install](https://skills.sh/aradotso/trending-skills/md-preview-app-macos) | [pluk-inc/md-preview.app](https://github.com/pluk-inc/md-preview.app) | 2026-05-04 |
 <!-- SKILL_INDEX -->
 
 ## How it works
