@@ -503,6 +503,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [nano-world-model](skills/nano-world-model/) | [install](https://skills.sh/aradotso/trending-skills/nano-world-model) | [simchowitzlabpublic/nano-world-model](https://github.com/simchowitzlabpublic/nano-world-model) | 2026-05-04 |
 | [md-preview-app-macos](skills/md-preview-app-macos/) | [install](https://skills.sh/aradotso/trending-skills/md-preview-app-macos) | [pluk-inc/md-preview.app](https://github.com/pluk-inc/md-preview.app) | 2026-05-04 |
 | [deepclaude-proxy](skills/deepclaude-proxy/) | [install](https://skills.sh/aradotso/trending-skills/deepclaude-proxy) | [aattaran/deepclaude](https://github.com/aattaran/deepclaude) | 2026-05-04 |
+| [linjector-luau-script-ide](skills/linjector-luau-script-ide/) | [install](https://skills.sh/aradotso/trending-skills/linjector-luau-script-ide) | [WeritoP/LInjector-FORKED-](https://github.com/WeritoP/LInjector-FORKED-) | 2026-05-04 |
 <!-- SKILL_INDEX -->
 
 ## How it works
