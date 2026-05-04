@@ -498,6 +498,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [compose-performance-skills](skills/compose-performance-skills/) | [install](https://skills.sh/aradotso/trending-skills/compose-performance-skills) | [skydoves/compose-performance-skills](https://github.com/skydoves/compose-performance-skills) | 2026-05-03 |
 | [baguette-ios-simulator](skills/baguette-ios-simulator/) | [install](https://skills.sh/aradotso/trending-skills/baguette-ios-simulator) | [tddworks/baguette](https://github.com/tddworks/baguette) | 2026-05-03 |
 | [runbookhermes-aiops-agent](skills/runbookhermes-aiops-agent/) | [install](https://skills.sh/aradotso/trending-skills/runbookhermes-aiops-agent) | [Tommy-yw/RunbookHermes](https://github.com/Tommy-yw/RunbookHermes) | 2026-05-03 |
+| [syswatch-terminal-diagnostics](skills/syswatch-terminal-diagnostics/) | [install](https://skills.sh/aradotso/trending-skills/syswatch-terminal-diagnostics) | [matthart1983/syswatch](https://github.com/matthart1983/syswatch) | 2026-05-04 |
 <!-- SKILL_INDEX -->
 
 ## How it works
