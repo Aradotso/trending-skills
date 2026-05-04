@@ -506,6 +506,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [linjector-luau-script-ide](skills/linjector-luau-script-ide/) | [install](https://skills.sh/aradotso/trending-skills/linjector-luau-script-ide) | [WeritoP/LInjector-FORKED-](https://github.com/WeritoP/LInjector-FORKED-) | 2026-05-04 |
 | [lgbt-prompt](skills/lgbt-prompt/) | [install](https://skills.sh/aradotso/trending-skills/lgbt-prompt) | [JustLikeCheese/LGBT-Prompt](https://github.com/JustLikeCheese/LGBT-Prompt) | 2026-05-04 |
 | [openclaude-portable](skills/openclaude-portable/) | [install](https://skills.sh/aradotso/trending-skills/openclaude-portable) | [techjarves/OpenClaude-Portable](https://github.com/techjarves/OpenClaude-Portable) | 2026-05-04 |
+| [copy-fail-cve-2026-31431](skills/copy-fail-cve-2026-31431/) | [install](https://skills.sh/aradotso/trending-skills/copy-fail-cve-2026-31431) | [theori-io/copy-fail-CVE-2026-31431](https://github.com/theori-io/copy-fail-CVE-2026-31431) | 2026-05-04 |
 <!-- SKILL_INDEX -->
 
 ## How it works
