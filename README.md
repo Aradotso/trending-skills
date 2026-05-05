@@ -510,6 +510,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [how-to-train-your-gpt](skills/how-to-train-your-gpt/) | [install](https://skills.sh/aradotso/trending-skills/how-to-train-your-gpt) | [raiyanyahya/how-to-train-your-gpt](https://github.com/raiyanyahya/how-to-train-your-gpt) | 2026-05-05 |
 | [cpanelsniper](skills/cpanelsniper/) | [install](https://skills.sh/aradotso/trending-skills/cpanelsniper) | [ynsmroztas/cPanelSniper](https://github.com/ynsmroztas/cPanelSniper) | 2026-05-05 |
 | [deepsec-vulnerability-scanner](skills/deepsec-vulnerability-scanner/) | [install](https://skills.sh/aradotso/trending-skills/deepsec-vulnerability-scanner) | [vercel-labs/deepsec](https://github.com/vercel-labs/deepsec) | 2026-05-05 |
+| [sprite-pipeline-2d](skills/sprite-pipeline-2d/) | [install](https://skills.sh/aradotso/trending-skills/sprite-pipeline-2d) | [LayrKits/Sprite-Pipeline](https://github.com/LayrKits/Sprite-Pipeline) | 2026-05-05 |
 <!-- SKILL_INDEX -->
 
 ## How it works
