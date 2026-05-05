@@ -508,6 +508,7 @@ npx skills add Aradotso/trending-skills --skill lightpanda-browser
 | [openclaude-portable](skills/openclaude-portable/) | [install](https://skills.sh/aradotso/trending-skills/openclaude-portable) | [techjarves/OpenClaude-Portable](https://github.com/techjarves/OpenClaude-Portable) | 2026-05-04 |
 | [copy-fail-cve-2026-31431](skills/copy-fail-cve-2026-31431/) | [install](https://skills.sh/aradotso/trending-skills/copy-fail-cve-2026-31431) | [theori-io/copy-fail-CVE-2026-31431](https://github.com/theori-io/copy-fail-CVE-2026-31431) | 2026-05-04 |
 | [how-to-train-your-gpt](skills/how-to-train-your-gpt/) | [install](https://skills.sh/aradotso/trending-skills/how-to-train-your-gpt) | [raiyanyahya/how-to-train-your-gpt](https://github.com/raiyanyahya/how-to-train-your-gpt) | 2026-05-05 |
+| [cpanelsniper](skills/cpanelsniper/) | [install](https://skills.sh/aradotso/trending-skills/cpanelsniper) | [ynsmroztas/cPanelSniper](https://github.com/ynsmroztas/cPanelSniper) | 2026-05-05 |
 <!-- SKILL_INDEX -->
 
 ## How it works
